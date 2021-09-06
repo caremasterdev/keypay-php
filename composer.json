@@ -33,13 +33,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Healyhatman\\Skeleton\\": "src",
+            "Healyhatman\\Skeleton\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Healyhatman\\Skeleton\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,17 +49,7 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\SkeletonFacade"
-            }
-        }
-    },
+    }
     "minimum-stability": "dev",
     "prefer-stable": true
 }
