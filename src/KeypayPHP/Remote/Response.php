@@ -30,7 +30,8 @@ class Response
         $this->headers = $headers;
     }
 
-    public function parse() {
+    public function parse()
+    {
         $this->parseBody();
     }
 
@@ -83,7 +84,7 @@ class Response
         $this->element_warnings = [];
         $this->root_error = [];
 
-        if (!isset($this->headers[Request::HEADER_CONTENT_TYPE])) {
+        if (! isset($this->headers[Request::HEADER_CONTENT_TYPE])) {
             //Nothing to parse
             return;
         }
@@ -95,14 +96,17 @@ class Response
             switch ($content_type) {
                 case Request::CONTENT_TYPE_XML:
                     $this->parseXML();
+
                     break;
 
                 case Request::CONTENT_TYPE_JSON:
                     $this->parseJSON();
+
                     break;
 
                 case Request::CONTENT_TYPE_HTML:
                     $this->parseHTML();
+
                     break;
 
                 default:

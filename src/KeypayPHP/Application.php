@@ -12,29 +12,30 @@ class Application
         'keypay' => [
             'base_url' => 'https://api.yourpayroll.com.au',
             'default_content_type' => Request::CONTENT_TYPE_JSON,
-            'core_version' => 'v2'
-        ]
+            'core_version' => 'v2',
+        ],
     ];
 
     protected array $config;
 
     private ClientInterface $transport;
 
-    public function __construct($token) {
-        $this->config  = static::$_config_defaults;
+    public function __construct($token)
+    {
+        $this->config = static::$_config_defaults;
 
         $transport = new Client([
             'headers' => [
-                'Authorization' => sprintf('Bearer %s', $token)
-            ]
+                'Authorization' => sprintf('Bearer %s', $token),
+            ],
         ]);
 
         $this->transport = $transport;
     }
 
-
-    public function getConfig(string $key) {
-        if(!isset($this->config[$key])) {
+    public function getConfig(string $key)
+    {
+        if (! isset($this->config[$key])) {
             throw new \Exception("Invalid configuration key [$key]");
         }
 
@@ -49,7 +50,7 @@ class Application
      */
     public function getConfigOption(string $config, $option)
     {
-        if(!isset($this->getConfig($config)[$option])) {
+        if (! isset($this->getConfig($config)[$option])) {
             throw new \Exception("Invalid configuration option [{$option}]");
         }
 
@@ -77,7 +78,7 @@ class Application
      */
     public function setConfigOption($config, $option, $value)
     {
-        if (!isset($this->config[$config])) {
+        if (! isset($this->config[$config])) {
             throw new \Exception("Invalid configuration key [{$config}]");
         }
         $this->config[$config][$option] = $value;
@@ -101,6 +102,4 @@ class Application
     {
         return $this->transport = $client;
     }
-
-
 }

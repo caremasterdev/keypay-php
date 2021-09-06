@@ -6,9 +6,9 @@ use KeypayPHP\Application;
 
 class URL
 {
-    const OAUTH_REQUEST_TOKEN = 'RequestToken';
+    public const OAUTH_REQUEST_TOKEN = 'RequestToken';
 
-    const OAUTH_ACCESS_TOKEN = 'AccessToken';
+    public const OAUTH_ACCESS_TOKEN = 'AccessToken';
 
     /**
      * @var string The base API URL for the ap type

@@ -7,31 +7,31 @@ use KeypayPHP\Application;
 
 class Request
 {
-    const METHOD_GET = 'GET';
+    public const METHOD_GET = 'GET';
 
-    const METHOD_PUT = 'PUT';
+    public const METHOD_PUT = 'PUT';
 
-    const METHOD_POST = 'POST';
+    public const METHOD_POST = 'POST';
 
-    const METHOD_DELETE = 'DELETE';
+    public const METHOD_DELETE = 'DELETE';
 
-    const CONTENT_TYPE_HTML = 'text/html';
+    public const CONTENT_TYPE_HTML = 'text/html';
 
-    const CONTENT_TYPE_XML = 'text/xml';
+    public const CONTENT_TYPE_XML = 'text/xml';
 
-    const CONTENT_TYPE_JSON = 'application/json';
+    public const CONTENT_TYPE_JSON = 'application/json';
 
-    const CONTENT_TYPE_PDF = 'application/pdf';
+    public const CONTENT_TYPE_PDF = 'application/pdf';
 
-    const HEADER_ACCEPT = 'Accept';
+    public const HEADER_ACCEPT = 'Accept';
 
-    const HEADER_CONTENT_TYPE = 'Content-Type';
+    public const HEADER_CONTENT_TYPE = 'Content-Type';
 
-    const HEADER_CONTENT_LENGTH = 'Content-Length';
+    public const HEADER_CONTENT_LENGTH = 'Content-Length';
 
-    const HEADER_AUTHORIZATION = 'Authorization';
+    public const HEADER_AUTHORIZATION = 'Authorization';
 
-    const HEADER_IF_MODIFIED_SINCE = 'If-Modified-Since';
+    public const HEADER_IF_MODIFIED_SINCE = 'If-Modified-Since';
 
     private Application $application;
 
@@ -63,6 +63,7 @@ class Request
             case self::METHOD_POST:
             case self::METHOD_DELETE:
                 $this->method = $method;
+
                 break;
             default:
                 throw new \Exception("Invalid request method [$method]");
@@ -72,29 +73,32 @@ class Request
 
         $keypay_config = $this->application->getConfig('keypay');
 
-        if(isset($keypay_config['unitdp'])) {
+        if (isset($keypay_config['unitdp'])) {
             $this->setParameter('unitdp', $keypay_config['unitdp']);
         }
     }
 
-    public function send() {
+    public function send()
+    {
         $uri = Uri::withQueryValues(new Uri($this->getUrl()->getFullURL()), $this->getParameters());
 
         $request = new \GuzzleHttp\Psr7\Request($this->getMethod(), $uri, $this->getHeaders, $this->body);
 
         try {
             $guzzleResponse = $this->app->getTransport()->send($request);
-        }  catch (\GuzzleHttp\Exception\BadResponseException $e) {
+        } catch (\GuzzleHttp\Exception\BadResponseException $e) {
             $guzzleResponse = $e->getResponse();
         }
 
-        $this->response = new Response($this,
+        $this->response = new Response(
+            $this,
             $guzzleResponse->getBody()->getContents(),
             $guzzleResponse->getStatusCode(),
             $guzzleResponse->getHeaders()
         );
 
         $this->response->parse();
+
         return $this->response;
     }
 
@@ -117,7 +121,7 @@ class Request
      */
     public function getHeader($key)
     {
-        if (!isset($this->headers[$key])) {
+        if (! isset($this->headers[$key])) {
             return null;
         }
 
