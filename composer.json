@@ -17,13 +17,15 @@
     ],
     "require": {
         "php": "^7.4",
-        "healyhatman/oauth2-keypay" : "dev-main"
+        "healyhatman/oauth2-keypay" : "dev-main",
         "guzzlehttp/guzzle": "^6.5|^7.0",
         "guzzlehttp/psr7": "^1.5|^1.6",
+        "ext-json": "*",
+        "ext-simplexml": "*"
     },
     "autoload": {
         "psr-4": {
-            "KeypayPHP\\": "src/KeypayPHP/",
+            "KeypayPHP\\": "src/KeypayPHP/"
         }
     },
     "minimum-stability": "dev",
