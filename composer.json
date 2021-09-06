@@ -7,6 +7,16 @@
         "keypay-php"
     ],
     "homepage": "https://github.com/healyhatman/keypay-php",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:Healyhatman/keypay-php.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:Healyhatman/oauth2-keypay.git"
+        }
+    ],
     "license": "MIT",
     "authors": [
         {
