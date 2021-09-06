@@ -1,22 +1,25 @@
 {
-    "name": "vendor_slug/package_slug",
-    "description": ":package_description",
+    "name": "healyhatman/keypay-php",
+    "description": "Package to access the KeyPay API",
     "keywords": [
-        ":vendor_name",
+        "healyhatman",
         "laravel",
-        "package_slug"
+        "keypay-php"
     ],
-    "homepage": "https://github.com/vendor_slug/package_slug",
+    "homepage": "https://github.com/healyhatman/keypay-php",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Kamron Brooks",
+            "email": "kamron@skyspider.com.au",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^7.4",
+        "league/oauth2-client": "1.*|2.*",
+        "guzzlehttp/guzzle": "^6.5|^7.0",
+        "guzzlehttp/psr7": "^1.5|^1.6",
         "spatie/laravel-package-tools": "^1.4.3",
         "illuminate/contracts": "^8.37"
     },
