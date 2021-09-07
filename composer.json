@@ -37,7 +37,7 @@
     "autoload": {
         "psr-4": {
             "KeypayPHP\\": "src/KeypayPHP/",
-            "Swagger\\Client\\" : "lib/"
+            "Swagger\\Client\\" : "src/lib/"
         }
     },
     "minimum-stability": "dev",
