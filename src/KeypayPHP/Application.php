@@ -5,6 +5,7 @@ namespace KeypayPHP;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use KeypayPHP\Remote\Request;
+use Swagger\Client\Configuration;
 
 class Application
 {
@@ -20,6 +21,8 @@ class Application
 
     private ClientInterface $transport;
 
+    private Configuration $configuration;
+
     public function __construct($token)
     {
         $this->config = static::$_config_defaults;
@@ -32,6 +35,7 @@ class Application
 
         $this->transport = $transport;
 
+        $this->configuration = (new Configuration())->setAccessToken($token);
     }
 
     public function getConfig(string $key)
@@ -85,6 +89,10 @@ class Application
         $this->config[$config][$option] = $value;
 
         return $this->config;
+    }
+
+    public function getConfiguration() {
+        return $this->configuration;
     }
 
     /**
