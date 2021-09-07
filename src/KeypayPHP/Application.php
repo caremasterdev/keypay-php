@@ -112,4 +112,8 @@ class Application
     {
         return $this->transport = $client;
     }
+
+    public function load(string $api_class_name) {
+        return new $api_class_name($this->transport, $this->configuration);
+    }
 }
