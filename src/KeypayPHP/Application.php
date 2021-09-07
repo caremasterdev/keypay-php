@@ -7,7 +7,6 @@ use GuzzleHttp\ClientInterface;
 use KeypayPHP\Remote\Request;
 use Swagger\Client\Configuration;
 
-
 class Application
 {
     protected static $_config_defaults = [
