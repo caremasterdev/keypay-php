@@ -6,6 +6,8 @@ class Response
 {
     private Request $request;
 
+    const STATUS_UNAUTHORISED = 401;
+
     private array $headers;
 
     private int $status;
