@@ -31,7 +31,6 @@ class Application
         ]);
 
         $this->transport = $transport;
-
     }
 
     public function getConfig(string $key)
