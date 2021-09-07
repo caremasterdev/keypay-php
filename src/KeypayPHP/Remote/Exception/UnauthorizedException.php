@@ -2,8 +2,8 @@
 
 namespace KeypayPHP\Remote\Exception;
 
-use KeypayPHP\Remote\Response;
 use KeypayPHP\Remote\Exception;
+use KeypayPHP\Remote\Response;
 
 class UnauthorizedException extends Exception
 {
