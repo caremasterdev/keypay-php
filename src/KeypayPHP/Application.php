@@ -91,7 +91,8 @@ class Application
         return $this->config;
     }
 
-    public function getConfiguration() {
+    public function getConfiguration()
+    {
         return $this->configuration;
     }
 
