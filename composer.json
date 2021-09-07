@@ -26,17 +26,19 @@
         }
     ],
     "require": {
-        "php": "^7.4",
         "healyhatman/oauth2-keypay" : "dev-main",
-        "guzzlehttp/guzzle": "^6.5|^7.0",
         "guzzlehttp/psr7": "^1.5|^1.6",
+        "php": ">=7.4",
+        "ext-curl": "*",
         "ext-json": "*",
-        "ext-simplexml": "*"
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.2"
+
     },
     "autoload": {
         "psr-4": {
             "KeypayPHP\\": "src/KeypayPHP/",
-            "Swagger\\": "src/Swagger/"
+            "Swagger\\Client\\" : "lib/"
         }
     },
     "minimum-stability": "dev",
