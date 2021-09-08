@@ -112,7 +112,8 @@ class Application
         return $this->transport = $client;
     }
 
-    public function forApi(string $api_class_name) {
+    public function forApi(string $api_class_name)
+    {
         return new $api_class_name($this->transport, $this->configuration);
     }
 }
