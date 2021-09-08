@@ -4,7 +4,6 @@ namespace KeypayPHP;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-use KeypayPHP\Remote\Request;
 use Swagger\Client\Configuration;
 
 class Application
@@ -12,7 +11,7 @@ class Application
     protected static $_config_defaults = [
         'keypay' => [
             'base_url' => 'https://api.yourpayroll.com.au',
-            'default_content_type' => Request::CONTENT_TYPE_JSON,
+            'default_content_type' => 'application/json',
             'core_version' => 'v2',
         ],
     ];
