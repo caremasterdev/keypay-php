@@ -7,16 +7,6 @@
         "keypay-php"
     ],
     "homepage": "https://github.com/healyhatman/keypay-php",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:Healyhatman/keypay-php.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@github.com:Healyhatman/oauth2-keypay.git"
-        }
-    ],
     "license": "MIT",
     "authors": [
         {
@@ -26,7 +16,7 @@
         }
     ],
     "require": {
-        "healyhatman/oauth2-keypay" : "dev-main",
+        "healyhatman/oauth2-keypay" : "^1",
         "guzzlehttp/psr7": "^1.5|^1.6",
         "php": ">=7.4",
         "ext-curl": "*",
