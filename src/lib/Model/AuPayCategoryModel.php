@@ -359,6 +359,7 @@ class AuPayCategoryModel implements ModelInterface, ArrayAccess
     const PAY_CATEGORY_TYPE_ETP_SUPERABLE_TYPE_P_TAXABLE = 'EtpSuperableTypePTaxable';
     const PAY_CATEGORY_TYPE_ETP_SUPERABLE_TYPE_P_TAX_FREE = 'EtpSuperableTypePTaxFree';
     const PAY_CATEGORY_TYPE_ETP_TYPE_P_UNUSED_LEAVE_PAYMENT = 'EtpTypePUnusedLeavePayment';
+    const PAY_CATEGORY_TYPE_NORMAL_TERMINATION_LEAVE_LOADING = 'NormalTerminationLeaveLoading';
     const RATE_UNIT_HOURLY = 'Hourly';
     const RATE_UNIT_ANNUALLY = 'Annually';
     const RATE_UNIT_FIXED = 'Fixed';
@@ -469,6 +470,7 @@ class AuPayCategoryModel implements ModelInterface, ArrayAccess
             self::PAY_CATEGORY_TYPE_ETP_SUPERABLE_TYPE_P_TAXABLE,
             self::PAY_CATEGORY_TYPE_ETP_SUPERABLE_TYPE_P_TAX_FREE,
             self::PAY_CATEGORY_TYPE_ETP_TYPE_P_UNUSED_LEAVE_PAYMENT,
+            self::PAY_CATEGORY_TYPE_NORMAL_TERMINATION_LEAVE_LOADING,
         ];
     }
     

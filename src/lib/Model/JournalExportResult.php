@@ -249,6 +249,7 @@ class JournalExportResult implements ModelInterface, ArrayAccess
     const JOURNAL_SOURCE_EMPLOYEE_ADVANCED_HOURS_UPLOAD = 'EmployeeAdvancedHoursUpload';
     const JOURNAL_SOURCE_BUSINESS_CENTRAL = 'BusinessCentral';
     const JOURNAL_SOURCE_PAYTRON = 'Paytron';
+    const JOURNAL_SOURCE_ACCESS_FINANCIALS = 'AccessFinancials';
     const JOURNAL_SOURCE_ZOHO = 'Zoho';
     const JOURNAL_SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER = 'FlatFileEmployeeImporter';
     const JOURNAL_SOURCE_TWINFIELD = 'Twinfield';
@@ -351,6 +352,7 @@ class JournalExportResult implements ModelInterface, ArrayAccess
             self::JOURNAL_SOURCE_EMPLOYEE_ADVANCED_HOURS_UPLOAD,
             self::JOURNAL_SOURCE_BUSINESS_CENTRAL,
             self::JOURNAL_SOURCE_PAYTRON,
+            self::JOURNAL_SOURCE_ACCESS_FINANCIALS,
             self::JOURNAL_SOURCE_ZOHO,
             self::JOURNAL_SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER,
             self::JOURNAL_SOURCE_TWINFIELD,

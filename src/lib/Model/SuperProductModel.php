@@ -283,6 +283,7 @@ class SuperProductModel implements ModelInterface, ArrayAccess
     const SOURCE_EMPLOYEE_ADVANCED_HOURS_UPLOAD = 'EmployeeAdvancedHoursUpload';
     const SOURCE_BUSINESS_CENTRAL = 'BusinessCentral';
     const SOURCE_PAYTRON = 'Paytron';
+    const SOURCE_ACCESS_FINANCIALS = 'AccessFinancials';
     const SOURCE_ZOHO = 'Zoho';
     const SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER = 'FlatFileEmployeeImporter';
     const SOURCE_TWINFIELD = 'Twinfield';
@@ -358,6 +359,7 @@ class SuperProductModel implements ModelInterface, ArrayAccess
             self::SOURCE_EMPLOYEE_ADVANCED_HOURS_UPLOAD,
             self::SOURCE_BUSINESS_CENTRAL,
             self::SOURCE_PAYTRON,
+            self::SOURCE_ACCESS_FINANCIALS,
             self::SOURCE_ZOHO,
             self::SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER,
             self::SOURCE_TWINFIELD,
