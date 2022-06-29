@@ -71,7 +71,7 @@ class RosterShiftFilterModel implements ModelInterface, ArrayAccess
         'select_all_roles' => 'bool',
         'exclude_shifts_overlapping_from_date' => 'bool',
         'page_size' => 'int',
-        'page_num' => 'int',
+        'current_page' => 'int',
         'include_warnings' => 'bool'
     ];
 
@@ -95,7 +95,7 @@ class RosterShiftFilterModel implements ModelInterface, ArrayAccess
         'select_all_roles' => null,
         'exclude_shifts_overlapping_from_date' => null,
         'page_size' => 'int32',
-        'page_num' => 'int32',
+        'current_page' => 'int32',
         'include_warnings' => null
     ];
 
@@ -140,7 +140,7 @@ class RosterShiftFilterModel implements ModelInterface, ArrayAccess
         'select_all_roles' => 'selectAllRoles',
         'exclude_shifts_overlapping_from_date' => 'excludeShiftsOverlappingFromDate',
         'page_size' => 'pageSize',
-        'page_num' => 'pageNum',
+        'current_page' => 'currentPage',
         'include_warnings' => 'includeWarnings'
     ];
 
@@ -164,7 +164,7 @@ class RosterShiftFilterModel implements ModelInterface, ArrayAccess
         'select_all_roles' => 'setSelectAllRoles',
         'exclude_shifts_overlapping_from_date' => 'setExcludeShiftsOverlappingFromDate',
         'page_size' => 'setPageSize',
-        'page_num' => 'setPageNum',
+        'current_page' => 'setCurrentPage',
         'include_warnings' => 'setIncludeWarnings'
     ];
 
@@ -188,7 +188,7 @@ class RosterShiftFilterModel implements ModelInterface, ArrayAccess
         'select_all_roles' => 'getSelectAllRoles',
         'exclude_shifts_overlapping_from_date' => 'getExcludeShiftsOverlappingFromDate',
         'page_size' => 'getPageSize',
-        'page_num' => 'getPageNum',
+        'current_page' => 'getCurrentPage',
         'include_warnings' => 'getIncludeWarnings'
     ];
 
@@ -304,7 +304,7 @@ class RosterShiftFilterModel implements ModelInterface, ArrayAccess
         $this->container['select_all_roles'] = isset($data['select_all_roles']) ? $data['select_all_roles'] : null;
         $this->container['exclude_shifts_overlapping_from_date'] = isset($data['exclude_shifts_overlapping_from_date']) ? $data['exclude_shifts_overlapping_from_date'] : null;
         $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
-        $this->container['page_num'] = isset($data['page_num']) ? $data['page_num'] : null;
+        $this->container['current_page'] = isset($data['current_page']) ? $data['current_page'] : null;
         $this->container['include_warnings'] = isset($data['include_warnings']) ? $data['include_warnings'] : null;
     }
 
@@ -695,25 +695,25 @@ class RosterShiftFilterModel implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets page_num
+     * Gets current_page
      *
      * @return int
      */
-    public function getPageNum()
+    public function getCurrentPage()
     {
-        return $this->container['page_num'];
+        return $this->container['current_page'];
     }
 
     /**
-     * Sets page_num
+     * Sets current_page
      *
-     * @param int $page_num 
+     * @param int $current_page 
      *
      * @return $this
      */
-    public function setPageNum($page_num)
+    public function setCurrentPage($current_page)
     {
-        $this->container['page_num'] = $page_num;
+        $this->container['current_page'] = $current_page;
 
         return $this;
     }

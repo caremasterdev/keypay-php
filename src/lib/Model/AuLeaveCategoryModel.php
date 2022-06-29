@@ -63,6 +63,7 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'unit_type' => 'string',
         'leave_category_type' => 'string',
         'leave_accrual_rule' => '\Swagger\Client\Model\AuLeaveAccrualRuleModel',
+        'transfer_on_termination_to_pay_category_id' => 'int',
         'id' => 'int',
         'name' => 'string',
         'units' => 'double',
@@ -79,7 +80,8 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'use_deduct_from_pay_category_rate' => 'bool',
         'is_name_private' => 'bool',
         'leave_unit_type' => 'string',
-        'payout_as_etp' => 'bool'
+        'payout_as_etp' => 'bool',
+        'accrues_first_pay_run_per_period_only' => 'bool'
     ];
 
     /**
@@ -94,6 +96,7 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'unit_type' => null,
         'leave_category_type' => null,
         'leave_accrual_rule' => null,
+        'transfer_on_termination_to_pay_category_id' => 'int32',
         'id' => 'int32',
         'name' => null,
         'units' => 'double',
@@ -110,7 +113,8 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'use_deduct_from_pay_category_rate' => null,
         'is_name_private' => null,
         'leave_unit_type' => null,
-        'payout_as_etp' => null
+        'payout_as_etp' => null,
+        'accrues_first_pay_run_per_period_only' => null
     ];
 
     /**
@@ -146,6 +150,7 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'unit_type' => 'unitType',
         'leave_category_type' => 'leaveCategoryType',
         'leave_accrual_rule' => 'leaveAccrualRule',
+        'transfer_on_termination_to_pay_category_id' => 'transferOnTerminationToPayCategoryId',
         'id' => 'id',
         'name' => 'name',
         'units' => 'units',
@@ -162,7 +167,8 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'use_deduct_from_pay_category_rate' => 'useDeductFromPayCategoryRate',
         'is_name_private' => 'isNamePrivate',
         'leave_unit_type' => 'leaveUnitType',
-        'payout_as_etp' => 'payoutAsETP'
+        'payout_as_etp' => 'payoutAsETP',
+        'accrues_first_pay_run_per_period_only' => 'accruesFirstPayRunPerPeriodOnly'
     ];
 
     /**
@@ -177,6 +183,7 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'unit_type' => 'setUnitType',
         'leave_category_type' => 'setLeaveCategoryType',
         'leave_accrual_rule' => 'setLeaveAccrualRule',
+        'transfer_on_termination_to_pay_category_id' => 'setTransferOnTerminationToPayCategoryId',
         'id' => 'setId',
         'name' => 'setName',
         'units' => 'setUnits',
@@ -193,7 +200,8 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'use_deduct_from_pay_category_rate' => 'setUseDeductFromPayCategoryRate',
         'is_name_private' => 'setIsNamePrivate',
         'leave_unit_type' => 'setLeaveUnitType',
-        'payout_as_etp' => 'setPayoutAsEtp'
+        'payout_as_etp' => 'setPayoutAsEtp',
+        'accrues_first_pay_run_per_period_only' => 'setAccruesFirstPayRunPerPeriodOnly'
     ];
 
     /**
@@ -208,6 +216,7 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'unit_type' => 'getUnitType',
         'leave_category_type' => 'getLeaveCategoryType',
         'leave_accrual_rule' => 'getLeaveAccrualRule',
+        'transfer_on_termination_to_pay_category_id' => 'getTransferOnTerminationToPayCategoryId',
         'id' => 'getId',
         'name' => 'getName',
         'units' => 'getUnits',
@@ -224,7 +233,8 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'use_deduct_from_pay_category_rate' => 'getUseDeductFromPayCategoryRate',
         'is_name_private' => 'getIsNamePrivate',
         'leave_unit_type' => 'getLeaveUnitType',
-        'payout_as_etp' => 'getPayoutAsEtp'
+        'payout_as_etp' => 'getPayoutAsEtp',
+        'accrues_first_pay_run_per_period_only' => 'getAccruesFirstPayRunPerPeriodOnly'
     ];
 
     /**
@@ -352,6 +362,7 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         $this->container['unit_type'] = isset($data['unit_type']) ? $data['unit_type'] : null;
         $this->container['leave_category_type'] = isset($data['leave_category_type']) ? $data['leave_category_type'] : null;
         $this->container['leave_accrual_rule'] = isset($data['leave_accrual_rule']) ? $data['leave_accrual_rule'] : null;
+        $this->container['transfer_on_termination_to_pay_category_id'] = isset($data['transfer_on_termination_to_pay_category_id']) ? $data['transfer_on_termination_to_pay_category_id'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['units'] = isset($data['units']) ? $data['units'] : null;
@@ -369,6 +380,7 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         $this->container['is_name_private'] = isset($data['is_name_private']) ? $data['is_name_private'] : null;
         $this->container['leave_unit_type'] = isset($data['leave_unit_type']) ? $data['leave_unit_type'] : null;
         $this->container['payout_as_etp'] = isset($data['payout_as_etp']) ? $data['payout_as_etp'] : null;
+        $this->container['accrues_first_pay_run_per_period_only'] = isset($data['accrues_first_pay_run_per_period_only']) ? $data['accrues_first_pay_run_per_period_only'] : null;
     }
 
     /**
@@ -577,6 +589,30 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
     public function setLeaveAccrualRule($leave_accrual_rule)
     {
         $this->container['leave_accrual_rule'] = $leave_accrual_rule;
+
+        return $this;
+    }
+
+    /**
+     * Gets transfer_on_termination_to_pay_category_id
+     *
+     * @return int
+     */
+    public function getTransferOnTerminationToPayCategoryId()
+    {
+        return $this->container['transfer_on_termination_to_pay_category_id'];
+    }
+
+    /**
+     * Sets transfer_on_termination_to_pay_category_id
+     *
+     * @param int $transfer_on_termination_to_pay_category_id 
+     *
+     * @return $this
+     */
+    public function setTransferOnTerminationToPayCategoryId($transfer_on_termination_to_pay_category_id)
+    {
+        $this->container['transfer_on_termination_to_pay_category_id'] = $transfer_on_termination_to_pay_category_id;
 
         return $this;
     }
@@ -994,6 +1030,30 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
     public function setPayoutAsEtp($payout_as_etp)
     {
         $this->container['payout_as_etp'] = $payout_as_etp;
+
+        return $this;
+    }
+
+    /**
+     * Gets accrues_first_pay_run_per_period_only
+     *
+     * @return bool
+     */
+    public function getAccruesFirstPayRunPerPeriodOnly()
+    {
+        return $this->container['accrues_first_pay_run_per_period_only'];
+    }
+
+    /**
+     * Sets accrues_first_pay_run_per_period_only
+     *
+     * @param bool $accrues_first_pay_run_per_period_only 
+     *
+     * @return $this
+     */
+    public function setAccruesFirstPayRunPerPeriodOnly($accrues_first_pay_run_per_period_only)
+    {
+        $this->container['accrues_first_pay_run_per_period_only'] = $accrues_first_pay_run_per_period_only;
 
         return $this;
     }

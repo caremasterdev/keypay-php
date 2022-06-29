@@ -1,6 +1,6 @@
 <?php
 /**
- * JournalAccountModel
+ * EssEmployeeQualificationModel
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * JournalAccountModel Class Doc Comment
+ * EssEmployeeQualificationModel Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class JournalAccountModel implements ModelInterface, ArrayAccess
+class EssEmployeeQualificationModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'JournalAccountModel';
+    protected static $swaggerModelName = 'EssEmployeeQualificationModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,15 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'id' => 'int',
-        'account_code' => 'string',
-        'account_name' => 'string',
-        'account_type' => 'string',
-        'external_reference_id' => 'string'
+        'qualification_id' => 'int',
+        'name' => 'string',
+        'expiry_date' => '\DateTime',
+        'issue_date' => '\DateTime',
+        'documents' => '\Swagger\Client\Model\EssEmployeeQualificationDocumentModel[]',
+        'reference_number' => 'string',
+        'has_qualification' => 'bool',
+        'is_expired' => 'bool',
+        'is_expiring' => 'bool'
     ];
 
     /**
@@ -71,10 +76,15 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'id' => 'int32',
-        'account_code' => null,
-        'account_name' => null,
-        'account_type' => null,
-        'external_reference_id' => null
+        'qualification_id' => 'int32',
+        'name' => null,
+        'expiry_date' => 'date-time',
+        'issue_date' => 'date-time',
+        'documents' => null,
+        'reference_number' => null,
+        'has_qualification' => null,
+        'is_expired' => null,
+        'is_expiring' => null
     ];
 
     /**
@@ -105,10 +115,15 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'account_code' => 'accountCode',
-        'account_name' => 'accountName',
-        'account_type' => 'accountType',
-        'external_reference_id' => 'externalReferenceId'
+        'qualification_id' => 'qualificationId',
+        'name' => 'name',
+        'expiry_date' => 'expiryDate',
+        'issue_date' => 'issueDate',
+        'documents' => 'documents',
+        'reference_number' => 'referenceNumber',
+        'has_qualification' => 'hasQualification',
+        'is_expired' => 'isExpired',
+        'is_expiring' => 'isExpiring'
     ];
 
     /**
@@ -118,10 +133,15 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-        'account_code' => 'setAccountCode',
-        'account_name' => 'setAccountName',
-        'account_type' => 'setAccountType',
-        'external_reference_id' => 'setExternalReferenceId'
+        'qualification_id' => 'setQualificationId',
+        'name' => 'setName',
+        'expiry_date' => 'setExpiryDate',
+        'issue_date' => 'setIssueDate',
+        'documents' => 'setDocuments',
+        'reference_number' => 'setReferenceNumber',
+        'has_qualification' => 'setHasQualification',
+        'is_expired' => 'setIsExpired',
+        'is_expiring' => 'setIsExpiring'
     ];
 
     /**
@@ -131,10 +151,15 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-        'account_code' => 'getAccountCode',
-        'account_name' => 'getAccountName',
-        'account_type' => 'getAccountType',
-        'external_reference_id' => 'getExternalReferenceId'
+        'qualification_id' => 'getQualificationId',
+        'name' => 'getName',
+        'expiry_date' => 'getExpiryDate',
+        'issue_date' => 'getIssueDate',
+        'documents' => 'getDocuments',
+        'reference_number' => 'getReferenceNumber',
+        'has_qualification' => 'getHasQualification',
+        'is_expired' => 'getIsExpired',
+        'is_expiring' => 'getIsExpiring'
     ];
 
     /**
@@ -178,45 +203,8 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const ACCOUNT_TYPE_ASSET = 'Asset';
-    const ACCOUNT_TYPE_EXPENSE = 'Expense';
-    const ACCOUNT_TYPE_LIABILITY = 'Liability';
-    const ACCOUNT_TYPE_EQUITY = 'Equity';
-    const ACCOUNT_TYPE_INCOME = 'Income';
-    const ACCOUNT_TYPE_UNKNOWN = 'Unknown';
-    const ACCOUNT_TYPE_NOT_ALLOWED = 'NotAllowed';
-    const ACCOUNT_TYPE_COST_OF_GOODS_SOLD = 'CostOfGoodsSold';
-    const ACCOUNT_TYPE_ASSET_AND_LIABILITY = 'AssetAndLiability';
-    const ACCOUNT_TYPE_CAPITALS_AND_RESERVES = 'CapitalsAndReserves';
-    const ACCOUNT_TYPE_SALES = 'Sales';
-    const ACCOUNT_TYPE_PURCHASES = 'Purchases';
-    const ACCOUNT_TYPE_OVERHEADS = 'Overheads';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAccountTypeAllowableValues()
-    {
-        return [
-            self::ACCOUNT_TYPE_ASSET,
-            self::ACCOUNT_TYPE_EXPENSE,
-            self::ACCOUNT_TYPE_LIABILITY,
-            self::ACCOUNT_TYPE_EQUITY,
-            self::ACCOUNT_TYPE_INCOME,
-            self::ACCOUNT_TYPE_UNKNOWN,
-            self::ACCOUNT_TYPE_NOT_ALLOWED,
-            self::ACCOUNT_TYPE_COST_OF_GOODS_SOLD,
-            self::ACCOUNT_TYPE_ASSET_AND_LIABILITY,
-            self::ACCOUNT_TYPE_CAPITALS_AND_RESERVES,
-            self::ACCOUNT_TYPE_SALES,
-            self::ACCOUNT_TYPE_PURCHASES,
-            self::ACCOUNT_TYPE_OVERHEADS,
-        ];
-    }
     
 
     /**
@@ -235,10 +223,15 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['account_code'] = isset($data['account_code']) ? $data['account_code'] : null;
-        $this->container['account_name'] = isset($data['account_name']) ? $data['account_name'] : null;
-        $this->container['account_type'] = isset($data['account_type']) ? $data['account_type'] : null;
-        $this->container['external_reference_id'] = isset($data['external_reference_id']) ? $data['external_reference_id'] : null;
+        $this->container['qualification_id'] = isset($data['qualification_id']) ? $data['qualification_id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['expiry_date'] = isset($data['expiry_date']) ? $data['expiry_date'] : null;
+        $this->container['issue_date'] = isset($data['issue_date']) ? $data['issue_date'] : null;
+        $this->container['documents'] = isset($data['documents']) ? $data['documents'] : null;
+        $this->container['reference_number'] = isset($data['reference_number']) ? $data['reference_number'] : null;
+        $this->container['has_qualification'] = isset($data['has_qualification']) ? $data['has_qualification'] : null;
+        $this->container['is_expired'] = isset($data['is_expired']) ? $data['is_expired'] : null;
+        $this->container['is_expiring'] = isset($data['is_expiring']) ? $data['is_expiring'] : null;
     }
 
     /**
@@ -249,14 +242,6 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getAccountTypeAllowableValues();
-        if (!is_null($this->container['account_type']) && !in_array($this->container['account_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'account_type', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -298,106 +283,217 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets account_code
+     * Gets qualification_id
      *
-     * @return string
+     * @return int
      */
-    public function getAccountCode()
+    public function getQualificationId()
     {
-        return $this->container['account_code'];
+        return $this->container['qualification_id'];
     }
 
     /**
-     * Sets account_code
+     * Sets qualification_id
      *
-     * @param string $account_code 
+     * @param int $qualification_id 
      *
      * @return $this
      */
-    public function setAccountCode($account_code)
+    public function setQualificationId($qualification_id)
     {
-        $this->container['account_code'] = $account_code;
+        $this->container['qualification_id'] = $qualification_id;
 
         return $this;
     }
 
     /**
-     * Gets account_name
+     * Gets name
      *
      * @return string
      */
-    public function getAccountName()
+    public function getName()
     {
-        return $this->container['account_name'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets account_name
+     * Sets name
      *
-     * @param string $account_name 
+     * @param string $name 
      *
      * @return $this
      */
-    public function setAccountName($account_name)
+    public function setName($name)
     {
-        $this->container['account_name'] = $account_name;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets account_type
+     * Gets expiry_date
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getAccountType()
+    public function getExpiryDate()
     {
-        return $this->container['account_type'];
+        return $this->container['expiry_date'];
     }
 
     /**
-     * Sets account_type
+     * Sets expiry_date
      *
-     * @param string $account_type 
+     * @param \DateTime $expiry_date 
      *
      * @return $this
      */
-    public function setAccountType($account_type)
+    public function setExpiryDate($expiry_date)
     {
-        $allowedValues = $this->getAccountTypeAllowableValues();
-        if (!is_null($account_type) && !in_array($account_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'account_type', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['account_type'] = $account_type;
+        $this->container['expiry_date'] = $expiry_date;
 
         return $this;
     }
 
     /**
-     * Gets external_reference_id
+     * Gets issue_date
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getExternalReferenceId()
+    public function getIssueDate()
     {
-        return $this->container['external_reference_id'];
+        return $this->container['issue_date'];
     }
 
     /**
-     * Sets external_reference_id
+     * Sets issue_date
      *
-     * @param string $external_reference_id 
+     * @param \DateTime $issue_date 
      *
      * @return $this
      */
-    public function setExternalReferenceId($external_reference_id)
+    public function setIssueDate($issue_date)
     {
-        $this->container['external_reference_id'] = $external_reference_id;
+        $this->container['issue_date'] = $issue_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets documents
+     *
+     * @return \Swagger\Client\Model\EssEmployeeQualificationDocumentModel[]
+     */
+    public function getDocuments()
+    {
+        return $this->container['documents'];
+    }
+
+    /**
+     * Sets documents
+     *
+     * @param \Swagger\Client\Model\EssEmployeeQualificationDocumentModel[] $documents 
+     *
+     * @return $this
+     */
+    public function setDocuments($documents)
+    {
+        $this->container['documents'] = $documents;
+
+        return $this;
+    }
+
+    /**
+     * Gets reference_number
+     *
+     * @return string
+     */
+    public function getReferenceNumber()
+    {
+        return $this->container['reference_number'];
+    }
+
+    /**
+     * Sets reference_number
+     *
+     * @param string $reference_number 
+     *
+     * @return $this
+     */
+    public function setReferenceNumber($reference_number)
+    {
+        $this->container['reference_number'] = $reference_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_qualification
+     *
+     * @return bool
+     */
+    public function getHasQualification()
+    {
+        return $this->container['has_qualification'];
+    }
+
+    /**
+     * Sets has_qualification
+     *
+     * @param bool $has_qualification 
+     *
+     * @return $this
+     */
+    public function setHasQualification($has_qualification)
+    {
+        $this->container['has_qualification'] = $has_qualification;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_expired
+     *
+     * @return bool
+     */
+    public function getIsExpired()
+    {
+        return $this->container['is_expired'];
+    }
+
+    /**
+     * Sets is_expired
+     *
+     * @param bool $is_expired 
+     *
+     * @return $this
+     */
+    public function setIsExpired($is_expired)
+    {
+        $this->container['is_expired'] = $is_expired;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_expiring
+     *
+     * @return bool
+     */
+    public function getIsExpiring()
+    {
+        return $this->container['is_expiring'];
+    }
+
+    /**
+     * Sets is_expiring
+     *
+     * @param bool $is_expiring 
+     *
+     * @return $this
+     */
+    public function setIsExpiring($is_expiring)
+    {
+        $this->container['is_expiring'] = $is_expiring;
 
         return $this;
     }

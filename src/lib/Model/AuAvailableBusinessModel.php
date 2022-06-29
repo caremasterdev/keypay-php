@@ -437,6 +437,7 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess
     const BUDGET_ENTRY_METHOD_DIRECT = 'Direct';
     const LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE = 'EmployeeStartDate';
     const LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE = 'SpecifiedDate';
+    const LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR = 'CalendarYear';
     
 
     
@@ -495,6 +496,7 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess
         return [
             self::LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR,
         ];
     }
     

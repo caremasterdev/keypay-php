@@ -57,7 +57,6 @@ class SelectListGroup implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'disabled' => 'bool',
         'name' => 'string'
     ];
 
@@ -67,7 +66,6 @@ class SelectListGroup implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'disabled' => null,
         'name' => null
     ];
 
@@ -98,7 +96,6 @@ class SelectListGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'disabled' => 'disabled',
         'name' => 'name'
     ];
 
@@ -108,7 +105,6 @@ class SelectListGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'disabled' => 'setDisabled',
         'name' => 'setName'
     ];
 
@@ -118,7 +114,6 @@ class SelectListGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'disabled' => 'getDisabled',
         'name' => 'getName'
     ];
 
@@ -182,7 +177,6 @@ class SelectListGroup implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['disabled'] = isset($data['disabled']) ? $data['disabled'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     }
 
@@ -209,30 +203,6 @@ class SelectListGroup implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets disabled
-     *
-     * @return bool
-     */
-    public function getDisabled()
-    {
-        return $this->container['disabled'];
-    }
-
-    /**
-     * Sets disabled
-     *
-     * @param bool $disabled 
-     *
-     * @return $this
-     */
-    public function setDisabled($disabled)
-    {
-        $this->container['disabled'] = $disabled;
-
-        return $this;
-    }
 
     /**
      * Gets name

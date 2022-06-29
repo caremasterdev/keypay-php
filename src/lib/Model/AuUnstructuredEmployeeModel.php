@@ -112,6 +112,11 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'residential_address_is_overseas' => 'bool',
         'employment_type' => 'string',
         'termination_reason' => 'string',
+        'tax_category' => 'string',
+        'medicare_levy_surcharge_withholding_tier' => 'string',
+        'claim_medicare_levy_reduction' => 'bool',
+        'medicare_levy_reduction_spouse' => 'bool',
+        'medicare_levy_reduction_dependent_count' => 'int',
         'id' => 'int',
         'title' => 'string',
         'preferred_name' => 'string',
@@ -243,6 +248,11 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'residential_address_is_overseas' => null,
         'employment_type' => null,
         'termination_reason' => null,
+        'tax_category' => null,
+        'medicare_levy_surcharge_withholding_tier' => null,
+        'claim_medicare_levy_reduction' => null,
+        'medicare_levy_reduction_spouse' => null,
+        'medicare_levy_reduction_dependent_count' => 'int32',
         'id' => 'int32',
         'title' => null,
         'preferred_name' => null,
@@ -395,6 +405,11 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'residential_address_is_overseas' => 'residentialAddressIsOverseas',
         'employment_type' => 'employmentType',
         'termination_reason' => 'terminationReason',
+        'tax_category' => 'taxCategory',
+        'medicare_levy_surcharge_withholding_tier' => 'medicareLevySurchargeWithholdingTier',
+        'claim_medicare_levy_reduction' => 'claimMedicareLevyReduction',
+        'medicare_levy_reduction_spouse' => 'medicareLevyReductionSpouse',
+        'medicare_levy_reduction_dependent_count' => 'medicareLevyReductionDependentCount',
         'id' => 'id',
         'title' => 'title',
         'preferred_name' => 'preferredName',
@@ -526,6 +541,11 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'residential_address_is_overseas' => 'setResidentialAddressIsOverseas',
         'employment_type' => 'setEmploymentType',
         'termination_reason' => 'setTerminationReason',
+        'tax_category' => 'setTaxCategory',
+        'medicare_levy_surcharge_withholding_tier' => 'setMedicareLevySurchargeWithholdingTier',
+        'claim_medicare_levy_reduction' => 'setClaimMedicareLevyReduction',
+        'medicare_levy_reduction_spouse' => 'setMedicareLevyReductionSpouse',
+        'medicare_levy_reduction_dependent_count' => 'setMedicareLevyReductionDependentCount',
         'id' => 'setId',
         'title' => 'setTitle',
         'preferred_name' => 'setPreferredName',
@@ -657,6 +677,11 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'residential_address_is_overseas' => 'getResidentialAddressIsOverseas',
         'employment_type' => 'getEmploymentType',
         'termination_reason' => 'getTerminationReason',
+        'tax_category' => 'getTaxCategory',
+        'medicare_levy_surcharge_withholding_tier' => 'getMedicareLevySurchargeWithholdingTier',
+        'claim_medicare_levy_reduction' => 'getClaimMedicareLevyReduction',
+        'medicare_levy_reduction_spouse' => 'getMedicareLevyReductionSpouse',
+        'medicare_levy_reduction_dependent_count' => 'getMedicareLevyReductionDependentCount',
         'id' => 'getId',
         'title' => 'getTitle',
         'preferred_name' => 'getPreferredName',
@@ -775,8 +800,25 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
     const SINGLE_TOUCH_PAYROLL_INBOUND_ASSIGNEE = 'InboundAssignee';
     const SINGLE_TOUCH_PAYROLL_LABOUR_HIRE = 'LabourHire';
     const SINGLE_TOUCH_PAYROLL_OTHER_SPECIFIED_PAYMENTS = 'OtherSpecifiedPayments';
+    const TAX_CATEGORY_ACTOR_WITH_TAX_FREE_THRESHOLD = 'Actor_WithTaxFreeThreshold';
+    const TAX_CATEGORY_ACTOR_NO_TAX_FREE_THRESHOLD = 'Actor_NoTaxFreeThreshold';
+    const TAX_CATEGORY_ACTOR_LIMITED_PERFORMANCE_PER_WEEK = 'Actor_LimitedPerformancePerWeek';
+    const TAX_CATEGORY_ACTOR_PROMOTIONAL = 'Actor_Promotional';
+    const TAX_CATEGORY_HORTICULTURALIST_SHEARER_WITH_TAX_FREE_THRESHOLD = 'HorticulturalistShearer_WithTaxFreeThreshold';
+    const TAX_CATEGORY_HORTICULTURALIST_SHEARER_FOREIGN_RESIDENT = 'HorticulturalistShearer_ForeignResident';
+    const TAX_CATEGORY_SENIOR_PENSIONER_SINGLE = 'SeniorPensioner_Single';
+    const TAX_CATEGORY_SENIOR_PENSIONER_MARRIED = 'SeniorPensioner_Married';
+    const TAX_CATEGORY_SENIOR_PENSIONER_SEPARATED_COUPLE_ILLNESS = 'SeniorPensioner_SeparatedCoupleIllness';
+    const TAX_CATEGORY_ATO_DEFINED_DEATH_BENEFICIARY = 'ATODefined_DeathBeneficiary';
+    const TAX_CATEGORY_ATO_DEFINED_DOWNWARD_VARIATION = 'ATODefined_DownwardVariation';
+    const TAX_CATEGORY_ATO_DEFINED_NON_EMPLOYEE = 'ATODefined_NonEmployee';
+    const TAX_CATEGORY_DAILY_CASUAL = 'DailyCasual';
+    const MEDICARE_LEVY_SURCHARGE_WITHHOLDING_TIER_TIER1 = 'Tier1';
+    const MEDICARE_LEVY_SURCHARGE_WITHHOLDING_TIER_TIER2 = 'Tier2';
+    const MEDICARE_LEVY_SURCHARGE_WITHHOLDING_TIER_TIER3 = 'Tier3';
     const LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE = 'EmployeeStartDate';
     const LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE = 'SpecifiedDate';
+    const LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR = 'CalendarYear';
     const STATUS_ACTIVE = 'Active';
     const STATUS_TERMINATED = 'Terminated';
     const STATUS_INCOMPLETE = 'Incomplete';
@@ -817,11 +859,50 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
      *
      * @return string[]
      */
+    public function getTaxCategoryAllowableValues()
+    {
+        return [
+            self::TAX_CATEGORY_ACTOR_WITH_TAX_FREE_THRESHOLD,
+            self::TAX_CATEGORY_ACTOR_NO_TAX_FREE_THRESHOLD,
+            self::TAX_CATEGORY_ACTOR_LIMITED_PERFORMANCE_PER_WEEK,
+            self::TAX_CATEGORY_ACTOR_PROMOTIONAL,
+            self::TAX_CATEGORY_HORTICULTURALIST_SHEARER_WITH_TAX_FREE_THRESHOLD,
+            self::TAX_CATEGORY_HORTICULTURALIST_SHEARER_FOREIGN_RESIDENT,
+            self::TAX_CATEGORY_SENIOR_PENSIONER_SINGLE,
+            self::TAX_CATEGORY_SENIOR_PENSIONER_MARRIED,
+            self::TAX_CATEGORY_SENIOR_PENSIONER_SEPARATED_COUPLE_ILLNESS,
+            self::TAX_CATEGORY_ATO_DEFINED_DEATH_BENEFICIARY,
+            self::TAX_CATEGORY_ATO_DEFINED_DOWNWARD_VARIATION,
+            self::TAX_CATEGORY_ATO_DEFINED_NON_EMPLOYEE,
+            self::TAX_CATEGORY_DAILY_CASUAL,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMedicareLevySurchargeWithholdingTierAllowableValues()
+    {
+        return [
+            self::MEDICARE_LEVY_SURCHARGE_WITHHOLDING_TIER_TIER1,
+            self::MEDICARE_LEVY_SURCHARGE_WITHHOLDING_TIER_TIER2,
+            self::MEDICARE_LEVY_SURCHARGE_WITHHOLDING_TIER_TIER3,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getLeaveAccrualStartDateTypeAllowableValues()
     {
         return [
             self::LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR,
         ];
     }
     
@@ -910,6 +991,11 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         $this->container['residential_address_is_overseas'] = isset($data['residential_address_is_overseas']) ? $data['residential_address_is_overseas'] : null;
         $this->container['employment_type'] = isset($data['employment_type']) ? $data['employment_type'] : null;
         $this->container['termination_reason'] = isset($data['termination_reason']) ? $data['termination_reason'] : null;
+        $this->container['tax_category'] = isset($data['tax_category']) ? $data['tax_category'] : null;
+        $this->container['medicare_levy_surcharge_withholding_tier'] = isset($data['medicare_levy_surcharge_withholding_tier']) ? $data['medicare_levy_surcharge_withholding_tier'] : null;
+        $this->container['claim_medicare_levy_reduction'] = isset($data['claim_medicare_levy_reduction']) ? $data['claim_medicare_levy_reduction'] : null;
+        $this->container['medicare_levy_reduction_spouse'] = isset($data['medicare_levy_reduction_spouse']) ? $data['medicare_levy_reduction_spouse'] : null;
+        $this->container['medicare_levy_reduction_dependent_count'] = isset($data['medicare_levy_reduction_dependent_count']) ? $data['medicare_levy_reduction_dependent_count'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
         $this->container['preferred_name'] = isset($data['preferred_name']) ? $data['preferred_name'] : null;
@@ -1001,6 +1087,22 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         if (!is_null($this->container['single_touch_payroll']) && !in_array($this->container['single_touch_payroll'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'single_touch_payroll', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTaxCategoryAllowableValues();
+        if (!is_null($this->container['tax_category']) && !in_array($this->container['tax_category'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'tax_category', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getMedicareLevySurchargeWithholdingTierAllowableValues();
+        if (!is_null($this->container['medicare_levy_surcharge_withholding_tier']) && !in_array($this->container['medicare_levy_surcharge_withholding_tier'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'medicare_levy_surcharge_withholding_tier', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -2450,6 +2552,144 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
     public function setTerminationReason($termination_reason)
     {
         $this->container['termination_reason'] = $termination_reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_category
+     *
+     * @return string
+     */
+    public function getTaxCategory()
+    {
+        return $this->container['tax_category'];
+    }
+
+    /**
+     * Sets tax_category
+     *
+     * @param string $tax_category 
+     *
+     * @return $this
+     */
+    public function setTaxCategory($tax_category)
+    {
+        $allowedValues = $this->getTaxCategoryAllowableValues();
+        if (!is_null($tax_category) && !in_array($tax_category, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'tax_category', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['tax_category'] = $tax_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets medicare_levy_surcharge_withholding_tier
+     *
+     * @return string
+     */
+    public function getMedicareLevySurchargeWithholdingTier()
+    {
+        return $this->container['medicare_levy_surcharge_withholding_tier'];
+    }
+
+    /**
+     * Sets medicare_levy_surcharge_withholding_tier
+     *
+     * @param string $medicare_levy_surcharge_withholding_tier 
+     *
+     * @return $this
+     */
+    public function setMedicareLevySurchargeWithholdingTier($medicare_levy_surcharge_withholding_tier)
+    {
+        $allowedValues = $this->getMedicareLevySurchargeWithholdingTierAllowableValues();
+        if (!is_null($medicare_levy_surcharge_withholding_tier) && !in_array($medicare_levy_surcharge_withholding_tier, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'medicare_levy_surcharge_withholding_tier', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['medicare_levy_surcharge_withholding_tier'] = $medicare_levy_surcharge_withholding_tier;
+
+        return $this;
+    }
+
+    /**
+     * Gets claim_medicare_levy_reduction
+     *
+     * @return bool
+     */
+    public function getClaimMedicareLevyReduction()
+    {
+        return $this->container['claim_medicare_levy_reduction'];
+    }
+
+    /**
+     * Sets claim_medicare_levy_reduction
+     *
+     * @param bool $claim_medicare_levy_reduction 
+     *
+     * @return $this
+     */
+    public function setClaimMedicareLevyReduction($claim_medicare_levy_reduction)
+    {
+        $this->container['claim_medicare_levy_reduction'] = $claim_medicare_levy_reduction;
+
+        return $this;
+    }
+
+    /**
+     * Gets medicare_levy_reduction_spouse
+     *
+     * @return bool
+     */
+    public function getMedicareLevyReductionSpouse()
+    {
+        return $this->container['medicare_levy_reduction_spouse'];
+    }
+
+    /**
+     * Sets medicare_levy_reduction_spouse
+     *
+     * @param bool $medicare_levy_reduction_spouse 
+     *
+     * @return $this
+     */
+    public function setMedicareLevyReductionSpouse($medicare_levy_reduction_spouse)
+    {
+        $this->container['medicare_levy_reduction_spouse'] = $medicare_levy_reduction_spouse;
+
+        return $this;
+    }
+
+    /**
+     * Gets medicare_levy_reduction_dependent_count
+     *
+     * @return int
+     */
+    public function getMedicareLevyReductionDependentCount()
+    {
+        return $this->container['medicare_levy_reduction_dependent_count'];
+    }
+
+    /**
+     * Sets medicare_levy_reduction_dependent_count
+     *
+     * @param int $medicare_levy_reduction_dependent_count 
+     *
+     * @return $this
+     */
+    public function setMedicareLevyReductionDependentCount($medicare_levy_reduction_dependent_count)
+    {
+        $this->container['medicare_levy_reduction_dependent_count'] = $medicare_levy_reduction_dependent_count;
 
         return $this;
     }

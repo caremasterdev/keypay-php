@@ -57,11 +57,11 @@ class SelectListItem implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'disabled' => 'bool',
-        'group' => '\Swagger\Client\Model\SelectListGroup',
-        'selected' => 'bool',
         'text' => 'string',
-        'value' => 'string'
+        'value' => 'string',
+        'group' => '\Swagger\Client\Model\SelectListGroup',
+        'disabled' => 'bool',
+        'selected' => 'bool'
     ];
 
     /**
@@ -70,11 +70,11 @@ class SelectListItem implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'disabled' => null,
-        'group' => null,
-        'selected' => null,
         'text' => null,
-        'value' => null
+        'value' => null,
+        'group' => null,
+        'disabled' => null,
+        'selected' => null
     ];
 
     /**
@@ -104,11 +104,11 @@ class SelectListItem implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'disabled' => 'disabled',
-        'group' => 'group',
-        'selected' => 'selected',
         'text' => 'text',
-        'value' => 'value'
+        'value' => 'value',
+        'group' => 'group',
+        'disabled' => 'disabled',
+        'selected' => 'selected'
     ];
 
     /**
@@ -117,11 +117,11 @@ class SelectListItem implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'disabled' => 'setDisabled',
-        'group' => 'setGroup',
-        'selected' => 'setSelected',
         'text' => 'setText',
-        'value' => 'setValue'
+        'value' => 'setValue',
+        'group' => 'setGroup',
+        'disabled' => 'setDisabled',
+        'selected' => 'setSelected'
     ];
 
     /**
@@ -130,11 +130,11 @@ class SelectListItem implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'disabled' => 'getDisabled',
-        'group' => 'getGroup',
-        'selected' => 'getSelected',
         'text' => 'getText',
-        'value' => 'getValue'
+        'value' => 'getValue',
+        'group' => 'getGroup',
+        'disabled' => 'getDisabled',
+        'selected' => 'getSelected'
     ];
 
     /**
@@ -197,11 +197,11 @@ class SelectListItem implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['disabled'] = isset($data['disabled']) ? $data['disabled'] : null;
-        $this->container['group'] = isset($data['group']) ? $data['group'] : null;
-        $this->container['selected'] = isset($data['selected']) ? $data['selected'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
         $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['group'] = isset($data['group']) ? $data['group'] : null;
+        $this->container['disabled'] = isset($data['disabled']) ? $data['disabled'] : null;
+        $this->container['selected'] = isset($data['selected']) ? $data['selected'] : null;
     }
 
     /**
@@ -227,78 +227,6 @@ class SelectListItem implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets disabled
-     *
-     * @return bool
-     */
-    public function getDisabled()
-    {
-        return $this->container['disabled'];
-    }
-
-    /**
-     * Sets disabled
-     *
-     * @param bool $disabled 
-     *
-     * @return $this
-     */
-    public function setDisabled($disabled)
-    {
-        $this->container['disabled'] = $disabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets group
-     *
-     * @return \Swagger\Client\Model\SelectListGroup
-     */
-    public function getGroup()
-    {
-        return $this->container['group'];
-    }
-
-    /**
-     * Sets group
-     *
-     * @param \Swagger\Client\Model\SelectListGroup $group 
-     *
-     * @return $this
-     */
-    public function setGroup($group)
-    {
-        $this->container['group'] = $group;
-
-        return $this;
-    }
-
-    /**
-     * Gets selected
-     *
-     * @return bool
-     */
-    public function getSelected()
-    {
-        return $this->container['selected'];
-    }
-
-    /**
-     * Sets selected
-     *
-     * @param bool $selected 
-     *
-     * @return $this
-     */
-    public function setSelected($selected)
-    {
-        $this->container['selected'] = $selected;
-
-        return $this;
-    }
 
     /**
      * Gets text
@@ -344,6 +272,78 @@ class SelectListItem implements ModelInterface, ArrayAccess
     public function setValue($value)
     {
         $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets group
+     *
+     * @return \Swagger\Client\Model\SelectListGroup
+     */
+    public function getGroup()
+    {
+        return $this->container['group'];
+    }
+
+    /**
+     * Sets group
+     *
+     * @param \Swagger\Client\Model\SelectListGroup $group 
+     *
+     * @return $this
+     */
+    public function setGroup($group)
+    {
+        $this->container['group'] = $group;
+
+        return $this;
+    }
+
+    /**
+     * Gets disabled
+     *
+     * @return bool
+     */
+    public function getDisabled()
+    {
+        return $this->container['disabled'];
+    }
+
+    /**
+     * Sets disabled
+     *
+     * @param bool $disabled 
+     *
+     * @return $this
+     */
+    public function setDisabled($disabled)
+    {
+        $this->container['disabled'] = $disabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets selected
+     *
+     * @return bool
+     */
+    public function getSelected()
+    {
+        return $this->container['selected'];
+    }
+
+    /**
+     * Sets selected
+     *
+     * @param bool $selected 
+     *
+     * @return $this
+     */
+    public function setSelected($selected)
+    {
+        $this->container['selected'] = $selected;
 
         return $this;
     }

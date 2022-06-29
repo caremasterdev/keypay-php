@@ -262,6 +262,14 @@ class PayRunWarningDto implements ModelInterface, ArrayAccess
     const WARNING_TYPE_BACK_CALCULATIONS_APPLIED = 'BackCalculationsApplied';
     const WARNING_TYPE_LEAVE_ACCRUAL_RECONCILIATION_PREVIOUS_PAY_RUN = 'LeaveAccrualReconciliationPreviousPayRun';
     const WARNING_TYPE_LEAVE_ACCRUAL_RECONCILIATION_THIS_PAY_RUN = 'LeaveAccrualReconciliationThisPayRun';
+    const WARNING_TYPE_PUBLIC_HOLIDAY_AUTOMATION = 'PublicHolidayAutomation';
+    const WARNING_TYPE_CIS_SUBCONTRACTOR_REQUIRES_VERIFICATION = 'CisSubcontractorRequiresVerification';
+    const WARNING_TYPE_ITN_REQUIRES_UPDATE = 'ItnRequiresUpdate';
+    const WARNING_TYPE_CIS_SUBCONTRACTOR_LAST_PAYMENT_DATE = 'CisSubcontractorLastPaymentDate';
+    const WARNING_TYPE_CIS_SUBCONTRACTOR_UNMATCHED = 'CisSubcontractorUnmatched';
+    const WARNING_TYPE_CPF_REFUND_REQUIRED = 'CpfRefundRequired';
+    const WARNING_TYPE_CPF_YEAR_END_RECALCULATION_REQUIRED = 'CpfYearEndRecalculationRequired';
+    const WARNING_TYPE_TIMESHEET_OUT_OF_SEQUENCE = 'TimesheetOutOfSequence';
     
 
     
@@ -337,6 +345,14 @@ class PayRunWarningDto implements ModelInterface, ArrayAccess
             self::WARNING_TYPE_BACK_CALCULATIONS_APPLIED,
             self::WARNING_TYPE_LEAVE_ACCRUAL_RECONCILIATION_PREVIOUS_PAY_RUN,
             self::WARNING_TYPE_LEAVE_ACCRUAL_RECONCILIATION_THIS_PAY_RUN,
+            self::WARNING_TYPE_PUBLIC_HOLIDAY_AUTOMATION,
+            self::WARNING_TYPE_CIS_SUBCONTRACTOR_REQUIRES_VERIFICATION,
+            self::WARNING_TYPE_ITN_REQUIRES_UPDATE,
+            self::WARNING_TYPE_CIS_SUBCONTRACTOR_LAST_PAYMENT_DATE,
+            self::WARNING_TYPE_CIS_SUBCONTRACTOR_UNMATCHED,
+            self::WARNING_TYPE_CPF_REFUND_REQUIRED,
+            self::WARNING_TYPE_CPF_YEAR_END_RECALCULATION_REQUIRED,
+            self::WARNING_TYPE_TIMESHEET_OUT_OF_SEQUENCE,
         ];
     }
     

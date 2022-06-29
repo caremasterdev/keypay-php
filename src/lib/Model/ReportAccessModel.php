@@ -251,6 +251,10 @@ class ReportAccessModel implements ModelInterface, ArrayAccess
     const SPECIFIC_REPORTS_P46_CAR = 'P46Car';
     const SPECIFIC_REPORTS_IRB_FORM_CP8D = 'IrbFormCp8d';
     const SPECIFIC_REPORTS_DOCUMENT_ACKNOWLEDGEMENTS_REPORT = 'DocumentAcknowledgementsReport';
+    const SPECIFIC_REPORTS_PAYMENT_AND_DEDUCTION_STATEMENT_REPORT = 'PaymentAndDeductionStatementReport';
+    const SPECIFIC_REPORTS_CIS300 = 'Cis300';
+    const SPECIFIC_REPORTS_ZAKAT = 'Zakat';
+    const SPECIFIC_REPORTS_EIS_CONTRIBUTIONS_REPORT = 'EisContributionsReport';
     
 
     
@@ -356,6 +360,10 @@ class ReportAccessModel implements ModelInterface, ArrayAccess
             self::SPECIFIC_REPORTS_P46_CAR,
             self::SPECIFIC_REPORTS_IRB_FORM_CP8D,
             self::SPECIFIC_REPORTS_DOCUMENT_ACKNOWLEDGEMENTS_REPORT,
+            self::SPECIFIC_REPORTS_PAYMENT_AND_DEDUCTION_STATEMENT_REPORT,
+            self::SPECIFIC_REPORTS_CIS300,
+            self::SPECIFIC_REPORTS_ZAKAT,
+            self::SPECIFIC_REPORTS_EIS_CONTRIBUTIONS_REPORT,
         ];
     }
     

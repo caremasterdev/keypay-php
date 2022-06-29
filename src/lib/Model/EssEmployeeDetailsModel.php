@@ -58,6 +58,7 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'timesheets_read_only' => 'bool',
         'id' => 'int',
         'title_id' => 'int',
         'first_name' => 'string',
@@ -65,6 +66,7 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'middle_name' => 'string',
         'surname' => 'string',
         'previous_surname' => 'string',
+        'legal_name' => 'string',
         'gender' => 'string',
         'date_of_birth' => '\DateTime',
         'anniversary_date' => '\DateTime',
@@ -127,7 +129,8 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'termination_reason' => 'string',
         'termination_description' => 'string',
         'termination_reasons' => '\Swagger\Client\Model\NumericSelectListItem[]',
-        'has_sole_user' => 'bool'
+        'has_sole_user' => 'bool',
+        'fields' => '\Swagger\Client\Model\EmployeeDetailsFields'
     ];
 
     /**
@@ -136,6 +139,7 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'timesheets_read_only' => null,
         'id' => 'int32',
         'title_id' => 'int32',
         'first_name' => null,
@@ -143,6 +147,7 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'middle_name' => null,
         'surname' => null,
         'previous_surname' => null,
+        'legal_name' => null,
         'gender' => null,
         'date_of_birth' => 'date-time',
         'anniversary_date' => 'date-time',
@@ -205,7 +210,8 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'termination_reason' => null,
         'termination_description' => null,
         'termination_reasons' => null,
-        'has_sole_user' => null
+        'has_sole_user' => null,
+        'fields' => null
     ];
 
     /**
@@ -235,6 +241,7 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'timesheets_read_only' => 'timesheetsReadOnly',
         'id' => 'id',
         'title_id' => 'titleId',
         'first_name' => 'firstName',
@@ -242,6 +249,7 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'middle_name' => 'middleName',
         'surname' => 'surname',
         'previous_surname' => 'previousSurname',
+        'legal_name' => 'legalName',
         'gender' => 'gender',
         'date_of_birth' => 'dateOfBirth',
         'anniversary_date' => 'anniversaryDate',
@@ -304,7 +312,8 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'termination_reason' => 'terminationReason',
         'termination_description' => 'terminationDescription',
         'termination_reasons' => 'terminationReasons',
-        'has_sole_user' => 'hasSoleUser'
+        'has_sole_user' => 'hasSoleUser',
+        'fields' => 'fields'
     ];
 
     /**
@@ -313,6 +322,7 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'timesheets_read_only' => 'setTimesheetsReadOnly',
         'id' => 'setId',
         'title_id' => 'setTitleId',
         'first_name' => 'setFirstName',
@@ -320,6 +330,7 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'middle_name' => 'setMiddleName',
         'surname' => 'setSurname',
         'previous_surname' => 'setPreviousSurname',
+        'legal_name' => 'setLegalName',
         'gender' => 'setGender',
         'date_of_birth' => 'setDateOfBirth',
         'anniversary_date' => 'setAnniversaryDate',
@@ -382,7 +393,8 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'termination_reason' => 'setTerminationReason',
         'termination_description' => 'setTerminationDescription',
         'termination_reasons' => 'setTerminationReasons',
-        'has_sole_user' => 'setHasSoleUser'
+        'has_sole_user' => 'setHasSoleUser',
+        'fields' => 'setFields'
     ];
 
     /**
@@ -391,6 +403,7 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'timesheets_read_only' => 'getTimesheetsReadOnly',
         'id' => 'getId',
         'title_id' => 'getTitleId',
         'first_name' => 'getFirstName',
@@ -398,6 +411,7 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'middle_name' => 'getMiddleName',
         'surname' => 'getSurname',
         'previous_surname' => 'getPreviousSurname',
+        'legal_name' => 'getLegalName',
         'gender' => 'getGender',
         'date_of_birth' => 'getDateOfBirth',
         'anniversary_date' => 'getAnniversaryDate',
@@ -460,7 +474,8 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'termination_reason' => 'getTerminationReason',
         'termination_description' => 'getTerminationDescription',
         'termination_reasons' => 'getTerminationReasons',
-        'has_sole_user' => 'getHasSoleUser'
+        'has_sole_user' => 'getHasSoleUser',
+        'fields' => 'getFields'
     ];
 
     /**
@@ -618,6 +633,7 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['timesheets_read_only'] = isset($data['timesheets_read_only']) ? $data['timesheets_read_only'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['title_id'] = isset($data['title_id']) ? $data['title_id'] : null;
         $this->container['first_name'] = isset($data['first_name']) ? $data['first_name'] : null;
@@ -625,6 +641,7 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         $this->container['middle_name'] = isset($data['middle_name']) ? $data['middle_name'] : null;
         $this->container['surname'] = isset($data['surname']) ? $data['surname'] : null;
         $this->container['previous_surname'] = isset($data['previous_surname']) ? $data['previous_surname'] : null;
+        $this->container['legal_name'] = isset($data['legal_name']) ? $data['legal_name'] : null;
         $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
         $this->container['date_of_birth'] = isset($data['date_of_birth']) ? $data['date_of_birth'] : null;
         $this->container['anniversary_date'] = isset($data['anniversary_date']) ? $data['anniversary_date'] : null;
@@ -688,6 +705,7 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         $this->container['termination_description'] = isset($data['termination_description']) ? $data['termination_description'] : null;
         $this->container['termination_reasons'] = isset($data['termination_reasons']) ? $data['termination_reasons'] : null;
         $this->container['has_sole_user'] = isset($data['has_sole_user']) ? $data['has_sole_user'] : null;
+        $this->container['fields'] = isset($data['fields']) ? $data['fields'] : null;
     }
 
     /**
@@ -753,6 +771,30 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets timesheets_read_only
+     *
+     * @return bool
+     */
+    public function getTimesheetsReadOnly()
+    {
+        return $this->container['timesheets_read_only'];
+    }
+
+    /**
+     * Sets timesheets_read_only
+     *
+     * @param bool $timesheets_read_only 
+     *
+     * @return $this
+     */
+    public function setTimesheetsReadOnly($timesheets_read_only)
+    {
+        $this->container['timesheets_read_only'] = $timesheets_read_only;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -918,6 +960,30 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
     public function setPreviousSurname($previous_surname)
     {
         $this->container['previous_surname'] = $previous_surname;
+
+        return $this;
+    }
+
+    /**
+     * Gets legal_name
+     *
+     * @return string
+     */
+    public function getLegalName()
+    {
+        return $this->container['legal_name'];
+    }
+
+    /**
+     * Sets legal_name
+     *
+     * @param string $legal_name 
+     *
+     * @return $this
+     */
+    public function setLegalName($legal_name)
+    {
+        $this->container['legal_name'] = $legal_name;
 
         return $this;
     }
@@ -2475,6 +2541,30 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
     public function setHasSoleUser($has_sole_user)
     {
         $this->container['has_sole_user'] = $has_sole_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets fields
+     *
+     * @return \Swagger\Client\Model\EmployeeDetailsFields
+     */
+    public function getFields()
+    {
+        return $this->container['fields'];
+    }
+
+    /**
+     * Sets fields
+     *
+     * @param \Swagger\Client\Model\EmployeeDetailsFields $fields 
+     *
+     * @return $this
+     */
+    public function setFields($fields)
+    {
+        $this->container['fields'] = $fields;
 
         return $this;
     }

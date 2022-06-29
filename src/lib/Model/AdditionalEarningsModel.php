@@ -82,7 +82,7 @@ class AdditionalEarningsModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => 'int32',
+        'id' => 'int64',
         'name' => null,
         'pay_category_id' => 'int32',
         'employee_id' => 'int32',

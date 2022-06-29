@@ -1,6 +1,6 @@
 <?php
 /**
- * JournalAccountModel
+ * PartiallyAppliedLeaveRequestBannerModel
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * JournalAccountModel Class Doc Comment
+ * PartiallyAppliedLeaveRequestBannerModel Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class JournalAccountModel implements ModelInterface, ArrayAccess
+class PartiallyAppliedLeaveRequestBannerModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'JournalAccountModel';
+    protected static $swaggerModelName = 'PartiallyAppliedLeaveRequestBannerModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,8 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'account_code' => 'string',
-        'account_name' => 'string',
-        'account_type' => 'string',
-        'external_reference_id' => 'string'
+        'header' => 'string',
+        'items' => 'string[]'
     ];
 
     /**
@@ -70,11 +67,8 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => 'int32',
-        'account_code' => null,
-        'account_name' => null,
-        'account_type' => null,
-        'external_reference_id' => null
+        'header' => null,
+        'items' => null
     ];
 
     /**
@@ -104,11 +98,8 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'account_code' => 'accountCode',
-        'account_name' => 'accountName',
-        'account_type' => 'accountType',
-        'external_reference_id' => 'externalReferenceId'
+        'header' => 'header',
+        'items' => 'items'
     ];
 
     /**
@@ -117,11 +108,8 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'account_code' => 'setAccountCode',
-        'account_name' => 'setAccountName',
-        'account_type' => 'setAccountType',
-        'external_reference_id' => 'setExternalReferenceId'
+        'header' => 'setHeader',
+        'items' => 'setItems'
     ];
 
     /**
@@ -130,11 +118,8 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'account_code' => 'getAccountCode',
-        'account_name' => 'getAccountName',
-        'account_type' => 'getAccountType',
-        'external_reference_id' => 'getExternalReferenceId'
+        'header' => 'getHeader',
+        'items' => 'getItems'
     ];
 
     /**
@@ -178,45 +163,8 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const ACCOUNT_TYPE_ASSET = 'Asset';
-    const ACCOUNT_TYPE_EXPENSE = 'Expense';
-    const ACCOUNT_TYPE_LIABILITY = 'Liability';
-    const ACCOUNT_TYPE_EQUITY = 'Equity';
-    const ACCOUNT_TYPE_INCOME = 'Income';
-    const ACCOUNT_TYPE_UNKNOWN = 'Unknown';
-    const ACCOUNT_TYPE_NOT_ALLOWED = 'NotAllowed';
-    const ACCOUNT_TYPE_COST_OF_GOODS_SOLD = 'CostOfGoodsSold';
-    const ACCOUNT_TYPE_ASSET_AND_LIABILITY = 'AssetAndLiability';
-    const ACCOUNT_TYPE_CAPITALS_AND_RESERVES = 'CapitalsAndReserves';
-    const ACCOUNT_TYPE_SALES = 'Sales';
-    const ACCOUNT_TYPE_PURCHASES = 'Purchases';
-    const ACCOUNT_TYPE_OVERHEADS = 'Overheads';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAccountTypeAllowableValues()
-    {
-        return [
-            self::ACCOUNT_TYPE_ASSET,
-            self::ACCOUNT_TYPE_EXPENSE,
-            self::ACCOUNT_TYPE_LIABILITY,
-            self::ACCOUNT_TYPE_EQUITY,
-            self::ACCOUNT_TYPE_INCOME,
-            self::ACCOUNT_TYPE_UNKNOWN,
-            self::ACCOUNT_TYPE_NOT_ALLOWED,
-            self::ACCOUNT_TYPE_COST_OF_GOODS_SOLD,
-            self::ACCOUNT_TYPE_ASSET_AND_LIABILITY,
-            self::ACCOUNT_TYPE_CAPITALS_AND_RESERVES,
-            self::ACCOUNT_TYPE_SALES,
-            self::ACCOUNT_TYPE_PURCHASES,
-            self::ACCOUNT_TYPE_OVERHEADS,
-        ];
-    }
     
 
     /**
@@ -234,11 +182,8 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['account_code'] = isset($data['account_code']) ? $data['account_code'] : null;
-        $this->container['account_name'] = isset($data['account_name']) ? $data['account_name'] : null;
-        $this->container['account_type'] = isset($data['account_type']) ? $data['account_type'] : null;
-        $this->container['external_reference_id'] = isset($data['external_reference_id']) ? $data['external_reference_id'] : null;
+        $this->container['header'] = isset($data['header']) ? $data['header'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -249,14 +194,6 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getAccountTypeAllowableValues();
-        if (!is_null($this->container['account_type']) && !in_array($this->container['account_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'account_type', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -274,130 +211,49 @@ class JournalAccountModel implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets header
      *
-     * @return int
+     * @return string
      */
-    public function getId()
+    public function getHeader()
     {
-        return $this->container['id'];
+        return $this->container['header'];
     }
 
     /**
-     * Sets id
+     * Sets header
      *
-     * @param int $id 
+     * @param string $header 
      *
      * @return $this
      */
-    public function setId($id)
+    public function setHeader($header)
     {
-        $this->container['id'] = $id;
+        $this->container['header'] = $header;
 
         return $this;
     }
 
     /**
-     * Gets account_code
+     * Gets items
      *
-     * @return string
+     * @return string[]
      */
-    public function getAccountCode()
+    public function getItems()
     {
-        return $this->container['account_code'];
+        return $this->container['items'];
     }
 
     /**
-     * Sets account_code
+     * Sets items
      *
-     * @param string $account_code 
+     * @param string[] $items 
      *
      * @return $this
      */
-    public function setAccountCode($account_code)
+    public function setItems($items)
     {
-        $this->container['account_code'] = $account_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets account_name
-     *
-     * @return string
-     */
-    public function getAccountName()
-    {
-        return $this->container['account_name'];
-    }
-
-    /**
-     * Sets account_name
-     *
-     * @param string $account_name 
-     *
-     * @return $this
-     */
-    public function setAccountName($account_name)
-    {
-        $this->container['account_name'] = $account_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets account_type
-     *
-     * @return string
-     */
-    public function getAccountType()
-    {
-        return $this->container['account_type'];
-    }
-
-    /**
-     * Sets account_type
-     *
-     * @param string $account_type 
-     *
-     * @return $this
-     */
-    public function setAccountType($account_type)
-    {
-        $allowedValues = $this->getAccountTypeAllowableValues();
-        if (!is_null($account_type) && !in_array($account_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'account_type', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['account_type'] = $account_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets external_reference_id
-     *
-     * @return string
-     */
-    public function getExternalReferenceId()
-    {
-        return $this->container['external_reference_id'];
-    }
-
-    /**
-     * Sets external_reference_id
-     *
-     * @param string $external_reference_id 
-     *
-     * @return $this
-     */
-    public function setExternalReferenceId($external_reference_id)
-    {
-        $this->container['external_reference_id'] = $external_reference_id;
+        $this->container['items'] = $items;
 
         return $this;
     }

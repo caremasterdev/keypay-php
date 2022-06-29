@@ -27794,18 +27794,22 @@ class EssApi
             );
         }
 
-        $resourcePath = '/api/v2/ess/{employeeId}/qualification';
+        $resourcePath = '/api/v2/ess/{employeeId}/qualification/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($id !== null) {
-            $queryParams['id'] = ObjectSerializer::toQueryValue($id);
-        }
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
         // path params
         if ($employee_id !== null) {
             $resourcePath = str_replace(
@@ -27894,9 +27898,9 @@ class EssApi
     /**
      * Operation essQualificationDeleteAttachment
      *
-     * Delete attachment from qualification
+     * Delete attachment from EmployeeQualification
      *
-     * @param  int $qualification_id qualification_id (required)
+     * @param  int $employee_qualification_id employee_qualification_id (required)
      * @param  int $document_id document_id (required)
      * @param  string $employee_id employee_id (required)
      *
@@ -27904,17 +27908,17 @@ class EssApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function essQualificationDeleteAttachment($qualification_id, $document_id, $employee_id)
+    public function essQualificationDeleteAttachment($employee_qualification_id, $document_id, $employee_id)
     {
-        $this->essQualificationDeleteAttachmentWithHttpInfo($qualification_id, $document_id, $employee_id);
+        $this->essQualificationDeleteAttachmentWithHttpInfo($employee_qualification_id, $document_id, $employee_id);
     }
 
     /**
      * Operation essQualificationDeleteAttachmentWithHttpInfo
      *
-     * Delete attachment from qualification
+     * Delete attachment from EmployeeQualification
      *
-     * @param  int $qualification_id (required)
+     * @param  int $employee_qualification_id (required)
      * @param  int $document_id (required)
      * @param  string $employee_id (required)
      *
@@ -27922,10 +27926,10 @@ class EssApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function essQualificationDeleteAttachmentWithHttpInfo($qualification_id, $document_id, $employee_id)
+    public function essQualificationDeleteAttachmentWithHttpInfo($employee_qualification_id, $document_id, $employee_id)
     {
         $returnType = '';
-        $request = $this->essQualificationDeleteAttachmentRequest($qualification_id, $document_id, $employee_id);
+        $request = $this->essQualificationDeleteAttachmentRequest($employee_qualification_id, $document_id, $employee_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -27967,18 +27971,18 @@ class EssApi
     /**
      * Operation essQualificationDeleteAttachmentAsync
      *
-     * Delete attachment from qualification
+     * Delete attachment from EmployeeQualification
      *
-     * @param  int $qualification_id (required)
+     * @param  int $employee_qualification_id (required)
      * @param  int $document_id (required)
      * @param  string $employee_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function essQualificationDeleteAttachmentAsync($qualification_id, $document_id, $employee_id)
+    public function essQualificationDeleteAttachmentAsync($employee_qualification_id, $document_id, $employee_id)
     {
-        return $this->essQualificationDeleteAttachmentAsyncWithHttpInfo($qualification_id, $document_id, $employee_id)
+        return $this->essQualificationDeleteAttachmentAsyncWithHttpInfo($employee_qualification_id, $document_id, $employee_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -27989,19 +27993,19 @@ class EssApi
     /**
      * Operation essQualificationDeleteAttachmentAsyncWithHttpInfo
      *
-     * Delete attachment from qualification
+     * Delete attachment from EmployeeQualification
      *
-     * @param  int $qualification_id (required)
+     * @param  int $employee_qualification_id (required)
      * @param  int $document_id (required)
      * @param  string $employee_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function essQualificationDeleteAttachmentAsyncWithHttpInfo($qualification_id, $document_id, $employee_id)
+    public function essQualificationDeleteAttachmentAsyncWithHttpInfo($employee_qualification_id, $document_id, $employee_id)
     {
         $returnType = '';
-        $request = $this->essQualificationDeleteAttachmentRequest($qualification_id, $document_id, $employee_id);
+        $request = $this->essQualificationDeleteAttachmentRequest($employee_qualification_id, $document_id, $employee_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -28029,19 +28033,19 @@ class EssApi
     /**
      * Create request for operation 'essQualificationDeleteAttachment'
      *
-     * @param  int $qualification_id (required)
+     * @param  int $employee_qualification_id (required)
      * @param  int $document_id (required)
      * @param  string $employee_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function essQualificationDeleteAttachmentRequest($qualification_id, $document_id, $employee_id)
+    protected function essQualificationDeleteAttachmentRequest($employee_qualification_id, $document_id, $employee_id)
     {
-        // verify the required parameter 'qualification_id' is set
-        if ($qualification_id === null || (is_array($qualification_id) && count($qualification_id) === 0)) {
+        // verify the required parameter 'employee_qualification_id' is set
+        if ($employee_qualification_id === null || (is_array($employee_qualification_id) && count($employee_qualification_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $qualification_id when calling essQualificationDeleteAttachment'
+                'Missing the required parameter $employee_qualification_id when calling essQualificationDeleteAttachment'
             );
         }
         // verify the required parameter 'document_id' is set
@@ -28057,7 +28061,7 @@ class EssApi
             );
         }
 
-        $resourcePath = '/api/v2/ess/{employeeId}/qualification/{qualificationId}/attachment/{documentId}';
+        $resourcePath = '/api/v2/ess/{employeeId}/qualification/{employeeQualificationId}/attachment/{documentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -28066,10 +28070,10 @@ class EssApi
 
 
         // path params
-        if ($qualification_id !== null) {
+        if ($employee_qualification_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'qualificationId' . '}',
-                ObjectSerializer::toPathValue($qualification_id),
+                '{' . 'employeeQualificationId' . '}',
+                ObjectSerializer::toPathValue($employee_qualification_id),
                 $resourcePath
             );
         }
@@ -28176,7 +28180,7 @@ class EssApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\EmployeeQualificationModel
+     * @return \Swagger\Client\Model\EssEmployeeQualificationModel
      */
     public function essQualificationGet($id, $employee_id)
     {
@@ -28194,11 +28198,11 @@ class EssApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\EmployeeQualificationModel, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\EssEmployeeQualificationModel, HTTP status code, HTTP response headers (array of strings)
      */
     public function essQualificationGetWithHttpInfo($id, $employee_id)
     {
-        $returnType = '\Swagger\Client\Model\EmployeeQualificationModel';
+        $returnType = '\Swagger\Client\Model\EssEmployeeQualificationModel';
         $request = $this->essQualificationGetRequest($id, $employee_id);
 
         try {
@@ -28250,7 +28254,7 @@ class EssApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\EmployeeQualificationModel',
+                        '\Swagger\Client\Model\EssEmployeeQualificationModel',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -28294,7 +28298,7 @@ class EssApi
      */
     public function essQualificationGetAsyncWithHttpInfo($id, $employee_id)
     {
-        $returnType = '\Swagger\Client\Model\EmployeeQualificationModel';
+        $returnType = '\Swagger\Client\Model\EssEmployeeQualificationModel';
         $request = $this->essQualificationGetRequest($id, $employee_id);
 
         return $this->client
@@ -28468,7 +28472,7 @@ class EssApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\EmployeeQualificationModel[]
+     * @return \Swagger\Client\Model\EssEmployeeQualificationModel[]
      */
     public function essQualificationGetQualifications($employee_id)
     {
@@ -28485,11 +28489,11 @@ class EssApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\EmployeeQualificationModel[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\EssEmployeeQualificationModel[], HTTP status code, HTTP response headers (array of strings)
      */
     public function essQualificationGetQualificationsWithHttpInfo($employee_id)
     {
-        $returnType = '\Swagger\Client\Model\EmployeeQualificationModel[]';
+        $returnType = '\Swagger\Client\Model\EssEmployeeQualificationModel[]';
         $request = $this->essQualificationGetQualificationsRequest($employee_id);
 
         try {
@@ -28541,7 +28545,7 @@ class EssApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\EmployeeQualificationModel[]',
+                        '\Swagger\Client\Model\EssEmployeeQualificationModel[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -28583,7 +28587,7 @@ class EssApi
      */
     public function essQualificationGetQualificationsAsyncWithHttpInfo($employee_id)
     {
-        $returnType = '\Swagger\Client\Model\EmployeeQualificationModel[]';
+        $returnType = '\Swagger\Client\Model\EssEmployeeQualificationModel[]';
         $request = $this->essQualificationGetQualificationsRequest($employee_id);
 
         return $this->client
@@ -28736,9 +28740,9 @@ class EssApi
     /**
      * Operation essQualificationPost
      *
-     * Add/Update Employee Qualification
+     * Add Employee Qualification
      *
-     * @param  \Swagger\Client\Model\EmployeeQualificationModel $qualification qualification (required)
+     * @param  \Swagger\Client\Model\EssEmployeeQualificationModel $qualification qualification (required)
      * @param  string $employee_id employee_id (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -28753,9 +28757,9 @@ class EssApi
     /**
      * Operation essQualificationPostWithHttpInfo
      *
-     * Add/Update Employee Qualification
+     * Add Employee Qualification
      *
-     * @param  \Swagger\Client\Model\EmployeeQualificationModel $qualification (required)
+     * @param  \Swagger\Client\Model\EssEmployeeQualificationModel $qualification (required)
      * @param  string $employee_id (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -28807,9 +28811,9 @@ class EssApi
     /**
      * Operation essQualificationPostAsync
      *
-     * Add/Update Employee Qualification
+     * Add Employee Qualification
      *
-     * @param  \Swagger\Client\Model\EmployeeQualificationModel $qualification (required)
+     * @param  \Swagger\Client\Model\EssEmployeeQualificationModel $qualification (required)
      * @param  string $employee_id (required)
      *
      * @throws \InvalidArgumentException
@@ -28828,9 +28832,9 @@ class EssApi
     /**
      * Operation essQualificationPostAsyncWithHttpInfo
      *
-     * Add/Update Employee Qualification
+     * Add Employee Qualification
      *
-     * @param  \Swagger\Client\Model\EmployeeQualificationModel $qualification (required)
+     * @param  \Swagger\Client\Model\EssEmployeeQualificationModel $qualification (required)
      * @param  string $employee_id (required)
      *
      * @throws \InvalidArgumentException
@@ -28867,7 +28871,7 @@ class EssApi
     /**
      * Create request for operation 'essQualificationPost'
      *
-     * @param  \Swagger\Client\Model\EmployeeQualificationModel $qualification (required)
+     * @param  \Swagger\Client\Model\EssEmployeeQualificationModel $qualification (required)
      * @param  string $employee_id (required)
      *
      * @throws \InvalidArgumentException
@@ -28985,11 +28989,281 @@ class EssApi
     }
 
     /**
+     * Operation essQualificationPut
+     *
+     * Update Employee Qualification
+     *
+     * @param  int $id id (required)
+     * @param  \Swagger\Client\Model\EssEmployeeQualificationModel $qualification qualification (required)
+     * @param  string $employee_id employee_id (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function essQualificationPut($id, $qualification, $employee_id)
+    {
+        $this->essQualificationPutWithHttpInfo($id, $qualification, $employee_id);
+    }
+
+    /**
+     * Operation essQualificationPutWithHttpInfo
+     *
+     * Update Employee Qualification
+     *
+     * @param  int $id (required)
+     * @param  \Swagger\Client\Model\EssEmployeeQualificationModel $qualification (required)
+     * @param  string $employee_id (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function essQualificationPutWithHttpInfo($id, $qualification, $employee_id)
+    {
+        $returnType = '';
+        $request = $this->essQualificationPutRequest($id, $qualification, $employee_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation essQualificationPutAsync
+     *
+     * Update Employee Qualification
+     *
+     * @param  int $id (required)
+     * @param  \Swagger\Client\Model\EssEmployeeQualificationModel $qualification (required)
+     * @param  string $employee_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function essQualificationPutAsync($id, $qualification, $employee_id)
+    {
+        return $this->essQualificationPutAsyncWithHttpInfo($id, $qualification, $employee_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation essQualificationPutAsyncWithHttpInfo
+     *
+     * Update Employee Qualification
+     *
+     * @param  int $id (required)
+     * @param  \Swagger\Client\Model\EssEmployeeQualificationModel $qualification (required)
+     * @param  string $employee_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function essQualificationPutAsyncWithHttpInfo($id, $qualification, $employee_id)
+    {
+        $returnType = '';
+        $request = $this->essQualificationPutRequest($id, $qualification, $employee_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'essQualificationPut'
+     *
+     * @param  int $id (required)
+     * @param  \Swagger\Client\Model\EssEmployeeQualificationModel $qualification (required)
+     * @param  string $employee_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function essQualificationPutRequest($id, $qualification, $employee_id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling essQualificationPut'
+            );
+        }
+        // verify the required parameter 'qualification' is set
+        if ($qualification === null || (is_array($qualification) && count($qualification) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $qualification when calling essQualificationPut'
+            );
+        }
+        // verify the required parameter 'employee_id' is set
+        if ($employee_id === null || (is_array($employee_id) && count($employee_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $employee_id when calling essQualificationPut'
+            );
+        }
+
+        $resourcePath = '/api/v2/ess/{employeeId}/qualification/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($employee_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'employeeId' . '}',
+                ObjectSerializer::toPathValue($employee_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($qualification)) {
+            $_tempBody = $qualification;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('apiKey');
+        if ($apiKey !== null) {
+            $headers['apiKey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation essQualificationUploadAttachment
      *
      * Upload attachment to qualification
      *
-     * @param  int $qualification_id qualification_id (required)
+     * @param  int $employee_qualification_id employee_qualification_id (required)
      * @param  string $file_name file_name (required)
      * @param  string $employee_id employee_id (required)
      *
@@ -28997,9 +29271,9 @@ class EssApi
      * @throws \InvalidArgumentException
      * @return object
      */
-    public function essQualificationUploadAttachment($qualification_id, $file_name, $employee_id)
+    public function essQualificationUploadAttachment($employee_qualification_id, $file_name, $employee_id)
     {
-        list($response) = $this->essQualificationUploadAttachmentWithHttpInfo($qualification_id, $file_name, $employee_id);
+        list($response) = $this->essQualificationUploadAttachmentWithHttpInfo($employee_qualification_id, $file_name, $employee_id);
         return $response;
     }
 
@@ -29008,7 +29282,7 @@ class EssApi
      *
      * Upload attachment to qualification
      *
-     * @param  int $qualification_id (required)
+     * @param  int $employee_qualification_id (required)
      * @param  string $file_name (required)
      * @param  string $employee_id (required)
      *
@@ -29016,10 +29290,10 @@ class EssApi
      * @throws \InvalidArgumentException
      * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function essQualificationUploadAttachmentWithHttpInfo($qualification_id, $file_name, $employee_id)
+    public function essQualificationUploadAttachmentWithHttpInfo($employee_qualification_id, $file_name, $employee_id)
     {
         $returnType = 'object';
-        $request = $this->essQualificationUploadAttachmentRequest($qualification_id, $file_name, $employee_id);
+        $request = $this->essQualificationUploadAttachmentRequest($employee_qualification_id, $file_name, $employee_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -29085,16 +29359,16 @@ class EssApi
      *
      * Upload attachment to qualification
      *
-     * @param  int $qualification_id (required)
+     * @param  int $employee_qualification_id (required)
      * @param  string $file_name (required)
      * @param  string $employee_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function essQualificationUploadAttachmentAsync($qualification_id, $file_name, $employee_id)
+    public function essQualificationUploadAttachmentAsync($employee_qualification_id, $file_name, $employee_id)
     {
-        return $this->essQualificationUploadAttachmentAsyncWithHttpInfo($qualification_id, $file_name, $employee_id)
+        return $this->essQualificationUploadAttachmentAsyncWithHttpInfo($employee_qualification_id, $file_name, $employee_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -29107,17 +29381,17 @@ class EssApi
      *
      * Upload attachment to qualification
      *
-     * @param  int $qualification_id (required)
+     * @param  int $employee_qualification_id (required)
      * @param  string $file_name (required)
      * @param  string $employee_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function essQualificationUploadAttachmentAsyncWithHttpInfo($qualification_id, $file_name, $employee_id)
+    public function essQualificationUploadAttachmentAsyncWithHttpInfo($employee_qualification_id, $file_name, $employee_id)
     {
         $returnType = 'object';
-        $request = $this->essQualificationUploadAttachmentRequest($qualification_id, $file_name, $employee_id);
+        $request = $this->essQualificationUploadAttachmentRequest($employee_qualification_id, $file_name, $employee_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -29159,19 +29433,19 @@ class EssApi
     /**
      * Create request for operation 'essQualificationUploadAttachment'
      *
-     * @param  int $qualification_id (required)
+     * @param  int $employee_qualification_id (required)
      * @param  string $file_name (required)
      * @param  string $employee_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function essQualificationUploadAttachmentRequest($qualification_id, $file_name, $employee_id)
+    protected function essQualificationUploadAttachmentRequest($employee_qualification_id, $file_name, $employee_id)
     {
-        // verify the required parameter 'qualification_id' is set
-        if ($qualification_id === null || (is_array($qualification_id) && count($qualification_id) === 0)) {
+        // verify the required parameter 'employee_qualification_id' is set
+        if ($employee_qualification_id === null || (is_array($employee_qualification_id) && count($employee_qualification_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $qualification_id when calling essQualificationUploadAttachment'
+                'Missing the required parameter $employee_qualification_id when calling essQualificationUploadAttachment'
             );
         }
         // verify the required parameter 'file_name' is set
@@ -29187,7 +29461,7 @@ class EssApi
             );
         }
 
-        $resourcePath = '/api/v2/ess/{employeeId}/qualification/{qualificationId}/attachment';
+        $resourcePath = '/api/v2/ess/{employeeId}/qualification/{employeeQualificationId}/attachment';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -29200,10 +29474,10 @@ class EssApi
         }
 
         // path params
-        if ($qualification_id !== null) {
+        if ($employee_qualification_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'qualificationId' . '}',
-                ObjectSerializer::toPathValue($qualification_id),
+                '{' . 'employeeQualificationId' . '}',
+                ObjectSerializer::toPathValue($employee_qualification_id),
                 $resourcePath
             );
         }
