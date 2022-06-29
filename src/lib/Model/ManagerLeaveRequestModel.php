@@ -80,6 +80,8 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
         'leave_category_name' => 'string',
         'hours_per_day' => 'double',
         'total_units' => 'double',
+        'previously_applied_units' => 'double',
+        'can_partially_edit' => 'bool',
         'notes' => 'string',
         'total_days' => 'double',
         'amount' => 'string',
@@ -89,7 +91,10 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
         'can_modify' => 'bool',
         'require_notes_for_leave_requests' => 'bool',
         'attachment' => '\Swagger\Client\Model\AttachmentModel',
-        'unit_type' => 'string'
+        'unit_type' => 'string',
+        'banner' => '\Swagger\Client\Model\PartiallyAppliedLeaveRequestBannerModel',
+        'manually_applied' => 'bool',
+        'applied_leave_unit_type_description' => 'string'
     ];
 
     /**
@@ -121,6 +126,8 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
         'leave_category_name' => null,
         'hours_per_day' => 'double',
         'total_units' => 'double',
+        'previously_applied_units' => 'double',
+        'can_partially_edit' => null,
         'notes' => null,
         'total_days' => 'double',
         'amount' => null,
@@ -130,7 +137,10 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
         'can_modify' => null,
         'require_notes_for_leave_requests' => null,
         'attachment' => null,
-        'unit_type' => null
+        'unit_type' => null,
+        'banner' => null,
+        'manually_applied' => null,
+        'applied_leave_unit_type_description' => null
     ];
 
     /**
@@ -183,6 +193,8 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
         'leave_category_name' => 'leaveCategoryName',
         'hours_per_day' => 'hoursPerDay',
         'total_units' => 'totalUnits',
+        'previously_applied_units' => 'previouslyAppliedUnits',
+        'can_partially_edit' => 'canPartiallyEdit',
         'notes' => 'notes',
         'total_days' => 'totalDays',
         'amount' => 'amount',
@@ -192,7 +204,10 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
         'can_modify' => 'canModify',
         'require_notes_for_leave_requests' => 'requireNotesForLeaveRequests',
         'attachment' => 'attachment',
-        'unit_type' => 'unitType'
+        'unit_type' => 'unitType',
+        'banner' => 'banner',
+        'manually_applied' => 'manuallyApplied',
+        'applied_leave_unit_type_description' => 'appliedLeaveUnitTypeDescription'
     ];
 
     /**
@@ -224,6 +239,8 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
         'leave_category_name' => 'setLeaveCategoryName',
         'hours_per_day' => 'setHoursPerDay',
         'total_units' => 'setTotalUnits',
+        'previously_applied_units' => 'setPreviouslyAppliedUnits',
+        'can_partially_edit' => 'setCanPartiallyEdit',
         'notes' => 'setNotes',
         'total_days' => 'setTotalDays',
         'amount' => 'setAmount',
@@ -233,7 +250,10 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
         'can_modify' => 'setCanModify',
         'require_notes_for_leave_requests' => 'setRequireNotesForLeaveRequests',
         'attachment' => 'setAttachment',
-        'unit_type' => 'setUnitType'
+        'unit_type' => 'setUnitType',
+        'banner' => 'setBanner',
+        'manually_applied' => 'setManuallyApplied',
+        'applied_leave_unit_type_description' => 'setAppliedLeaveUnitTypeDescription'
     ];
 
     /**
@@ -265,6 +285,8 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
         'leave_category_name' => 'getLeaveCategoryName',
         'hours_per_day' => 'getHoursPerDay',
         'total_units' => 'getTotalUnits',
+        'previously_applied_units' => 'getPreviouslyAppliedUnits',
+        'can_partially_edit' => 'getCanPartiallyEdit',
         'notes' => 'getNotes',
         'total_days' => 'getTotalDays',
         'amount' => 'getAmount',
@@ -274,7 +296,10 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
         'can_modify' => 'getCanModify',
         'require_notes_for_leave_requests' => 'getRequireNotesForLeaveRequests',
         'attachment' => 'getAttachment',
-        'unit_type' => 'getUnitType'
+        'unit_type' => 'getUnitType',
+        'banner' => 'getBanner',
+        'manually_applied' => 'getManuallyApplied',
+        'applied_leave_unit_type_description' => 'getAppliedLeaveUnitTypeDescription'
     ];
 
     /**
@@ -377,6 +402,8 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
         $this->container['leave_category_name'] = isset($data['leave_category_name']) ? $data['leave_category_name'] : null;
         $this->container['hours_per_day'] = isset($data['hours_per_day']) ? $data['hours_per_day'] : null;
         $this->container['total_units'] = isset($data['total_units']) ? $data['total_units'] : null;
+        $this->container['previously_applied_units'] = isset($data['previously_applied_units']) ? $data['previously_applied_units'] : null;
+        $this->container['can_partially_edit'] = isset($data['can_partially_edit']) ? $data['can_partially_edit'] : null;
         $this->container['notes'] = isset($data['notes']) ? $data['notes'] : null;
         $this->container['total_days'] = isset($data['total_days']) ? $data['total_days'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
@@ -387,6 +414,9 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
         $this->container['require_notes_for_leave_requests'] = isset($data['require_notes_for_leave_requests']) ? $data['require_notes_for_leave_requests'] : null;
         $this->container['attachment'] = isset($data['attachment']) ? $data['attachment'] : null;
         $this->container['unit_type'] = isset($data['unit_type']) ? $data['unit_type'] : null;
+        $this->container['banner'] = isset($data['banner']) ? $data['banner'] : null;
+        $this->container['manually_applied'] = isset($data['manually_applied']) ? $data['manually_applied'] : null;
+        $this->container['applied_leave_unit_type_description'] = isset($data['applied_leave_unit_type_description']) ? $data['applied_leave_unit_type_description'] : null;
     }
 
     /**
@@ -974,6 +1004,54 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets previously_applied_units
+     *
+     * @return double
+     */
+    public function getPreviouslyAppliedUnits()
+    {
+        return $this->container['previously_applied_units'];
+    }
+
+    /**
+     * Sets previously_applied_units
+     *
+     * @param double $previously_applied_units 
+     *
+     * @return $this
+     */
+    public function setPreviouslyAppliedUnits($previously_applied_units)
+    {
+        $this->container['previously_applied_units'] = $previously_applied_units;
+
+        return $this;
+    }
+
+    /**
+     * Gets can_partially_edit
+     *
+     * @return bool
+     */
+    public function getCanPartiallyEdit()
+    {
+        return $this->container['can_partially_edit'];
+    }
+
+    /**
+     * Sets can_partially_edit
+     *
+     * @param bool $can_partially_edit 
+     *
+     * @return $this
+     */
+    public function setCanPartiallyEdit($can_partially_edit)
+    {
+        $this->container['can_partially_edit'] = $can_partially_edit;
+
+        return $this;
+    }
+
+    /**
      * Gets notes
      *
      * @return string
@@ -1218,6 +1296,78 @@ class ManagerLeaveRequestModel implements ModelInterface, ArrayAccess
             );
         }
         $this->container['unit_type'] = $unit_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets banner
+     *
+     * @return \Swagger\Client\Model\PartiallyAppliedLeaveRequestBannerModel
+     */
+    public function getBanner()
+    {
+        return $this->container['banner'];
+    }
+
+    /**
+     * Sets banner
+     *
+     * @param \Swagger\Client\Model\PartiallyAppliedLeaveRequestBannerModel $banner 
+     *
+     * @return $this
+     */
+    public function setBanner($banner)
+    {
+        $this->container['banner'] = $banner;
+
+        return $this;
+    }
+
+    /**
+     * Gets manually_applied
+     *
+     * @return bool
+     */
+    public function getManuallyApplied()
+    {
+        return $this->container['manually_applied'];
+    }
+
+    /**
+     * Sets manually_applied
+     *
+     * @param bool $manually_applied 
+     *
+     * @return $this
+     */
+    public function setManuallyApplied($manually_applied)
+    {
+        $this->container['manually_applied'] = $manually_applied;
+
+        return $this;
+    }
+
+    /**
+     * Gets applied_leave_unit_type_description
+     *
+     * @return string
+     */
+    public function getAppliedLeaveUnitTypeDescription()
+    {
+        return $this->container['applied_leave_unit_type_description'];
+    }
+
+    /**
+     * Sets applied_leave_unit_type_description
+     *
+     * @param string $applied_leave_unit_type_description 
+     *
+     * @return $this
+     */
+    public function setAppliedLeaveUnitTypeDescription($applied_leave_unit_type_description)
+    {
+        $this->container['applied_leave_unit_type_description'] = $applied_leave_unit_type_description;
 
         return $this;
     }

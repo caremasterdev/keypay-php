@@ -78,6 +78,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
         'middle_name' => 'string',
         'surname' => 'string',
         'previous_surname' => 'string',
+        'legal_name' => 'string',
         'date_of_birth' => '\DateTime',
         'gender' => 'string',
         'residential_street_address' => 'string',
@@ -144,6 +145,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
         'middle_name' => null,
         'surname' => null,
         'previous_surname' => null,
+        'legal_name' => null,
         'date_of_birth' => 'date-time',
         'gender' => null,
         'residential_street_address' => null,
@@ -231,6 +233,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
         'middle_name' => 'middleName',
         'surname' => 'surname',
         'previous_surname' => 'previousSurname',
+        'legal_name' => 'legalName',
         'date_of_birth' => 'dateOfBirth',
         'gender' => 'gender',
         'residential_street_address' => 'residentialStreetAddress',
@@ -297,6 +300,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
         'middle_name' => 'setMiddleName',
         'surname' => 'setSurname',
         'previous_surname' => 'setPreviousSurname',
+        'legal_name' => 'setLegalName',
         'date_of_birth' => 'setDateOfBirth',
         'gender' => 'setGender',
         'residential_street_address' => 'setResidentialStreetAddress',
@@ -363,6 +367,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
         'middle_name' => 'getMiddleName',
         'surname' => 'getSurname',
         'previous_surname' => 'getPreviousSurname',
+        'legal_name' => 'getLegalName',
         'date_of_birth' => 'getDateOfBirth',
         'gender' => 'getGender',
         'residential_street_address' => 'getResidentialStreetAddress',
@@ -506,10 +511,15 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
     const SOURCE_BUSINESS_CENTRAL = 'BusinessCentral';
     const SOURCE_PAYTRON = 'Paytron';
     const SOURCE_ACCESS_FINANCIALS = 'AccessFinancials';
+    const SOURCE_COMMA = 'Comma';
     const SOURCE_ZOHO = 'Zoho';
     const SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER = 'FlatFileEmployeeImporter';
     const SOURCE_TWINFIELD = 'Twinfield';
     const SOURCE_SAGE_ACCOUNTING = 'SageAccounting';
+    const SOURCE_SQUARE = 'Square';
+    const SOURCE_QUICKFILE = 'Quickfile';
+    const SOURCE_TIDE = 'Tide';
+    const SOURCE_TIDE_SSO = 'TideSso';
     const TIMESHEET_SETTING_DISABLED = 'Disabled';
     const TIMESHEET_SETTING_ENABLED = 'Enabled';
     const TIMESHEET_SETTING_ENABLED_FOR_EXCEPTIONS = 'EnabledForExceptions';
@@ -604,10 +614,15 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
             self::SOURCE_BUSINESS_CENTRAL,
             self::SOURCE_PAYTRON,
             self::SOURCE_ACCESS_FINANCIALS,
+            self::SOURCE_COMMA,
             self::SOURCE_ZOHO,
             self::SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER,
             self::SOURCE_TWINFIELD,
             self::SOURCE_SAGE_ACCOUNTING,
+            self::SOURCE_SQUARE,
+            self::SOURCE_QUICKFILE,
+            self::SOURCE_TIDE,
+            self::SOURCE_TIDE_SSO,
         ];
     }
     
@@ -690,6 +705,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
         $this->container['middle_name'] = isset($data['middle_name']) ? $data['middle_name'] : null;
         $this->container['surname'] = isset($data['surname']) ? $data['surname'] : null;
         $this->container['previous_surname'] = isset($data['previous_surname']) ? $data['previous_surname'] : null;
+        $this->container['legal_name'] = isset($data['legal_name']) ? $data['legal_name'] : null;
         $this->container['date_of_birth'] = isset($data['date_of_birth']) ? $data['date_of_birth'] : null;
         $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
         $this->container['residential_street_address'] = isset($data['residential_street_address']) ? $data['residential_street_address'] : null;
@@ -1320,6 +1336,30 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
     public function setPreviousSurname($previous_surname)
     {
         $this->container['previous_surname'] = $previous_surname;
+
+        return $this;
+    }
+
+    /**
+     * Gets legal_name
+     *
+     * @return string
+     */
+    public function getLegalName()
+    {
+        return $this->container['legal_name'];
+    }
+
+    /**
+     * Sets legal_name
+     *
+     * @param string $legal_name 
+     *
+     * @return $this
+     */
+    public function setLegalName($legal_name)
+    {
+        $this->container['legal_name'] = $legal_name;
 
         return $this;
     }

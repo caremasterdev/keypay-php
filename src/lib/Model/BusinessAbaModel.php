@@ -222,6 +222,7 @@ class BusinessAbaModel implements ModelInterface, ArrayAccess
     const PAYMENT_ADDITIONAL_CONTENT_PERIOD_ENDING_DATE = 'PeriodEndingDate';
     const PAYMENT_ADDITIONAL_CONTENT_PAYMENT_DATE = 'PaymentDate';
     const PAYMENT_ADDITIONAL_CONTENT_EMPLOYEE_ID = 'EmployeeId';
+    const PAYMENT_ADDITIONAL_CONTENT_PAY_RUN_ID = 'PayRunId';
     const BALANCE_ADDITIONAL_CONTENT_NONE = 'None';
     const BALANCE_ADDITIONAL_CONTENT_PERIOD_ENDING_DATE = 'PeriodEndingDate';
     const BALANCE_ADDITIONAL_CONTENT_PAYMENT_DATE = 'PaymentDate';
@@ -241,6 +242,7 @@ class BusinessAbaModel implements ModelInterface, ArrayAccess
             self::PAYMENT_ADDITIONAL_CONTENT_PERIOD_ENDING_DATE,
             self::PAYMENT_ADDITIONAL_CONTENT_PAYMENT_DATE,
             self::PAYMENT_ADDITIONAL_CONTENT_EMPLOYEE_ID,
+            self::PAYMENT_ADDITIONAL_CONTENT_PAY_RUN_ID,
         ];
     }
     

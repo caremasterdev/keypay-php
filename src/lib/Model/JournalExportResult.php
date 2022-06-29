@@ -250,10 +250,15 @@ class JournalExportResult implements ModelInterface, ArrayAccess
     const JOURNAL_SOURCE_BUSINESS_CENTRAL = 'BusinessCentral';
     const JOURNAL_SOURCE_PAYTRON = 'Paytron';
     const JOURNAL_SOURCE_ACCESS_FINANCIALS = 'AccessFinancials';
+    const JOURNAL_SOURCE_COMMA = 'Comma';
     const JOURNAL_SOURCE_ZOHO = 'Zoho';
     const JOURNAL_SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER = 'FlatFileEmployeeImporter';
     const JOURNAL_SOURCE_TWINFIELD = 'Twinfield';
     const JOURNAL_SOURCE_SAGE_ACCOUNTING = 'SageAccounting';
+    const JOURNAL_SOURCE_SQUARE = 'Square';
+    const JOURNAL_SOURCE_QUICKFILE = 'Quickfile';
+    const JOURNAL_SOURCE_TIDE = 'Tide';
+    const JOURNAL_SOURCE_TIDE_SSO = 'TideSso';
     
 
     
@@ -353,10 +358,15 @@ class JournalExportResult implements ModelInterface, ArrayAccess
             self::JOURNAL_SOURCE_BUSINESS_CENTRAL,
             self::JOURNAL_SOURCE_PAYTRON,
             self::JOURNAL_SOURCE_ACCESS_FINANCIALS,
+            self::JOURNAL_SOURCE_COMMA,
             self::JOURNAL_SOURCE_ZOHO,
             self::JOURNAL_SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER,
             self::JOURNAL_SOURCE_TWINFIELD,
             self::JOURNAL_SOURCE_SAGE_ACCOUNTING,
+            self::JOURNAL_SOURCE_SQUARE,
+            self::JOURNAL_SOURCE_QUICKFILE,
+            self::JOURNAL_SOURCE_TIDE,
+            self::JOURNAL_SOURCE_TIDE_SSO,
         ];
     }
     

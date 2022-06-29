@@ -3090,16 +3090,16 @@ class ManagerApi
      * @param  bool $filter_select_all_roles  (optional)
      * @param  bool $filter_exclude_shifts_overlapping_from_date  (optional)
      * @param  int $filter_page_size  (optional)
-     * @param  int $filter_page_num  (optional)
+     * @param  int $filter_current_page  (optional)
      * @param  bool $filter_include_warnings  (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuRosterShiftGenerateTimesheetModel[]
      */
-    public function auManagerRosterShiftGet($business_id, $filter_from_date = null, $filter_to_date = null, $filter_shift_status = null, $filter_shift_statuses = null, $filter_selected_locations = null, $filter_selected_employees = null, $filter_selected_roles = null, $filter_employee_id = null, $filter_location_id = null, $filter_employee_group_id = null, $filter_unassigned_shifts_only = null, $filter_select_all_roles = null, $filter_exclude_shifts_overlapping_from_date = null, $filter_page_size = null, $filter_page_num = null, $filter_include_warnings = null)
+    public function auManagerRosterShiftGet($business_id, $filter_from_date = null, $filter_to_date = null, $filter_shift_status = null, $filter_shift_statuses = null, $filter_selected_locations = null, $filter_selected_employees = null, $filter_selected_roles = null, $filter_employee_id = null, $filter_location_id = null, $filter_employee_group_id = null, $filter_unassigned_shifts_only = null, $filter_select_all_roles = null, $filter_exclude_shifts_overlapping_from_date = null, $filter_page_size = null, $filter_current_page = null, $filter_include_warnings = null)
     {
-        list($response) = $this->auManagerRosterShiftGetWithHttpInfo($business_id, $filter_from_date, $filter_to_date, $filter_shift_status, $filter_shift_statuses, $filter_selected_locations, $filter_selected_employees, $filter_selected_roles, $filter_employee_id, $filter_location_id, $filter_employee_group_id, $filter_unassigned_shifts_only, $filter_select_all_roles, $filter_exclude_shifts_overlapping_from_date, $filter_page_size, $filter_page_num, $filter_include_warnings);
+        list($response) = $this->auManagerRosterShiftGetWithHttpInfo($business_id, $filter_from_date, $filter_to_date, $filter_shift_status, $filter_shift_statuses, $filter_selected_locations, $filter_selected_employees, $filter_selected_roles, $filter_employee_id, $filter_location_id, $filter_employee_group_id, $filter_unassigned_shifts_only, $filter_select_all_roles, $filter_exclude_shifts_overlapping_from_date, $filter_page_size, $filter_current_page, $filter_include_warnings);
         return $response;
     }
 
@@ -3123,17 +3123,17 @@ class ManagerApi
      * @param  bool $filter_select_all_roles  (optional)
      * @param  bool $filter_exclude_shifts_overlapping_from_date  (optional)
      * @param  int $filter_page_size  (optional)
-     * @param  int $filter_page_num  (optional)
+     * @param  int $filter_current_page  (optional)
      * @param  bool $filter_include_warnings  (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuRosterShiftGenerateTimesheetModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auManagerRosterShiftGetWithHttpInfo($business_id, $filter_from_date = null, $filter_to_date = null, $filter_shift_status = null, $filter_shift_statuses = null, $filter_selected_locations = null, $filter_selected_employees = null, $filter_selected_roles = null, $filter_employee_id = null, $filter_location_id = null, $filter_employee_group_id = null, $filter_unassigned_shifts_only = null, $filter_select_all_roles = null, $filter_exclude_shifts_overlapping_from_date = null, $filter_page_size = null, $filter_page_num = null, $filter_include_warnings = null)
+    public function auManagerRosterShiftGetWithHttpInfo($business_id, $filter_from_date = null, $filter_to_date = null, $filter_shift_status = null, $filter_shift_statuses = null, $filter_selected_locations = null, $filter_selected_employees = null, $filter_selected_roles = null, $filter_employee_id = null, $filter_location_id = null, $filter_employee_group_id = null, $filter_unassigned_shifts_only = null, $filter_select_all_roles = null, $filter_exclude_shifts_overlapping_from_date = null, $filter_page_size = null, $filter_current_page = null, $filter_include_warnings = null)
     {
         $returnType = '\Swagger\Client\Model\AuRosterShiftGenerateTimesheetModel[]';
-        $request = $this->auManagerRosterShiftGetRequest($business_id, $filter_from_date, $filter_to_date, $filter_shift_status, $filter_shift_statuses, $filter_selected_locations, $filter_selected_employees, $filter_selected_roles, $filter_employee_id, $filter_location_id, $filter_employee_group_id, $filter_unassigned_shifts_only, $filter_select_all_roles, $filter_exclude_shifts_overlapping_from_date, $filter_page_size, $filter_page_num, $filter_include_warnings);
+        $request = $this->auManagerRosterShiftGetRequest($business_id, $filter_from_date, $filter_to_date, $filter_shift_status, $filter_shift_statuses, $filter_selected_locations, $filter_selected_employees, $filter_selected_roles, $filter_employee_id, $filter_location_id, $filter_employee_group_id, $filter_unassigned_shifts_only, $filter_select_all_roles, $filter_exclude_shifts_overlapping_from_date, $filter_page_size, $filter_current_page, $filter_include_warnings);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3214,15 +3214,15 @@ class ManagerApi
      * @param  bool $filter_select_all_roles  (optional)
      * @param  bool $filter_exclude_shifts_overlapping_from_date  (optional)
      * @param  int $filter_page_size  (optional)
-     * @param  int $filter_page_num  (optional)
+     * @param  int $filter_current_page  (optional)
      * @param  bool $filter_include_warnings  (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auManagerRosterShiftGetAsync($business_id, $filter_from_date = null, $filter_to_date = null, $filter_shift_status = null, $filter_shift_statuses = null, $filter_selected_locations = null, $filter_selected_employees = null, $filter_selected_roles = null, $filter_employee_id = null, $filter_location_id = null, $filter_employee_group_id = null, $filter_unassigned_shifts_only = null, $filter_select_all_roles = null, $filter_exclude_shifts_overlapping_from_date = null, $filter_page_size = null, $filter_page_num = null, $filter_include_warnings = null)
+    public function auManagerRosterShiftGetAsync($business_id, $filter_from_date = null, $filter_to_date = null, $filter_shift_status = null, $filter_shift_statuses = null, $filter_selected_locations = null, $filter_selected_employees = null, $filter_selected_roles = null, $filter_employee_id = null, $filter_location_id = null, $filter_employee_group_id = null, $filter_unassigned_shifts_only = null, $filter_select_all_roles = null, $filter_exclude_shifts_overlapping_from_date = null, $filter_page_size = null, $filter_current_page = null, $filter_include_warnings = null)
     {
-        return $this->auManagerRosterShiftGetAsyncWithHttpInfo($business_id, $filter_from_date, $filter_to_date, $filter_shift_status, $filter_shift_statuses, $filter_selected_locations, $filter_selected_employees, $filter_selected_roles, $filter_employee_id, $filter_location_id, $filter_employee_group_id, $filter_unassigned_shifts_only, $filter_select_all_roles, $filter_exclude_shifts_overlapping_from_date, $filter_page_size, $filter_page_num, $filter_include_warnings)
+        return $this->auManagerRosterShiftGetAsyncWithHttpInfo($business_id, $filter_from_date, $filter_to_date, $filter_shift_status, $filter_shift_statuses, $filter_selected_locations, $filter_selected_employees, $filter_selected_roles, $filter_employee_id, $filter_location_id, $filter_employee_group_id, $filter_unassigned_shifts_only, $filter_select_all_roles, $filter_exclude_shifts_overlapping_from_date, $filter_page_size, $filter_current_page, $filter_include_warnings)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3250,16 +3250,16 @@ class ManagerApi
      * @param  bool $filter_select_all_roles  (optional)
      * @param  bool $filter_exclude_shifts_overlapping_from_date  (optional)
      * @param  int $filter_page_size  (optional)
-     * @param  int $filter_page_num  (optional)
+     * @param  int $filter_current_page  (optional)
      * @param  bool $filter_include_warnings  (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auManagerRosterShiftGetAsyncWithHttpInfo($business_id, $filter_from_date = null, $filter_to_date = null, $filter_shift_status = null, $filter_shift_statuses = null, $filter_selected_locations = null, $filter_selected_employees = null, $filter_selected_roles = null, $filter_employee_id = null, $filter_location_id = null, $filter_employee_group_id = null, $filter_unassigned_shifts_only = null, $filter_select_all_roles = null, $filter_exclude_shifts_overlapping_from_date = null, $filter_page_size = null, $filter_page_num = null, $filter_include_warnings = null)
+    public function auManagerRosterShiftGetAsyncWithHttpInfo($business_id, $filter_from_date = null, $filter_to_date = null, $filter_shift_status = null, $filter_shift_statuses = null, $filter_selected_locations = null, $filter_selected_employees = null, $filter_selected_roles = null, $filter_employee_id = null, $filter_location_id = null, $filter_employee_group_id = null, $filter_unassigned_shifts_only = null, $filter_select_all_roles = null, $filter_exclude_shifts_overlapping_from_date = null, $filter_page_size = null, $filter_current_page = null, $filter_include_warnings = null)
     {
         $returnType = '\Swagger\Client\Model\AuRosterShiftGenerateTimesheetModel[]';
-        $request = $this->auManagerRosterShiftGetRequest($business_id, $filter_from_date, $filter_to_date, $filter_shift_status, $filter_shift_statuses, $filter_selected_locations, $filter_selected_employees, $filter_selected_roles, $filter_employee_id, $filter_location_id, $filter_employee_group_id, $filter_unassigned_shifts_only, $filter_select_all_roles, $filter_exclude_shifts_overlapping_from_date, $filter_page_size, $filter_page_num, $filter_include_warnings);
+        $request = $this->auManagerRosterShiftGetRequest($business_id, $filter_from_date, $filter_to_date, $filter_shift_status, $filter_shift_statuses, $filter_selected_locations, $filter_selected_employees, $filter_selected_roles, $filter_employee_id, $filter_location_id, $filter_employee_group_id, $filter_unassigned_shifts_only, $filter_select_all_roles, $filter_exclude_shifts_overlapping_from_date, $filter_page_size, $filter_current_page, $filter_include_warnings);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3316,13 +3316,13 @@ class ManagerApi
      * @param  bool $filter_select_all_roles  (optional)
      * @param  bool $filter_exclude_shifts_overlapping_from_date  (optional)
      * @param  int $filter_page_size  (optional)
-     * @param  int $filter_page_num  (optional)
+     * @param  int $filter_current_page  (optional)
      * @param  bool $filter_include_warnings  (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auManagerRosterShiftGetRequest($business_id, $filter_from_date = null, $filter_to_date = null, $filter_shift_status = null, $filter_shift_statuses = null, $filter_selected_locations = null, $filter_selected_employees = null, $filter_selected_roles = null, $filter_employee_id = null, $filter_location_id = null, $filter_employee_group_id = null, $filter_unassigned_shifts_only = null, $filter_select_all_roles = null, $filter_exclude_shifts_overlapping_from_date = null, $filter_page_size = null, $filter_page_num = null, $filter_include_warnings = null)
+    protected function auManagerRosterShiftGetRequest($business_id, $filter_from_date = null, $filter_to_date = null, $filter_shift_status = null, $filter_shift_statuses = null, $filter_selected_locations = null, $filter_selected_employees = null, $filter_selected_roles = null, $filter_employee_id = null, $filter_location_id = null, $filter_employee_group_id = null, $filter_unassigned_shifts_only = null, $filter_select_all_roles = null, $filter_exclude_shifts_overlapping_from_date = null, $filter_page_size = null, $filter_current_page = null, $filter_include_warnings = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -3407,8 +3407,8 @@ class ManagerApi
             $queryParams['filter.pageSize'] = ObjectSerializer::toQueryValue($filter_page_size);
         }
         // query params
-        if ($filter_page_num !== null) {
-            $queryParams['filter.pageNum'] = ObjectSerializer::toQueryValue($filter_page_num);
+        if ($filter_current_page !== null) {
+            $queryParams['filter.currentPage'] = ObjectSerializer::toQueryValue($filter_current_page);
         }
         // query params
         if ($filter_include_warnings !== null) {

@@ -104,6 +104,7 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess
         'overdraws_leave' => 'bool',
         'reviewed_by' => 'string',
         'duration_override' => 'string',
+        'auto_approved_by_roster_shift_id' => 'int',
         'work_duration_in_minutes' => 'double',
         'breaks_duration_in_minutes' => 'double',
         'total_duration_in_minutes' => 'double',
@@ -165,6 +166,7 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess
         'overdraws_leave' => null,
         'reviewed_by' => null,
         'duration_override' => null,
+        'auto_approved_by_roster_shift_id' => 'int32',
         'work_duration_in_minutes' => 'double',
         'breaks_duration_in_minutes' => 'double',
         'total_duration_in_minutes' => 'double',
@@ -247,6 +249,7 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess
         'overdraws_leave' => 'overdrawsLeave',
         'reviewed_by' => 'reviewedBy',
         'duration_override' => 'durationOverride',
+        'auto_approved_by_roster_shift_id' => 'autoApprovedByRosterShiftId',
         'work_duration_in_minutes' => 'workDurationInMinutes',
         'breaks_duration_in_minutes' => 'breaksDurationInMinutes',
         'total_duration_in_minutes' => 'totalDurationInMinutes',
@@ -308,6 +311,7 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess
         'overdraws_leave' => 'setOverdrawsLeave',
         'reviewed_by' => 'setReviewedBy',
         'duration_override' => 'setDurationOverride',
+        'auto_approved_by_roster_shift_id' => 'setAutoApprovedByRosterShiftId',
         'work_duration_in_minutes' => 'setWorkDurationInMinutes',
         'breaks_duration_in_minutes' => 'setBreaksDurationInMinutes',
         'total_duration_in_minutes' => 'setTotalDurationInMinutes',
@@ -369,6 +373,7 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess
         'overdraws_leave' => 'getOverdrawsLeave',
         'reviewed_by' => 'getReviewedBy',
         'duration_override' => 'getDurationOverride',
+        'auto_approved_by_roster_shift_id' => 'getAutoApprovedByRosterShiftId',
         'work_duration_in_minutes' => 'getWorkDurationInMinutes',
         'breaks_duration_in_minutes' => 'getBreaksDurationInMinutes',
         'total_duration_in_minutes' => 'getTotalDurationInMinutes',
@@ -484,10 +489,15 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess
     const SOURCE_BUSINESS_CENTRAL = 'BusinessCentral';
     const SOURCE_PAYTRON = 'Paytron';
     const SOURCE_ACCESS_FINANCIALS = 'AccessFinancials';
+    const SOURCE_COMMA = 'Comma';
     const SOURCE_ZOHO = 'Zoho';
     const SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER = 'FlatFileEmployeeImporter';
     const SOURCE_TWINFIELD = 'Twinfield';
     const SOURCE_SAGE_ACCOUNTING = 'SageAccounting';
+    const SOURCE_SQUARE = 'Square';
+    const SOURCE_QUICKFILE = 'Quickfile';
+    const SOURCE_TIDE = 'Tide';
+    const SOURCE_TIDE_SSO = 'TideSso';
     
 
     
@@ -576,10 +586,15 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess
             self::SOURCE_BUSINESS_CENTRAL,
             self::SOURCE_PAYTRON,
             self::SOURCE_ACCESS_FINANCIALS,
+            self::SOURCE_COMMA,
             self::SOURCE_ZOHO,
             self::SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER,
             self::SOURCE_TWINFIELD,
             self::SOURCE_SAGE_ACCOUNTING,
+            self::SOURCE_SQUARE,
+            self::SOURCE_QUICKFILE,
+            self::SOURCE_TIDE,
+            self::SOURCE_TIDE_SSO,
         ];
     }
     
@@ -646,6 +661,7 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess
         $this->container['overdraws_leave'] = isset($data['overdraws_leave']) ? $data['overdraws_leave'] : null;
         $this->container['reviewed_by'] = isset($data['reviewed_by']) ? $data['reviewed_by'] : null;
         $this->container['duration_override'] = isset($data['duration_override']) ? $data['duration_override'] : null;
+        $this->container['auto_approved_by_roster_shift_id'] = isset($data['auto_approved_by_roster_shift_id']) ? $data['auto_approved_by_roster_shift_id'] : null;
         $this->container['work_duration_in_minutes'] = isset($data['work_duration_in_minutes']) ? $data['work_duration_in_minutes'] : null;
         $this->container['breaks_duration_in_minutes'] = isset($data['breaks_duration_in_minutes']) ? $data['breaks_duration_in_minutes'] : null;
         $this->container['total_duration_in_minutes'] = isset($data['total_duration_in_minutes']) ? $data['total_duration_in_minutes'] : null;
@@ -1836,6 +1852,30 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess
     public function setDurationOverride($duration_override)
     {
         $this->container['duration_override'] = $duration_override;
+
+        return $this;
+    }
+
+    /**
+     * Gets auto_approved_by_roster_shift_id
+     *
+     * @return int
+     */
+    public function getAutoApprovedByRosterShiftId()
+    {
+        return $this->container['auto_approved_by_roster_shift_id'];
+    }
+
+    /**
+     * Sets auto_approved_by_roster_shift_id
+     *
+     * @param int $auto_approved_by_roster_shift_id 
+     *
+     * @return $this
+     */
+    public function setAutoApprovedByRosterShiftId($auto_approved_by_roster_shift_id)
+    {
+        $this->container['auto_approved_by_roster_shift_id'] = $auto_approved_by_roster_shift_id;
 
         return $this;
     }

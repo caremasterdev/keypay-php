@@ -64,7 +64,8 @@ class PublicHolidayModel implements ModelInterface, ArrayAccess
         'description' => 'string',
         'note' => 'string',
         'is_system' => 'bool',
-        'not_a_public_holiday' => 'bool'
+        'not_a_public_holiday' => 'bool',
+        'mondayised_alternative_to_id' => 'int'
     ];
 
     /**
@@ -80,7 +81,8 @@ class PublicHolidayModel implements ModelInterface, ArrayAccess
         'description' => null,
         'note' => null,
         'is_system' => null,
-        'not_a_public_holiday' => null
+        'not_a_public_holiday' => null,
+        'mondayised_alternative_to_id' => 'int32'
     ];
 
     /**
@@ -117,7 +119,8 @@ class PublicHolidayModel implements ModelInterface, ArrayAccess
         'description' => 'description',
         'note' => 'note',
         'is_system' => 'isSystem',
-        'not_a_public_holiday' => 'notAPublicHoliday'
+        'not_a_public_holiday' => 'notAPublicHoliday',
+        'mondayised_alternative_to_id' => 'mondayisedAlternativeToId'
     ];
 
     /**
@@ -133,7 +136,8 @@ class PublicHolidayModel implements ModelInterface, ArrayAccess
         'description' => 'setDescription',
         'note' => 'setNote',
         'is_system' => 'setIsSystem',
-        'not_a_public_holiday' => 'setNotAPublicHoliday'
+        'not_a_public_holiday' => 'setNotAPublicHoliday',
+        'mondayised_alternative_to_id' => 'setMondayisedAlternativeToId'
     ];
 
     /**
@@ -149,7 +153,8 @@ class PublicHolidayModel implements ModelInterface, ArrayAccess
         'description' => 'getDescription',
         'note' => 'getNote',
         'is_system' => 'getIsSystem',
-        'not_a_public_holiday' => 'getNotAPublicHoliday'
+        'not_a_public_holiday' => 'getNotAPublicHoliday',
+        'mondayised_alternative_to_id' => 'getMondayisedAlternativeToId'
     ];
 
     /**
@@ -220,6 +225,7 @@ class PublicHolidayModel implements ModelInterface, ArrayAccess
         $this->container['note'] = isset($data['note']) ? $data['note'] : null;
         $this->container['is_system'] = isset($data['is_system']) ? $data['is_system'] : null;
         $this->container['not_a_public_holiday'] = isset($data['not_a_public_holiday']) ? $data['not_a_public_holiday'] : null;
+        $this->container['mondayised_alternative_to_id'] = isset($data['mondayised_alternative_to_id']) ? $data['mondayised_alternative_to_id'] : null;
     }
 
     /**
@@ -434,6 +440,30 @@ class PublicHolidayModel implements ModelInterface, ArrayAccess
     public function setNotAPublicHoliday($not_a_public_holiday)
     {
         $this->container['not_a_public_holiday'] = $not_a_public_holiday;
+
+        return $this;
+    }
+
+    /**
+     * Gets mondayised_alternative_to_id
+     *
+     * @return int
+     */
+    public function getMondayisedAlternativeToId()
+    {
+        return $this->container['mondayised_alternative_to_id'];
+    }
+
+    /**
+     * Sets mondayised_alternative_to_id
+     *
+     * @param int $mondayised_alternative_to_id 
+     *
+     * @return $this
+     */
+    public function setMondayisedAlternativeToId($mondayised_alternative_to_id)
+    {
+        $this->container['mondayised_alternative_to_id'] = $mondayised_alternative_to_id;
 
         return $this;
     }

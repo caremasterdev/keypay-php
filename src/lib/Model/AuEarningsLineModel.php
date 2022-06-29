@@ -69,6 +69,7 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
         'earnings' => 'double',
         'lump_sum_number_of_pay_periods' => 'double',
         'lump_sum_calculation_method' => 'string',
+        'lump_sum_e_financial_year' => 'int',
         'timesheet_line_id' => 'int',
         'timesheet_line_external_id' => 'string',
         'id' => 'int',
@@ -98,9 +99,10 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
         'earnings' => 'double',
         'lump_sum_number_of_pay_periods' => 'double',
         'lump_sum_calculation_method' => null,
+        'lump_sum_e_financial_year' => 'int32',
         'timesheet_line_id' => 'int32',
         'timesheet_line_external_id' => null,
-        'id' => 'int32',
+        'id' => 'int64',
         'external_id' => null,
         'location_id' => null,
         'location_name' => null,
@@ -148,6 +150,7 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
         'earnings' => 'earnings',
         'lump_sum_number_of_pay_periods' => 'lumpSumNumberOfPayPeriods',
         'lump_sum_calculation_method' => 'lumpSumCalculationMethod',
+        'lump_sum_e_financial_year' => 'lumpSumEFinancialYear',
         'timesheet_line_id' => 'timesheetLineId',
         'timesheet_line_external_id' => 'timesheetLineExternalId',
         'id' => 'id',
@@ -177,6 +180,7 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
         'earnings' => 'setEarnings',
         'lump_sum_number_of_pay_periods' => 'setLumpSumNumberOfPayPeriods',
         'lump_sum_calculation_method' => 'setLumpSumCalculationMethod',
+        'lump_sum_e_financial_year' => 'setLumpSumEFinancialYear',
         'timesheet_line_id' => 'setTimesheetLineId',
         'timesheet_line_external_id' => 'setTimesheetLineExternalId',
         'id' => 'setId',
@@ -206,6 +210,7 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
         'earnings' => 'getEarnings',
         'lump_sum_number_of_pay_periods' => 'getLumpSumNumberOfPayPeriods',
         'lump_sum_calculation_method' => 'getLumpSumCalculationMethod',
+        'lump_sum_e_financial_year' => 'getLumpSumEFinancialYear',
         'timesheet_line_id' => 'getTimesheetLineId',
         'timesheet_line_external_id' => 'getTimesheetLineExternalId',
         'id' => 'getId',
@@ -306,6 +311,7 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
         $this->container['earnings'] = isset($data['earnings']) ? $data['earnings'] : null;
         $this->container['lump_sum_number_of_pay_periods'] = isset($data['lump_sum_number_of_pay_periods']) ? $data['lump_sum_number_of_pay_periods'] : null;
         $this->container['lump_sum_calculation_method'] = isset($data['lump_sum_calculation_method']) ? $data['lump_sum_calculation_method'] : null;
+        $this->container['lump_sum_e_financial_year'] = isset($data['lump_sum_e_financial_year']) ? $data['lump_sum_e_financial_year'] : null;
         $this->container['timesheet_line_id'] = isset($data['timesheet_line_id']) ? $data['timesheet_line_id'] : null;
         $this->container['timesheet_line_external_id'] = isset($data['timesheet_line_external_id']) ? $data['timesheet_line_external_id'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
@@ -642,6 +648,30 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
             );
         }
         $this->container['lump_sum_calculation_method'] = $lump_sum_calculation_method;
+
+        return $this;
+    }
+
+    /**
+     * Gets lump_sum_e_financial_year
+     *
+     * @return int
+     */
+    public function getLumpSumEFinancialYear()
+    {
+        return $this->container['lump_sum_e_financial_year'];
+    }
+
+    /**
+     * Sets lump_sum_e_financial_year
+     *
+     * @param int $lump_sum_e_financial_year 
+     *
+     * @return $this
+     */
+    public function setLumpSumEFinancialYear($lump_sum_e_financial_year)
+    {
+        $this->container['lump_sum_e_financial_year'] = $lump_sum_e_financial_year;
 
         return $this;
     }

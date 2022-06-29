@@ -219,6 +219,8 @@ class EmployeeDetailsAuditReportRequestModel implements ModelInterface, ArrayAcc
     const SECTION_PREVIOUS_EMPLOYER = 'PreviousEmployer';
     const SECTION_JOB_KEEPER = 'JobKeeper';
     const SECTION_JOB_MAKER = 'JobMaker';
+    const SECTION_SELF_MANAGED_SUPER_FUNDS = 'SelfManagedSuperFunds';
+    const SECTION_CIS_SUBCONTRACTOR = 'CisSubcontractor';
     
 
     
@@ -261,6 +263,8 @@ class EmployeeDetailsAuditReportRequestModel implements ModelInterface, ArrayAcc
             self::SECTION_PREVIOUS_EMPLOYER,
             self::SECTION_JOB_KEEPER,
             self::SECTION_JOB_MAKER,
+            self::SECTION_SELF_MANAGED_SUPER_FUNDS,
+            self::SECTION_CIS_SUBCONTRACTOR,
         ];
     }
     

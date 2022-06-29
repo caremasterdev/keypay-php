@@ -76,6 +76,7 @@ class AuEmployeePortalSettingsModel implements ModelInterface, ArrayAccess
         'allow_employee_shift_selection' => 'bool',
         'clock_on_window_minutes' => 'int',
         'clock_off_window_minutes' => 'int',
+        'clock_on_reminder_notification_minutes' => 'int',
         'clock_off_reminder_notification_minutes' => 'int',
         'send_employee_details_update_notifications' => 'bool'
     ];
@@ -105,6 +106,7 @@ class AuEmployeePortalSettingsModel implements ModelInterface, ArrayAccess
         'allow_employee_shift_selection' => null,
         'clock_on_window_minutes' => 'int32',
         'clock_off_window_minutes' => 'int32',
+        'clock_on_reminder_notification_minutes' => 'int32',
         'clock_off_reminder_notification_minutes' => 'int32',
         'send_employee_details_update_notifications' => null
     ];
@@ -155,6 +157,7 @@ class AuEmployeePortalSettingsModel implements ModelInterface, ArrayAccess
         'allow_employee_shift_selection' => 'allowEmployeeShiftSelection',
         'clock_on_window_minutes' => 'clockOnWindowMinutes',
         'clock_off_window_minutes' => 'clockOffWindowMinutes',
+        'clock_on_reminder_notification_minutes' => 'clockOnReminderNotificationMinutes',
         'clock_off_reminder_notification_minutes' => 'clockOffReminderNotificationMinutes',
         'send_employee_details_update_notifications' => 'sendEmployeeDetailsUpdateNotifications'
     ];
@@ -184,6 +187,7 @@ class AuEmployeePortalSettingsModel implements ModelInterface, ArrayAccess
         'allow_employee_shift_selection' => 'setAllowEmployeeShiftSelection',
         'clock_on_window_minutes' => 'setClockOnWindowMinutes',
         'clock_off_window_minutes' => 'setClockOffWindowMinutes',
+        'clock_on_reminder_notification_minutes' => 'setClockOnReminderNotificationMinutes',
         'clock_off_reminder_notification_minutes' => 'setClockOffReminderNotificationMinutes',
         'send_employee_details_update_notifications' => 'setSendEmployeeDetailsUpdateNotifications'
     ];
@@ -213,6 +217,7 @@ class AuEmployeePortalSettingsModel implements ModelInterface, ArrayAccess
         'allow_employee_shift_selection' => 'getAllowEmployeeShiftSelection',
         'clock_on_window_minutes' => 'getClockOnWindowMinutes',
         'clock_off_window_minutes' => 'getClockOffWindowMinutes',
+        'clock_on_reminder_notification_minutes' => 'getClockOnReminderNotificationMinutes',
         'clock_off_reminder_notification_minutes' => 'getClockOffReminderNotificationMinutes',
         'send_employee_details_update_notifications' => 'getSendEmployeeDetailsUpdateNotifications'
     ];
@@ -321,6 +326,7 @@ class AuEmployeePortalSettingsModel implements ModelInterface, ArrayAccess
         $this->container['allow_employee_shift_selection'] = isset($data['allow_employee_shift_selection']) ? $data['allow_employee_shift_selection'] : null;
         $this->container['clock_on_window_minutes'] = isset($data['clock_on_window_minutes']) ? $data['clock_on_window_minutes'] : null;
         $this->container['clock_off_window_minutes'] = isset($data['clock_off_window_minutes']) ? $data['clock_off_window_minutes'] : null;
+        $this->container['clock_on_reminder_notification_minutes'] = isset($data['clock_on_reminder_notification_minutes']) ? $data['clock_on_reminder_notification_minutes'] : null;
         $this->container['clock_off_reminder_notification_minutes'] = isset($data['clock_off_reminder_notification_minutes']) ? $data['clock_off_reminder_notification_minutes'] : null;
         $this->container['send_employee_details_update_notifications'] = isset($data['send_employee_details_update_notifications']) ? $data['send_employee_details_update_notifications'] : null;
     }
@@ -818,6 +824,30 @@ class AuEmployeePortalSettingsModel implements ModelInterface, ArrayAccess
     public function setClockOffWindowMinutes($clock_off_window_minutes)
     {
         $this->container['clock_off_window_minutes'] = $clock_off_window_minutes;
+
+        return $this;
+    }
+
+    /**
+     * Gets clock_on_reminder_notification_minutes
+     *
+     * @return int
+     */
+    public function getClockOnReminderNotificationMinutes()
+    {
+        return $this->container['clock_on_reminder_notification_minutes'];
+    }
+
+    /**
+     * Sets clock_on_reminder_notification_minutes
+     *
+     * @param int $clock_on_reminder_notification_minutes 
+     *
+     * @return $this
+     */
+    public function setClockOnReminderNotificationMinutes($clock_on_reminder_notification_minutes)
+    {
+        $this->container['clock_on_reminder_notification_minutes'] = $clock_on_reminder_notification_minutes;
 
         return $this;
     }

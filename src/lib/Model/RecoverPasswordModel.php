@@ -211,6 +211,7 @@ class RecoverPasswordModel implements ModelInterface, ArrayAccess
     const MESSAGE_TYPE_SHIFT_SWAP_REJECTED = 'ShiftSwapRejected';
     const MESSAGE_TYPE_SHIFT_SWAP_APPROVED = 'ShiftSwapApproved';
     const MESSAGE_TYPE_P60_AVAILABLE = 'P60Available';
+    const MESSAGE_TYPE_P60_ERROR = 'P60Error';
     const MESSAGE_TYPE_LEAVING_EMPLOYEE_FORM_NOTIFICATION = 'LeavingEmployeeFormNotification';
     const MESSAGE_TYPE_AUTO_ENROLMENT_NOTIFICATION = 'AutoEnrolmentNotification';
     const MESSAGE_TYPE_LODGEMENT_NOTIFICATION = 'LodgementNotification';
@@ -265,6 +266,7 @@ class RecoverPasswordModel implements ModelInterface, ArrayAccess
     const MESSAGE_TYPE_QUALIFICATION_EXPIRING_NOTIFICATION = 'QualificationExpiringNotification';
     const MESSAGE_TYPE_QUALIFICATION_EXPIRED_NOTIFICATION = 'QualificationExpiredNotification';
     const MESSAGE_TYPE_CREDIT_CARD_EXPIRING_REMINDER = 'CreditCardExpiringReminder';
+    const MESSAGE_TYPE_RESEND_PAYMENT_AND_DEDUCTION_STATEMENT = 'ResendPaymentAndDeductionStatement';
     
 
     
@@ -324,6 +326,7 @@ class RecoverPasswordModel implements ModelInterface, ArrayAccess
             self::MESSAGE_TYPE_SHIFT_SWAP_REJECTED,
             self::MESSAGE_TYPE_SHIFT_SWAP_APPROVED,
             self::MESSAGE_TYPE_P60_AVAILABLE,
+            self::MESSAGE_TYPE_P60_ERROR,
             self::MESSAGE_TYPE_LEAVING_EMPLOYEE_FORM_NOTIFICATION,
             self::MESSAGE_TYPE_AUTO_ENROLMENT_NOTIFICATION,
             self::MESSAGE_TYPE_LODGEMENT_NOTIFICATION,
@@ -378,6 +381,7 @@ class RecoverPasswordModel implements ModelInterface, ArrayAccess
             self::MESSAGE_TYPE_QUALIFICATION_EXPIRING_NOTIFICATION,
             self::MESSAGE_TYPE_QUALIFICATION_EXPIRED_NOTIFICATION,
             self::MESSAGE_TYPE_CREDIT_CARD_EXPIRING_REMINDER,
+            self::MESSAGE_TYPE_RESEND_PAYMENT_AND_DEDUCTION_STATEMENT,
         ];
     }
     

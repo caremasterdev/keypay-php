@@ -62,6 +62,7 @@ class AuStpRegistrationModel implements ModelInterface, ArrayAccess
         'abn' => 'string',
         'contact_name' => 'string',
         'contact_phone_number' => 'string',
+        'contact_email_address' => 'string',
         'address_line1' => 'string',
         'address_line2' => 'string',
         'suburb_id' => 'int',
@@ -91,6 +92,7 @@ class AuStpRegistrationModel implements ModelInterface, ArrayAccess
         'abn' => null,
         'contact_name' => null,
         'contact_phone_number' => null,
+        'contact_email_address' => null,
         'address_line1' => null,
         'address_line2' => null,
         'suburb_id' => 'int32',
@@ -141,6 +143,7 @@ class AuStpRegistrationModel implements ModelInterface, ArrayAccess
         'abn' => 'abn',
         'contact_name' => 'contactName',
         'contact_phone_number' => 'contactPhoneNumber',
+        'contact_email_address' => 'contactEmailAddress',
         'address_line1' => 'addressLine1',
         'address_line2' => 'addressLine2',
         'suburb_id' => 'suburbId',
@@ -170,6 +173,7 @@ class AuStpRegistrationModel implements ModelInterface, ArrayAccess
         'abn' => 'setAbn',
         'contact_name' => 'setContactName',
         'contact_phone_number' => 'setContactPhoneNumber',
+        'contact_email_address' => 'setContactEmailAddress',
         'address_line1' => 'setAddressLine1',
         'address_line2' => 'setAddressLine2',
         'suburb_id' => 'setSuburbId',
@@ -199,6 +203,7 @@ class AuStpRegistrationModel implements ModelInterface, ArrayAccess
         'abn' => 'getAbn',
         'contact_name' => 'getContactName',
         'contact_phone_number' => 'getContactPhoneNumber',
+        'contact_email_address' => 'getContactEmailAddress',
         'address_line1' => 'getAddressLine1',
         'address_line2' => 'getAddressLine2',
         'suburb_id' => 'getSuburbId',
@@ -314,6 +319,7 @@ class AuStpRegistrationModel implements ModelInterface, ArrayAccess
         $this->container['abn'] = isset($data['abn']) ? $data['abn'] : null;
         $this->container['contact_name'] = isset($data['contact_name']) ? $data['contact_name'] : null;
         $this->container['contact_phone_number'] = isset($data['contact_phone_number']) ? $data['contact_phone_number'] : null;
+        $this->container['contact_email_address'] = isset($data['contact_email_address']) ? $data['contact_email_address'] : null;
         $this->container['address_line1'] = isset($data['address_line1']) ? $data['address_line1'] : null;
         $this->container['address_line2'] = isset($data['address_line2']) ? $data['address_line2'] : null;
         $this->container['suburb_id'] = isset($data['suburb_id']) ? $data['suburb_id'] : null;
@@ -488,6 +494,30 @@ class AuStpRegistrationModel implements ModelInterface, ArrayAccess
     public function setContactPhoneNumber($contact_phone_number)
     {
         $this->container['contact_phone_number'] = $contact_phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_email_address
+     *
+     * @return string
+     */
+    public function getContactEmailAddress()
+    {
+        return $this->container['contact_email_address'];
+    }
+
+    /**
+     * Sets contact_email_address
+     *
+     * @param string $contact_email_address 
+     *
+     * @return $this
+     */
+    public function setContactEmailAddress($contact_email_address)
+    {
+        $this->container['contact_email_address'] = $contact_email_address;
 
         return $this;
     }

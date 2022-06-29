@@ -264,12 +264,18 @@ class AuLeaveAllowanceTemplateModel implements ModelInterface, ArrayAccess
     const SOURCE_BUSINESS_CENTRAL = 'BusinessCentral';
     const SOURCE_PAYTRON = 'Paytron';
     const SOURCE_ACCESS_FINANCIALS = 'AccessFinancials';
+    const SOURCE_COMMA = 'Comma';
     const SOURCE_ZOHO = 'Zoho';
     const SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER = 'FlatFileEmployeeImporter';
     const SOURCE_TWINFIELD = 'Twinfield';
     const SOURCE_SAGE_ACCOUNTING = 'SageAccounting';
+    const SOURCE_SQUARE = 'Square';
+    const SOURCE_QUICKFILE = 'Quickfile';
+    const SOURCE_TIDE = 'Tide';
+    const SOURCE_TIDE_SSO = 'TideSso';
     const LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE = 'EmployeeStartDate';
     const LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE = 'SpecifiedDate';
+    const LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR = 'CalendarYear';
     
 
     
@@ -342,10 +348,15 @@ class AuLeaveAllowanceTemplateModel implements ModelInterface, ArrayAccess
             self::SOURCE_BUSINESS_CENTRAL,
             self::SOURCE_PAYTRON,
             self::SOURCE_ACCESS_FINANCIALS,
+            self::SOURCE_COMMA,
             self::SOURCE_ZOHO,
             self::SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER,
             self::SOURCE_TWINFIELD,
             self::SOURCE_SAGE_ACCOUNTING,
+            self::SOURCE_SQUARE,
+            self::SOURCE_QUICKFILE,
+            self::SOURCE_TIDE,
+            self::SOURCE_TIDE_SSO,
         ];
     }
     
@@ -359,6 +370,7 @@ class AuLeaveAllowanceTemplateModel implements ModelInterface, ArrayAccess
         return [
             self::LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR,
         ];
     }
     

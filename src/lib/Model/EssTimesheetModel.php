@@ -64,6 +64,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'work_duration_in_minutes' => 'int',
         'breaks_duration_in_minutes' => 'int',
         'total_duration_in_minutes' => 'int',
+        'auto_approved_by_roster_shift_id' => 'int',
         'employee_name' => 'string',
         'id' => 'int',
         'employee_id' => 'int',
@@ -118,6 +119,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'work_duration_in_minutes' => 'int32',
         'breaks_duration_in_minutes' => 'int32',
         'total_duration_in_minutes' => 'int32',
+        'auto_approved_by_roster_shift_id' => 'int32',
         'employee_name' => null,
         'id' => 'int32',
         'employee_id' => 'int32',
@@ -193,6 +195,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'work_duration_in_minutes' => 'workDurationInMinutes',
         'breaks_duration_in_minutes' => 'breaksDurationInMinutes',
         'total_duration_in_minutes' => 'totalDurationInMinutes',
+        'auto_approved_by_roster_shift_id' => 'autoApprovedByRosterShiftId',
         'employee_name' => 'employeeName',
         'id' => 'id',
         'employee_id' => 'employeeId',
@@ -247,6 +250,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'work_duration_in_minutes' => 'setWorkDurationInMinutes',
         'breaks_duration_in_minutes' => 'setBreaksDurationInMinutes',
         'total_duration_in_minutes' => 'setTotalDurationInMinutes',
+        'auto_approved_by_roster_shift_id' => 'setAutoApprovedByRosterShiftId',
         'employee_name' => 'setEmployeeName',
         'id' => 'setId',
         'employee_id' => 'setEmployeeId',
@@ -301,6 +305,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'work_duration_in_minutes' => 'getWorkDurationInMinutes',
         'breaks_duration_in_minutes' => 'getBreaksDurationInMinutes',
         'total_duration_in_minutes' => 'getTotalDurationInMinutes',
+        'auto_approved_by_roster_shift_id' => 'getAutoApprovedByRosterShiftId',
         'employee_name' => 'getEmployeeName',
         'id' => 'getId',
         'employee_id' => 'getEmployeeId',
@@ -449,10 +454,15 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
     const SOURCE_BUSINESS_CENTRAL = 'BusinessCentral';
     const SOURCE_PAYTRON = 'Paytron';
     const SOURCE_ACCESS_FINANCIALS = 'AccessFinancials';
+    const SOURCE_COMMA = 'Comma';
     const SOURCE_ZOHO = 'Zoho';
     const SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER = 'FlatFileEmployeeImporter';
     const SOURCE_TWINFIELD = 'Twinfield';
     const SOURCE_SAGE_ACCOUNTING = 'SageAccounting';
+    const SOURCE_SQUARE = 'Square';
+    const SOURCE_QUICKFILE = 'Quickfile';
+    const SOURCE_TIDE = 'Tide';
+    const SOURCE_TIDE_SSO = 'TideSso';
     
 
     
@@ -541,10 +551,15 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
             self::SOURCE_BUSINESS_CENTRAL,
             self::SOURCE_PAYTRON,
             self::SOURCE_ACCESS_FINANCIALS,
+            self::SOURCE_COMMA,
             self::SOURCE_ZOHO,
             self::SOURCE_FLAT_FILE_EMPLOYEE_IMPORTER,
             self::SOURCE_TWINFIELD,
             self::SOURCE_SAGE_ACCOUNTING,
+            self::SOURCE_SQUARE,
+            self::SOURCE_QUICKFILE,
+            self::SOURCE_TIDE,
+            self::SOURCE_TIDE_SSO,
         ];
     }
     
@@ -571,6 +586,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         $this->container['work_duration_in_minutes'] = isset($data['work_duration_in_minutes']) ? $data['work_duration_in_minutes'] : null;
         $this->container['breaks_duration_in_minutes'] = isset($data['breaks_duration_in_minutes']) ? $data['breaks_duration_in_minutes'] : null;
         $this->container['total_duration_in_minutes'] = isset($data['total_duration_in_minutes']) ? $data['total_duration_in_minutes'] : null;
+        $this->container['auto_approved_by_roster_shift_id'] = isset($data['auto_approved_by_roster_shift_id']) ? $data['auto_approved_by_roster_shift_id'] : null;
         $this->container['employee_name'] = isset($data['employee_name']) ? $data['employee_name'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['employee_id'] = isset($data['employee_id']) ? $data['employee_id'] : null;
@@ -816,6 +832,30 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
     public function setTotalDurationInMinutes($total_duration_in_minutes)
     {
         $this->container['total_duration_in_minutes'] = $total_duration_in_minutes;
+
+        return $this;
+    }
+
+    /**
+     * Gets auto_approved_by_roster_shift_id
+     *
+     * @return int
+     */
+    public function getAutoApprovedByRosterShiftId()
+    {
+        return $this->container['auto_approved_by_roster_shift_id'];
+    }
+
+    /**
+     * Sets auto_approved_by_roster_shift_id
+     *
+     * @param int $auto_approved_by_roster_shift_id 
+     *
+     * @return $this
+     */
+    public function setAutoApprovedByRosterShiftId($auto_approved_by_roster_shift_id)
+    {
+        $this->container['auto_approved_by_roster_shift_id'] = $auto_approved_by_roster_shift_id;
 
         return $this;
     }
