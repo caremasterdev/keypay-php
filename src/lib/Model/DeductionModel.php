@@ -63,6 +63,7 @@ class DeductionModel implements ModelInterface, ArrayAccess
         'notes' => 'string',
         'payment_reference' => 'string',
         'note' => 'string',
+        'associated_employee_deduction_category_id' => 'int',
         'pay_to_bank_account_bsb' => 'string',
         'pay_to_bank_account_swift' => 'string',
         'pay_to_bank_account_bank_code' => 'string',
@@ -92,6 +93,7 @@ class DeductionModel implements ModelInterface, ArrayAccess
         'notes' => null,
         'payment_reference' => null,
         'note' => null,
+        'associated_employee_deduction_category_id' => 'int32',
         'pay_to_bank_account_bsb' => null,
         'pay_to_bank_account_swift' => null,
         'pay_to_bank_account_bank_code' => null,
@@ -142,6 +144,7 @@ class DeductionModel implements ModelInterface, ArrayAccess
         'notes' => 'notes',
         'payment_reference' => 'paymentReference',
         'note' => 'note',
+        'associated_employee_deduction_category_id' => 'associatedEmployeeDeductionCategoryId',
         'pay_to_bank_account_bsb' => 'payToBankAccountBSB',
         'pay_to_bank_account_swift' => 'payToBankAccountSwift',
         'pay_to_bank_account_bank_code' => 'payToBankAccountBankCode',
@@ -171,6 +174,7 @@ class DeductionModel implements ModelInterface, ArrayAccess
         'notes' => 'setNotes',
         'payment_reference' => 'setPaymentReference',
         'note' => 'setNote',
+        'associated_employee_deduction_category_id' => 'setAssociatedEmployeeDeductionCategoryId',
         'pay_to_bank_account_bsb' => 'setPayToBankAccountBsb',
         'pay_to_bank_account_swift' => 'setPayToBankAccountSwift',
         'pay_to_bank_account_bank_code' => 'setPayToBankAccountBankCode',
@@ -200,6 +204,7 @@ class DeductionModel implements ModelInterface, ArrayAccess
         'notes' => 'getNotes',
         'payment_reference' => 'getPaymentReference',
         'note' => 'getNote',
+        'associated_employee_deduction_category_id' => 'getAssociatedEmployeeDeductionCategoryId',
         'pay_to_bank_account_bsb' => 'getPayToBankAccountBsb',
         'pay_to_bank_account_swift' => 'getPayToBankAccountSwift',
         'pay_to_bank_account_bank_code' => 'getPayToBankAccountBankCode',
@@ -283,6 +288,7 @@ class DeductionModel implements ModelInterface, ArrayAccess
         $this->container['notes'] = isset($data['notes']) ? $data['notes'] : null;
         $this->container['payment_reference'] = isset($data['payment_reference']) ? $data['payment_reference'] : null;
         $this->container['note'] = isset($data['note']) ? $data['note'] : null;
+        $this->container['associated_employee_deduction_category_id'] = isset($data['associated_employee_deduction_category_id']) ? $data['associated_employee_deduction_category_id'] : null;
         $this->container['pay_to_bank_account_bsb'] = isset($data['pay_to_bank_account_bsb']) ? $data['pay_to_bank_account_bsb'] : null;
         $this->container['pay_to_bank_account_swift'] = isset($data['pay_to_bank_account_swift']) ? $data['pay_to_bank_account_swift'] : null;
         $this->container['pay_to_bank_account_bank_code'] = isset($data['pay_to_bank_account_bank_code']) ? $data['pay_to_bank_account_bank_code'] : null;
@@ -464,6 +470,30 @@ class DeductionModel implements ModelInterface, ArrayAccess
     public function setNote($note)
     {
         $this->container['note'] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Gets associated_employee_deduction_category_id
+     *
+     * @return int
+     */
+    public function getAssociatedEmployeeDeductionCategoryId()
+    {
+        return $this->container['associated_employee_deduction_category_id'];
+    }
+
+    /**
+     * Sets associated_employee_deduction_category_id
+     *
+     * @param int $associated_employee_deduction_category_id 
+     *
+     * @return $this
+     */
+    public function setAssociatedEmployeeDeductionCategoryId($associated_employee_deduction_category_id)
+    {
+        $this->container['associated_employee_deduction_category_id'] = $associated_employee_deduction_category_id;
 
         return $this;
     }

@@ -95,6 +95,7 @@ class ReportingApi
      * @param  string $business_id business_id (required)
      * @param  bool $request_show_zero_pay_categories  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -104,9 +105,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuCostingReportApiModel[]
      */
-    public function auReportsCostingGet($business_id, $request_show_zero_pay_categories = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsCostingGet($business_id, $request_show_zero_pay_categories = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        list($response) = $this->auReportsCostingGetWithHttpInfo($business_id, $request_show_zero_pay_categories, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        list($response) = $this->auReportsCostingGetWithHttpInfo($business_id, $request_show_zero_pay_categories, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
         return $response;
     }
 
@@ -118,6 +119,7 @@ class ReportingApi
      * @param  string $business_id (required)
      * @param  bool $request_show_zero_pay_categories  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -127,10 +129,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuCostingReportApiModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auReportsCostingGetWithHttpInfo($business_id, $request_show_zero_pay_categories = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsCostingGetWithHttpInfo($business_id, $request_show_zero_pay_categories = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\AuCostingReportApiModel[]';
-        $request = $this->auReportsCostingGetRequest($business_id, $request_show_zero_pay_categories, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsCostingGetRequest($business_id, $request_show_zero_pay_categories, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -199,6 +201,7 @@ class ReportingApi
      * @param  string $business_id (required)
      * @param  bool $request_show_zero_pay_categories  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -207,9 +210,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsCostingGetAsync($business_id, $request_show_zero_pay_categories = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsCostingGetAsync($business_id, $request_show_zero_pay_categories = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        return $this->auReportsCostingGetAsyncWithHttpInfo($business_id, $request_show_zero_pay_categories, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
+        return $this->auReportsCostingGetAsyncWithHttpInfo($business_id, $request_show_zero_pay_categories, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -225,6 +228,7 @@ class ReportingApi
      * @param  string $business_id (required)
      * @param  bool $request_show_zero_pay_categories  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -233,10 +237,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsCostingGetAsyncWithHttpInfo($business_id, $request_show_zero_pay_categories = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsCostingGetAsyncWithHttpInfo($business_id, $request_show_zero_pay_categories = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\AuCostingReportApiModel[]';
-        $request = $this->auReportsCostingGetRequest($business_id, $request_show_zero_pay_categories, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsCostingGetRequest($business_id, $request_show_zero_pay_categories, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -281,6 +285,7 @@ class ReportingApi
      * @param  string $business_id (required)
      * @param  bool $request_show_zero_pay_categories  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -289,7 +294,7 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auReportsCostingGetRequest($business_id, $request_show_zero_pay_categories = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    protected function auReportsCostingGetRequest($business_id, $request_show_zero_pay_categories = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -312,6 +317,10 @@ class ReportingApi
         // query params
         if ($request_pay_schedule_id !== null) {
             $queryParams['request.payScheduleId'] = ObjectSerializer::toQueryValue($request_pay_schedule_id);
+        }
+        // query params
+        if ($request_include_post_tax_deductions !== null) {
+            $queryParams['request.includePostTaxDeductions'] = ObjectSerializer::toQueryValue($request_include_post_tax_deductions);
         }
         // query params
         if ($request_from_date !== null) {
@@ -422,6 +431,7 @@ class ReportingApi
      *
      * @param  string $business_id business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -431,9 +441,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuDetailedActivityReportExportModel[]
      */
-    public function auReportsDetailedActivityGet($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsDetailedActivityGet($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        list($response) = $this->auReportsDetailedActivityGetWithHttpInfo($business_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        list($response) = $this->auReportsDetailedActivityGetWithHttpInfo($business_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
         return $response;
     }
 
@@ -444,6 +454,7 @@ class ReportingApi
      *
      * @param  string $business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -453,10 +464,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuDetailedActivityReportExportModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auReportsDetailedActivityGetWithHttpInfo($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsDetailedActivityGetWithHttpInfo($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\AuDetailedActivityReportExportModel[]';
-        $request = $this->auReportsDetailedActivityGetRequest($business_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsDetailedActivityGetRequest($business_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -524,6 +535,7 @@ class ReportingApi
      *
      * @param  string $business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -532,9 +544,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsDetailedActivityGetAsync($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsDetailedActivityGetAsync($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        return $this->auReportsDetailedActivityGetAsyncWithHttpInfo($business_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
+        return $this->auReportsDetailedActivityGetAsyncWithHttpInfo($business_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -549,6 +561,7 @@ class ReportingApi
      *
      * @param  string $business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -557,10 +570,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsDetailedActivityGetAsyncWithHttpInfo($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsDetailedActivityGetAsyncWithHttpInfo($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\AuDetailedActivityReportExportModel[]';
-        $request = $this->auReportsDetailedActivityGetRequest($business_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsDetailedActivityGetRequest($business_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -604,6 +617,7 @@ class ReportingApi
      *
      * @param  string $business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -612,7 +626,7 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auReportsDetailedActivityGetRequest($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    protected function auReportsDetailedActivityGetRequest($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -631,6 +645,10 @@ class ReportingApi
         // query params
         if ($request_pay_schedule_id !== null) {
             $queryParams['request.payScheduleId'] = ObjectSerializer::toQueryValue($request_pay_schedule_id);
+        }
+        // query params
+        if ($request_include_post_tax_deductions !== null) {
+            $queryParams['request.includePostTaxDeductions'] = ObjectSerializer::toQueryValue($request_include_post_tax_deductions);
         }
         // query params
         if ($request_from_date !== null) {
@@ -1336,6 +1354,7 @@ class ReportingApi
      * @param  int $request_employee_id  (optional)
      * @param  int[] $request_pay_category_ids  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -1345,9 +1364,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuGrossToNetResponseModel[]
      */
-    public function auReportsGrossToNetGet($business_id, $request_employee_id = null, $request_pay_category_ids = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsGrossToNetGet($business_id, $request_employee_id = null, $request_pay_category_ids = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        list($response) = $this->auReportsGrossToNetGetWithHttpInfo($business_id, $request_employee_id, $request_pay_category_ids, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        list($response) = $this->auReportsGrossToNetGetWithHttpInfo($business_id, $request_employee_id, $request_pay_category_ids, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
         return $response;
     }
 
@@ -1360,6 +1379,7 @@ class ReportingApi
      * @param  int $request_employee_id  (optional)
      * @param  int[] $request_pay_category_ids  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -1369,10 +1389,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuGrossToNetResponseModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auReportsGrossToNetGetWithHttpInfo($business_id, $request_employee_id = null, $request_pay_category_ids = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsGrossToNetGetWithHttpInfo($business_id, $request_employee_id = null, $request_pay_category_ids = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\AuGrossToNetResponseModel[]';
-        $request = $this->auReportsGrossToNetGetRequest($business_id, $request_employee_id, $request_pay_category_ids, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsGrossToNetGetRequest($business_id, $request_employee_id, $request_pay_category_ids, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1442,6 +1462,7 @@ class ReportingApi
      * @param  int $request_employee_id  (optional)
      * @param  int[] $request_pay_category_ids  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -1450,9 +1471,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsGrossToNetGetAsync($business_id, $request_employee_id = null, $request_pay_category_ids = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsGrossToNetGetAsync($business_id, $request_employee_id = null, $request_pay_category_ids = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        return $this->auReportsGrossToNetGetAsyncWithHttpInfo($business_id, $request_employee_id, $request_pay_category_ids, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
+        return $this->auReportsGrossToNetGetAsyncWithHttpInfo($business_id, $request_employee_id, $request_pay_category_ids, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1469,6 +1490,7 @@ class ReportingApi
      * @param  int $request_employee_id  (optional)
      * @param  int[] $request_pay_category_ids  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -1477,10 +1499,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsGrossToNetGetAsyncWithHttpInfo($business_id, $request_employee_id = null, $request_pay_category_ids = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsGrossToNetGetAsyncWithHttpInfo($business_id, $request_employee_id = null, $request_pay_category_ids = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\AuGrossToNetResponseModel[]';
-        $request = $this->auReportsGrossToNetGetRequest($business_id, $request_employee_id, $request_pay_category_ids, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsGrossToNetGetRequest($business_id, $request_employee_id, $request_pay_category_ids, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1526,6 +1548,7 @@ class ReportingApi
      * @param  int $request_employee_id  (optional)
      * @param  int[] $request_pay_category_ids  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -1534,7 +1557,7 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auReportsGrossToNetGetRequest($business_id, $request_employee_id = null, $request_pay_category_ids = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    protected function auReportsGrossToNetGetRequest($business_id, $request_employee_id = null, $request_pay_category_ids = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -1564,6 +1587,10 @@ class ReportingApi
         // query params
         if ($request_pay_schedule_id !== null) {
             $queryParams['request.payScheduleId'] = ObjectSerializer::toQueryValue($request_pay_schedule_id);
+        }
+        // query params
+        if ($request_include_post_tax_deductions !== null) {
+            $queryParams['request.includePostTaxDeductions'] = ObjectSerializer::toQueryValue($request_include_post_tax_deductions);
         }
         // query params
         if ($request_from_date !== null) {
@@ -4586,6 +4613,7 @@ class ReportingApi
      * @param  int $request_timesheet_location_id  (optional)
      * @param  string[] $request_roster_statuses  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -4595,9 +4623,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuRosterTimesheetComparisonReportExportModel[]
      */
-    public function auReportsRosterTimesheetComparisonGet($business_id, $request_employment_type_id = null, $request_employee_id = null, $request_include_costs = null, $request_timesheet_statuses = null, $request_work_type_id = null, $request_roster_location_id = null, $request_timesheet_location_id = null, $request_roster_statuses = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsRosterTimesheetComparisonGet($business_id, $request_employment_type_id = null, $request_employee_id = null, $request_include_costs = null, $request_timesheet_statuses = null, $request_work_type_id = null, $request_roster_location_id = null, $request_timesheet_location_id = null, $request_roster_statuses = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        list($response) = $this->auReportsRosterTimesheetComparisonGetWithHttpInfo($business_id, $request_employment_type_id, $request_employee_id, $request_include_costs, $request_timesheet_statuses, $request_work_type_id, $request_roster_location_id, $request_timesheet_location_id, $request_roster_statuses, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        list($response) = $this->auReportsRosterTimesheetComparisonGetWithHttpInfo($business_id, $request_employment_type_id, $request_employee_id, $request_include_costs, $request_timesheet_statuses, $request_work_type_id, $request_roster_location_id, $request_timesheet_location_id, $request_roster_statuses, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
         return $response;
     }
 
@@ -4616,6 +4644,7 @@ class ReportingApi
      * @param  int $request_timesheet_location_id  (optional)
      * @param  string[] $request_roster_statuses  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -4625,10 +4654,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuRosterTimesheetComparisonReportExportModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auReportsRosterTimesheetComparisonGetWithHttpInfo($business_id, $request_employment_type_id = null, $request_employee_id = null, $request_include_costs = null, $request_timesheet_statuses = null, $request_work_type_id = null, $request_roster_location_id = null, $request_timesheet_location_id = null, $request_roster_statuses = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsRosterTimesheetComparisonGetWithHttpInfo($business_id, $request_employment_type_id = null, $request_employee_id = null, $request_include_costs = null, $request_timesheet_statuses = null, $request_work_type_id = null, $request_roster_location_id = null, $request_timesheet_location_id = null, $request_roster_statuses = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\AuRosterTimesheetComparisonReportExportModel[]';
-        $request = $this->auReportsRosterTimesheetComparisonGetRequest($business_id, $request_employment_type_id, $request_employee_id, $request_include_costs, $request_timesheet_statuses, $request_work_type_id, $request_roster_location_id, $request_timesheet_location_id, $request_roster_statuses, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsRosterTimesheetComparisonGetRequest($business_id, $request_employment_type_id, $request_employee_id, $request_include_costs, $request_timesheet_statuses, $request_work_type_id, $request_roster_location_id, $request_timesheet_location_id, $request_roster_statuses, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4704,6 +4733,7 @@ class ReportingApi
      * @param  int $request_timesheet_location_id  (optional)
      * @param  string[] $request_roster_statuses  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -4712,9 +4742,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsRosterTimesheetComparisonGetAsync($business_id, $request_employment_type_id = null, $request_employee_id = null, $request_include_costs = null, $request_timesheet_statuses = null, $request_work_type_id = null, $request_roster_location_id = null, $request_timesheet_location_id = null, $request_roster_statuses = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsRosterTimesheetComparisonGetAsync($business_id, $request_employment_type_id = null, $request_employee_id = null, $request_include_costs = null, $request_timesheet_statuses = null, $request_work_type_id = null, $request_roster_location_id = null, $request_timesheet_location_id = null, $request_roster_statuses = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        return $this->auReportsRosterTimesheetComparisonGetAsyncWithHttpInfo($business_id, $request_employment_type_id, $request_employee_id, $request_include_costs, $request_timesheet_statuses, $request_work_type_id, $request_roster_location_id, $request_timesheet_location_id, $request_roster_statuses, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
+        return $this->auReportsRosterTimesheetComparisonGetAsyncWithHttpInfo($business_id, $request_employment_type_id, $request_employee_id, $request_include_costs, $request_timesheet_statuses, $request_work_type_id, $request_roster_location_id, $request_timesheet_location_id, $request_roster_statuses, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4737,6 +4767,7 @@ class ReportingApi
      * @param  int $request_timesheet_location_id  (optional)
      * @param  string[] $request_roster_statuses  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -4745,10 +4776,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsRosterTimesheetComparisonGetAsyncWithHttpInfo($business_id, $request_employment_type_id = null, $request_employee_id = null, $request_include_costs = null, $request_timesheet_statuses = null, $request_work_type_id = null, $request_roster_location_id = null, $request_timesheet_location_id = null, $request_roster_statuses = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsRosterTimesheetComparisonGetAsyncWithHttpInfo($business_id, $request_employment_type_id = null, $request_employee_id = null, $request_include_costs = null, $request_timesheet_statuses = null, $request_work_type_id = null, $request_roster_location_id = null, $request_timesheet_location_id = null, $request_roster_statuses = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\AuRosterTimesheetComparisonReportExportModel[]';
-        $request = $this->auReportsRosterTimesheetComparisonGetRequest($business_id, $request_employment_type_id, $request_employee_id, $request_include_costs, $request_timesheet_statuses, $request_work_type_id, $request_roster_location_id, $request_timesheet_location_id, $request_roster_statuses, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsRosterTimesheetComparisonGetRequest($business_id, $request_employment_type_id, $request_employee_id, $request_include_costs, $request_timesheet_statuses, $request_work_type_id, $request_roster_location_id, $request_timesheet_location_id, $request_roster_statuses, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4800,6 +4831,7 @@ class ReportingApi
      * @param  int $request_timesheet_location_id  (optional)
      * @param  string[] $request_roster_statuses  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -4808,7 +4840,7 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auReportsRosterTimesheetComparisonGetRequest($business_id, $request_employment_type_id = null, $request_employee_id = null, $request_include_costs = null, $request_timesheet_statuses = null, $request_work_type_id = null, $request_roster_location_id = null, $request_timesheet_location_id = null, $request_roster_statuses = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    protected function auReportsRosterTimesheetComparisonGetRequest($business_id, $request_employment_type_id = null, $request_employee_id = null, $request_include_costs = null, $request_timesheet_statuses = null, $request_work_type_id = null, $request_roster_location_id = null, $request_timesheet_location_id = null, $request_roster_statuses = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -4865,6 +4897,10 @@ class ReportingApi
         // query params
         if ($request_pay_schedule_id !== null) {
             $queryParams['request.payScheduleId'] = ObjectSerializer::toQueryValue($request_pay_schedule_id);
+        }
+        // query params
+        if ($request_include_post_tax_deductions !== null) {
+            $queryParams['request.includePostTaxDeductions'] = ObjectSerializer::toQueryValue($request_include_post_tax_deductions);
         }
         // query params
         if ($request_from_date !== null) {
@@ -4975,6 +5011,7 @@ class ReportingApi
      *
      * @param  string $business_id business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -4984,9 +5021,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\SuperAccrualExportModel[]
      */
-    public function auReportsSuperContributionsByEmployee($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsSuperContributionsByEmployee($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        list($response) = $this->auReportsSuperContributionsByEmployeeWithHttpInfo($business_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        list($response) = $this->auReportsSuperContributionsByEmployeeWithHttpInfo($business_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
         return $response;
     }
 
@@ -4997,6 +5034,7 @@ class ReportingApi
      *
      * @param  string $business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5006,10 +5044,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\SuperAccrualExportModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auReportsSuperContributionsByEmployeeWithHttpInfo($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsSuperContributionsByEmployeeWithHttpInfo($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\SuperAccrualExportModel[]';
-        $request = $this->auReportsSuperContributionsByEmployeeRequest($business_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsSuperContributionsByEmployeeRequest($business_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5077,6 +5115,7 @@ class ReportingApi
      *
      * @param  string $business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5085,9 +5124,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsSuperContributionsByEmployeeAsync($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsSuperContributionsByEmployeeAsync($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        return $this->auReportsSuperContributionsByEmployeeAsyncWithHttpInfo($business_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
+        return $this->auReportsSuperContributionsByEmployeeAsyncWithHttpInfo($business_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5102,6 +5141,7 @@ class ReportingApi
      *
      * @param  string $business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5110,10 +5150,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsSuperContributionsByEmployeeAsyncWithHttpInfo($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsSuperContributionsByEmployeeAsyncWithHttpInfo($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\SuperAccrualExportModel[]';
-        $request = $this->auReportsSuperContributionsByEmployeeRequest($business_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsSuperContributionsByEmployeeRequest($business_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5157,6 +5197,7 @@ class ReportingApi
      *
      * @param  string $business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5165,7 +5206,7 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auReportsSuperContributionsByEmployeeRequest($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    protected function auReportsSuperContributionsByEmployeeRequest($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -5184,6 +5225,10 @@ class ReportingApi
         // query params
         if ($request_pay_schedule_id !== null) {
             $queryParams['request.payScheduleId'] = ObjectSerializer::toQueryValue($request_pay_schedule_id);
+        }
+        // query params
+        if ($request_include_post_tax_deductions !== null) {
+            $queryParams['request.includePostTaxDeductions'] = ObjectSerializer::toQueryValue($request_include_post_tax_deductions);
         }
         // query params
         if ($request_from_date !== null) {
@@ -5294,6 +5339,7 @@ class ReportingApi
      *
      * @param  string $business_id business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5303,9 +5349,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\SuperContributionsReportExportModel[]
      */
-    public function auReportsSuperContributionsBySuperFund($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsSuperContributionsBySuperFund($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        list($response) = $this->auReportsSuperContributionsBySuperFundWithHttpInfo($business_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        list($response) = $this->auReportsSuperContributionsBySuperFundWithHttpInfo($business_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
         return $response;
     }
 
@@ -5316,6 +5362,7 @@ class ReportingApi
      *
      * @param  string $business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5325,10 +5372,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\SuperContributionsReportExportModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auReportsSuperContributionsBySuperFundWithHttpInfo($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsSuperContributionsBySuperFundWithHttpInfo($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\SuperContributionsReportExportModel[]';
-        $request = $this->auReportsSuperContributionsBySuperFundRequest($business_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsSuperContributionsBySuperFundRequest($business_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5396,6 +5443,7 @@ class ReportingApi
      *
      * @param  string $business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5404,9 +5452,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsSuperContributionsBySuperFundAsync($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsSuperContributionsBySuperFundAsync($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        return $this->auReportsSuperContributionsBySuperFundAsyncWithHttpInfo($business_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
+        return $this->auReportsSuperContributionsBySuperFundAsyncWithHttpInfo($business_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5421,6 +5469,7 @@ class ReportingApi
      *
      * @param  string $business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5429,10 +5478,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsSuperContributionsBySuperFundAsyncWithHttpInfo($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsSuperContributionsBySuperFundAsyncWithHttpInfo($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\SuperContributionsReportExportModel[]';
-        $request = $this->auReportsSuperContributionsBySuperFundRequest($business_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsSuperContributionsBySuperFundRequest($business_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5476,6 +5525,7 @@ class ReportingApi
      *
      * @param  string $business_id (required)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5484,7 +5534,7 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auReportsSuperContributionsBySuperFundRequest($business_id, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    protected function auReportsSuperContributionsBySuperFundRequest($business_id, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -5503,6 +5553,10 @@ class ReportingApi
         // query params
         if ($request_pay_schedule_id !== null) {
             $queryParams['request.payScheduleId'] = ObjectSerializer::toQueryValue($request_pay_schedule_id);
+        }
+        // query params
+        if ($request_include_post_tax_deductions !== null) {
+            $queryParams['request.includePostTaxDeductions'] = ObjectSerializer::toQueryValue($request_include_post_tax_deductions);
         }
         // query params
         if ($request_from_date !== null) {
@@ -5617,6 +5671,7 @@ class ReportingApi
      * @param  string[] $request_statuses  (optional)
      * @param  int $request_work_type_id  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5626,9 +5681,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuTimesheetExportModel[]
      */
-    public function auReportsTimesheetGet($business_id, $request_employee_id = null, $request_include_costs = null, $request_statuses = null, $request_work_type_id = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsTimesheetGet($business_id, $request_employee_id = null, $request_include_costs = null, $request_statuses = null, $request_work_type_id = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        list($response) = $this->auReportsTimesheetGetWithHttpInfo($business_id, $request_employee_id, $request_include_costs, $request_statuses, $request_work_type_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        list($response) = $this->auReportsTimesheetGetWithHttpInfo($business_id, $request_employee_id, $request_include_costs, $request_statuses, $request_work_type_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
         return $response;
     }
 
@@ -5643,6 +5698,7 @@ class ReportingApi
      * @param  string[] $request_statuses  (optional)
      * @param  int $request_work_type_id  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5652,10 +5708,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuTimesheetExportModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auReportsTimesheetGetWithHttpInfo($business_id, $request_employee_id = null, $request_include_costs = null, $request_statuses = null, $request_work_type_id = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsTimesheetGetWithHttpInfo($business_id, $request_employee_id = null, $request_include_costs = null, $request_statuses = null, $request_work_type_id = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\AuTimesheetExportModel[]';
-        $request = $this->auReportsTimesheetGetRequest($business_id, $request_employee_id, $request_include_costs, $request_statuses, $request_work_type_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsTimesheetGetRequest($business_id, $request_employee_id, $request_include_costs, $request_statuses, $request_work_type_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5727,6 +5783,7 @@ class ReportingApi
      * @param  string[] $request_statuses  (optional)
      * @param  int $request_work_type_id  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5735,9 +5792,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsTimesheetGetAsync($business_id, $request_employee_id = null, $request_include_costs = null, $request_statuses = null, $request_work_type_id = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsTimesheetGetAsync($business_id, $request_employee_id = null, $request_include_costs = null, $request_statuses = null, $request_work_type_id = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        return $this->auReportsTimesheetGetAsyncWithHttpInfo($business_id, $request_employee_id, $request_include_costs, $request_statuses, $request_work_type_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
+        return $this->auReportsTimesheetGetAsyncWithHttpInfo($business_id, $request_employee_id, $request_include_costs, $request_statuses, $request_work_type_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5756,6 +5813,7 @@ class ReportingApi
      * @param  string[] $request_statuses  (optional)
      * @param  int $request_work_type_id  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5764,10 +5822,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auReportsTimesheetGetAsyncWithHttpInfo($business_id, $request_employee_id = null, $request_include_costs = null, $request_statuses = null, $request_work_type_id = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function auReportsTimesheetGetAsyncWithHttpInfo($business_id, $request_employee_id = null, $request_include_costs = null, $request_statuses = null, $request_work_type_id = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\AuTimesheetExportModel[]';
-        $request = $this->auReportsTimesheetGetRequest($business_id, $request_employee_id, $request_include_costs, $request_statuses, $request_work_type_id, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->auReportsTimesheetGetRequest($business_id, $request_employee_id, $request_include_costs, $request_statuses, $request_work_type_id, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5815,6 +5873,7 @@ class ReportingApi
      * @param  string[] $request_statuses  (optional)
      * @param  int $request_work_type_id  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -5823,7 +5882,7 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auReportsTimesheetGetRequest($business_id, $request_employee_id = null, $request_include_costs = null, $request_statuses = null, $request_work_type_id = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    protected function auReportsTimesheetGetRequest($business_id, $request_employee_id = null, $request_include_costs = null, $request_statuses = null, $request_work_type_id = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -5861,6 +5920,10 @@ class ReportingApi
         // query params
         if ($request_pay_schedule_id !== null) {
             $queryParams['request.payScheduleId'] = ObjectSerializer::toQueryValue($request_pay_schedule_id);
+        }
+        // query params
+        if ($request_include_post_tax_deductions !== null) {
+            $queryParams['request.includePostTaxDeductions'] = ObjectSerializer::toQueryValue($request_include_post_tax_deductions);
         }
         // query params
         if ($request_from_date !== null) {
@@ -6287,6 +6350,7 @@ class ReportingApi
      * @param  int $request_deduction_category_id  (optional)
      * @param  bool $request_disable_rollup_reporting  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -6296,9 +6360,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\DeductionsReportExportModel[]
      */
-    public function reportsDeductionsGet($business_id, $request_employee_id = null, $request_deduction_category_id = null, $request_disable_rollup_reporting = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function reportsDeductionsGet($business_id, $request_employee_id = null, $request_deduction_category_id = null, $request_disable_rollup_reporting = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        list($response) = $this->reportsDeductionsGetWithHttpInfo($business_id, $request_employee_id, $request_deduction_category_id, $request_disable_rollup_reporting, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        list($response) = $this->reportsDeductionsGetWithHttpInfo($business_id, $request_employee_id, $request_deduction_category_id, $request_disable_rollup_reporting, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
         return $response;
     }
 
@@ -6312,6 +6376,7 @@ class ReportingApi
      * @param  int $request_deduction_category_id  (optional)
      * @param  bool $request_disable_rollup_reporting  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -6321,10 +6386,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\DeductionsReportExportModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function reportsDeductionsGetWithHttpInfo($business_id, $request_employee_id = null, $request_deduction_category_id = null, $request_disable_rollup_reporting = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function reportsDeductionsGetWithHttpInfo($business_id, $request_employee_id = null, $request_deduction_category_id = null, $request_disable_rollup_reporting = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\DeductionsReportExportModel[]';
-        $request = $this->reportsDeductionsGetRequest($business_id, $request_employee_id, $request_deduction_category_id, $request_disable_rollup_reporting, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->reportsDeductionsGetRequest($business_id, $request_employee_id, $request_deduction_category_id, $request_disable_rollup_reporting, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6395,6 +6460,7 @@ class ReportingApi
      * @param  int $request_deduction_category_id  (optional)
      * @param  bool $request_disable_rollup_reporting  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -6403,9 +6469,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function reportsDeductionsGetAsync($business_id, $request_employee_id = null, $request_deduction_category_id = null, $request_disable_rollup_reporting = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function reportsDeductionsGetAsync($business_id, $request_employee_id = null, $request_deduction_category_id = null, $request_disable_rollup_reporting = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        return $this->reportsDeductionsGetAsyncWithHttpInfo($business_id, $request_employee_id, $request_deduction_category_id, $request_disable_rollup_reporting, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
+        return $this->reportsDeductionsGetAsyncWithHttpInfo($business_id, $request_employee_id, $request_deduction_category_id, $request_disable_rollup_reporting, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6423,6 +6489,7 @@ class ReportingApi
      * @param  int $request_deduction_category_id  (optional)
      * @param  bool $request_disable_rollup_reporting  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -6431,10 +6498,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function reportsDeductionsGetAsyncWithHttpInfo($business_id, $request_employee_id = null, $request_deduction_category_id = null, $request_disable_rollup_reporting = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function reportsDeductionsGetAsyncWithHttpInfo($business_id, $request_employee_id = null, $request_deduction_category_id = null, $request_disable_rollup_reporting = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\DeductionsReportExportModel[]';
-        $request = $this->reportsDeductionsGetRequest($business_id, $request_employee_id, $request_deduction_category_id, $request_disable_rollup_reporting, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->reportsDeductionsGetRequest($business_id, $request_employee_id, $request_deduction_category_id, $request_disable_rollup_reporting, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6481,6 +6548,7 @@ class ReportingApi
      * @param  int $request_deduction_category_id  (optional)
      * @param  bool $request_disable_rollup_reporting  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -6489,7 +6557,7 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function reportsDeductionsGetRequest($business_id, $request_employee_id = null, $request_deduction_category_id = null, $request_disable_rollup_reporting = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    protected function reportsDeductionsGetRequest($business_id, $request_employee_id = null, $request_deduction_category_id = null, $request_disable_rollup_reporting = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -6520,6 +6588,10 @@ class ReportingApi
         // query params
         if ($request_pay_schedule_id !== null) {
             $queryParams['request.payScheduleId'] = ObjectSerializer::toQueryValue($request_pay_schedule_id);
+        }
+        // query params
+        if ($request_include_post_tax_deductions !== null) {
+            $queryParams['request.includePostTaxDeductions'] = ObjectSerializer::toQueryValue($request_include_post_tax_deductions);
         }
         // query params
         if ($request_from_date !== null) {
@@ -6954,6 +7026,7 @@ class ReportingApi
      * @param  int $request_employee_id  (optional)
      * @param  string $request_section  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -6963,9 +7036,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\EmployeeDetailsAuditReportApiModel[]
      */
-    public function reportsEmployeeAuditGet($business_id, $request_employee_id = null, $request_section = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function reportsEmployeeAuditGet($business_id, $request_employee_id = null, $request_section = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        list($response) = $this->reportsEmployeeAuditGetWithHttpInfo($business_id, $request_employee_id, $request_section, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        list($response) = $this->reportsEmployeeAuditGetWithHttpInfo($business_id, $request_employee_id, $request_section, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
         return $response;
     }
 
@@ -6978,6 +7051,7 @@ class ReportingApi
      * @param  int $request_employee_id  (optional)
      * @param  string $request_section  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -6987,10 +7061,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\EmployeeDetailsAuditReportApiModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function reportsEmployeeAuditGetWithHttpInfo($business_id, $request_employee_id = null, $request_section = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function reportsEmployeeAuditGetWithHttpInfo($business_id, $request_employee_id = null, $request_section = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\EmployeeDetailsAuditReportApiModel[]';
-        $request = $this->reportsEmployeeAuditGetRequest($business_id, $request_employee_id, $request_section, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->reportsEmployeeAuditGetRequest($business_id, $request_employee_id, $request_section, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7060,6 +7134,7 @@ class ReportingApi
      * @param  int $request_employee_id  (optional)
      * @param  string $request_section  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -7068,9 +7143,9 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function reportsEmployeeAuditGetAsync($business_id, $request_employee_id = null, $request_section = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function reportsEmployeeAuditGetAsync($business_id, $request_employee_id = null, $request_section = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
-        return $this->reportsEmployeeAuditGetAsyncWithHttpInfo($business_id, $request_employee_id, $request_section, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
+        return $this->reportsEmployeeAuditGetAsyncWithHttpInfo($business_id, $request_employee_id, $request_section, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7087,6 +7162,7 @@ class ReportingApi
      * @param  int $request_employee_id  (optional)
      * @param  string $request_section  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -7095,10 +7171,10 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function reportsEmployeeAuditGetAsyncWithHttpInfo($business_id, $request_employee_id = null, $request_section = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    public function reportsEmployeeAuditGetAsyncWithHttpInfo($business_id, $request_employee_id = null, $request_section = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         $returnType = '\Swagger\Client\Model\EmployeeDetailsAuditReportApiModel[]';
-        $request = $this->reportsEmployeeAuditGetRequest($business_id, $request_employee_id, $request_section, $request_pay_schedule_id, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
+        $request = $this->reportsEmployeeAuditGetRequest($business_id, $request_employee_id, $request_section, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7144,6 +7220,7 @@ class ReportingApi
      * @param  int $request_employee_id  (optional)
      * @param  string $request_section  (optional)
      * @param  int $request_pay_schedule_id  (optional)
+     * @param  bool $request_include_post_tax_deductions  (optional)
      * @param  \DateTime $request_from_date  (optional)
      * @param  \DateTime $request_to_date  (optional)
      * @param  int $request_location_id  (optional)
@@ -7152,7 +7229,7 @@ class ReportingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function reportsEmployeeAuditGetRequest($business_id, $request_employee_id = null, $request_section = null, $request_pay_schedule_id = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
+    protected function reportsEmployeeAuditGetRequest($business_id, $request_employee_id = null, $request_section = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -7179,6 +7256,10 @@ class ReportingApi
         // query params
         if ($request_pay_schedule_id !== null) {
             $queryParams['request.payScheduleId'] = ObjectSerializer::toQueryValue($request_pay_schedule_id);
+        }
+        // query params
+        if ($request_include_post_tax_deductions !== null) {
+            $queryParams['request.includePostTaxDeductions'] = ObjectSerializer::toQueryValue($request_include_post_tax_deductions);
         }
         // query params
         if ($request_from_date !== null) {

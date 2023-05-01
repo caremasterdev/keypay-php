@@ -130,7 +130,9 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'termination_description' => 'string',
         'termination_reasons' => '\Swagger\Client\Model\NumericSelectListItem[]',
         'has_sole_user' => 'bool',
-        'fields' => '\Swagger\Client\Model\EmployeeDetailsFields'
+        'fields' => '\Swagger\Client\Model\EmployeeDetailsFields',
+        'pending_email_update' => 'bool',
+        'new_email' => 'string'
     ];
 
     /**
@@ -211,7 +213,9 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'termination_description' => null,
         'termination_reasons' => null,
         'has_sole_user' => null,
-        'fields' => null
+        'fields' => null,
+        'pending_email_update' => null,
+        'new_email' => null
     ];
 
     /**
@@ -313,7 +317,9 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'termination_description' => 'terminationDescription',
         'termination_reasons' => 'terminationReasons',
         'has_sole_user' => 'hasSoleUser',
-        'fields' => 'fields'
+        'fields' => 'fields',
+        'pending_email_update' => 'pendingEmailUpdate',
+        'new_email' => 'newEmail'
     ];
 
     /**
@@ -394,7 +400,9 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'termination_description' => 'setTerminationDescription',
         'termination_reasons' => 'setTerminationReasons',
         'has_sole_user' => 'setHasSoleUser',
-        'fields' => 'setFields'
+        'fields' => 'setFields',
+        'pending_email_update' => 'setPendingEmailUpdate',
+        'new_email' => 'setNewEmail'
     ];
 
     /**
@@ -475,7 +483,9 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         'termination_description' => 'getTerminationDescription',
         'termination_reasons' => 'getTerminationReasons',
         'has_sole_user' => 'getHasSoleUser',
-        'fields' => 'getFields'
+        'fields' => 'getFields',
+        'pending_email_update' => 'getPendingEmailUpdate',
+        'new_email' => 'getNewEmail'
     ];
 
     /**
@@ -706,6 +716,8 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
         $this->container['termination_reasons'] = isset($data['termination_reasons']) ? $data['termination_reasons'] : null;
         $this->container['has_sole_user'] = isset($data['has_sole_user']) ? $data['has_sole_user'] : null;
         $this->container['fields'] = isset($data['fields']) ? $data['fields'] : null;
+        $this->container['pending_email_update'] = isset($data['pending_email_update']) ? $data['pending_email_update'] : null;
+        $this->container['new_email'] = isset($data['new_email']) ? $data['new_email'] : null;
     }
 
     /**
@@ -2565,6 +2577,54 @@ class EssEmployeeDetailsModel implements ModelInterface, ArrayAccess
     public function setFields($fields)
     {
         $this->container['fields'] = $fields;
+
+        return $this;
+    }
+
+    /**
+     * Gets pending_email_update
+     *
+     * @return bool
+     */
+    public function getPendingEmailUpdate()
+    {
+        return $this->container['pending_email_update'];
+    }
+
+    /**
+     * Sets pending_email_update
+     *
+     * @param bool $pending_email_update 
+     *
+     * @return $this
+     */
+    public function setPendingEmailUpdate($pending_email_update)
+    {
+        $this->container['pending_email_update'] = $pending_email_update;
+
+        return $this;
+    }
+
+    /**
+     * Gets new_email
+     *
+     * @return string
+     */
+    public function getNewEmail()
+    {
+        return $this->container['new_email'];
+    }
+
+    /**
+     * Sets new_email
+     *
+     * @param string $new_email 
+     *
+     * @return $this
+     */
+    public function setNewEmail($new_email)
+    {
+        $this->container['new_email'] = $new_email;
 
         return $this;
     }

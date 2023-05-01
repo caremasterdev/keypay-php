@@ -81,7 +81,8 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'is_name_private' => 'bool',
         'leave_unit_type' => 'string',
         'payout_as_etp' => 'bool',
-        'accrues_first_pay_run_per_period_only' => 'bool'
+        'accrues_first_pay_run_per_period_only' => 'bool',
+        'prevent_negative_balance_unpaid_leave_category_id' => 'int'
     ];
 
     /**
@@ -114,7 +115,8 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'is_name_private' => null,
         'leave_unit_type' => null,
         'payout_as_etp' => null,
-        'accrues_first_pay_run_per_period_only' => null
+        'accrues_first_pay_run_per_period_only' => null,
+        'prevent_negative_balance_unpaid_leave_category_id' => 'int32'
     ];
 
     /**
@@ -168,7 +170,8 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'is_name_private' => 'isNamePrivate',
         'leave_unit_type' => 'leaveUnitType',
         'payout_as_etp' => 'payoutAsETP',
-        'accrues_first_pay_run_per_period_only' => 'accruesFirstPayRunPerPeriodOnly'
+        'accrues_first_pay_run_per_period_only' => 'accruesFirstPayRunPerPeriodOnly',
+        'prevent_negative_balance_unpaid_leave_category_id' => 'preventNegativeBalanceUnpaidLeaveCategoryId'
     ];
 
     /**
@@ -201,7 +204,8 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'is_name_private' => 'setIsNamePrivate',
         'leave_unit_type' => 'setLeaveUnitType',
         'payout_as_etp' => 'setPayoutAsEtp',
-        'accrues_first_pay_run_per_period_only' => 'setAccruesFirstPayRunPerPeriodOnly'
+        'accrues_first_pay_run_per_period_only' => 'setAccruesFirstPayRunPerPeriodOnly',
+        'prevent_negative_balance_unpaid_leave_category_id' => 'setPreventNegativeBalanceUnpaidLeaveCategoryId'
     ];
 
     /**
@@ -234,7 +238,8 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         'is_name_private' => 'getIsNamePrivate',
         'leave_unit_type' => 'getLeaveUnitType',
         'payout_as_etp' => 'getPayoutAsEtp',
-        'accrues_first_pay_run_per_period_only' => 'getAccruesFirstPayRunPerPeriodOnly'
+        'accrues_first_pay_run_per_period_only' => 'getAccruesFirstPayRunPerPeriodOnly',
+        'prevent_negative_balance_unpaid_leave_category_id' => 'getPreventNegativeBalanceUnpaidLeaveCategoryId'
     ];
 
     /**
@@ -381,6 +386,7 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
         $this->container['leave_unit_type'] = isset($data['leave_unit_type']) ? $data['leave_unit_type'] : null;
         $this->container['payout_as_etp'] = isset($data['payout_as_etp']) ? $data['payout_as_etp'] : null;
         $this->container['accrues_first_pay_run_per_period_only'] = isset($data['accrues_first_pay_run_per_period_only']) ? $data['accrues_first_pay_run_per_period_only'] : null;
+        $this->container['prevent_negative_balance_unpaid_leave_category_id'] = isset($data['prevent_negative_balance_unpaid_leave_category_id']) ? $data['prevent_negative_balance_unpaid_leave_category_id'] : null;
     }
 
     /**
@@ -1054,6 +1060,30 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess
     public function setAccruesFirstPayRunPerPeriodOnly($accrues_first_pay_run_per_period_only)
     {
         $this->container['accrues_first_pay_run_per_period_only'] = $accrues_first_pay_run_per_period_only;
+
+        return $this;
+    }
+
+    /**
+     * Gets prevent_negative_balance_unpaid_leave_category_id
+     *
+     * @return int
+     */
+    public function getPreventNegativeBalanceUnpaidLeaveCategoryId()
+    {
+        return $this->container['prevent_negative_balance_unpaid_leave_category_id'];
+    }
+
+    /**
+     * Sets prevent_negative_balance_unpaid_leave_category_id
+     *
+     * @param int $prevent_negative_balance_unpaid_leave_category_id 
+     *
+     * @return $this
+     */
+    public function setPreventNegativeBalanceUnpaidLeaveCategoryId($prevent_negative_balance_unpaid_leave_category_id)
+    {
+        $this->container['prevent_negative_balance_unpaid_leave_category_id'] = $prevent_negative_balance_unpaid_leave_category_id;
 
         return $this;
     }

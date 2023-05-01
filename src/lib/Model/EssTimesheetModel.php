@@ -65,6 +65,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'breaks_duration_in_minutes' => 'int',
         'total_duration_in_minutes' => 'int',
         'auto_approved_by_roster_shift_id' => 'int',
+        'location_is_deleted' => 'bool',
         'employee_name' => 'string',
         'id' => 'int',
         'employee_id' => 'int',
@@ -95,6 +96,8 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'is_locked' => 'bool',
         'cost' => 'double',
         'costing_data' => '\Swagger\Client\Model\ShiftCostingData',
+        'cost_by_location' => 'double',
+        'costing_data_by_location' => '\Swagger\Client\Model\ShiftCostingData',
         'discard' => 'bool',
         'shift_condition_ids' => 'int[]',
         'is_overlapping' => 'bool',
@@ -120,6 +123,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'breaks_duration_in_minutes' => 'int32',
         'total_duration_in_minutes' => 'int32',
         'auto_approved_by_roster_shift_id' => 'int32',
+        'location_is_deleted' => null,
         'employee_name' => null,
         'id' => 'int32',
         'employee_id' => 'int32',
@@ -150,6 +154,8 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'is_locked' => null,
         'cost' => 'double',
         'costing_data' => null,
+        'cost_by_location' => 'double',
+        'costing_data_by_location' => null,
         'discard' => null,
         'shift_condition_ids' => 'int32',
         'is_overlapping' => null,
@@ -196,6 +202,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'breaks_duration_in_minutes' => 'breaksDurationInMinutes',
         'total_duration_in_minutes' => 'totalDurationInMinutes',
         'auto_approved_by_roster_shift_id' => 'autoApprovedByRosterShiftId',
+        'location_is_deleted' => 'locationIsDeleted',
         'employee_name' => 'employeeName',
         'id' => 'id',
         'employee_id' => 'employeeId',
@@ -226,6 +233,8 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'is_locked' => 'isLocked',
         'cost' => 'cost',
         'costing_data' => 'costingData',
+        'cost_by_location' => 'costByLocation',
+        'costing_data_by_location' => 'costingDataByLocation',
         'discard' => 'discard',
         'shift_condition_ids' => 'shiftConditionIds',
         'is_overlapping' => 'isOverlapping',
@@ -251,6 +260,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'breaks_duration_in_minutes' => 'setBreaksDurationInMinutes',
         'total_duration_in_minutes' => 'setTotalDurationInMinutes',
         'auto_approved_by_roster_shift_id' => 'setAutoApprovedByRosterShiftId',
+        'location_is_deleted' => 'setLocationIsDeleted',
         'employee_name' => 'setEmployeeName',
         'id' => 'setId',
         'employee_id' => 'setEmployeeId',
@@ -281,6 +291,8 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'is_locked' => 'setIsLocked',
         'cost' => 'setCost',
         'costing_data' => 'setCostingData',
+        'cost_by_location' => 'setCostByLocation',
+        'costing_data_by_location' => 'setCostingDataByLocation',
         'discard' => 'setDiscard',
         'shift_condition_ids' => 'setShiftConditionIds',
         'is_overlapping' => 'setIsOverlapping',
@@ -306,6 +318,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'breaks_duration_in_minutes' => 'getBreaksDurationInMinutes',
         'total_duration_in_minutes' => 'getTotalDurationInMinutes',
         'auto_approved_by_roster_shift_id' => 'getAutoApprovedByRosterShiftId',
+        'location_is_deleted' => 'getLocationIsDeleted',
         'employee_name' => 'getEmployeeName',
         'id' => 'getId',
         'employee_id' => 'getEmployeeId',
@@ -336,6 +349,8 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         'is_locked' => 'getIsLocked',
         'cost' => 'getCost',
         'costing_data' => 'getCostingData',
+        'cost_by_location' => 'getCostByLocation',
+        'costing_data_by_location' => 'getCostingDataByLocation',
         'discard' => 'getDiscard',
         'shift_condition_ids' => 'getShiftConditionIds',
         'is_overlapping' => 'getIsOverlapping',
@@ -463,6 +478,11 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
     const SOURCE_QUICKFILE = 'Quickfile';
     const SOURCE_TIDE = 'Tide';
     const SOURCE_TIDE_SSO = 'TideSso';
+    const SOURCE_FREE_AGENT = 'FreeAgent';
+    const SOURCE_AKAHU = 'Akahu';
+    const SOURCE_INSTA_PAY = 'InstaPay';
+    const SOURCE_ZEPTO = 'Zepto';
+    const SOURCE_SLACK = 'Slack';
     
 
     
@@ -560,6 +580,11 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
             self::SOURCE_QUICKFILE,
             self::SOURCE_TIDE,
             self::SOURCE_TIDE_SSO,
+            self::SOURCE_FREE_AGENT,
+            self::SOURCE_AKAHU,
+            self::SOURCE_INSTA_PAY,
+            self::SOURCE_ZEPTO,
+            self::SOURCE_SLACK,
         ];
     }
     
@@ -587,6 +612,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         $this->container['breaks_duration_in_minutes'] = isset($data['breaks_duration_in_minutes']) ? $data['breaks_duration_in_minutes'] : null;
         $this->container['total_duration_in_minutes'] = isset($data['total_duration_in_minutes']) ? $data['total_duration_in_minutes'] : null;
         $this->container['auto_approved_by_roster_shift_id'] = isset($data['auto_approved_by_roster_shift_id']) ? $data['auto_approved_by_roster_shift_id'] : null;
+        $this->container['location_is_deleted'] = isset($data['location_is_deleted']) ? $data['location_is_deleted'] : null;
         $this->container['employee_name'] = isset($data['employee_name']) ? $data['employee_name'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['employee_id'] = isset($data['employee_id']) ? $data['employee_id'] : null;
@@ -617,6 +643,8 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
         $this->container['is_locked'] = isset($data['is_locked']) ? $data['is_locked'] : null;
         $this->container['cost'] = isset($data['cost']) ? $data['cost'] : null;
         $this->container['costing_data'] = isset($data['costing_data']) ? $data['costing_data'] : null;
+        $this->container['cost_by_location'] = isset($data['cost_by_location']) ? $data['cost_by_location'] : null;
+        $this->container['costing_data_by_location'] = isset($data['costing_data_by_location']) ? $data['costing_data_by_location'] : null;
         $this->container['discard'] = isset($data['discard']) ? $data['discard'] : null;
         $this->container['shift_condition_ids'] = isset($data['shift_condition_ids']) ? $data['shift_condition_ids'] : null;
         $this->container['is_overlapping'] = isset($data['is_overlapping']) ? $data['is_overlapping'] : null;
@@ -856,6 +884,30 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
     public function setAutoApprovedByRosterShiftId($auto_approved_by_roster_shift_id)
     {
         $this->container['auto_approved_by_roster_shift_id'] = $auto_approved_by_roster_shift_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets location_is_deleted
+     *
+     * @return bool
+     */
+    public function getLocationIsDeleted()
+    {
+        return $this->container['location_is_deleted'];
+    }
+
+    /**
+     * Sets location_is_deleted
+     *
+     * @param bool $location_is_deleted 
+     *
+     * @return $this
+     */
+    public function setLocationIsDeleted($location_is_deleted)
+    {
+        $this->container['location_is_deleted'] = $location_is_deleted;
 
         return $this;
     }
@@ -1594,6 +1646,54 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess
     public function setCostingData($costing_data)
     {
         $this->container['costing_data'] = $costing_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost_by_location
+     *
+     * @return double
+     */
+    public function getCostByLocation()
+    {
+        return $this->container['cost_by_location'];
+    }
+
+    /**
+     * Sets cost_by_location
+     *
+     * @param double $cost_by_location 
+     *
+     * @return $this
+     */
+    public function setCostByLocation($cost_by_location)
+    {
+        $this->container['cost_by_location'] = $cost_by_location;
+
+        return $this;
+    }
+
+    /**
+     * Gets costing_data_by_location
+     *
+     * @return \Swagger\Client\Model\ShiftCostingData
+     */
+    public function getCostingDataByLocation()
+    {
+        return $this->container['costing_data_by_location'];
+    }
+
+    /**
+     * Sets costing_data_by_location
+     *
+     * @param \Swagger\Client\Model\ShiftCostingData $costing_data_by_location 
+     *
+     * @return $this
+     */
+    public function setCostingDataByLocation($costing_data_by_location)
+    {
+        $this->container['costing_data_by_location'] = $costing_data_by_location;
 
         return $this;
     }

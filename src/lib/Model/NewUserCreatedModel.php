@@ -57,6 +57,7 @@ class NewUserCreatedModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'id' => 'int',
         'username' => 'string',
         'display_name' => 'string',
         'time_zone' => 'string',
@@ -71,6 +72,7 @@ class NewUserCreatedModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'id' => 'int32',
         'username' => null,
         'display_name' => null,
         'time_zone' => null,
@@ -106,6 +108,7 @@ class NewUserCreatedModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'username' => 'username',
         'display_name' => 'displayName',
         'time_zone' => 'timeZone',
@@ -120,6 +123,7 @@ class NewUserCreatedModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'username' => 'setUsername',
         'display_name' => 'setDisplayName',
         'time_zone' => 'setTimeZone',
@@ -134,6 +138,7 @@ class NewUserCreatedModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'username' => 'getUsername',
         'display_name' => 'getDisplayName',
         'time_zone' => 'getTimeZone',
@@ -202,6 +207,7 @@ class NewUserCreatedModel implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['username'] = isset($data['username']) ? $data['username'] : null;
         $this->container['display_name'] = isset($data['display_name']) ? $data['display_name'] : null;
         $this->container['time_zone'] = isset($data['time_zone']) ? $data['time_zone'] : null;
@@ -233,6 +239,30 @@ class NewUserCreatedModel implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id 
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets username

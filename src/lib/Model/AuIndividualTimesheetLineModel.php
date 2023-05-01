@@ -59,6 +59,7 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'classification_id' => 'int',
         'classification' => 'string',
+        'location_is_deleted' => 'bool',
         'id' => 'int',
         'employee_id' => 'int',
         'start_time' => '\DateTime',
@@ -91,6 +92,7 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'classification_id' => 'int32',
         'classification' => null,
+        'location_is_deleted' => null,
         'id' => 'int32',
         'employee_id' => 'int32',
         'start_time' => 'date-time',
@@ -144,6 +146,7 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'classification_id' => 'classificationId',
         'classification' => 'classification',
+        'location_is_deleted' => 'locationIsDeleted',
         'id' => 'id',
         'employee_id' => 'employeeId',
         'start_time' => 'startTime',
@@ -176,6 +179,7 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess
     protected static $setters = [
         'classification_id' => 'setClassificationId',
         'classification' => 'setClassification',
+        'location_is_deleted' => 'setLocationIsDeleted',
         'id' => 'setId',
         'employee_id' => 'setEmployeeId',
         'start_time' => 'setStartTime',
@@ -208,6 +212,7 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess
     protected static $getters = [
         'classification_id' => 'getClassificationId',
         'classification' => 'getClassification',
+        'location_is_deleted' => 'getLocationIsDeleted',
         'id' => 'getId',
         'employee_id' => 'getEmployeeId',
         'start_time' => 'getStartTime',
@@ -343,6 +348,11 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess
     const SOURCE_QUICKFILE = 'Quickfile';
     const SOURCE_TIDE = 'Tide';
     const SOURCE_TIDE_SSO = 'TideSso';
+    const SOURCE_FREE_AGENT = 'FreeAgent';
+    const SOURCE_AKAHU = 'Akahu';
+    const SOURCE_INSTA_PAY = 'InstaPay';
+    const SOURCE_ZEPTO = 'Zepto';
+    const SOURCE_SLACK = 'Slack';
     
 
     
@@ -424,6 +434,11 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess
             self::SOURCE_QUICKFILE,
             self::SOURCE_TIDE,
             self::SOURCE_TIDE_SSO,
+            self::SOURCE_FREE_AGENT,
+            self::SOURCE_AKAHU,
+            self::SOURCE_INSTA_PAY,
+            self::SOURCE_ZEPTO,
+            self::SOURCE_SLACK,
         ];
     }
     
@@ -445,6 +460,7 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess
     {
         $this->container['classification_id'] = isset($data['classification_id']) ? $data['classification_id'] : null;
         $this->container['classification'] = isset($data['classification']) ? $data['classification'] : null;
+        $this->container['location_is_deleted'] = isset($data['location_is_deleted']) ? $data['location_is_deleted'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['employee_id'] = isset($data['employee_id']) ? $data['employee_id'] : null;
         $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
@@ -545,6 +561,30 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess
     public function setClassification($classification)
     {
         $this->container['classification'] = $classification;
+
+        return $this;
+    }
+
+    /**
+     * Gets location_is_deleted
+     *
+     * @return bool
+     */
+    public function getLocationIsDeleted()
+    {
+        return $this->container['location_is_deleted'];
+    }
+
+    /**
+     * Sets location_is_deleted
+     *
+     * @param bool $location_is_deleted 
+     *
+     * @return $this
+     */
+    public function setLocationIsDeleted($location_is_deleted)
+    {
+        $this->container['location_is_deleted'] = $location_is_deleted;
 
         return $this;
     }

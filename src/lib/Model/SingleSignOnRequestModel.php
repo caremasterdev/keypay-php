@@ -182,6 +182,7 @@ class SingleSignOnRequestModel implements ModelInterface, ArrayAccess
     const NAVIGATION_PRIMARY = 'Primary';
     const NAVIGATION_SECONDARY = 'Secondary';
     const NAVIGATION_NONE = 'None';
+    const NAVIGATION_HIDE_INTERNAL_PAGE_NAV = 'HideInternalPageNav';
     
 
     
@@ -197,6 +198,7 @@ class SingleSignOnRequestModel implements ModelInterface, ArrayAccess
             self::NAVIGATION_PRIMARY,
             self::NAVIGATION_SECONDARY,
             self::NAVIGATION_NONE,
+            self::NAVIGATION_HIDE_INTERNAL_PAGE_NAV,
         ];
     }
     

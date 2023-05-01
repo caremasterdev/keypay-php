@@ -252,9 +252,19 @@ class ReportAccessModel implements ModelInterface, ArrayAccess
     const SPECIFIC_REPORTS_IRB_FORM_CP8D = 'IrbFormCp8d';
     const SPECIFIC_REPORTS_DOCUMENT_ACKNOWLEDGEMENTS_REPORT = 'DocumentAcknowledgementsReport';
     const SPECIFIC_REPORTS_PAYMENT_AND_DEDUCTION_STATEMENT_REPORT = 'PaymentAndDeductionStatementReport';
+    const SPECIFIC_REPORTS_UK_GENDER_PAY_GAP_DATA_REPORT = 'UkGenderPayGapDataReport';
     const SPECIFIC_REPORTS_CIS300 = 'Cis300';
     const SPECIFIC_REPORTS_ZAKAT = 'Zakat';
     const SPECIFIC_REPORTS_EIS_CONTRIBUTIONS_REPORT = 'EisContributionsReport';
+    const SPECIFIC_REPORTS_EMPLOYEE_LEAVE_RATES_REPORT = 'EmployeeLeaveRatesReport';
+    const SPECIFIC_REPORTS_P11 = 'P11';
+    const SPECIFIC_REPORTS_P60 = 'P60';
+    const SPECIFIC_REPORTS_AVERAGE_HOURS_REPORT = 'AverageHoursReport';
+    const SPECIFIC_REPORTS_UK_COURT_ORDER_REPORT = 'UkCourtOrderReport';
+    const SPECIFIC_REPORTS_UK_OCCUPATIONAL_PAY_REPORT = 'UkOccupationalPayReport';
+    const SPECIFIC_REPORTS_EIS_SOCSO_COMBINED_CONTRIBUTIONS_REPORT = 'EisSocsoCombinedContributionsReport';
+    const SPECIFIC_REPORTS_P45_REPORT = 'P45Report';
+    const SPECIFIC_REPORTS_CPF_OW_AND_AW_RECONCILIATION_REPORT = 'CpfOwAndAwReconciliationReport';
     
 
     
@@ -361,9 +371,19 @@ class ReportAccessModel implements ModelInterface, ArrayAccess
             self::SPECIFIC_REPORTS_IRB_FORM_CP8D,
             self::SPECIFIC_REPORTS_DOCUMENT_ACKNOWLEDGEMENTS_REPORT,
             self::SPECIFIC_REPORTS_PAYMENT_AND_DEDUCTION_STATEMENT_REPORT,
+            self::SPECIFIC_REPORTS_UK_GENDER_PAY_GAP_DATA_REPORT,
             self::SPECIFIC_REPORTS_CIS300,
             self::SPECIFIC_REPORTS_ZAKAT,
             self::SPECIFIC_REPORTS_EIS_CONTRIBUTIONS_REPORT,
+            self::SPECIFIC_REPORTS_EMPLOYEE_LEAVE_RATES_REPORT,
+            self::SPECIFIC_REPORTS_P11,
+            self::SPECIFIC_REPORTS_P60,
+            self::SPECIFIC_REPORTS_AVERAGE_HOURS_REPORT,
+            self::SPECIFIC_REPORTS_UK_COURT_ORDER_REPORT,
+            self::SPECIFIC_REPORTS_UK_OCCUPATIONAL_PAY_REPORT,
+            self::SPECIFIC_REPORTS_EIS_SOCSO_COMBINED_CONTRIBUTIONS_REPORT,
+            self::SPECIFIC_REPORTS_P45_REPORT,
+            self::SPECIFIC_REPORTS_CPF_OW_AND_AW_RECONCILIATION_REPORT,
         ];
     }
     

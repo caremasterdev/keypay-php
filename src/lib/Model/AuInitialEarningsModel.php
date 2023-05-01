@@ -304,7 +304,7 @@ class AuInitialEarningsModel implements ModelInterface, ArrayAccess
     /**
      * Sets pay_category_type
      *
-     * @param string $pay_category_type 
+     * @param string $pay_category_type <p><i>Note:</i> The amounts specified for any ETP-related pay categories (with the exception of Lump Sum D) must represent the total of the corresponding amounts supplied in the etps collection
      *
      * @return $this
      */

@@ -58,6 +58,7 @@ class ShiftPartModel implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'is_break' => 'bool',
+        'is_paid_break' => 'bool',
         'start_time' => '\DateTime',
         'end_time' => '\DateTime',
         'effective_duration' => 'string',
@@ -83,6 +84,7 @@ class ShiftPartModel implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'is_break' => null,
+        'is_paid_break' => null,
         'start_time' => 'date-time',
         'end_time' => 'date-time',
         'effective_duration' => null,
@@ -129,6 +131,7 @@ class ShiftPartModel implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'is_break' => 'isBreak',
+        'is_paid_break' => 'isPaidBreak',
         'start_time' => 'startTime',
         'end_time' => 'endTime',
         'effective_duration' => 'effectiveDuration',
@@ -154,6 +157,7 @@ class ShiftPartModel implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'is_break' => 'setIsBreak',
+        'is_paid_break' => 'setIsPaidBreak',
         'start_time' => 'setStartTime',
         'end_time' => 'setEndTime',
         'effective_duration' => 'setEffectiveDuration',
@@ -179,6 +183,7 @@ class ShiftPartModel implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'is_break' => 'getIsBreak',
+        'is_paid_break' => 'getIsPaidBreak',
         'start_time' => 'getStartTime',
         'end_time' => 'getEndTime',
         'effective_duration' => 'getEffectiveDuration',
@@ -258,6 +263,7 @@ class ShiftPartModel implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['is_break'] = isset($data['is_break']) ? $data['is_break'] : null;
+        $this->container['is_paid_break'] = isset($data['is_paid_break']) ? $data['is_paid_break'] : null;
         $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
         $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
         $this->container['effective_duration'] = isset($data['effective_duration']) ? $data['effective_duration'] : null;
@@ -320,6 +326,30 @@ class ShiftPartModel implements ModelInterface, ArrayAccess
     public function setIsBreak($is_break)
     {
         $this->container['is_break'] = $is_break;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_paid_break
+     *
+     * @return bool
+     */
+    public function getIsPaidBreak()
+    {
+        return $this->container['is_paid_break'];
+    }
+
+    /**
+     * Sets is_paid_break
+     *
+     * @param bool $is_paid_break 
+     *
+     * @return $this
+     */
+    public function setIsPaidBreak($is_paid_break)
+    {
+        $this->container['is_paid_break'] = $is_paid_break;
 
         return $this;
     }

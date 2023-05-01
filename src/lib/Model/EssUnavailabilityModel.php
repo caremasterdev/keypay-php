@@ -64,6 +64,8 @@ class EssUnavailabilityModel implements ModelInterface, ArrayAccess
         'reason' => 'string',
         'recurring' => 'bool',
         'recurring_day' => 'string',
+        'recurring_days' => 'string',
+        'recurring_days_csv' => 'string',
         'is_all_day' => 'bool',
         'view_only' => 'bool'
     ];
@@ -81,6 +83,8 @@ class EssUnavailabilityModel implements ModelInterface, ArrayAccess
         'reason' => null,
         'recurring' => null,
         'recurring_day' => null,
+        'recurring_days' => null,
+        'recurring_days_csv' => null,
         'is_all_day' => null,
         'view_only' => null
     ];
@@ -119,6 +123,8 @@ class EssUnavailabilityModel implements ModelInterface, ArrayAccess
         'reason' => 'reason',
         'recurring' => 'recurring',
         'recurring_day' => 'recurringDay',
+        'recurring_days' => 'recurringDays',
+        'recurring_days_csv' => 'recurringDaysCsv',
         'is_all_day' => 'isAllDay',
         'view_only' => 'viewOnly'
     ];
@@ -136,6 +142,8 @@ class EssUnavailabilityModel implements ModelInterface, ArrayAccess
         'reason' => 'setReason',
         'recurring' => 'setRecurring',
         'recurring_day' => 'setRecurringDay',
+        'recurring_days' => 'setRecurringDays',
+        'recurring_days_csv' => 'setRecurringDaysCsv',
         'is_all_day' => 'setIsAllDay',
         'view_only' => 'setViewOnly'
     ];
@@ -153,6 +161,8 @@ class EssUnavailabilityModel implements ModelInterface, ArrayAccess
         'reason' => 'getReason',
         'recurring' => 'getRecurring',
         'recurring_day' => 'getRecurringDay',
+        'recurring_days' => 'getRecurringDays',
+        'recurring_days_csv' => 'getRecurringDaysCsv',
         'is_all_day' => 'getIsAllDay',
         'view_only' => 'getViewOnly'
     ];
@@ -205,6 +215,13 @@ class EssUnavailabilityModel implements ModelInterface, ArrayAccess
     const RECURRING_DAY_THURSDAY = 'Thursday';
     const RECURRING_DAY_FRIDAY = 'Friday';
     const RECURRING_DAY_SATURDAY = 'Saturday';
+    const RECURRING_DAYS_SUNDAY = 'Sunday';
+    const RECURRING_DAYS_MONDAY = 'Monday';
+    const RECURRING_DAYS_TUESDAY = 'Tuesday';
+    const RECURRING_DAYS_WEDNESDAY = 'Wednesday';
+    const RECURRING_DAYS_THURSDAY = 'Thursday';
+    const RECURRING_DAYS_FRIDAY = 'Friday';
+    const RECURRING_DAYS_SATURDAY = 'Saturday';
     
 
     
@@ -223,6 +240,24 @@ class EssUnavailabilityModel implements ModelInterface, ArrayAccess
             self::RECURRING_DAY_THURSDAY,
             self::RECURRING_DAY_FRIDAY,
             self::RECURRING_DAY_SATURDAY,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRecurringDaysAllowableValues()
+    {
+        return [
+            self::RECURRING_DAYS_SUNDAY,
+            self::RECURRING_DAYS_MONDAY,
+            self::RECURRING_DAYS_TUESDAY,
+            self::RECURRING_DAYS_WEDNESDAY,
+            self::RECURRING_DAYS_THURSDAY,
+            self::RECURRING_DAYS_FRIDAY,
+            self::RECURRING_DAYS_SATURDAY,
         ];
     }
     
@@ -249,6 +284,8 @@ class EssUnavailabilityModel implements ModelInterface, ArrayAccess
         $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
         $this->container['recurring'] = isset($data['recurring']) ? $data['recurring'] : null;
         $this->container['recurring_day'] = isset($data['recurring_day']) ? $data['recurring_day'] : null;
+        $this->container['recurring_days'] = isset($data['recurring_days']) ? $data['recurring_days'] : null;
+        $this->container['recurring_days_csv'] = isset($data['recurring_days_csv']) ? $data['recurring_days_csv'] : null;
         $this->container['is_all_day'] = isset($data['is_all_day']) ? $data['is_all_day'] : null;
         $this->container['view_only'] = isset($data['view_only']) ? $data['view_only'] : null;
     }
@@ -266,6 +303,14 @@ class EssUnavailabilityModel implements ModelInterface, ArrayAccess
         if (!is_null($this->container['recurring_day']) && !in_array($this->container['recurring_day'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'recurring_day', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getRecurringDaysAllowableValues();
+        if (!is_null($this->container['recurring_days']) && !in_array($this->container['recurring_days'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'recurring_days', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -458,6 +503,63 @@ class EssUnavailabilityModel implements ModelInterface, ArrayAccess
             );
         }
         $this->container['recurring_day'] = $recurring_day;
+
+        return $this;
+    }
+
+    /**
+     * Gets recurring_days
+     *
+     * @return string
+     */
+    public function getRecurringDays()
+    {
+        return $this->container['recurring_days'];
+    }
+
+    /**
+     * Sets recurring_days
+     *
+     * @param string $recurring_days 
+     *
+     * @return $this
+     */
+    public function setRecurringDays($recurring_days)
+    {
+        $allowedValues = $this->getRecurringDaysAllowableValues();
+        if (!is_null($recurring_days) && !in_array($recurring_days, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'recurring_days', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['recurring_days'] = $recurring_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets recurring_days_csv
+     *
+     * @return string
+     */
+    public function getRecurringDaysCsv()
+    {
+        return $this->container['recurring_days_csv'];
+    }
+
+    /**
+     * Sets recurring_days_csv
+     *
+     * @param string $recurring_days_csv 
+     *
+     * @return $this
+     */
+    public function setRecurringDaysCsv($recurring_days_csv)
+    {
+        $this->container['recurring_days_csv'] = $recurring_days_csv;
 
         return $this;
     }

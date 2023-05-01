@@ -199,6 +199,7 @@ class AuLeaveAccrualRuleModel implements ModelInterface, ArrayAccess
     const CARRY_OVER_BEHAVIOUR_CARRY_HOURS = 'CarryHours';
     const ACCRUAL_TYPE_ONGOING = 'Ongoing';
     const ACCRUAL_TYPE_YEARLY = 'Yearly';
+    const ACCRUAL_TYPE_BASED_ON_LENGTH_OF_SERVICE = 'BasedOnLengthOfService';
     
 
     
@@ -238,6 +239,7 @@ class AuLeaveAccrualRuleModel implements ModelInterface, ArrayAccess
         return [
             self::ACCRUAL_TYPE_ONGOING,
             self::ACCRUAL_TYPE_YEARLY,
+            self::ACCRUAL_TYPE_BASED_ON_LENGTH_OF_SERVICE,
         ];
     }
     

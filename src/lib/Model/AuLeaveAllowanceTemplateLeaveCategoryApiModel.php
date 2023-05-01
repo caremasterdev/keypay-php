@@ -245,6 +245,7 @@ class AuLeaveAllowanceTemplateLeaveCategoryApiModel implements ModelInterface, A
     const LEAVE_UNIT_TYPE_WEEKS = 'Weeks';
     const LEAVE_ACCRUAL_RULE_ACCRUAL_TYPE_ONGOING = 'Ongoing';
     const LEAVE_ACCRUAL_RULE_ACCRUAL_TYPE_YEARLY = 'Yearly';
+    const LEAVE_ACCRUAL_RULE_ACCRUAL_TYPE_BASED_ON_LENGTH_OF_SERVICE = 'BasedOnLengthOfService';
     const LEAVE_ACCRUAL_RULE_CAP_TYPE_NOT_LIMITED = 'NotLimited';
     const LEAVE_ACCRUAL_RULE_CAP_TYPE_LIMITED = 'Limited';
     const LEAVE_ACCRUAL_RULE_CARRY_OVER_BEHAVIOUR_CARRY_ENTIRE_AMOUNT = 'CarryEntireAmount';
@@ -294,6 +295,7 @@ class AuLeaveAllowanceTemplateLeaveCategoryApiModel implements ModelInterface, A
         return [
             self::LEAVE_ACCRUAL_RULE_ACCRUAL_TYPE_ONGOING,
             self::LEAVE_ACCRUAL_RULE_ACCRUAL_TYPE_YEARLY,
+            self::LEAVE_ACCRUAL_RULE_ACCRUAL_TYPE_BASED_ON_LENGTH_OF_SERVICE,
         ];
     }
     

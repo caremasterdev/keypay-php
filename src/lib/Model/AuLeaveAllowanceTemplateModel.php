@@ -273,9 +273,16 @@ class AuLeaveAllowanceTemplateModel implements ModelInterface, ArrayAccess
     const SOURCE_QUICKFILE = 'Quickfile';
     const SOURCE_TIDE = 'Tide';
     const SOURCE_TIDE_SSO = 'TideSso';
+    const SOURCE_FREE_AGENT = 'FreeAgent';
+    const SOURCE_AKAHU = 'Akahu';
+    const SOURCE_INSTA_PAY = 'InstaPay';
+    const SOURCE_ZEPTO = 'Zepto';
+    const SOURCE_SLACK = 'Slack';
     const LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE = 'EmployeeStartDate';
     const LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE = 'SpecifiedDate';
     const LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR = 'CalendarYear';
+    const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH = 'RollingYear12Month';
+    const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH = 'RollingYear24Month';
     
 
     
@@ -357,6 +364,11 @@ class AuLeaveAllowanceTemplateModel implements ModelInterface, ArrayAccess
             self::SOURCE_QUICKFILE,
             self::SOURCE_TIDE,
             self::SOURCE_TIDE_SSO,
+            self::SOURCE_FREE_AGENT,
+            self::SOURCE_AKAHU,
+            self::SOURCE_INSTA_PAY,
+            self::SOURCE_ZEPTO,
+            self::SOURCE_SLACK,
         ];
     }
     
@@ -371,6 +383,8 @@ class AuLeaveAllowanceTemplateModel implements ModelInterface, ArrayAccess
             self::LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH,
         ];
     }
     

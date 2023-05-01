@@ -212,6 +212,7 @@ class EmployeeRecurringSuperAdjustmentModel implements ModelInterface, ArrayAcce
     const CONTRIBUTION_TYPE_SALARY_SACRIFICE = 'SalarySacrifice';
     const CONTRIBUTION_TYPE_MEMBER_VOLUNTARY = 'MemberVoluntary';
     const CONTRIBUTION_TYPE_EMPLOYER_CONTRIBUTION = 'EmployerContribution';
+    const CONTRIBUTION_TYPE_NON_RESC_EMPLOYER_CONTRIBUTION = 'NonRescEmployerContribution';
     const ADJUSTMENT_TYPE_FIXED = 'Fixed';
     const ADJUSTMENT_TYPE_PERCENTAGE_GROSS = 'PercentageGross';
     const ADJUSTMENT_TYPE_PERCENTAGE_OTE = 'PercentageOTE';
@@ -231,6 +232,7 @@ class EmployeeRecurringSuperAdjustmentModel implements ModelInterface, ArrayAcce
             self::CONTRIBUTION_TYPE_SALARY_SACRIFICE,
             self::CONTRIBUTION_TYPE_MEMBER_VOLUNTARY,
             self::CONTRIBUTION_TYPE_EMPLOYER_CONTRIBUTION,
+            self::CONTRIBUTION_TYPE_NON_RESC_EMPLOYER_CONTRIBUTION,
         ];
     }
     

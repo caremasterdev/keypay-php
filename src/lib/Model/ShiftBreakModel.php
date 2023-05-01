@@ -59,6 +59,7 @@ class ShiftBreakModel implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'start' => '\Swagger\Client\Model\StartBreakModel',
         'end' => '\Swagger\Client\Model\EndBreakModel',
+        'is_paid_break' => 'bool',
         'employee_id' => 'int',
         'latitude' => 'double',
         'longitude' => 'double',
@@ -79,6 +80,7 @@ class ShiftBreakModel implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'start' => null,
         'end' => null,
+        'is_paid_break' => null,
         'employee_id' => 'int32',
         'latitude' => 'double',
         'longitude' => 'double',
@@ -120,6 +122,7 @@ class ShiftBreakModel implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'start' => 'start',
         'end' => 'end',
+        'is_paid_break' => 'isPaidBreak',
         'employee_id' => 'employeeId',
         'latitude' => 'latitude',
         'longitude' => 'longitude',
@@ -140,6 +143,7 @@ class ShiftBreakModel implements ModelInterface, ArrayAccess
     protected static $setters = [
         'start' => 'setStart',
         'end' => 'setEnd',
+        'is_paid_break' => 'setIsPaidBreak',
         'employee_id' => 'setEmployeeId',
         'latitude' => 'setLatitude',
         'longitude' => 'setLongitude',
@@ -160,6 +164,7 @@ class ShiftBreakModel implements ModelInterface, ArrayAccess
     protected static $getters = [
         'start' => 'getStart',
         'end' => 'getEnd',
+        'is_paid_break' => 'getIsPaidBreak',
         'employee_id' => 'getEmployeeId',
         'latitude' => 'getLatitude',
         'longitude' => 'getLongitude',
@@ -249,6 +254,7 @@ class ShiftBreakModel implements ModelInterface, ArrayAccess
     {
         $this->container['start'] = isset($data['start']) ? $data['start'] : null;
         $this->container['end'] = isset($data['end']) ? $data['end'] : null;
+        $this->container['is_paid_break'] = isset($data['is_paid_break']) ? $data['is_paid_break'] : null;
         $this->container['employee_id'] = isset($data['employee_id']) ? $data['employee_id'] : null;
         $this->container['latitude'] = isset($data['latitude']) ? $data['latitude'] : null;
         $this->container['longitude'] = isset($data['longitude']) ? $data['longitude'] : null;
@@ -341,6 +347,30 @@ class ShiftBreakModel implements ModelInterface, ArrayAccess
     public function setEnd($end)
     {
         $this->container['end'] = $end;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_paid_break
+     *
+     * @return bool
+     */
+    public function getIsPaidBreak()
+    {
+        return $this->container['is_paid_break'];
+    }
+
+    /**
+     * Sets is_paid_break
+     *
+     * @param bool $is_paid_break 
+     *
+     * @return $this
+     */
+    public function setIsPaidBreak($is_paid_break)
+    {
+        $this->container['is_paid_break'] = $is_paid_break;
 
         return $this;
     }

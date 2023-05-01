@@ -188,6 +188,8 @@ class JournalExportResult implements ModelInterface, ArrayAccess
     const STATUS_FAILURE_GST_SETUP = 'FailureGSTSetup';
     const STATUS_FAILURE_KNOWN_ERROR = 'FailureKnownError';
     const STATUS_FAILURES_TENANT_NOT_SUPPLIED = 'FailuresTenantNotSupplied';
+    const STATUS_FAILURE_NO_JOURNAL_ID = 'FailureNoJournalId';
+    const STATUS_FAILURE_API_ERROR = 'FailureAPIError';
     const STATUS_RESULT_UNKNOWN = 'ResultUnknown';
     const JOURNAL_SOURCE_NONE = 'None';
     const JOURNAL_SOURCE_SAASU = 'Saasu';
@@ -259,6 +261,11 @@ class JournalExportResult implements ModelInterface, ArrayAccess
     const JOURNAL_SOURCE_QUICKFILE = 'Quickfile';
     const JOURNAL_SOURCE_TIDE = 'Tide';
     const JOURNAL_SOURCE_TIDE_SSO = 'TideSso';
+    const JOURNAL_SOURCE_FREE_AGENT = 'FreeAgent';
+    const JOURNAL_SOURCE_AKAHU = 'Akahu';
+    const JOURNAL_SOURCE_INSTA_PAY = 'InstaPay';
+    const JOURNAL_SOURCE_ZEPTO = 'Zepto';
+    const JOURNAL_SOURCE_SLACK = 'Slack';
     
 
     
@@ -285,6 +292,8 @@ class JournalExportResult implements ModelInterface, ArrayAccess
             self::STATUS_FAILURE_GST_SETUP,
             self::STATUS_FAILURE_KNOWN_ERROR,
             self::STATUS_FAILURES_TENANT_NOT_SUPPLIED,
+            self::STATUS_FAILURE_NO_JOURNAL_ID,
+            self::STATUS_FAILURE_API_ERROR,
             self::STATUS_RESULT_UNKNOWN,
         ];
     }
@@ -367,6 +376,11 @@ class JournalExportResult implements ModelInterface, ArrayAccess
             self::JOURNAL_SOURCE_QUICKFILE,
             self::JOURNAL_SOURCE_TIDE,
             self::JOURNAL_SOURCE_TIDE_SSO,
+            self::JOURNAL_SOURCE_FREE_AGENT,
+            self::JOURNAL_SOURCE_AKAHU,
+            self::JOURNAL_SOURCE_INSTA_PAY,
+            self::JOURNAL_SOURCE_ZEPTO,
+            self::JOURNAL_SOURCE_SLACK,
         ];
     }
     

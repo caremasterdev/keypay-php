@@ -58,6 +58,7 @@ class CreateBusinessAccessModel implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'suppress_notification_emails' => 'bool',
+        'merge_existing_access' => 'bool',
         'access_type' => 'string',
         'employee_groups' => '\Swagger\Client\Model\EmployeeGroupAccessModel[]',
         'location_access' => '\Swagger\Client\Model\LocationAccessModel[]',
@@ -74,6 +75,7 @@ class CreateBusinessAccessModel implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'suppress_notification_emails' => null,
+        'merge_existing_access' => null,
         'access_type' => null,
         'employee_groups' => null,
         'location_access' => null,
@@ -111,6 +113,7 @@ class CreateBusinessAccessModel implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'suppress_notification_emails' => 'suppressNotificationEmails',
+        'merge_existing_access' => 'mergeExistingAccess',
         'access_type' => 'accessType',
         'employee_groups' => 'employeeGroups',
         'location_access' => 'locationAccess',
@@ -127,6 +130,7 @@ class CreateBusinessAccessModel implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'suppress_notification_emails' => 'setSuppressNotificationEmails',
+        'merge_existing_access' => 'setMergeExistingAccess',
         'access_type' => 'setAccessType',
         'employee_groups' => 'setEmployeeGroups',
         'location_access' => 'setLocationAccess',
@@ -143,6 +147,7 @@ class CreateBusinessAccessModel implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'suppress_notification_emails' => 'getSuppressNotificationEmails',
+        'merge_existing_access' => 'getMergeExistingAccess',
         'access_type' => 'getAccessType',
         'employee_groups' => 'getEmployeeGroups',
         'location_access' => 'getLocationAccess',
@@ -228,6 +233,7 @@ class CreateBusinessAccessModel implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['suppress_notification_emails'] = isset($data['suppress_notification_emails']) ? $data['suppress_notification_emails'] : null;
+        $this->container['merge_existing_access'] = isset($data['merge_existing_access']) ? $data['merge_existing_access'] : null;
         $this->container['access_type'] = isset($data['access_type']) ? $data['access_type'] : null;
         $this->container['employee_groups'] = isset($data['employee_groups']) ? $data['employee_groups'] : null;
         $this->container['location_access'] = isset($data['location_access']) ? $data['location_access'] : null;
@@ -289,6 +295,30 @@ class CreateBusinessAccessModel implements ModelInterface, ArrayAccess
     public function setSuppressNotificationEmails($suppress_notification_emails)
     {
         $this->container['suppress_notification_emails'] = $suppress_notification_emails;
+
+        return $this;
+    }
+
+    /**
+     * Gets merge_existing_access
+     *
+     * @return bool
+     */
+    public function getMergeExistingAccess()
+    {
+        return $this->container['merge_existing_access'];
+    }
+
+    /**
+     * Sets merge_existing_access
+     *
+     * @param bool $merge_existing_access 
+     *
+     * @return $this
+     */
+    public function setMergeExistingAccess($merge_existing_access)
+    {
+        $this->container['merge_existing_access'] = $merge_existing_access;
 
         return $this;
     }

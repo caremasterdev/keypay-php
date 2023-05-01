@@ -75,6 +75,7 @@ class AuDashboardModel implements ModelInterface, ArrayAccess
         'expenses' => '\Swagger\Client\Model\EssCurrentExpensesModel',
         'pending_shift_count' => 'int',
         'proposed_swap_count' => 'int',
+        'pending_leave_count' => 'int',
         'current_shift' => '\Swagger\Client\Model\EssCurrentShiftModel',
         'documents_requiring_acknowledgement_count' => 'int',
         'region' => 'string',
@@ -110,6 +111,7 @@ class AuDashboardModel implements ModelInterface, ArrayAccess
         'expenses' => null,
         'pending_shift_count' => 'int32',
         'proposed_swap_count' => 'int32',
+        'pending_leave_count' => 'int32',
         'current_shift' => null,
         'documents_requiring_acknowledgement_count' => 'int32',
         'region' => null,
@@ -166,6 +168,7 @@ class AuDashboardModel implements ModelInterface, ArrayAccess
         'expenses' => 'expenses',
         'pending_shift_count' => 'pendingShiftCount',
         'proposed_swap_count' => 'proposedSwapCount',
+        'pending_leave_count' => 'pendingLeaveCount',
         'current_shift' => 'currentShift',
         'documents_requiring_acknowledgement_count' => 'documentsRequiringAcknowledgementCount',
         'region' => 'region',
@@ -201,6 +204,7 @@ class AuDashboardModel implements ModelInterface, ArrayAccess
         'expenses' => 'setExpenses',
         'pending_shift_count' => 'setPendingShiftCount',
         'proposed_swap_count' => 'setProposedSwapCount',
+        'pending_leave_count' => 'setPendingLeaveCount',
         'current_shift' => 'setCurrentShift',
         'documents_requiring_acknowledgement_count' => 'setDocumentsRequiringAcknowledgementCount',
         'region' => 'setRegion',
@@ -236,6 +240,7 @@ class AuDashboardModel implements ModelInterface, ArrayAccess
         'expenses' => 'getExpenses',
         'pending_shift_count' => 'getPendingShiftCount',
         'proposed_swap_count' => 'getProposedSwapCount',
+        'pending_leave_count' => 'getPendingLeaveCount',
         'current_shift' => 'getCurrentShift',
         'documents_requiring_acknowledgement_count' => 'getDocumentsRequiringAcknowledgementCount',
         'region' => 'getRegion',
@@ -325,6 +330,7 @@ class AuDashboardModel implements ModelInterface, ArrayAccess
         $this->container['expenses'] = isset($data['expenses']) ? $data['expenses'] : null;
         $this->container['pending_shift_count'] = isset($data['pending_shift_count']) ? $data['pending_shift_count'] : null;
         $this->container['proposed_swap_count'] = isset($data['proposed_swap_count']) ? $data['proposed_swap_count'] : null;
+        $this->container['pending_leave_count'] = isset($data['pending_leave_count']) ? $data['pending_leave_count'] : null;
         $this->container['current_shift'] = isset($data['current_shift']) ? $data['current_shift'] : null;
         $this->container['documents_requiring_acknowledgement_count'] = isset($data['documents_requiring_acknowledgement_count']) ? $data['documents_requiring_acknowledgement_count'] : null;
         $this->container['region'] = isset($data['region']) ? $data['region'] : null;
@@ -788,6 +794,30 @@ class AuDashboardModel implements ModelInterface, ArrayAccess
     public function setProposedSwapCount($proposed_swap_count)
     {
         $this->container['proposed_swap_count'] = $proposed_swap_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets pending_leave_count
+     *
+     * @return int
+     */
+    public function getPendingLeaveCount()
+    {
+        return $this->container['pending_leave_count'];
+    }
+
+    /**
+     * Sets pending_leave_count
+     *
+     * @param int $pending_leave_count 
+     *
+     * @return $this
+     */
+    public function setPendingLeaveCount($pending_leave_count)
+    {
+        $this->container['pending_leave_count'] = $pending_leave_count;
 
         return $this;
     }

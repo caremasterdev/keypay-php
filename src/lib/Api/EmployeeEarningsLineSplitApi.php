@@ -365,7 +365,7 @@ class EmployeeEarningsLineSplitApi
     /**
      * Operation genericEarningsLineSplitGet
      *
-     * Get Employee earnings line splits
+     * Get Employee location earnings line splits
      *
      * @param  string $business_id business_id (required)
      * @param  string $employee_id employee_id (required)
@@ -383,7 +383,7 @@ class EmployeeEarningsLineSplitApi
     /**
      * Operation genericEarningsLineSplitGetWithHttpInfo
      *
-     * Get Employee earnings line splits
+     * Get Employee location earnings line splits
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
@@ -459,7 +459,7 @@ class EmployeeEarningsLineSplitApi
     /**
      * Operation genericEarningsLineSplitGetAsync
      *
-     * Get Employee earnings line splits
+     * Get Employee location earnings line splits
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
@@ -480,7 +480,7 @@ class EmployeeEarningsLineSplitApi
     /**
      * Operation genericEarningsLineSplitGetAsyncWithHttpInfo
      *
-     * Get Employee earnings line splits
+     * Get Employee location earnings line splits
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
