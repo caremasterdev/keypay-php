@@ -59,7 +59,8 @@ class EarningsLineSplitEditModel implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'location_id' => 'int',
         'allocated_percentage' => 'double',
-        'allocate_balance' => 'bool'
+        'allocate_balance' => 'bool',
+        'reporting_dimension_value_ids' => 'int[]'
     ];
 
     /**
@@ -70,7 +71,8 @@ class EarningsLineSplitEditModel implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'location_id' => 'int32',
         'allocated_percentage' => 'double',
-        'allocate_balance' => null
+        'allocate_balance' => null,
+        'reporting_dimension_value_ids' => 'int32'
     ];
 
     /**
@@ -102,7 +104,8 @@ class EarningsLineSplitEditModel implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'location_id' => 'locationId',
         'allocated_percentage' => 'allocatedPercentage',
-        'allocate_balance' => 'allocateBalance'
+        'allocate_balance' => 'allocateBalance',
+        'reporting_dimension_value_ids' => 'reportingDimensionValueIds'
     ];
 
     /**
@@ -113,7 +116,8 @@ class EarningsLineSplitEditModel implements ModelInterface, ArrayAccess
     protected static $setters = [
         'location_id' => 'setLocationId',
         'allocated_percentage' => 'setAllocatedPercentage',
-        'allocate_balance' => 'setAllocateBalance'
+        'allocate_balance' => 'setAllocateBalance',
+        'reporting_dimension_value_ids' => 'setReportingDimensionValueIds'
     ];
 
     /**
@@ -124,7 +128,8 @@ class EarningsLineSplitEditModel implements ModelInterface, ArrayAccess
     protected static $getters = [
         'location_id' => 'getLocationId',
         'allocated_percentage' => 'getAllocatedPercentage',
-        'allocate_balance' => 'getAllocateBalance'
+        'allocate_balance' => 'getAllocateBalance',
+        'reporting_dimension_value_ids' => 'getReportingDimensionValueIds'
     ];
 
     /**
@@ -190,6 +195,7 @@ class EarningsLineSplitEditModel implements ModelInterface, ArrayAccess
         $this->container['location_id'] = isset($data['location_id']) ? $data['location_id'] : null;
         $this->container['allocated_percentage'] = isset($data['allocated_percentage']) ? $data['allocated_percentage'] : null;
         $this->container['allocate_balance'] = isset($data['allocate_balance']) ? $data['allocate_balance'] : null;
+        $this->container['reporting_dimension_value_ids'] = isset($data['reporting_dimension_value_ids']) ? $data['reporting_dimension_value_ids'] : null;
     }
 
     /**
@@ -284,6 +290,30 @@ class EarningsLineSplitEditModel implements ModelInterface, ArrayAccess
     public function setAllocateBalance($allocate_balance)
     {
         $this->container['allocate_balance'] = $allocate_balance;
+
+        return $this;
+    }
+
+    /**
+     * Gets reporting_dimension_value_ids
+     *
+     * @return int[]
+     */
+    public function getReportingDimensionValueIds()
+    {
+        return $this->container['reporting_dimension_value_ids'];
+    }
+
+    /**
+     * Sets reporting_dimension_value_ids
+     *
+     * @param int[] $reporting_dimension_value_ids 
+     *
+     * @return $this
+     */
+    public function setReportingDimensionValueIds($reporting_dimension_value_ids)
+    {
+        $this->container['reporting_dimension_value_ids'] = $reporting_dimension_value_ids;
 
         return $this;
     }

@@ -80,12 +80,14 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess
         'can_view_roster_shifts' => 'bool',
         'can_manage_roster_shifts' => 'bool',
         'billing_status' => 'string',
+        'paid_breaks_enabled' => 'bool',
         'location_permissions' => '\Swagger\Client\Model\LocationPermissionModel[]',
         'employee_group_permissions' => '\Swagger\Client\Model\EmployeeGroupPermissionModel[]',
         'id' => 'int',
         'name' => 'string',
         'region' => 'string',
         'registration_number' => 'string',
+        'registration_number_validation_bypassed' => 'bool',
         'legal_name' => 'string',
         'contact_name' => 'string',
         'contact_email_address' => 'string',
@@ -142,12 +144,14 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess
         'can_view_roster_shifts' => null,
         'can_manage_roster_shifts' => null,
         'billing_status' => null,
+        'paid_breaks_enabled' => null,
         'location_permissions' => null,
         'employee_group_permissions' => null,
         'id' => 'int32',
         'name' => null,
         'region' => null,
         'registration_number' => null,
+        'registration_number_validation_bypassed' => null,
         'legal_name' => null,
         'contact_name' => null,
         'contact_email_address' => null,
@@ -225,12 +229,14 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess
         'can_view_roster_shifts' => 'canViewRosterShifts',
         'can_manage_roster_shifts' => 'canManageRosterShifts',
         'billing_status' => 'billingStatus',
+        'paid_breaks_enabled' => 'paidBreaksEnabled',
         'location_permissions' => 'locationPermissions',
         'employee_group_permissions' => 'employeeGroupPermissions',
         'id' => 'id',
         'name' => 'name',
         'region' => 'region',
         'registration_number' => 'registrationNumber',
+        'registration_number_validation_bypassed' => 'registrationNumberValidationBypassed',
         'legal_name' => 'legalName',
         'contact_name' => 'contactName',
         'contact_email_address' => 'contactEmailAddress',
@@ -287,12 +293,14 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess
         'can_view_roster_shifts' => 'setCanViewRosterShifts',
         'can_manage_roster_shifts' => 'setCanManageRosterShifts',
         'billing_status' => 'setBillingStatus',
+        'paid_breaks_enabled' => 'setPaidBreaksEnabled',
         'location_permissions' => 'setLocationPermissions',
         'employee_group_permissions' => 'setEmployeeGroupPermissions',
         'id' => 'setId',
         'name' => 'setName',
         'region' => 'setRegion',
         'registration_number' => 'setRegistrationNumber',
+        'registration_number_validation_bypassed' => 'setRegistrationNumberValidationBypassed',
         'legal_name' => 'setLegalName',
         'contact_name' => 'setContactName',
         'contact_email_address' => 'setContactEmailAddress',
@@ -349,12 +357,14 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess
         'can_view_roster_shifts' => 'getCanViewRosterShifts',
         'can_manage_roster_shifts' => 'getCanManageRosterShifts',
         'billing_status' => 'getBillingStatus',
+        'paid_breaks_enabled' => 'getPaidBreaksEnabled',
         'location_permissions' => 'getLocationPermissions',
         'employee_group_permissions' => 'getEmployeeGroupPermissions',
         'id' => 'getId',
         'name' => 'getName',
         'region' => 'getRegion',
         'registration_number' => 'getRegistrationNumber',
+        'registration_number_validation_bypassed' => 'getRegistrationNumberValidationBypassed',
         'legal_name' => 'getLegalName',
         'contact_name' => 'getContactName',
         'contact_email_address' => 'getContactEmailAddress',
@@ -438,6 +448,8 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess
     const LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE = 'EmployeeStartDate';
     const LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE = 'SpecifiedDate';
     const LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR = 'CalendarYear';
+    const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH = 'RollingYear12Month';
+    const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH = 'RollingYear24Month';
     
 
     
@@ -497,6 +509,8 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess
             self::LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH,
         ];
     }
     
@@ -539,12 +553,14 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess
         $this->container['can_view_roster_shifts'] = isset($data['can_view_roster_shifts']) ? $data['can_view_roster_shifts'] : null;
         $this->container['can_manage_roster_shifts'] = isset($data['can_manage_roster_shifts']) ? $data['can_manage_roster_shifts'] : null;
         $this->container['billing_status'] = isset($data['billing_status']) ? $data['billing_status'] : null;
+        $this->container['paid_breaks_enabled'] = isset($data['paid_breaks_enabled']) ? $data['paid_breaks_enabled'] : null;
         $this->container['location_permissions'] = isset($data['location_permissions']) ? $data['location_permissions'] : null;
         $this->container['employee_group_permissions'] = isset($data['employee_group_permissions']) ? $data['employee_group_permissions'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['region'] = isset($data['region']) ? $data['region'] : null;
         $this->container['registration_number'] = isset($data['registration_number']) ? $data['registration_number'] : null;
+        $this->container['registration_number_validation_bypassed'] = isset($data['registration_number_validation_bypassed']) ? $data['registration_number_validation_bypassed'] : null;
         $this->container['legal_name'] = isset($data['legal_name']) ? $data['legal_name'] : null;
         $this->container['contact_name'] = isset($data['contact_name']) ? $data['contact_name'] : null;
         $this->container['contact_email_address'] = isset($data['contact_email_address']) ? $data['contact_email_address'] : null;
@@ -1190,6 +1206,30 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets paid_breaks_enabled
+     *
+     * @return bool
+     */
+    public function getPaidBreaksEnabled()
+    {
+        return $this->container['paid_breaks_enabled'];
+    }
+
+    /**
+     * Sets paid_breaks_enabled
+     *
+     * @param bool $paid_breaks_enabled 
+     *
+     * @return $this
+     */
+    public function setPaidBreaksEnabled($paid_breaks_enabled)
+    {
+        $this->container['paid_breaks_enabled'] = $paid_breaks_enabled;
+
+        return $this;
+    }
+
+    /**
      * Gets location_permissions
      *
      * @return \Swagger\Client\Model\LocationPermissionModel[]
@@ -1329,6 +1369,30 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess
     public function setRegistrationNumber($registration_number)
     {
         $this->container['registration_number'] = $registration_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets registration_number_validation_bypassed
+     *
+     * @return bool
+     */
+    public function getRegistrationNumberValidationBypassed()
+    {
+        return $this->container['registration_number_validation_bypassed'];
+    }
+
+    /**
+     * Sets registration_number_validation_bypassed
+     *
+     * @param bool $registration_number_validation_bypassed 
+     *
+     * @return $this
+     */
+    public function setRegistrationNumberValidationBypassed($registration_number_validation_bypassed)
+    {
+        $this->container['registration_number_validation_bypassed'] = $registration_number_validation_bypassed;
 
         return $this;
     }

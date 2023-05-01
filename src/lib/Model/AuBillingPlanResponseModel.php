@@ -69,7 +69,8 @@ class AuBillingPlanResponseModel implements ModelInterface, ArrayAccess
         'function_rostering' => 'string',
         'function_time_and_attendance' => 'string',
         'function_employee_onboarding' => 'string',
-        'description' => 'string'
+        'description' => 'string',
+        'is_hidden' => 'bool'
     ];
 
     /**
@@ -90,7 +91,8 @@ class AuBillingPlanResponseModel implements ModelInterface, ArrayAccess
         'function_rostering' => null,
         'function_time_and_attendance' => null,
         'function_employee_onboarding' => null,
-        'description' => null
+        'description' => null,
+        'is_hidden' => null
     ];
 
     /**
@@ -132,7 +134,8 @@ class AuBillingPlanResponseModel implements ModelInterface, ArrayAccess
         'function_rostering' => 'functionRostering',
         'function_time_and_attendance' => 'functionTimeAndAttendance',
         'function_employee_onboarding' => 'functionEmployeeOnboarding',
-        'description' => 'description'
+        'description' => 'description',
+        'is_hidden' => 'isHidden'
     ];
 
     /**
@@ -153,7 +156,8 @@ class AuBillingPlanResponseModel implements ModelInterface, ArrayAccess
         'function_rostering' => 'setFunctionRostering',
         'function_time_and_attendance' => 'setFunctionTimeAndAttendance',
         'function_employee_onboarding' => 'setFunctionEmployeeOnboarding',
-        'description' => 'setDescription'
+        'description' => 'setDescription',
+        'is_hidden' => 'setIsHidden'
     ];
 
     /**
@@ -174,7 +178,8 @@ class AuBillingPlanResponseModel implements ModelInterface, ArrayAccess
         'function_rostering' => 'getFunctionRostering',
         'function_time_and_attendance' => 'getFunctionTimeAndAttendance',
         'function_employee_onboarding' => 'getFunctionEmployeeOnboarding',
-        'description' => 'getDescription'
+        'description' => 'getDescription',
+        'is_hidden' => 'getIsHidden'
     ];
 
     /**
@@ -381,6 +386,7 @@ class AuBillingPlanResponseModel implements ModelInterface, ArrayAccess
         $this->container['function_time_and_attendance'] = isset($data['function_time_and_attendance']) ? $data['function_time_and_attendance'] : null;
         $this->container['function_employee_onboarding'] = isset($data['function_employee_onboarding']) ? $data['function_employee_onboarding'] : null;
         $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['is_hidden'] = isset($data['is_hidden']) ? $data['is_hidden'] : null;
     }
 
     /**
@@ -834,6 +840,30 @@ class AuBillingPlanResponseModel implements ModelInterface, ArrayAccess
     public function setDescription($description)
     {
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_hidden
+     *
+     * @return bool
+     */
+    public function getIsHidden()
+    {
+        return $this->container['is_hidden'];
+    }
+
+    /**
+     * Sets is_hidden
+     *
+     * @param bool $is_hidden 
+     *
+     * @return $this
+     */
+    public function setIsHidden($is_hidden)
+    {
+        $this->container['is_hidden'] = $is_hidden;
 
         return $this;
     }

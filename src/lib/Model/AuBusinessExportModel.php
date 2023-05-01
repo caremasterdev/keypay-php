@@ -65,6 +65,7 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
         'sbr_software_id' => 'string',
         'is_foreign_entity' => 'bool',
         'foreign_entity_country' => 'string',
+        'default_super_rate' => 'double',
         'id' => 'int',
         'name' => 'string',
         'region' => 'string',
@@ -85,11 +86,15 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
         'address_line2' => 'string',
         'post_code' => 'string',
         'white_label_name' => 'string',
+        'white_label_id' => 'int',
         'promo_code' => 'string',
         'date_created' => '\DateTime',
         'leave_accrual_start_date_type' => 'string',
         'leave_year_start' => '\DateTime',
-        'source' => 'string'
+        'source' => 'string',
+        'number_of_employees' => 'string',
+        'industry_name' => 'string',
+        'pay_cycle_frequency' => 'string'
     ];
 
     /**
@@ -106,6 +111,7 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
         'sbr_software_id' => null,
         'is_foreign_entity' => null,
         'foreign_entity_country' => null,
+        'default_super_rate' => 'double',
         'id' => 'int32',
         'name' => null,
         'region' => null,
@@ -126,11 +132,15 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
         'address_line2' => null,
         'post_code' => null,
         'white_label_name' => null,
+        'white_label_id' => 'int32',
         'promo_code' => null,
         'date_created' => 'date-time',
         'leave_accrual_start_date_type' => null,
         'leave_year_start' => 'date-time',
-        'source' => null
+        'source' => null,
+        'number_of_employees' => null,
+        'industry_name' => null,
+        'pay_cycle_frequency' => null
     ];
 
     /**
@@ -168,6 +178,7 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
         'sbr_software_id' => 'sbrSoftwareId',
         'is_foreign_entity' => 'isForeignEntity',
         'foreign_entity_country' => 'foreignEntityCountry',
+        'default_super_rate' => 'defaultSuperRate',
         'id' => 'id',
         'name' => 'name',
         'region' => 'region',
@@ -188,11 +199,15 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
         'address_line2' => 'addressLine2',
         'post_code' => 'postCode',
         'white_label_name' => 'whiteLabelName',
+        'white_label_id' => 'whiteLabelId',
         'promo_code' => 'promoCode',
         'date_created' => 'dateCreated',
         'leave_accrual_start_date_type' => 'leaveAccrualStartDateType',
         'leave_year_start' => 'leaveYearStart',
-        'source' => 'source'
+        'source' => 'source',
+        'number_of_employees' => 'numberOfEmployees',
+        'industry_name' => 'industryName',
+        'pay_cycle_frequency' => 'payCycleFrequency'
     ];
 
     /**
@@ -209,6 +224,7 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
         'sbr_software_id' => 'setSbrSoftwareId',
         'is_foreign_entity' => 'setIsForeignEntity',
         'foreign_entity_country' => 'setForeignEntityCountry',
+        'default_super_rate' => 'setDefaultSuperRate',
         'id' => 'setId',
         'name' => 'setName',
         'region' => 'setRegion',
@@ -229,11 +245,15 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
         'address_line2' => 'setAddressLine2',
         'post_code' => 'setPostCode',
         'white_label_name' => 'setWhiteLabelName',
+        'white_label_id' => 'setWhiteLabelId',
         'promo_code' => 'setPromoCode',
         'date_created' => 'setDateCreated',
         'leave_accrual_start_date_type' => 'setLeaveAccrualStartDateType',
         'leave_year_start' => 'setLeaveYearStart',
-        'source' => 'setSource'
+        'source' => 'setSource',
+        'number_of_employees' => 'setNumberOfEmployees',
+        'industry_name' => 'setIndustryName',
+        'pay_cycle_frequency' => 'setPayCycleFrequency'
     ];
 
     /**
@@ -250,6 +270,7 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
         'sbr_software_id' => 'getSbrSoftwareId',
         'is_foreign_entity' => 'getIsForeignEntity',
         'foreign_entity_country' => 'getForeignEntityCountry',
+        'default_super_rate' => 'getDefaultSuperRate',
         'id' => 'getId',
         'name' => 'getName',
         'region' => 'getRegion',
@@ -270,11 +291,15 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
         'address_line2' => 'getAddressLine2',
         'post_code' => 'getPostCode',
         'white_label_name' => 'getWhiteLabelName',
+        'white_label_id' => 'getWhiteLabelId',
         'promo_code' => 'getPromoCode',
         'date_created' => 'getDateCreated',
         'leave_accrual_start_date_type' => 'getLeaveAccrualStartDateType',
         'leave_year_start' => 'getLeaveYearStart',
-        'source' => 'getSource'
+        'source' => 'getSource',
+        'number_of_employees' => 'getNumberOfEmployees',
+        'industry_name' => 'getIndustryName',
+        'pay_cycle_frequency' => 'getPayCycleFrequency'
     ];
 
     /**
@@ -330,6 +355,8 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
     const LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE = 'EmployeeStartDate';
     const LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE = 'SpecifiedDate';
     const LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR = 'CalendarYear';
+    const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH = 'RollingYear12Month';
+    const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH = 'RollingYear24Month';
     const SOURCE_NONE = 'None';
     const SOURCE_SAASU = 'Saasu';
     const SOURCE_XERO = 'Xero';
@@ -400,6 +427,22 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
     const SOURCE_QUICKFILE = 'Quickfile';
     const SOURCE_TIDE = 'Tide';
     const SOURCE_TIDE_SSO = 'TideSso';
+    const SOURCE_FREE_AGENT = 'FreeAgent';
+    const SOURCE_AKAHU = 'Akahu';
+    const SOURCE_INSTA_PAY = 'InstaPay';
+    const SOURCE_ZEPTO = 'Zepto';
+    const SOURCE_SLACK = 'Slack';
+    const NUMBER_OF_EMPLOYEES_ONE_TO_TEN = 'OneToTen';
+    const NUMBER_OF_EMPLOYEES_ELEVEN_TO_FIFTY = 'ElevenToFifty';
+    const NUMBER_OF_EMPLOYEES_FIFTY_ONE_TO_TWO_FIFTY = 'FiftyOneToTwoFifty';
+    const NUMBER_OF_EMPLOYEES_TWO_FIFTY_ONE_AND_UP = 'TwoFiftyOneAndUp';
+    const PAY_CYCLE_FREQUENCY_WEEKLY = 'Weekly';
+    const PAY_CYCLE_FREQUENCY_FORTNIGHTLY = 'Fortnightly';
+    const PAY_CYCLE_FREQUENCY_MONTHLY = 'Monthly';
+    const PAY_CYCLE_FREQUENCY_FOUR_WEEKLY = 'FourWeekly';
+    const PAY_CYCLE_FREQUENCY_QUARTERLY = 'Quarterly';
+    const PAY_CYCLE_FREQUENCY_ANNUALLY = 'Annually';
+    const PAY_CYCLE_FREQUENCY_HALF_MONTHLY = 'HalfMonthly';
     
 
     
@@ -445,6 +488,8 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
             self::LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH,
         ];
     }
     
@@ -526,6 +571,44 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
             self::SOURCE_QUICKFILE,
             self::SOURCE_TIDE,
             self::SOURCE_TIDE_SSO,
+            self::SOURCE_FREE_AGENT,
+            self::SOURCE_AKAHU,
+            self::SOURCE_INSTA_PAY,
+            self::SOURCE_ZEPTO,
+            self::SOURCE_SLACK,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getNumberOfEmployeesAllowableValues()
+    {
+        return [
+            self::NUMBER_OF_EMPLOYEES_ONE_TO_TEN,
+            self::NUMBER_OF_EMPLOYEES_ELEVEN_TO_FIFTY,
+            self::NUMBER_OF_EMPLOYEES_FIFTY_ONE_TO_TWO_FIFTY,
+            self::NUMBER_OF_EMPLOYEES_TWO_FIFTY_ONE_AND_UP,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPayCycleFrequencyAllowableValues()
+    {
+        return [
+            self::PAY_CYCLE_FREQUENCY_WEEKLY,
+            self::PAY_CYCLE_FREQUENCY_FORTNIGHTLY,
+            self::PAY_CYCLE_FREQUENCY_MONTHLY,
+            self::PAY_CYCLE_FREQUENCY_FOUR_WEEKLY,
+            self::PAY_CYCLE_FREQUENCY_QUARTERLY,
+            self::PAY_CYCLE_FREQUENCY_ANNUALLY,
+            self::PAY_CYCLE_FREQUENCY_HALF_MONTHLY,
         ];
     }
     
@@ -553,6 +636,7 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
         $this->container['sbr_software_id'] = isset($data['sbr_software_id']) ? $data['sbr_software_id'] : null;
         $this->container['is_foreign_entity'] = isset($data['is_foreign_entity']) ? $data['is_foreign_entity'] : null;
         $this->container['foreign_entity_country'] = isset($data['foreign_entity_country']) ? $data['foreign_entity_country'] : null;
+        $this->container['default_super_rate'] = isset($data['default_super_rate']) ? $data['default_super_rate'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['region'] = isset($data['region']) ? $data['region'] : null;
@@ -573,11 +657,15 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
         $this->container['address_line2'] = isset($data['address_line2']) ? $data['address_line2'] : null;
         $this->container['post_code'] = isset($data['post_code']) ? $data['post_code'] : null;
         $this->container['white_label_name'] = isset($data['white_label_name']) ? $data['white_label_name'] : null;
+        $this->container['white_label_id'] = isset($data['white_label_id']) ? $data['white_label_id'] : null;
         $this->container['promo_code'] = isset($data['promo_code']) ? $data['promo_code'] : null;
         $this->container['date_created'] = isset($data['date_created']) ? $data['date_created'] : null;
         $this->container['leave_accrual_start_date_type'] = isset($data['leave_accrual_start_date_type']) ? $data['leave_accrual_start_date_type'] : null;
         $this->container['leave_year_start'] = isset($data['leave_year_start']) ? $data['leave_year_start'] : null;
         $this->container['source'] = isset($data['source']) ? $data['source'] : null;
+        $this->container['number_of_employees'] = isset($data['number_of_employees']) ? $data['number_of_employees'] : null;
+        $this->container['industry_name'] = isset($data['industry_name']) ? $data['industry_name'] : null;
+        $this->container['pay_cycle_frequency'] = isset($data['pay_cycle_frequency']) ? $data['pay_cycle_frequency'] : null;
     }
 
     /**
@@ -617,6 +705,22 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
         if (!is_null($this->container['source']) && !in_array($this->container['source'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'source', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getNumberOfEmployeesAllowableValues();
+        if (!is_null($this->container['number_of_employees']) && !in_array($this->container['number_of_employees'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'number_of_employees', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getPayCycleFrequencyAllowableValues();
+        if (!is_null($this->container['pay_cycle_frequency']) && !in_array($this->container['pay_cycle_frequency'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'pay_cycle_frequency', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -824,6 +928,30 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
     public function setForeignEntityCountry($foreign_entity_country)
     {
         $this->container['foreign_entity_country'] = $foreign_entity_country;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_super_rate
+     *
+     * @return double
+     */
+    public function getDefaultSuperRate()
+    {
+        return $this->container['default_super_rate'];
+    }
+
+    /**
+     * Sets default_super_rate
+     *
+     * @param double $default_super_rate 
+     *
+     * @return $this
+     */
+    public function setDefaultSuperRate($default_super_rate)
+    {
+        $this->container['default_super_rate'] = $default_super_rate;
 
         return $this;
     }
@@ -1327,6 +1455,30 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets white_label_id
+     *
+     * @return int
+     */
+    public function getWhiteLabelId()
+    {
+        return $this->container['white_label_id'];
+    }
+
+    /**
+     * Sets white_label_id
+     *
+     * @param int $white_label_id 
+     *
+     * @return $this
+     */
+    public function setWhiteLabelId($white_label_id)
+    {
+        $this->container['white_label_id'] = $white_label_id;
+
+        return $this;
+    }
+
+    /**
      * Gets promo_code
      *
      * @return string
@@ -1460,6 +1612,96 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
             );
         }
         $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_employees
+     *
+     * @return string
+     */
+    public function getNumberOfEmployees()
+    {
+        return $this->container['number_of_employees'];
+    }
+
+    /**
+     * Sets number_of_employees
+     *
+     * @param string $number_of_employees 
+     *
+     * @return $this
+     */
+    public function setNumberOfEmployees($number_of_employees)
+    {
+        $allowedValues = $this->getNumberOfEmployeesAllowableValues();
+        if (!is_null($number_of_employees) && !in_array($number_of_employees, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'number_of_employees', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['number_of_employees'] = $number_of_employees;
+
+        return $this;
+    }
+
+    /**
+     * Gets industry_name
+     *
+     * @return string
+     */
+    public function getIndustryName()
+    {
+        return $this->container['industry_name'];
+    }
+
+    /**
+     * Sets industry_name
+     *
+     * @param string $industry_name 
+     *
+     * @return $this
+     */
+    public function setIndustryName($industry_name)
+    {
+        $this->container['industry_name'] = $industry_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets pay_cycle_frequency
+     *
+     * @return string
+     */
+    public function getPayCycleFrequency()
+    {
+        return $this->container['pay_cycle_frequency'];
+    }
+
+    /**
+     * Sets pay_cycle_frequency
+     *
+     * @param string $pay_cycle_frequency 
+     *
+     * @return $this
+     */
+    public function setPayCycleFrequency($pay_cycle_frequency)
+    {
+        $allowedValues = $this->getPayCycleFrequencyAllowableValues();
+        if (!is_null($pay_cycle_frequency) && !in_array($pay_cycle_frequency, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'pay_cycle_frequency', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['pay_cycle_frequency'] = $pay_cycle_frequency;
 
         return $this;
     }

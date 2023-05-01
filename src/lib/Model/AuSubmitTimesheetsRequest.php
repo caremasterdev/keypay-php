@@ -64,6 +64,7 @@ class AuSubmitTimesheetsRequest implements ModelInterface, ArrayAccess
         'employee_id_type' => 'string',
         'location_id_type' => 'string',
         'work_type_id_type' => 'string',
+        'return_response' => 'bool',
         'timesheets' => 'map[string,\Swagger\Client\Model\AuTimesheetLineModel[]]'
     ];
 
@@ -80,6 +81,7 @@ class AuSubmitTimesheetsRequest implements ModelInterface, ArrayAccess
         'employee_id_type' => null,
         'location_id_type' => null,
         'work_type_id_type' => null,
+        'return_response' => null,
         'timesheets' => null
     ];
 
@@ -117,6 +119,7 @@ class AuSubmitTimesheetsRequest implements ModelInterface, ArrayAccess
         'employee_id_type' => 'employeeIdType',
         'location_id_type' => 'locationIdType',
         'work_type_id_type' => 'workTypeIdType',
+        'return_response' => 'returnResponse',
         'timesheets' => 'timesheets'
     ];
 
@@ -133,6 +136,7 @@ class AuSubmitTimesheetsRequest implements ModelInterface, ArrayAccess
         'employee_id_type' => 'setEmployeeIdType',
         'location_id_type' => 'setLocationIdType',
         'work_type_id_type' => 'setWorkTypeIdType',
+        'return_response' => 'setReturnResponse',
         'timesheets' => 'setTimesheets'
     ];
 
@@ -149,6 +153,7 @@ class AuSubmitTimesheetsRequest implements ModelInterface, ArrayAccess
         'employee_id_type' => 'getEmployeeIdType',
         'location_id_type' => 'getLocationIdType',
         'work_type_id_type' => 'getWorkTypeIdType',
+        'return_response' => 'getReturnResponse',
         'timesheets' => 'getTimesheets'
     ];
 
@@ -264,6 +269,7 @@ class AuSubmitTimesheetsRequest implements ModelInterface, ArrayAccess
         $this->container['employee_id_type'] = isset($data['employee_id_type']) ? $data['employee_id_type'] : null;
         $this->container['location_id_type'] = isset($data['location_id_type']) ? $data['location_id_type'] : null;
         $this->container['work_type_id_type'] = isset($data['work_type_id_type']) ? $data['work_type_id_type'] : null;
+        $this->container['return_response'] = isset($data['return_response']) ? $data['return_response'] : null;
         $this->container['timesheets'] = isset($data['timesheets']) ? $data['timesheets'] : null;
     }
 
@@ -506,6 +512,30 @@ class AuSubmitTimesheetsRequest implements ModelInterface, ArrayAccess
             );
         }
         $this->container['work_type_id_type'] = $work_type_id_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets return_response
+     *
+     * @return bool
+     */
+    public function getReturnResponse()
+    {
+        return $this->container['return_response'];
+    }
+
+    /**
+     * Sets return_response
+     *
+     * @param bool $return_response 
+     *
+     * @return $this
+     */
+    public function setReturnResponse($return_response)
+    {
+        $this->container['return_response'] = $return_response;
 
         return $this;
     }

@@ -84,7 +84,8 @@ class AuManagerRosterShiftModel implements ModelInterface, ArrayAccess
         'pending_swap' => '\Swagger\Client\Model\RosterShiftSwapModel',
         'date_published' => '\DateTime',
         'biddable' => 'bool',
-        'shift_swap_cutoff_time' => '\DateTime'
+        'shift_swap_cutoff_time' => '\DateTime',
+        'shift_assignment_status' => 'string'
     ];
 
     /**
@@ -120,7 +121,8 @@ class AuManagerRosterShiftModel implements ModelInterface, ArrayAccess
         'pending_swap' => null,
         'date_published' => 'date-time',
         'biddable' => null,
-        'shift_swap_cutoff_time' => 'date-time'
+        'shift_swap_cutoff_time' => 'date-time',
+        'shift_assignment_status' => null
     ];
 
     /**
@@ -177,7 +179,8 @@ class AuManagerRosterShiftModel implements ModelInterface, ArrayAccess
         'pending_swap' => 'pendingSwap',
         'date_published' => 'datePublished',
         'biddable' => 'biddable',
-        'shift_swap_cutoff_time' => 'shiftSwapCutoffTime'
+        'shift_swap_cutoff_time' => 'shiftSwapCutoffTime',
+        'shift_assignment_status' => 'shiftAssignmentStatus'
     ];
 
     /**
@@ -213,7 +216,8 @@ class AuManagerRosterShiftModel implements ModelInterface, ArrayAccess
         'pending_swap' => 'setPendingSwap',
         'date_published' => 'setDatePublished',
         'biddable' => 'setBiddable',
-        'shift_swap_cutoff_time' => 'setShiftSwapCutoffTime'
+        'shift_swap_cutoff_time' => 'setShiftSwapCutoffTime',
+        'shift_assignment_status' => 'setShiftAssignmentStatus'
     ];
 
     /**
@@ -249,7 +253,8 @@ class AuManagerRosterShiftModel implements ModelInterface, ArrayAccess
         'pending_swap' => 'getPendingSwap',
         'date_published' => 'getDatePublished',
         'biddable' => 'getBiddable',
-        'shift_swap_cutoff_time' => 'getShiftSwapCutoffTime'
+        'shift_swap_cutoff_time' => 'getShiftSwapCutoffTime',
+        'shift_assignment_status' => 'getShiftAssignmentStatus'
     ];
 
     /**
@@ -293,8 +298,33 @@ class AuManagerRosterShiftModel implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const SHIFT_ASSIGNMENT_STATUS_PENDING = 'Pending';
+    const SHIFT_ASSIGNMENT_STATUS_ASSIGNED = 'Assigned';
+    const SHIFT_ASSIGNMENT_STATUS_BIDDING = 'Bidding';
+    const SHIFT_ASSIGNMENT_STATUS_PENDING_SHIFT_SWAP = 'PendingShiftSwap';
+    const SHIFT_ASSIGNMENT_STATUS_PENDING_SHIFT_SWAP_AWAITING_APPROVAL = 'PendingShiftSwapAwaitingApproval';
+    const SHIFT_ASSIGNMENT_STATUS_PROPOSED_SHIFT_SWAP = 'ProposedShiftSwap';
+    const SHIFT_ASSIGNMENT_STATUS_PROPOSED_SHIFT_SWAP_AWAITING_APPROVAL = 'ProposedShiftSwapAwaitingApproval';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getShiftAssignmentStatusAllowableValues()
+    {
+        return [
+            self::SHIFT_ASSIGNMENT_STATUS_PENDING,
+            self::SHIFT_ASSIGNMENT_STATUS_ASSIGNED,
+            self::SHIFT_ASSIGNMENT_STATUS_BIDDING,
+            self::SHIFT_ASSIGNMENT_STATUS_PENDING_SHIFT_SWAP,
+            self::SHIFT_ASSIGNMENT_STATUS_PENDING_SHIFT_SWAP_AWAITING_APPROVAL,
+            self::SHIFT_ASSIGNMENT_STATUS_PROPOSED_SHIFT_SWAP,
+            self::SHIFT_ASSIGNMENT_STATUS_PROPOSED_SHIFT_SWAP_AWAITING_APPROVAL,
+        ];
+    }
     
 
     /**
@@ -340,6 +370,7 @@ class AuManagerRosterShiftModel implements ModelInterface, ArrayAccess
         $this->container['date_published'] = isset($data['date_published']) ? $data['date_published'] : null;
         $this->container['biddable'] = isset($data['biddable']) ? $data['biddable'] : null;
         $this->container['shift_swap_cutoff_time'] = isset($data['shift_swap_cutoff_time']) ? $data['shift_swap_cutoff_time'] : null;
+        $this->container['shift_assignment_status'] = isset($data['shift_assignment_status']) ? $data['shift_assignment_status'] : null;
     }
 
     /**
@@ -350,6 +381,14 @@ class AuManagerRosterShiftModel implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getShiftAssignmentStatusAllowableValues();
+        if (!is_null($this->container['shift_assignment_status']) && !in_array($this->container['shift_assignment_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'shift_assignment_status', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -1034,6 +1073,39 @@ class AuManagerRosterShiftModel implements ModelInterface, ArrayAccess
     public function setShiftSwapCutoffTime($shift_swap_cutoff_time)
     {
         $this->container['shift_swap_cutoff_time'] = $shift_swap_cutoff_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets shift_assignment_status
+     *
+     * @return string
+     */
+    public function getShiftAssignmentStatus()
+    {
+        return $this->container['shift_assignment_status'];
+    }
+
+    /**
+     * Sets shift_assignment_status
+     *
+     * @param string $shift_assignment_status 
+     *
+     * @return $this
+     */
+    public function setShiftAssignmentStatus($shift_assignment_status)
+    {
+        $allowedValues = $this->getShiftAssignmentStatusAllowableValues();
+        if (!is_null($shift_assignment_status) && !in_array($shift_assignment_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'shift_assignment_status', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['shift_assignment_status'] = $shift_assignment_status;
 
         return $this;
     }

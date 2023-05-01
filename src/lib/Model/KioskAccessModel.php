@@ -192,6 +192,7 @@ class KioskAccessModel implements ModelInterface, ArrayAccess
     const PERMISSIONS_VIEW_EMPLOYEE_DETAILS = 'ViewEmployeeDetails';
     const PERMISSIONS_EDIT_BASIC_EMPLOYEE_DETAILS = 'EditBasicEmployeeDetails';
     const PERMISSIONS_EDIT_ALL_EMPLOYEE_DETAILS = 'EditAllEmployeeDetails';
+    const PERMISSIONS_VIEW_TIMESHEET_REPORTS = 'ViewTimesheetReports';
     
 
     
@@ -238,6 +239,7 @@ class KioskAccessModel implements ModelInterface, ArrayAccess
             self::PERMISSIONS_VIEW_EMPLOYEE_DETAILS,
             self::PERMISSIONS_EDIT_BASIC_EMPLOYEE_DETAILS,
             self::PERMISSIONS_EDIT_ALL_EMPLOYEE_DETAILS,
+            self::PERMISSIONS_VIEW_TIMESHEET_REPORTS,
         ];
     }
     

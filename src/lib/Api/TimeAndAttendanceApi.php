@@ -4309,16 +4309,17 @@ class TimeAndAttendanceApi
      *
      * List Kiosk Staff
      *
-     * @param  int $kiosk_id kiosk_id (required)
+     * @param  int $kiosk_id The ID of the kiosk (required)
      * @param  string $business_id business_id (required)
+     * @param  bool $restrict_current_shifts_to_current_kiosk_location The default value is set to false which will return current shifts for employees against this particular location.  Setting the value to true will return employees shift details with access to this location. (optional, default to false)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\BasicKioskEmployeeModel[]
      */
-    public function genericTimeAndAttendanceGetStaff($kiosk_id, $business_id)
+    public function genericTimeAndAttendanceGetStaff($kiosk_id, $business_id, $restrict_current_shifts_to_current_kiosk_location = 'false')
     {
-        list($response) = $this->genericTimeAndAttendanceGetStaffWithHttpInfo($kiosk_id, $business_id);
+        list($response) = $this->genericTimeAndAttendanceGetStaffWithHttpInfo($kiosk_id, $business_id, $restrict_current_shifts_to_current_kiosk_location);
         return $response;
     }
 
@@ -4327,17 +4328,18 @@ class TimeAndAttendanceApi
      *
      * List Kiosk Staff
      *
-     * @param  int $kiosk_id (required)
+     * @param  int $kiosk_id The ID of the kiosk (required)
      * @param  string $business_id (required)
+     * @param  bool $restrict_current_shifts_to_current_kiosk_location The default value is set to false which will return current shifts for employees against this particular location.  Setting the value to true will return employees shift details with access to this location. (optional, default to false)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\BasicKioskEmployeeModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function genericTimeAndAttendanceGetStaffWithHttpInfo($kiosk_id, $business_id)
+    public function genericTimeAndAttendanceGetStaffWithHttpInfo($kiosk_id, $business_id, $restrict_current_shifts_to_current_kiosk_location = 'false')
     {
         $returnType = '\Swagger\Client\Model\BasicKioskEmployeeModel[]';
-        $request = $this->genericTimeAndAttendanceGetStaffRequest($kiosk_id, $business_id);
+        $request = $this->genericTimeAndAttendanceGetStaffRequest($kiosk_id, $business_id, $restrict_current_shifts_to_current_kiosk_location);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4403,15 +4405,16 @@ class TimeAndAttendanceApi
      *
      * List Kiosk Staff
      *
-     * @param  int $kiosk_id (required)
+     * @param  int $kiosk_id The ID of the kiosk (required)
      * @param  string $business_id (required)
+     * @param  bool $restrict_current_shifts_to_current_kiosk_location The default value is set to false which will return current shifts for employees against this particular location.  Setting the value to true will return employees shift details with access to this location. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function genericTimeAndAttendanceGetStaffAsync($kiosk_id, $business_id)
+    public function genericTimeAndAttendanceGetStaffAsync($kiosk_id, $business_id, $restrict_current_shifts_to_current_kiosk_location = 'false')
     {
-        return $this->genericTimeAndAttendanceGetStaffAsyncWithHttpInfo($kiosk_id, $business_id)
+        return $this->genericTimeAndAttendanceGetStaffAsyncWithHttpInfo($kiosk_id, $business_id, $restrict_current_shifts_to_current_kiosk_location)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4424,16 +4427,17 @@ class TimeAndAttendanceApi
      *
      * List Kiosk Staff
      *
-     * @param  int $kiosk_id (required)
+     * @param  int $kiosk_id The ID of the kiosk (required)
      * @param  string $business_id (required)
+     * @param  bool $restrict_current_shifts_to_current_kiosk_location The default value is set to false which will return current shifts for employees against this particular location.  Setting the value to true will return employees shift details with access to this location. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function genericTimeAndAttendanceGetStaffAsyncWithHttpInfo($kiosk_id, $business_id)
+    public function genericTimeAndAttendanceGetStaffAsyncWithHttpInfo($kiosk_id, $business_id, $restrict_current_shifts_to_current_kiosk_location = 'false')
     {
         $returnType = '\Swagger\Client\Model\BasicKioskEmployeeModel[]';
-        $request = $this->genericTimeAndAttendanceGetStaffRequest($kiosk_id, $business_id);
+        $request = $this->genericTimeAndAttendanceGetStaffRequest($kiosk_id, $business_id, $restrict_current_shifts_to_current_kiosk_location);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4475,13 +4479,14 @@ class TimeAndAttendanceApi
     /**
      * Create request for operation 'genericTimeAndAttendanceGetStaff'
      *
-     * @param  int $kiosk_id (required)
+     * @param  int $kiosk_id The ID of the kiosk (required)
      * @param  string $business_id (required)
+     * @param  bool $restrict_current_shifts_to_current_kiosk_location The default value is set to false which will return current shifts for employees against this particular location.  Setting the value to true will return employees shift details with access to this location. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function genericTimeAndAttendanceGetStaffRequest($kiosk_id, $business_id)
+    protected function genericTimeAndAttendanceGetStaffRequest($kiosk_id, $business_id, $restrict_current_shifts_to_current_kiosk_location = 'false')
     {
         // verify the required parameter 'kiosk_id' is set
         if ($kiosk_id === null || (is_array($kiosk_id) && count($kiosk_id) === 0)) {
@@ -4503,6 +4508,10 @@ class TimeAndAttendanceApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($restrict_current_shifts_to_current_kiosk_location !== null) {
+            $queryParams['restrictCurrentShiftsToCurrentKioskLocation'] = ObjectSerializer::toQueryValue($restrict_current_shifts_to_current_kiosk_location);
+        }
 
         // path params
         if ($kiosk_id !== null) {

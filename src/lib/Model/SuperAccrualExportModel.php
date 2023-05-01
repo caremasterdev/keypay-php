@@ -66,7 +66,8 @@ class SuperAccrualExportModel implements ModelInterface, ArrayAccess
         'accrual_date' => '\DateTime',
         'accrual_type' => 'string',
         'accrual_amount' => 'double',
-        'batch_id' => 'int'
+        'batch_id' => 'int',
+        'status' => 'string'
     ];
 
     /**
@@ -84,7 +85,8 @@ class SuperAccrualExportModel implements ModelInterface, ArrayAccess
         'accrual_date' => 'date-time',
         'accrual_type' => null,
         'accrual_amount' => 'double',
-        'batch_id' => 'int32'
+        'batch_id' => 'int32',
+        'status' => null
     ];
 
     /**
@@ -123,7 +125,8 @@ class SuperAccrualExportModel implements ModelInterface, ArrayAccess
         'accrual_date' => 'accrualDate',
         'accrual_type' => 'accrualType',
         'accrual_amount' => 'accrualAmount',
-        'batch_id' => 'batchId'
+        'batch_id' => 'batchId',
+        'status' => 'status'
     ];
 
     /**
@@ -141,7 +144,8 @@ class SuperAccrualExportModel implements ModelInterface, ArrayAccess
         'accrual_date' => 'setAccrualDate',
         'accrual_type' => 'setAccrualType',
         'accrual_amount' => 'setAccrualAmount',
-        'batch_id' => 'setBatchId'
+        'batch_id' => 'setBatchId',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -159,7 +163,8 @@ class SuperAccrualExportModel implements ModelInterface, ArrayAccess
         'accrual_date' => 'getAccrualDate',
         'accrual_type' => 'getAccrualType',
         'accrual_amount' => 'getAccrualAmount',
-        'batch_id' => 'getBatchId'
+        'batch_id' => 'getBatchId',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -203,8 +208,55 @@ class SuperAccrualExportModel implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const STATUS__NEW = 'New';
+    const STATUS_SUBMITTED_FOR_PROCESSING = 'SubmittedForProcessing';
+    const STATUS_SUBMISSION_FAILED = 'SubmissionFailed';
+    const STATUS_SUBMISSION_PROCESSED = 'SubmissionProcessed';
+    const STATUS_SUBMISSION_QUEUED_FOR_PAYMENT = 'SubmissionQueuedForPayment';
+    const STATUS_SUBMISSION_PAID = 'SubmissionPaid';
+    const STATUS_AWAITING_PAYMENT = 'AwaitingPayment';
+    const STATUS_AWAITING_CLEARANCE = 'AwaitingClearance';
+    const STATUS_RECONCILED = 'Reconciled';
+    const STATUS_SENT_TO_FUND = 'SentToFund';
+    const STATUS_SENT_TO_FUND_WITH_RESPONSE = 'SentToFundWithResponse';
+    const STATUS_SENT_TO_FUND_WITH_REFUND = 'SentToFundWithRefund';
+    const STATUS_CANCELLED = 'Cancelled';
+    const STATUS_SUBMITTED = 'Submitted';
+    const STATUS_REFUNDED = 'Refunded';
+    const STATUS_CANCELLING = 'Cancelling';
+    const STATUS_PAID = 'Paid';
+    const STATUS_PAYMENT_FAILED = 'PaymentFailed';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS__NEW,
+            self::STATUS_SUBMITTED_FOR_PROCESSING,
+            self::STATUS_SUBMISSION_FAILED,
+            self::STATUS_SUBMISSION_PROCESSED,
+            self::STATUS_SUBMISSION_QUEUED_FOR_PAYMENT,
+            self::STATUS_SUBMISSION_PAID,
+            self::STATUS_AWAITING_PAYMENT,
+            self::STATUS_AWAITING_CLEARANCE,
+            self::STATUS_RECONCILED,
+            self::STATUS_SENT_TO_FUND,
+            self::STATUS_SENT_TO_FUND_WITH_RESPONSE,
+            self::STATUS_SENT_TO_FUND_WITH_REFUND,
+            self::STATUS_CANCELLED,
+            self::STATUS_SUBMITTED,
+            self::STATUS_REFUNDED,
+            self::STATUS_CANCELLING,
+            self::STATUS_PAID,
+            self::STATUS_PAYMENT_FAILED,
+        ];
+    }
     
 
     /**
@@ -232,6 +284,7 @@ class SuperAccrualExportModel implements ModelInterface, ArrayAccess
         $this->container['accrual_type'] = isset($data['accrual_type']) ? $data['accrual_type'] : null;
         $this->container['accrual_amount'] = isset($data['accrual_amount']) ? $data['accrual_amount'] : null;
         $this->container['batch_id'] = isset($data['batch_id']) ? $data['batch_id'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
     }
 
     /**
@@ -242,6 +295,14 @@ class SuperAccrualExportModel implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'status', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -494,6 +555,39 @@ class SuperAccrualExportModel implements ModelInterface, ArrayAccess
     public function setBatchId($batch_id)
     {
         $this->container['batch_id'] = $batch_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status 
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'status', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

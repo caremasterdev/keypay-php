@@ -73,7 +73,8 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess
         'iana_time_zone' => 'string',
         'is_photo_required' => 'bool',
         'can_add_employees' => 'bool',
-        'available_to_all_restricted_users_with_kiosk_access' => 'bool'
+        'available_to_all_restricted_users_with_kiosk_access' => 'bool',
+        'paid_breaks_enabled' => 'bool'
     ];
 
     /**
@@ -98,7 +99,8 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess
         'iana_time_zone' => null,
         'is_photo_required' => null,
         'can_add_employees' => null,
-        'available_to_all_restricted_users_with_kiosk_access' => null
+        'available_to_all_restricted_users_with_kiosk_access' => null,
+        'paid_breaks_enabled' => null
     ];
 
     /**
@@ -144,7 +146,8 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess
         'iana_time_zone' => 'ianaTimeZone',
         'is_photo_required' => 'isPhotoRequired',
         'can_add_employees' => 'canAddEmployees',
-        'available_to_all_restricted_users_with_kiosk_access' => 'availableToAllRestrictedUsersWithKioskAccess'
+        'available_to_all_restricted_users_with_kiosk_access' => 'availableToAllRestrictedUsersWithKioskAccess',
+        'paid_breaks_enabled' => 'paidBreaksEnabled'
     ];
 
     /**
@@ -169,7 +172,8 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess
         'iana_time_zone' => 'setIanaTimeZone',
         'is_photo_required' => 'setIsPhotoRequired',
         'can_add_employees' => 'setCanAddEmployees',
-        'available_to_all_restricted_users_with_kiosk_access' => 'setAvailableToAllRestrictedUsersWithKioskAccess'
+        'available_to_all_restricted_users_with_kiosk_access' => 'setAvailableToAllRestrictedUsersWithKioskAccess',
+        'paid_breaks_enabled' => 'setPaidBreaksEnabled'
     ];
 
     /**
@@ -194,7 +198,8 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess
         'iana_time_zone' => 'getIanaTimeZone',
         'is_photo_required' => 'getIsPhotoRequired',
         'can_add_employees' => 'getCanAddEmployees',
-        'available_to_all_restricted_users_with_kiosk_access' => 'getAvailableToAllRestrictedUsersWithKioskAccess'
+        'available_to_all_restricted_users_with_kiosk_access' => 'getAvailableToAllRestrictedUsersWithKioskAccess',
+        'paid_breaks_enabled' => 'getPaidBreaksEnabled'
     ];
 
     /**
@@ -274,6 +279,7 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess
         $this->container['is_photo_required'] = isset($data['is_photo_required']) ? $data['is_photo_required'] : null;
         $this->container['can_add_employees'] = isset($data['can_add_employees']) ? $data['can_add_employees'] : null;
         $this->container['available_to_all_restricted_users_with_kiosk_access'] = isset($data['available_to_all_restricted_users_with_kiosk_access']) ? $data['available_to_all_restricted_users_with_kiosk_access'] : null;
+        $this->container['paid_breaks_enabled'] = isset($data['paid_breaks_enabled']) ? $data['paid_breaks_enabled'] : null;
     }
 
     /**
@@ -704,6 +710,30 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess
     public function setAvailableToAllRestrictedUsersWithKioskAccess($available_to_all_restricted_users_with_kiosk_access)
     {
         $this->container['available_to_all_restricted_users_with_kiosk_access'] = $available_to_all_restricted_users_with_kiosk_access;
+
+        return $this;
+    }
+
+    /**
+     * Gets paid_breaks_enabled
+     *
+     * @return bool
+     */
+    public function getPaidBreaksEnabled()
+    {
+        return $this->container['paid_breaks_enabled'];
+    }
+
+    /**
+     * Sets paid_breaks_enabled
+     *
+     * @param bool $paid_breaks_enabled 
+     *
+     * @return $this
+     */
+    public function setPaidBreaksEnabled($paid_breaks_enabled)
+    {
+        $this->container['paid_breaks_enabled'] = $paid_breaks_enabled;
 
         return $this;
     }

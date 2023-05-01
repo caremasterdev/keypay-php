@@ -308,6 +308,11 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess
     const SOURCE_QUICKFILE = 'Quickfile';
     const SOURCE_TIDE = 'Tide';
     const SOURCE_TIDE_SSO = 'TideSso';
+    const SOURCE_FREE_AGENT = 'FreeAgent';
+    const SOURCE_AKAHU = 'Akahu';
+    const SOURCE_INSTA_PAY = 'InstaPay';
+    const SOURCE_ZEPTO = 'Zepto';
+    const SOURCE_SLACK = 'Slack';
     const ACCOUNT_TYPE_ELECTRONIC = 'Electronic';
     const ACCOUNT_TYPE_MANUAL_DEPOSIT = 'ManualDeposit';
     const ACCOUNT_TYPE_CASH_OR_CHEQUE = 'CashOrCheque';
@@ -393,6 +398,11 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess
             self::SOURCE_QUICKFILE,
             self::SOURCE_TIDE,
             self::SOURCE_TIDE_SSO,
+            self::SOURCE_FREE_AGENT,
+            self::SOURCE_AKAHU,
+            self::SOURCE_INSTA_PAY,
+            self::SOURCE_ZEPTO,
+            self::SOURCE_SLACK,
         ];
     }
     

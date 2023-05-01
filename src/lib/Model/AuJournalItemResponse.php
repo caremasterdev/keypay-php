@@ -70,7 +70,9 @@ class AuJournalItemResponse implements ModelInterface, ArrayAccess
         'location' => 'string',
         'is_credit' => 'bool',
         'is_debit' => 'bool',
-        'location_external_reference_id' => 'string'
+        'location_external_reference_id' => 'string',
+        'reporting_dimension_value_ids' => 'int[]',
+        'reporting_dimension_value_names' => 'map[string,string[]]'
     ];
 
     /**
@@ -92,7 +94,9 @@ class AuJournalItemResponse implements ModelInterface, ArrayAccess
         'location' => null,
         'is_credit' => null,
         'is_debit' => null,
-        'location_external_reference_id' => null
+        'location_external_reference_id' => null,
+        'reporting_dimension_value_ids' => 'int32',
+        'reporting_dimension_value_names' => null
     ];
 
     /**
@@ -135,7 +139,9 @@ class AuJournalItemResponse implements ModelInterface, ArrayAccess
         'location' => 'location',
         'is_credit' => 'isCredit',
         'is_debit' => 'isDebit',
-        'location_external_reference_id' => 'locationExternalReferenceId'
+        'location_external_reference_id' => 'locationExternalReferenceId',
+        'reporting_dimension_value_ids' => 'reportingDimensionValueIds',
+        'reporting_dimension_value_names' => 'reportingDimensionValueNames'
     ];
 
     /**
@@ -157,7 +163,9 @@ class AuJournalItemResponse implements ModelInterface, ArrayAccess
         'location' => 'setLocation',
         'is_credit' => 'setIsCredit',
         'is_debit' => 'setIsDebit',
-        'location_external_reference_id' => 'setLocationExternalReferenceId'
+        'location_external_reference_id' => 'setLocationExternalReferenceId',
+        'reporting_dimension_value_ids' => 'setReportingDimensionValueIds',
+        'reporting_dimension_value_names' => 'setReportingDimensionValueNames'
     ];
 
     /**
@@ -179,7 +187,9 @@ class AuJournalItemResponse implements ModelInterface, ArrayAccess
         'location' => 'getLocation',
         'is_credit' => 'getIsCredit',
         'is_debit' => 'getIsDebit',
-        'location_external_reference_id' => 'getLocationExternalReferenceId'
+        'location_external_reference_id' => 'getLocationExternalReferenceId',
+        'reporting_dimension_value_ids' => 'getReportingDimensionValueIds',
+        'reporting_dimension_value_names' => 'getReportingDimensionValueNames'
     ];
 
     /**
@@ -335,6 +345,8 @@ class AuJournalItemResponse implements ModelInterface, ArrayAccess
         $this->container['is_credit'] = isset($data['is_credit']) ? $data['is_credit'] : null;
         $this->container['is_debit'] = isset($data['is_debit']) ? $data['is_debit'] : null;
         $this->container['location_external_reference_id'] = isset($data['location_external_reference_id']) ? $data['location_external_reference_id'] : null;
+        $this->container['reporting_dimension_value_ids'] = isset($data['reporting_dimension_value_ids']) ? $data['reporting_dimension_value_ids'] : null;
+        $this->container['reporting_dimension_value_names'] = isset($data['reporting_dimension_value_names']) ? $data['reporting_dimension_value_names'] : null;
     }
 
     /**
@@ -710,6 +722,54 @@ class AuJournalItemResponse implements ModelInterface, ArrayAccess
     public function setLocationExternalReferenceId($location_external_reference_id)
     {
         $this->container['location_external_reference_id'] = $location_external_reference_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets reporting_dimension_value_ids
+     *
+     * @return int[]
+     */
+    public function getReportingDimensionValueIds()
+    {
+        return $this->container['reporting_dimension_value_ids'];
+    }
+
+    /**
+     * Sets reporting_dimension_value_ids
+     *
+     * @param int[] $reporting_dimension_value_ids Nullable</p><p><i>Note:</i> Only applicable to businesses where the Dimensions feature is enabled.</p><p>Specify an array of dimension value ids (normally only one-per dimension) eg [1,3,7].</p><p>If you prefer to specify dimension values by name, use the ReportingDimensionValueNames field instead.</p><p>If this field is used, ReportingDimensionValueNames will be ignored (the Ids take precedence)
+     *
+     * @return $this
+     */
+    public function setReportingDimensionValueIds($reporting_dimension_value_ids)
+    {
+        $this->container['reporting_dimension_value_ids'] = $reporting_dimension_value_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets reporting_dimension_value_names
+     *
+     * @return map[string,string[]]
+     */
+    public function getReportingDimensionValueNames()
+    {
+        return $this->container['reporting_dimension_value_names'];
+    }
+
+    /**
+     * Sets reporting_dimension_value_names
+     *
+     * @param map[string,string[]] $reporting_dimension_value_names Nullable</p><p><i>Note:</i> Only applicable to businesses where the Dimensions feature is enabled.</p><p>Specify an object with dimension names and for each one, specify an array of associated value names (normally one-per dimension) eg { \"Department\": [\"Accounting\"], \"Job Code\": [\"JC1\"] }.</p><p>If you prefer to specify dimension values directly by Id, use the ReportingDimensionValueIds field instead.</p><p>If ReportingDimensionValueIds is used, ReportingDimensionValueNames will be ignored (the Ids take precedence)
+     *
+     * @return $this
+     */
+    public function setReportingDimensionValueNames($reporting_dimension_value_names)
+    {
+        $this->container['reporting_dimension_value_names'] = $reporting_dimension_value_names;
 
         return $this;
     }

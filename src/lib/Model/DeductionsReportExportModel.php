@@ -64,7 +64,8 @@ class DeductionsReportExportModel implements ModelInterface, ArrayAccess
         'surname' => 'string',
         'external_id' => 'string',
         'location' => 'string',
-        'amounts' => '\Swagger\Client\Model\DeductionsReportDeductionAmountModel[]'
+        'amounts' => '\Swagger\Client\Model\DeductionsReportDeductionAmountModel[]',
+        'note' => 'string'
     ];
 
     /**
@@ -80,7 +81,8 @@ class DeductionsReportExportModel implements ModelInterface, ArrayAccess
         'surname' => null,
         'external_id' => null,
         'location' => null,
-        'amounts' => null
+        'amounts' => null,
+        'note' => null
     ];
 
     /**
@@ -117,7 +119,8 @@ class DeductionsReportExportModel implements ModelInterface, ArrayAccess
         'surname' => 'surname',
         'external_id' => 'externalId',
         'location' => 'location',
-        'amounts' => 'amounts'
+        'amounts' => 'amounts',
+        'note' => 'note'
     ];
 
     /**
@@ -133,7 +136,8 @@ class DeductionsReportExportModel implements ModelInterface, ArrayAccess
         'surname' => 'setSurname',
         'external_id' => 'setExternalId',
         'location' => 'setLocation',
-        'amounts' => 'setAmounts'
+        'amounts' => 'setAmounts',
+        'note' => 'setNote'
     ];
 
     /**
@@ -149,7 +153,8 @@ class DeductionsReportExportModel implements ModelInterface, ArrayAccess
         'surname' => 'getSurname',
         'external_id' => 'getExternalId',
         'location' => 'getLocation',
-        'amounts' => 'getAmounts'
+        'amounts' => 'getAmounts',
+        'note' => 'getNote'
     ];
 
     /**
@@ -220,6 +225,7 @@ class DeductionsReportExportModel implements ModelInterface, ArrayAccess
         $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
         $this->container['location'] = isset($data['location']) ? $data['location'] : null;
         $this->container['amounts'] = isset($data['amounts']) ? $data['amounts'] : null;
+        $this->container['note'] = isset($data['note']) ? $data['note'] : null;
     }
 
     /**
@@ -434,6 +440,30 @@ class DeductionsReportExportModel implements ModelInterface, ArrayAccess
     public function setAmounts($amounts)
     {
         $this->container['amounts'] = $amounts;
+
+        return $this;
+    }
+
+    /**
+     * Gets note
+     *
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->container['note'];
+    }
+
+    /**
+     * Sets note
+     *
+     * @param string $note 
+     *
+     * @return $this
+     */
+    public function setNote($note)
+    {
+        $this->container['note'] = $note;
 
         return $this;
     }

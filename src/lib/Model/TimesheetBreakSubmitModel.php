@@ -58,7 +58,8 @@ class TimesheetBreakSubmitModel implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'start' => '\DateTime',
-        'end' => '\DateTime'
+        'end' => '\DateTime',
+        'is_paid_break' => 'bool'
     ];
 
     /**
@@ -68,7 +69,8 @@ class TimesheetBreakSubmitModel implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'start' => 'date-time',
-        'end' => 'date-time'
+        'end' => 'date-time',
+        'is_paid_break' => null
     ];
 
     /**
@@ -99,7 +101,8 @@ class TimesheetBreakSubmitModel implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'start' => 'start',
-        'end' => 'end'
+        'end' => 'end',
+        'is_paid_break' => 'isPaidBreak'
     ];
 
     /**
@@ -109,7 +112,8 @@ class TimesheetBreakSubmitModel implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'start' => 'setStart',
-        'end' => 'setEnd'
+        'end' => 'setEnd',
+        'is_paid_break' => 'setIsPaidBreak'
     ];
 
     /**
@@ -119,7 +123,8 @@ class TimesheetBreakSubmitModel implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'start' => 'getStart',
-        'end' => 'getEnd'
+        'end' => 'getEnd',
+        'is_paid_break' => 'getIsPaidBreak'
     ];
 
     /**
@@ -184,6 +189,7 @@ class TimesheetBreakSubmitModel implements ModelInterface, ArrayAccess
     {
         $this->container['start'] = isset($data['start']) ? $data['start'] : null;
         $this->container['end'] = isset($data['end']) ? $data['end'] : null;
+        $this->container['is_paid_break'] = isset($data['is_paid_break']) ? $data['is_paid_break'] : null;
     }
 
     /**
@@ -254,6 +260,30 @@ class TimesheetBreakSubmitModel implements ModelInterface, ArrayAccess
     public function setEnd($end)
     {
         $this->container['end'] = $end;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_paid_break
+     *
+     * @return bool
+     */
+    public function getIsPaidBreak()
+    {
+        return $this->container['is_paid_break'];
+    }
+
+    /**
+     * Sets is_paid_break
+     *
+     * @param bool $is_paid_break 
+     *
+     * @return $this
+     */
+    public function setIsPaidBreak($is_paid_break)
+    {
+        $this->container['is_paid_break'] = $is_paid_break;
 
         return $this;
     }

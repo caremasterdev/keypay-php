@@ -86,7 +86,9 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess
         'timesheets_require_work_type' => 'bool',
         'enable_work_zone_clock_on' => 'bool',
         'shift_bidding' => 'bool',
-        'allow_to_select_higher_classification' => 'bool'
+        'allow_to_select_higher_classification' => 'bool',
+        'allow_employee_work_eligibility_self_service' => 'bool',
+        'paid_breaks_enabled' => 'bool'
     ];
 
     /**
@@ -124,7 +126,9 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess
         'timesheets_require_work_type' => null,
         'enable_work_zone_clock_on' => null,
         'shift_bidding' => null,
-        'allow_to_select_higher_classification' => null
+        'allow_to_select_higher_classification' => null,
+        'allow_employee_work_eligibility_self_service' => null,
+        'paid_breaks_enabled' => null
     ];
 
     /**
@@ -183,7 +187,9 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess
         'timesheets_require_work_type' => 'timesheetsRequireWorkType',
         'enable_work_zone_clock_on' => 'enableWorkZoneClockOn',
         'shift_bidding' => 'shiftBidding',
-        'allow_to_select_higher_classification' => 'allowToSelectHigherClassification'
+        'allow_to_select_higher_classification' => 'allowToSelectHigherClassification',
+        'allow_employee_work_eligibility_self_service' => 'allowEmployeeWorkEligibilitySelfService',
+        'paid_breaks_enabled' => 'paidBreaksEnabled'
     ];
 
     /**
@@ -221,7 +227,9 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess
         'timesheets_require_work_type' => 'setTimesheetsRequireWorkType',
         'enable_work_zone_clock_on' => 'setEnableWorkZoneClockOn',
         'shift_bidding' => 'setShiftBidding',
-        'allow_to_select_higher_classification' => 'setAllowToSelectHigherClassification'
+        'allow_to_select_higher_classification' => 'setAllowToSelectHigherClassification',
+        'allow_employee_work_eligibility_self_service' => 'setAllowEmployeeWorkEligibilitySelfService',
+        'paid_breaks_enabled' => 'setPaidBreaksEnabled'
     ];
 
     /**
@@ -259,7 +267,9 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess
         'timesheets_require_work_type' => 'getTimesheetsRequireWorkType',
         'enable_work_zone_clock_on' => 'getEnableWorkZoneClockOn',
         'shift_bidding' => 'getShiftBidding',
-        'allow_to_select_higher_classification' => 'getAllowToSelectHigherClassification'
+        'allow_to_select_higher_classification' => 'getAllowToSelectHigherClassification',
+        'allow_employee_work_eligibility_self_service' => 'getAllowEmployeeWorkEligibilitySelfService',
+        'paid_breaks_enabled' => 'getPaidBreaksEnabled'
     ];
 
     /**
@@ -373,6 +383,8 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess
         $this->container['enable_work_zone_clock_on'] = isset($data['enable_work_zone_clock_on']) ? $data['enable_work_zone_clock_on'] : null;
         $this->container['shift_bidding'] = isset($data['shift_bidding']) ? $data['shift_bidding'] : null;
         $this->container['allow_to_select_higher_classification'] = isset($data['allow_to_select_higher_classification']) ? $data['allow_to_select_higher_classification'] : null;
+        $this->container['allow_employee_work_eligibility_self_service'] = isset($data['allow_employee_work_eligibility_self_service']) ? $data['allow_employee_work_eligibility_self_service'] : null;
+        $this->container['paid_breaks_enabled'] = isset($data['paid_breaks_enabled']) ? $data['paid_breaks_enabled'] : null;
     }
 
     /**
@@ -1132,6 +1144,54 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess
     public function setAllowToSelectHigherClassification($allow_to_select_higher_classification)
     {
         $this->container['allow_to_select_higher_classification'] = $allow_to_select_higher_classification;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_employee_work_eligibility_self_service
+     *
+     * @return bool
+     */
+    public function getAllowEmployeeWorkEligibilitySelfService()
+    {
+        return $this->container['allow_employee_work_eligibility_self_service'];
+    }
+
+    /**
+     * Sets allow_employee_work_eligibility_self_service
+     *
+     * @param bool $allow_employee_work_eligibility_self_service 
+     *
+     * @return $this
+     */
+    public function setAllowEmployeeWorkEligibilitySelfService($allow_employee_work_eligibility_self_service)
+    {
+        $this->container['allow_employee_work_eligibility_self_service'] = $allow_employee_work_eligibility_self_service;
+
+        return $this;
+    }
+
+    /**
+     * Gets paid_breaks_enabled
+     *
+     * @return bool
+     */
+    public function getPaidBreaksEnabled()
+    {
+        return $this->container['paid_breaks_enabled'];
+    }
+
+    /**
+     * Sets paid_breaks_enabled
+     *
+     * @param bool $paid_breaks_enabled 
+     *
+     * @return $this
+     */
+    public function setPaidBreaksEnabled($paid_breaks_enabled)
+    {
+        $this->container['paid_breaks_enabled'] = $paid_breaks_enabled;
 
         return $this;
     }

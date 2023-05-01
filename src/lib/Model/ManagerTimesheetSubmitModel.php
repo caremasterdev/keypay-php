@@ -76,7 +76,8 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess
         'hidden_comments' => 'string',
         'breaks' => '\Swagger\Client\Model\TimesheetBreakSubmitModel[]',
         'attachment' => '\Swagger\Client\Model\Attachment',
-        'source' => 'string'
+        'source' => 'string',
+        'location_is_deleted' => 'bool'
     ];
 
     /**
@@ -104,7 +105,8 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess
         'hidden_comments' => null,
         'breaks' => null,
         'attachment' => null,
-        'source' => null
+        'source' => null,
+        'location_is_deleted' => null
     ];
 
     /**
@@ -153,7 +155,8 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess
         'hidden_comments' => 'hiddenComments',
         'breaks' => 'breaks',
         'attachment' => 'attachment',
-        'source' => 'source'
+        'source' => 'source',
+        'location_is_deleted' => 'locationIsDeleted'
     ];
 
     /**
@@ -181,7 +184,8 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess
         'hidden_comments' => 'setHiddenComments',
         'breaks' => 'setBreaks',
         'attachment' => 'setAttachment',
-        'source' => 'setSource'
+        'source' => 'setSource',
+        'location_is_deleted' => 'setLocationIsDeleted'
     ];
 
     /**
@@ -209,7 +213,8 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess
         'hidden_comments' => 'getHiddenComments',
         'breaks' => 'getBreaks',
         'attachment' => 'getAttachment',
-        'source' => 'getSource'
+        'source' => 'getSource',
+        'location_is_deleted' => 'getLocationIsDeleted'
     ];
 
     /**
@@ -323,6 +328,11 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess
     const SOURCE_QUICKFILE = 'Quickfile';
     const SOURCE_TIDE = 'Tide';
     const SOURCE_TIDE_SSO = 'TideSso';
+    const SOURCE_FREE_AGENT = 'FreeAgent';
+    const SOURCE_AKAHU = 'Akahu';
+    const SOURCE_INSTA_PAY = 'InstaPay';
+    const SOURCE_ZEPTO = 'Zepto';
+    const SOURCE_SLACK = 'Slack';
     
 
     
@@ -404,6 +414,11 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess
             self::SOURCE_QUICKFILE,
             self::SOURCE_TIDE,
             self::SOURCE_TIDE_SSO,
+            self::SOURCE_FREE_AGENT,
+            self::SOURCE_AKAHU,
+            self::SOURCE_INSTA_PAY,
+            self::SOURCE_ZEPTO,
+            self::SOURCE_SLACK,
         ];
     }
     
@@ -443,6 +458,7 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess
         $this->container['breaks'] = isset($data['breaks']) ? $data['breaks'] : null;
         $this->container['attachment'] = isset($data['attachment']) ? $data['attachment'] : null;
         $this->container['source'] = isset($data['source']) ? $data['source'] : null;
+        $this->container['location_is_deleted'] = isset($data['location_is_deleted']) ? $data['location_is_deleted'] : null;
     }
 
     /**
@@ -962,6 +978,30 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess
             );
         }
         $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets location_is_deleted
+     *
+     * @return bool
+     */
+    public function getLocationIsDeleted()
+    {
+        return $this->container['location_is_deleted'];
+    }
+
+    /**
+     * Sets location_is_deleted
+     *
+     * @param bool $location_is_deleted 
+     *
+     * @return $this
+     */
+    public function setLocationIsDeleted($location_is_deleted)
+    {
+        $this->container['location_is_deleted'] = $location_is_deleted;
 
         return $this;
     }

@@ -64,9 +64,9 @@ class AuOpeningBalancesModel implements ModelInterface, ArrayAccess
         'help_amount' => 'double',
         'super_contribution' => 'double',
         'employer_contribution' => 'double',
+        'non_resc_employer_contribution' => 'double',
         'earnings_lines' => '\Swagger\Client\Model\AuInitialEarningsModel[]',
-        'primary_etp_type' => '\Swagger\Client\Model\OpeningBalancesEtpModel',
-        'secondary_etp_type' => '\Swagger\Client\Model\OpeningBalancesEtpModel',
+        'etps' => '\Swagger\Client\Model\OpeningBalancesEtpModel[]',
         'employee_id' => 'int',
         'total_hours' => 'double',
         'gross_earnings' => 'double',
@@ -89,9 +89,9 @@ class AuOpeningBalancesModel implements ModelInterface, ArrayAccess
         'help_amount' => 'double',
         'super_contribution' => 'double',
         'employer_contribution' => 'double',
+        'non_resc_employer_contribution' => 'double',
         'earnings_lines' => null,
-        'primary_etp_type' => null,
-        'secondary_etp_type' => null,
+        'etps' => null,
         'employee_id' => 'int32',
         'total_hours' => 'double',
         'gross_earnings' => 'double',
@@ -135,9 +135,9 @@ class AuOpeningBalancesModel implements ModelInterface, ArrayAccess
         'help_amount' => 'helpAmount',
         'super_contribution' => 'superContribution',
         'employer_contribution' => 'employerContribution',
+        'non_resc_employer_contribution' => 'nonRescEmployerContribution',
         'earnings_lines' => 'earningsLines',
-        'primary_etp_type' => 'primaryEtpType',
-        'secondary_etp_type' => 'secondaryEtpType',
+        'etps' => 'etps',
         'employee_id' => 'employeeId',
         'total_hours' => 'totalHours',
         'gross_earnings' => 'grossEarnings',
@@ -160,9 +160,9 @@ class AuOpeningBalancesModel implements ModelInterface, ArrayAccess
         'help_amount' => 'setHelpAmount',
         'super_contribution' => 'setSuperContribution',
         'employer_contribution' => 'setEmployerContribution',
+        'non_resc_employer_contribution' => 'setNonRescEmployerContribution',
         'earnings_lines' => 'setEarningsLines',
-        'primary_etp_type' => 'setPrimaryEtpType',
-        'secondary_etp_type' => 'setSecondaryEtpType',
+        'etps' => 'setEtps',
         'employee_id' => 'setEmployeeId',
         'total_hours' => 'setTotalHours',
         'gross_earnings' => 'setGrossEarnings',
@@ -185,9 +185,9 @@ class AuOpeningBalancesModel implements ModelInterface, ArrayAccess
         'help_amount' => 'getHelpAmount',
         'super_contribution' => 'getSuperContribution',
         'employer_contribution' => 'getEmployerContribution',
+        'non_resc_employer_contribution' => 'getNonRescEmployerContribution',
         'earnings_lines' => 'getEarningsLines',
-        'primary_etp_type' => 'getPrimaryEtpType',
-        'secondary_etp_type' => 'getSecondaryEtpType',
+        'etps' => 'getEtps',
         'employee_id' => 'getEmployeeId',
         'total_hours' => 'getTotalHours',
         'gross_earnings' => 'getGrossEarnings',
@@ -264,9 +264,9 @@ class AuOpeningBalancesModel implements ModelInterface, ArrayAccess
         $this->container['help_amount'] = isset($data['help_amount']) ? $data['help_amount'] : null;
         $this->container['super_contribution'] = isset($data['super_contribution']) ? $data['super_contribution'] : null;
         $this->container['employer_contribution'] = isset($data['employer_contribution']) ? $data['employer_contribution'] : null;
+        $this->container['non_resc_employer_contribution'] = isset($data['non_resc_employer_contribution']) ? $data['non_resc_employer_contribution'] : null;
         $this->container['earnings_lines'] = isset($data['earnings_lines']) ? $data['earnings_lines'] : null;
-        $this->container['primary_etp_type'] = isset($data['primary_etp_type']) ? $data['primary_etp_type'] : null;
-        $this->container['secondary_etp_type'] = isset($data['secondary_etp_type']) ? $data['secondary_etp_type'] : null;
+        $this->container['etps'] = isset($data['etps']) ? $data['etps'] : null;
         $this->container['employee_id'] = isset($data['employee_id']) ? $data['employee_id'] : null;
         $this->container['total_hours'] = isset($data['total_hours']) ? $data['total_hours'] : null;
         $this->container['gross_earnings'] = isset($data['gross_earnings']) ? $data['gross_earnings'] : null;
@@ -469,6 +469,30 @@ class AuOpeningBalancesModel implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets non_resc_employer_contribution
+     *
+     * @return double
+     */
+    public function getNonRescEmployerContribution()
+    {
+        return $this->container['non_resc_employer_contribution'];
+    }
+
+    /**
+     * Sets non_resc_employer_contribution
+     *
+     * @param double $non_resc_employer_contribution 
+     *
+     * @return $this
+     */
+    public function setNonRescEmployerContribution($non_resc_employer_contribution)
+    {
+        $this->container['non_resc_employer_contribution'] = $non_resc_employer_contribution;
+
+        return $this;
+    }
+
+    /**
      * Gets earnings_lines
      *
      * @return \Swagger\Client\Model\AuInitialEarningsModel[]
@@ -493,49 +517,25 @@ class AuOpeningBalancesModel implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets primary_etp_type
+     * Gets etps
      *
-     * @return \Swagger\Client\Model\OpeningBalancesEtpModel
+     * @return \Swagger\Client\Model\OpeningBalancesEtpModel[]
      */
-    public function getPrimaryEtpType()
+    public function getEtps()
     {
-        return $this->container['primary_etp_type'];
+        return $this->container['etps'];
     }
 
     /**
-     * Sets primary_etp_type
+     * Sets etps
      *
-     * @param \Swagger\Client\Model\OpeningBalancesEtpModel $primary_etp_type 
+     * @param \Swagger\Client\Model\OpeningBalancesEtpModel[] $etps 
      *
      * @return $this
      */
-    public function setPrimaryEtpType($primary_etp_type)
+    public function setEtps($etps)
     {
-        $this->container['primary_etp_type'] = $primary_etp_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets secondary_etp_type
-     *
-     * @return \Swagger\Client\Model\OpeningBalancesEtpModel
-     */
-    public function getSecondaryEtpType()
-    {
-        return $this->container['secondary_etp_type'];
-    }
-
-    /**
-     * Sets secondary_etp_type
-     *
-     * @param \Swagger\Client\Model\OpeningBalancesEtpModel $secondary_etp_type 
-     *
-     * @return $this
-     */
-    public function setSecondaryEtpType($secondary_etp_type)
-    {
-        $this->container['secondary_etp_type'] = $secondary_etp_type;
+        $this->container['etps'] = $etps;
 
         return $this;
     }

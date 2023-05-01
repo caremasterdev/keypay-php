@@ -62,7 +62,8 @@ class ShiftCostingsRequestModel implements ModelInterface, ArrayAccess
         'work_type_id_type' => 'string',
         'include_evaluation_results' => 'bool',
         'employee' => '\Swagger\Client\Model\ShiftCostingsEmployeeModel',
-        'shifts' => '\Swagger\Client\Model\ShiftCostingsRequestShiftModel[]'
+        'shifts' => '\Swagger\Client\Model\ShiftCostingsRequestShiftModel[]',
+        'override_rates' => '\Swagger\Client\Model\RateOverride[]'
     ];
 
     /**
@@ -76,7 +77,8 @@ class ShiftCostingsRequestModel implements ModelInterface, ArrayAccess
         'work_type_id_type' => null,
         'include_evaluation_results' => null,
         'employee' => null,
-        'shifts' => null
+        'shifts' => null,
+        'override_rates' => null
     ];
 
     /**
@@ -111,7 +113,8 @@ class ShiftCostingsRequestModel implements ModelInterface, ArrayAccess
         'work_type_id_type' => 'workTypeIdType',
         'include_evaluation_results' => 'includeEvaluationResults',
         'employee' => 'employee',
-        'shifts' => 'shifts'
+        'shifts' => 'shifts',
+        'override_rates' => 'overrideRates'
     ];
 
     /**
@@ -125,7 +128,8 @@ class ShiftCostingsRequestModel implements ModelInterface, ArrayAccess
         'work_type_id_type' => 'setWorkTypeIdType',
         'include_evaluation_results' => 'setIncludeEvaluationResults',
         'employee' => 'setEmployee',
-        'shifts' => 'setShifts'
+        'shifts' => 'setShifts',
+        'override_rates' => 'setOverrideRates'
     ];
 
     /**
@@ -139,7 +143,8 @@ class ShiftCostingsRequestModel implements ModelInterface, ArrayAccess
         'work_type_id_type' => 'getWorkTypeIdType',
         'include_evaluation_results' => 'getIncludeEvaluationResults',
         'employee' => 'getEmployee',
-        'shifts' => 'getShifts'
+        'shifts' => 'getShifts',
+        'override_rates' => 'getOverrideRates'
     ];
 
     /**
@@ -238,6 +243,7 @@ class ShiftCostingsRequestModel implements ModelInterface, ArrayAccess
         $this->container['include_evaluation_results'] = isset($data['include_evaluation_results']) ? $data['include_evaluation_results'] : null;
         $this->container['employee'] = isset($data['employee']) ? $data['employee'] : null;
         $this->container['shifts'] = isset($data['shifts']) ? $data['shifts'] : null;
+        $this->container['override_rates'] = isset($data['override_rates']) ? $data['override_rates'] : null;
     }
 
     /**
@@ -438,6 +444,30 @@ class ShiftCostingsRequestModel implements ModelInterface, ArrayAccess
     public function setShifts($shifts)
     {
         $this->container['shifts'] = $shifts;
+
+        return $this;
+    }
+
+    /**
+     * Gets override_rates
+     *
+     * @return \Swagger\Client\Model\RateOverride[]
+     */
+    public function getOverrideRates()
+    {
+        return $this->container['override_rates'];
+    }
+
+    /**
+     * Sets override_rates
+     *
+     * @param \Swagger\Client\Model\RateOverride[] $override_rates 
+     *
+     * @return $this
+     */
+    public function setOverrideRates($override_rates)
+    {
+        $this->container['override_rates'] = $override_rates;
 
         return $this;
     }

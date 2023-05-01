@@ -57,11 +57,11 @@ class OpeningBalancesEtpModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'id' => 'int',
         'etp_type' => 'string',
         'tax_free_component' => 'double',
         'taxable_component' => 'double',
         'tax_withheld' => 'double',
-        'lump_sum_d' => 'double',
         'is_amended' => 'bool',
         'payment_date' => '\DateTime',
         'generate_payment_summary' => 'bool'
@@ -73,11 +73,11 @@ class OpeningBalancesEtpModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'id' => 'int32',
         'etp_type' => null,
         'tax_free_component' => 'double',
         'taxable_component' => 'double',
         'tax_withheld' => 'double',
-        'lump_sum_d' => 'double',
         'is_amended' => null,
         'payment_date' => 'date-time',
         'generate_payment_summary' => null
@@ -110,11 +110,11 @@ class OpeningBalancesEtpModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'etp_type' => 'etpType',
         'tax_free_component' => 'taxFreeComponent',
         'taxable_component' => 'taxableComponent',
         'tax_withheld' => 'taxWithheld',
-        'lump_sum_d' => 'lumpSumD',
         'is_amended' => 'isAmended',
         'payment_date' => 'paymentDate',
         'generate_payment_summary' => 'generatePaymentSummary'
@@ -126,11 +126,11 @@ class OpeningBalancesEtpModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'etp_type' => 'setEtpType',
         'tax_free_component' => 'setTaxFreeComponent',
         'taxable_component' => 'setTaxableComponent',
         'tax_withheld' => 'setTaxWithheld',
-        'lump_sum_d' => 'setLumpSumD',
         'is_amended' => 'setIsAmended',
         'payment_date' => 'setPaymentDate',
         'generate_payment_summary' => 'setGeneratePaymentSummary'
@@ -142,11 +142,11 @@ class OpeningBalancesEtpModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'etp_type' => 'getEtpType',
         'tax_free_component' => 'getTaxFreeComponent',
         'taxable_component' => 'getTaxableComponent',
         'tax_withheld' => 'getTaxWithheld',
-        'lump_sum_d' => 'getLumpSumD',
         'is_amended' => 'getIsAmended',
         'payment_date' => 'getPaymentDate',
         'generate_payment_summary' => 'getGeneratePaymentSummary'
@@ -231,11 +231,11 @@ class OpeningBalancesEtpModel implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['etp_type'] = isset($data['etp_type']) ? $data['etp_type'] : null;
         $this->container['tax_free_component'] = isset($data['tax_free_component']) ? $data['tax_free_component'] : null;
         $this->container['taxable_component'] = isset($data['taxable_component']) ? $data['taxable_component'] : null;
         $this->container['tax_withheld'] = isset($data['tax_withheld']) ? $data['tax_withheld'] : null;
-        $this->container['lump_sum_d'] = isset($data['lump_sum_d']) ? $data['lump_sum_d'] : null;
         $this->container['is_amended'] = isset($data['is_amended']) ? $data['is_amended'] : null;
         $this->container['payment_date'] = isset($data['payment_date']) ? $data['payment_date'] : null;
         $this->container['generate_payment_summary'] = isset($data['generate_payment_summary']) ? $data['generate_payment_summary'] : null;
@@ -272,6 +272,30 @@ class OpeningBalancesEtpModel implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id 
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets etp_type
@@ -374,30 +398,6 @@ class OpeningBalancesEtpModel implements ModelInterface, ArrayAccess
     public function setTaxWithheld($tax_withheld)
     {
         $this->container['tax_withheld'] = $tax_withheld;
-
-        return $this;
-    }
-
-    /**
-     * Gets lump_sum_d
-     *
-     * @return double
-     */
-    public function getLumpSumD()
-    {
-        return $this->container['lump_sum_d'];
-    }
-
-    /**
-     * Sets lump_sum_d
-     *
-     * @param double $lump_sum_d 
-     *
-     * @return $this
-     */
-    public function setLumpSumD($lump_sum_d)
-    {
-        $this->container['lump_sum_d'] = $lump_sum_d;
 
         return $this;
     }

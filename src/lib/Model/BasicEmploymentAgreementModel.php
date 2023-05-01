@@ -62,7 +62,8 @@ class BasicEmploymentAgreementModel implements ModelInterface, ArrayAccess
         'employment_type' => 'string',
         'name' => 'string',
         'award_name' => 'string',
-        'rank' => 'int'
+        'rank' => 'int',
+        'external_id' => 'string'
     ];
 
     /**
@@ -76,7 +77,8 @@ class BasicEmploymentAgreementModel implements ModelInterface, ArrayAccess
         'employment_type' => null,
         'name' => null,
         'award_name' => null,
-        'rank' => 'int32'
+        'rank' => 'int32',
+        'external_id' => null
     ];
 
     /**
@@ -111,7 +113,8 @@ class BasicEmploymentAgreementModel implements ModelInterface, ArrayAccess
         'employment_type' => 'employmentType',
         'name' => 'name',
         'award_name' => 'awardName',
-        'rank' => 'rank'
+        'rank' => 'rank',
+        'external_id' => 'externalId'
     ];
 
     /**
@@ -125,7 +128,8 @@ class BasicEmploymentAgreementModel implements ModelInterface, ArrayAccess
         'employment_type' => 'setEmploymentType',
         'name' => 'setName',
         'award_name' => 'setAwardName',
-        'rank' => 'setRank'
+        'rank' => 'setRank',
+        'external_id' => 'setExternalId'
     ];
 
     /**
@@ -139,7 +143,8 @@ class BasicEmploymentAgreementModel implements ModelInterface, ArrayAccess
         'employment_type' => 'getEmploymentType',
         'name' => 'getName',
         'award_name' => 'getAwardName',
-        'rank' => 'getRank'
+        'rank' => 'getRank',
+        'external_id' => 'getExternalId'
     ];
 
     /**
@@ -231,6 +236,7 @@ class BasicEmploymentAgreementModel implements ModelInterface, ArrayAccess
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['award_name'] = isset($data['award_name']) ? $data['award_name'] : null;
         $this->container['rank'] = isset($data['rank']) ? $data['rank'] : null;
+        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
     }
 
     /**
@@ -414,6 +420,30 @@ class BasicEmploymentAgreementModel implements ModelInterface, ArrayAccess
     public function setRank($rank)
     {
         $this->container['rank'] = $rank;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_id
+     *
+     * @return string
+     */
+    public function getExternalId()
+    {
+        return $this->container['external_id'];
+    }
+
+    /**
+     * Sets external_id
+     *
+     * @param string $external_id 
+     *
+     * @return $this
+     */
+    public function setExternalId($external_id)
+    {
+        $this->container['external_id'] = $external_id;
 
         return $this;
     }

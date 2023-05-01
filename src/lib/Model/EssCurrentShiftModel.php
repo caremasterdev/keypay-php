@@ -61,7 +61,8 @@ class EssCurrentShiftModel implements ModelInterface, ArrayAccess
         'clock_on_time_utc' => '\DateTime',
         'break_start_time_utc' => '\DateTime',
         'status' => 'string',
-        'long_shift' => 'bool'
+        'long_shift' => 'bool',
+        'is_paid_break' => 'bool'
     ];
 
     /**
@@ -74,7 +75,8 @@ class EssCurrentShiftModel implements ModelInterface, ArrayAccess
         'clock_on_time_utc' => 'date-time',
         'break_start_time_utc' => 'date-time',
         'status' => null,
-        'long_shift' => null
+        'long_shift' => null,
+        'is_paid_break' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class EssCurrentShiftModel implements ModelInterface, ArrayAccess
         'clock_on_time_utc' => 'clockOnTimeUtc',
         'break_start_time_utc' => 'breakStartTimeUtc',
         'status' => 'status',
-        'long_shift' => 'longShift'
+        'long_shift' => 'longShift',
+        'is_paid_break' => 'isPaidBreak'
     ];
 
     /**
@@ -121,7 +124,8 @@ class EssCurrentShiftModel implements ModelInterface, ArrayAccess
         'clock_on_time_utc' => 'setClockOnTimeUtc',
         'break_start_time_utc' => 'setBreakStartTimeUtc',
         'status' => 'setStatus',
-        'long_shift' => 'setLongShift'
+        'long_shift' => 'setLongShift',
+        'is_paid_break' => 'setIsPaidBreak'
     ];
 
     /**
@@ -134,7 +138,8 @@ class EssCurrentShiftModel implements ModelInterface, ArrayAccess
         'clock_on_time_utc' => 'getClockOnTimeUtc',
         'break_start_time_utc' => 'getBreakStartTimeUtc',
         'status' => 'getStatus',
-        'long_shift' => 'getLongShift'
+        'long_shift' => 'getLongShift',
+        'is_paid_break' => 'getIsPaidBreak'
     ];
 
     /**
@@ -221,6 +226,7 @@ class EssCurrentShiftModel implements ModelInterface, ArrayAccess
         $this->container['break_start_time_utc'] = isset($data['break_start_time_utc']) ? $data['break_start_time_utc'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['long_shift'] = isset($data['long_shift']) ? $data['long_shift'] : null;
+        $this->container['is_paid_break'] = isset($data['is_paid_break']) ? $data['is_paid_break'] : null;
     }
 
     /**
@@ -380,6 +386,30 @@ class EssCurrentShiftModel implements ModelInterface, ArrayAccess
     public function setLongShift($long_shift)
     {
         $this->container['long_shift'] = $long_shift;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_paid_break
+     *
+     * @return bool
+     */
+    public function getIsPaidBreak()
+    {
+        return $this->container['is_paid_break'];
+    }
+
+    /**
+     * Sets is_paid_break
+     *
+     * @param bool $is_paid_break 
+     *
+     * @return $this
+     */
+    public function setIsPaidBreak($is_paid_break)
+    {
+        $this->container['is_paid_break'] = $is_paid_break;
 
         return $this;
     }

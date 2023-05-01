@@ -280,6 +280,7 @@ class AuEmployeeRecurringDeductionModel implements ModelInterface, ArrayAccess
     const DEDUCTION_TYPE_PERCENTAGE_STUDENT_LOAN = 'PercentageStudentLoan';
     const DEDUCTION_TYPE_PERCENTAGE_NET = 'PercentageNet';
     const DEDUCTION_TYPE_TIERED = 'Tiered';
+    const DEDUCTION_TYPE_CUSTOM = 'Custom';
     const PAID_TO_MANUAL = 'Manual';
     const PAID_TO_BANK_ACCOUNT = 'BankAccount';
     const PAID_TO_SUPER_FUND = 'SuperFund';
@@ -310,6 +311,7 @@ class AuEmployeeRecurringDeductionModel implements ModelInterface, ArrayAccess
             self::DEDUCTION_TYPE_PERCENTAGE_STUDENT_LOAN,
             self::DEDUCTION_TYPE_PERCENTAGE_NET,
             self::DEDUCTION_TYPE_TIERED,
+            self::DEDUCTION_TYPE_CUSTOM,
         ];
     }
     

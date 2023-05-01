@@ -63,6 +63,7 @@ class AuGrossToNetResponseModel implements ModelInterface, ArrayAccess
         'net_earnings' => 'double',
         'sgc' => 'double',
         'employer_contribution' => 'double',
+        'non_resc_employer_contribution' => 'double',
         'total_gross_plus_super' => 'double',
         'employee_id' => 'int',
         'first_name' => 'string',
@@ -96,6 +97,7 @@ class AuGrossToNetResponseModel implements ModelInterface, ArrayAccess
         'net_earnings' => 'double',
         'sgc' => 'double',
         'employer_contribution' => 'double',
+        'non_resc_employer_contribution' => 'double',
         'total_gross_plus_super' => 'double',
         'employee_id' => 'int32',
         'first_name' => null,
@@ -150,6 +152,7 @@ class AuGrossToNetResponseModel implements ModelInterface, ArrayAccess
         'net_earnings' => 'netEarnings',
         'sgc' => 'sgc',
         'employer_contribution' => 'employerContribution',
+        'non_resc_employer_contribution' => 'nonRescEmployerContribution',
         'total_gross_plus_super' => 'totalGrossPlusSuper',
         'employee_id' => 'employeeId',
         'first_name' => 'firstName',
@@ -183,6 +186,7 @@ class AuGrossToNetResponseModel implements ModelInterface, ArrayAccess
         'net_earnings' => 'setNetEarnings',
         'sgc' => 'setSgc',
         'employer_contribution' => 'setEmployerContribution',
+        'non_resc_employer_contribution' => 'setNonRescEmployerContribution',
         'total_gross_plus_super' => 'setTotalGrossPlusSuper',
         'employee_id' => 'setEmployeeId',
         'first_name' => 'setFirstName',
@@ -216,6 +220,7 @@ class AuGrossToNetResponseModel implements ModelInterface, ArrayAccess
         'net_earnings' => 'getNetEarnings',
         'sgc' => 'getSgc',
         'employer_contribution' => 'getEmployerContribution',
+        'non_resc_employer_contribution' => 'getNonRescEmployerContribution',
         'total_gross_plus_super' => 'getTotalGrossPlusSuper',
         'employee_id' => 'getEmployeeId',
         'first_name' => 'getFirstName',
@@ -303,6 +308,7 @@ class AuGrossToNetResponseModel implements ModelInterface, ArrayAccess
         $this->container['net_earnings'] = isset($data['net_earnings']) ? $data['net_earnings'] : null;
         $this->container['sgc'] = isset($data['sgc']) ? $data['sgc'] : null;
         $this->container['employer_contribution'] = isset($data['employer_contribution']) ? $data['employer_contribution'] : null;
+        $this->container['non_resc_employer_contribution'] = isset($data['non_resc_employer_contribution']) ? $data['non_resc_employer_contribution'] : null;
         $this->container['total_gross_plus_super'] = isset($data['total_gross_plus_super']) ? $data['total_gross_plus_super'] : null;
         $this->container['employee_id'] = isset($data['employee_id']) ? $data['employee_id'] : null;
         $this->container['first_name'] = isset($data['first_name']) ? $data['first_name'] : null;
@@ -488,6 +494,30 @@ class AuGrossToNetResponseModel implements ModelInterface, ArrayAccess
     public function setEmployerContribution($employer_contribution)
     {
         $this->container['employer_contribution'] = $employer_contribution;
+
+        return $this;
+    }
+
+    /**
+     * Gets non_resc_employer_contribution
+     *
+     * @return double
+     */
+    public function getNonRescEmployerContribution()
+    {
+        return $this->container['non_resc_employer_contribution'];
+    }
+
+    /**
+     * Sets non_resc_employer_contribution
+     *
+     * @param double $non_resc_employer_contribution 
+     *
+     * @return $this
+     */
+    public function setNonRescEmployerContribution($non_resc_employer_contribution)
+    {
+        $this->container['non_resc_employer_contribution'] = $non_resc_employer_contribution;
 
         return $this;
     }

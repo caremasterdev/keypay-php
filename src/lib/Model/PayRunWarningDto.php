@@ -269,7 +269,15 @@ class PayRunWarningDto implements ModelInterface, ArrayAccess
     const WARNING_TYPE_CIS_SUBCONTRACTOR_UNMATCHED = 'CisSubcontractorUnmatched';
     const WARNING_TYPE_CPF_REFUND_REQUIRED = 'CpfRefundRequired';
     const WARNING_TYPE_CPF_YEAR_END_RECALCULATION_REQUIRED = 'CpfYearEndRecalculationRequired';
+    const WARNING_TYPE_TAX_CODE_DISPLAY_NAME_TOO_LONG = 'TaxCodeDisplayNameTooLong';
     const WARNING_TYPE_TIMESHEET_OUT_OF_SEQUENCE = 'TimesheetOutOfSequence';
+    const WARNING_TYPE_EXPIRED_CONTRACTOR_TAX_RATE = 'ExpiredContractorTaxRate';
+    const WARNING_TYPE_CONCURRENT_PAY_RUN = 'ConcurrentPayRun';
+    const WARNING_TYPE_STUDENT_LOAN_ADJUSTMENT = 'StudentLoanAdjustment';
+    const WARNING_TYPE_UNPAID_LEAVE_WITH_AVAILABLE_BALANCE = 'UnpaidLeaveWithAvailableBalance';
+    const WARNING_TYPE_OCCUPATIONAL_LEAVE_APPLIED = 'OccupationalLeaveApplied';
+    const WARNING_TYPE_OCCUPATIONAL_LEAVE_APPLIED_PREVIOUS = 'OccupationalLeaveAppliedPrevious';
+    const WARNING_TYPE_OCCUPATIONAL_LEAVE_ENTITLEMENT_EXHAUSTED = 'OccupationalLeaveEntitlementExhausted';
     
 
     
@@ -352,7 +360,15 @@ class PayRunWarningDto implements ModelInterface, ArrayAccess
             self::WARNING_TYPE_CIS_SUBCONTRACTOR_UNMATCHED,
             self::WARNING_TYPE_CPF_REFUND_REQUIRED,
             self::WARNING_TYPE_CPF_YEAR_END_RECALCULATION_REQUIRED,
+            self::WARNING_TYPE_TAX_CODE_DISPLAY_NAME_TOO_LONG,
             self::WARNING_TYPE_TIMESHEET_OUT_OF_SEQUENCE,
+            self::WARNING_TYPE_EXPIRED_CONTRACTOR_TAX_RATE,
+            self::WARNING_TYPE_CONCURRENT_PAY_RUN,
+            self::WARNING_TYPE_STUDENT_LOAN_ADJUSTMENT,
+            self::WARNING_TYPE_UNPAID_LEAVE_WITH_AVAILABLE_BALANCE,
+            self::WARNING_TYPE_OCCUPATIONAL_LEAVE_APPLIED,
+            self::WARNING_TYPE_OCCUPATIONAL_LEAVE_APPLIED_PREVIOUS,
+            self::WARNING_TYPE_OCCUPATIONAL_LEAVE_ENTITLEMENT_EXHAUSTED,
         ];
     }
     

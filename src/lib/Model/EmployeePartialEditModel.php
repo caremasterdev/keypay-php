@@ -57,6 +57,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'id' => 'int',
         'anniversary_date' => '\DateTime',
         'external_id' => 'string',
         'start_date' => '\DateTime',
@@ -124,6 +125,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'id' => 'int32',
         'anniversary_date' => 'date-time',
         'external_id' => null,
         'start_date' => 'date-time',
@@ -212,6 +214,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'anniversary_date' => 'anniversaryDate',
         'external_id' => 'externalId',
         'start_date' => 'startDate',
@@ -279,6 +282,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'anniversary_date' => 'setAnniversaryDate',
         'external_id' => 'setExternalId',
         'start_date' => 'setStartDate',
@@ -346,6 +350,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'anniversary_date' => 'getAnniversaryDate',
         'external_id' => 'getExternalId',
         'start_date' => 'getStartDate',
@@ -520,6 +525,11 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
     const SOURCE_QUICKFILE = 'Quickfile';
     const SOURCE_TIDE = 'Tide';
     const SOURCE_TIDE_SSO = 'TideSso';
+    const SOURCE_FREE_AGENT = 'FreeAgent';
+    const SOURCE_AKAHU = 'Akahu';
+    const SOURCE_INSTA_PAY = 'InstaPay';
+    const SOURCE_ZEPTO = 'Zepto';
+    const SOURCE_SLACK = 'Slack';
     const TIMESHEET_SETTING_DISABLED = 'Disabled';
     const TIMESHEET_SETTING_ENABLED = 'Enabled';
     const TIMESHEET_SETTING_ENABLED_FOR_EXCEPTIONS = 'EnabledForExceptions';
@@ -623,6 +633,11 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
             self::SOURCE_QUICKFILE,
             self::SOURCE_TIDE,
             self::SOURCE_TIDE_SSO,
+            self::SOURCE_FREE_AGENT,
+            self::SOURCE_AKAHU,
+            self::SOURCE_INSTA_PAY,
+            self::SOURCE_ZEPTO,
+            self::SOURCE_SLACK,
         ];
     }
     
@@ -684,6 +699,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['anniversary_date'] = isset($data['anniversary_date']) ? $data['anniversary_date'] : null;
         $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
         $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
@@ -808,6 +824,30 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id 
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets anniversary_date

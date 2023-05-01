@@ -256,6 +256,7 @@ class AuPayScheduleModel implements ModelInterface, ArrayAccess
     const EMPLOYEE_SELECTION_STRATEGY_TIMESHEET_LOCATIONS = 'TimesheetLocations';
     const EMPLOYEE_SELECTION_STRATEGY_PAY_RUN_DEFAULT_WITH_TIMESHEETS = 'PayRunDefaultWithTimesheets';
     const EMPLOYEE_SELECTION_STRATEGY_ACTIVE_SUBCONTRACTORS = 'ActiveSubcontractors';
+    const EMPLOYEE_SELECTION_STRATEGY_EMPLOYING_ENTITY = 'EmployingEntity';
     
 
     
@@ -286,6 +287,7 @@ class AuPayScheduleModel implements ModelInterface, ArrayAccess
             self::EMPLOYEE_SELECTION_STRATEGY_TIMESHEET_LOCATIONS,
             self::EMPLOYEE_SELECTION_STRATEGY_PAY_RUN_DEFAULT_WITH_TIMESHEETS,
             self::EMPLOYEE_SELECTION_STRATEGY_ACTIVE_SUBCONTRACTORS,
+            self::EMPLOYEE_SELECTION_STRATEGY_EMPLOYING_ENTITY,
         ];
     }
     

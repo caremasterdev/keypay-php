@@ -62,6 +62,7 @@ class TimesheetBreakViewModel implements ModelInterface, ArrayAccess
         'end' => '\DateTime',
         'submitted_start' => '\DateTime',
         'submitted_end' => '\DateTime',
+        'is_paid_break' => 'bool',
         'formatted_start' => 'string',
         'formatted_end' => 'string'
     ];
@@ -77,6 +78,7 @@ class TimesheetBreakViewModel implements ModelInterface, ArrayAccess
         'end' => 'date-time',
         'submitted_start' => 'date-time',
         'submitted_end' => 'date-time',
+        'is_paid_break' => null,
         'formatted_start' => null,
         'formatted_end' => null
     ];
@@ -113,6 +115,7 @@ class TimesheetBreakViewModel implements ModelInterface, ArrayAccess
         'end' => 'end',
         'submitted_start' => 'submittedStart',
         'submitted_end' => 'submittedEnd',
+        'is_paid_break' => 'isPaidBreak',
         'formatted_start' => 'formattedStart',
         'formatted_end' => 'formattedEnd'
     ];
@@ -128,6 +131,7 @@ class TimesheetBreakViewModel implements ModelInterface, ArrayAccess
         'end' => 'setEnd',
         'submitted_start' => 'setSubmittedStart',
         'submitted_end' => 'setSubmittedEnd',
+        'is_paid_break' => 'setIsPaidBreak',
         'formatted_start' => 'setFormattedStart',
         'formatted_end' => 'setFormattedEnd'
     ];
@@ -143,6 +147,7 @@ class TimesheetBreakViewModel implements ModelInterface, ArrayAccess
         'end' => 'getEnd',
         'submitted_start' => 'getSubmittedStart',
         'submitted_end' => 'getSubmittedEnd',
+        'is_paid_break' => 'getIsPaidBreak',
         'formatted_start' => 'getFormattedStart',
         'formatted_end' => 'getFormattedEnd'
     ];
@@ -212,6 +217,7 @@ class TimesheetBreakViewModel implements ModelInterface, ArrayAccess
         $this->container['end'] = isset($data['end']) ? $data['end'] : null;
         $this->container['submitted_start'] = isset($data['submitted_start']) ? $data['submitted_start'] : null;
         $this->container['submitted_end'] = isset($data['submitted_end']) ? $data['submitted_end'] : null;
+        $this->container['is_paid_break'] = isset($data['is_paid_break']) ? $data['is_paid_break'] : null;
         $this->container['formatted_start'] = isset($data['formatted_start']) ? $data['formatted_start'] : null;
         $this->container['formatted_end'] = isset($data['formatted_end']) ? $data['formatted_end'] : null;
     }
@@ -356,6 +362,30 @@ class TimesheetBreakViewModel implements ModelInterface, ArrayAccess
     public function setSubmittedEnd($submitted_end)
     {
         $this->container['submitted_end'] = $submitted_end;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_paid_break
+     *
+     * @return bool
+     */
+    public function getIsPaidBreak()
+    {
+        return $this->container['is_paid_break'];
+    }
+
+    /**
+     * Sets is_paid_break
+     *
+     * @param bool $is_paid_break 
+     *
+     * @return $this
+     */
+    public function setIsPaidBreak($is_paid_break)
+    {
+        $this->container['is_paid_break'] = $is_paid_break;
 
         return $this;
     }

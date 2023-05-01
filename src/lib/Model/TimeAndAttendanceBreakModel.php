@@ -60,7 +60,8 @@ class TimeAndAttendanceBreakModel implements ModelInterface, ArrayAccess
         'start_time_utc' => '\DateTime',
         'start_time_local' => '\DateTime',
         'end_time_utc' => '\DateTime',
-        'end_time_local' => '\DateTime'
+        'end_time_local' => '\DateTime',
+        'is_paid_break' => 'bool'
     ];
 
     /**
@@ -72,7 +73,8 @@ class TimeAndAttendanceBreakModel implements ModelInterface, ArrayAccess
         'start_time_utc' => 'date-time',
         'start_time_local' => 'date-time',
         'end_time_utc' => 'date-time',
-        'end_time_local' => 'date-time'
+        'end_time_local' => 'date-time',
+        'is_paid_break' => null
     ];
 
     /**
@@ -105,7 +107,8 @@ class TimeAndAttendanceBreakModel implements ModelInterface, ArrayAccess
         'start_time_utc' => 'startTimeUtc',
         'start_time_local' => 'startTimeLocal',
         'end_time_utc' => 'endTimeUtc',
-        'end_time_local' => 'endTimeLocal'
+        'end_time_local' => 'endTimeLocal',
+        'is_paid_break' => 'isPaidBreak'
     ];
 
     /**
@@ -117,7 +120,8 @@ class TimeAndAttendanceBreakModel implements ModelInterface, ArrayAccess
         'start_time_utc' => 'setStartTimeUtc',
         'start_time_local' => 'setStartTimeLocal',
         'end_time_utc' => 'setEndTimeUtc',
-        'end_time_local' => 'setEndTimeLocal'
+        'end_time_local' => 'setEndTimeLocal',
+        'is_paid_break' => 'setIsPaidBreak'
     ];
 
     /**
@@ -129,7 +133,8 @@ class TimeAndAttendanceBreakModel implements ModelInterface, ArrayAccess
         'start_time_utc' => 'getStartTimeUtc',
         'start_time_local' => 'getStartTimeLocal',
         'end_time_utc' => 'getEndTimeUtc',
-        'end_time_local' => 'getEndTimeLocal'
+        'end_time_local' => 'getEndTimeLocal',
+        'is_paid_break' => 'getIsPaidBreak'
     ];
 
     /**
@@ -196,6 +201,7 @@ class TimeAndAttendanceBreakModel implements ModelInterface, ArrayAccess
         $this->container['start_time_local'] = isset($data['start_time_local']) ? $data['start_time_local'] : null;
         $this->container['end_time_utc'] = isset($data['end_time_utc']) ? $data['end_time_utc'] : null;
         $this->container['end_time_local'] = isset($data['end_time_local']) ? $data['end_time_local'] : null;
+        $this->container['is_paid_break'] = isset($data['is_paid_break']) ? $data['is_paid_break'] : null;
     }
 
     /**
@@ -314,6 +320,30 @@ class TimeAndAttendanceBreakModel implements ModelInterface, ArrayAccess
     public function setEndTimeLocal($end_time_local)
     {
         $this->container['end_time_local'] = $end_time_local;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_paid_break
+     *
+     * @return bool
+     */
+    public function getIsPaidBreak()
+    {
+        return $this->container['is_paid_break'];
+    }
+
+    /**
+     * Sets is_paid_break
+     *
+     * @param bool $is_paid_break 
+     *
+     * @return $this
+     */
+    public function setIsPaidBreak($is_paid_break)
+    {
+        $this->container['is_paid_break'] = $is_paid_break;
 
         return $this;
     }

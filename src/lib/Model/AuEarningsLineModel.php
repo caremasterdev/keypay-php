@@ -72,6 +72,9 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
         'lump_sum_e_financial_year' => 'int',
         'timesheet_line_id' => 'int',
         'timesheet_line_external_id' => 'string',
+        'reporting_dimension_value_ids' => 'int[]',
+        'reporting_dimension_value_names' => 'map[string,string[]]',
+        'net_payment' => 'double',
         'id' => 'int',
         'external_id' => 'string',
         'location_id' => 'string',
@@ -102,6 +105,9 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
         'lump_sum_e_financial_year' => 'int32',
         'timesheet_line_id' => 'int32',
         'timesheet_line_external_id' => null,
+        'reporting_dimension_value_ids' => 'int32',
+        'reporting_dimension_value_names' => null,
+        'net_payment' => 'double',
         'id' => 'int64',
         'external_id' => null,
         'location_id' => null,
@@ -153,6 +159,9 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
         'lump_sum_e_financial_year' => 'lumpSumEFinancialYear',
         'timesheet_line_id' => 'timesheetLineId',
         'timesheet_line_external_id' => 'timesheetLineExternalId',
+        'reporting_dimension_value_ids' => 'reportingDimensionValueIds',
+        'reporting_dimension_value_names' => 'reportingDimensionValueNames',
+        'net_payment' => 'netPayment',
         'id' => 'id',
         'external_id' => 'externalId',
         'location_id' => 'locationId',
@@ -183,6 +192,9 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
         'lump_sum_e_financial_year' => 'setLumpSumEFinancialYear',
         'timesheet_line_id' => 'setTimesheetLineId',
         'timesheet_line_external_id' => 'setTimesheetLineExternalId',
+        'reporting_dimension_value_ids' => 'setReportingDimensionValueIds',
+        'reporting_dimension_value_names' => 'setReportingDimensionValueNames',
+        'net_payment' => 'setNetPayment',
         'id' => 'setId',
         'external_id' => 'setExternalId',
         'location_id' => 'setLocationId',
@@ -213,6 +225,9 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
         'lump_sum_e_financial_year' => 'getLumpSumEFinancialYear',
         'timesheet_line_id' => 'getTimesheetLineId',
         'timesheet_line_external_id' => 'getTimesheetLineExternalId',
+        'reporting_dimension_value_ids' => 'getReportingDimensionValueIds',
+        'reporting_dimension_value_names' => 'getReportingDimensionValueNames',
+        'net_payment' => 'getNetPayment',
         'id' => 'getId',
         'external_id' => 'getExternalId',
         'location_id' => 'getLocationId',
@@ -314,6 +329,9 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
         $this->container['lump_sum_e_financial_year'] = isset($data['lump_sum_e_financial_year']) ? $data['lump_sum_e_financial_year'] : null;
         $this->container['timesheet_line_id'] = isset($data['timesheet_line_id']) ? $data['timesheet_line_id'] : null;
         $this->container['timesheet_line_external_id'] = isset($data['timesheet_line_external_id']) ? $data['timesheet_line_external_id'] : null;
+        $this->container['reporting_dimension_value_ids'] = isset($data['reporting_dimension_value_ids']) ? $data['reporting_dimension_value_ids'] : null;
+        $this->container['reporting_dimension_value_names'] = isset($data['reporting_dimension_value_names']) ? $data['reporting_dimension_value_names'] : null;
+        $this->container['net_payment'] = isset($data['net_payment']) ? $data['net_payment'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
         $this->container['location_id'] = isset($data['location_id']) ? $data['location_id'] : null;
@@ -720,6 +738,78 @@ class AuEarningsLineModel implements ModelInterface, ArrayAccess
     public function setTimesheetLineExternalId($timesheet_line_external_id)
     {
         $this->container['timesheet_line_external_id'] = $timesheet_line_external_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets reporting_dimension_value_ids
+     *
+     * @return int[]
+     */
+    public function getReportingDimensionValueIds()
+    {
+        return $this->container['reporting_dimension_value_ids'];
+    }
+
+    /**
+     * Sets reporting_dimension_value_ids
+     *
+     * @param int[] $reporting_dimension_value_ids Nullable</p><p><i>Note:</i> Only applicable to businesses where the Dimensions feature is enabled.</p><p>Specify an array of dimension value ids (normally only one-per dimension) eg [1,3,7].</p><p>If you prefer to specify dimension values by name, use the ReportingDimensionValueNames field instead.</p><p>If this field is used, ReportingDimensionValueNames will be ignored (the Ids take precedence)
+     *
+     * @return $this
+     */
+    public function setReportingDimensionValueIds($reporting_dimension_value_ids)
+    {
+        $this->container['reporting_dimension_value_ids'] = $reporting_dimension_value_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets reporting_dimension_value_names
+     *
+     * @return map[string,string[]]
+     */
+    public function getReportingDimensionValueNames()
+    {
+        return $this->container['reporting_dimension_value_names'];
+    }
+
+    /**
+     * Sets reporting_dimension_value_names
+     *
+     * @param map[string,string[]] $reporting_dimension_value_names Nullable</p><p><i>Note:</i> Only applicable to businesses where the Dimensions feature is enabled.</p><p>Specify an object with dimension names and for each one, specify an array of associated value names (normally one-per dimension) eg { \"Department\": [\"Accounting\"], \"Job Code\": [\"JC1\"] }.</p><p>If you prefer to specify dimension values directly by Id, use the ReportingDimensionValueIds field instead.</p><p>If ReportingDimensionValueIds is used, ReportingDimensionValueNames will be ignored (the Ids take precedence)
+     *
+     * @return $this
+     */
+    public function setReportingDimensionValueNames($reporting_dimension_value_names)
+    {
+        $this->container['reporting_dimension_value_names'] = $reporting_dimension_value_names;
+
+        return $this;
+    }
+
+    /**
+     * Gets net_payment
+     *
+     * @return double
+     */
+    public function getNetPayment()
+    {
+        return $this->container['net_payment'];
+    }
+
+    /**
+     * Sets net_payment
+     *
+     * @param double $net_payment 
+     *
+     * @return $this
+     */
+    public function setNetPayment($net_payment)
+    {
+        $this->container['net_payment'] = $net_payment;
 
         return $this;
     }

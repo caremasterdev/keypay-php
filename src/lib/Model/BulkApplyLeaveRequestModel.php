@@ -57,7 +57,8 @@ class BulkApplyLeaveRequestModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'leave_request_ids' => 'int[]'
+        'leave_request_ids' => 'int[]',
+        'align_to_pay_run_period' => 'bool'
     ];
 
     /**
@@ -66,7 +67,8 @@ class BulkApplyLeaveRequestModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'leave_request_ids' => 'int32'
+        'leave_request_ids' => 'int32',
+        'align_to_pay_run_period' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class BulkApplyLeaveRequestModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'leave_request_ids' => 'leaveRequestIds'
+        'leave_request_ids' => 'leaveRequestIds',
+        'align_to_pay_run_period' => 'alignToPayRunPeriod'
     ];
 
     /**
@@ -105,7 +108,8 @@ class BulkApplyLeaveRequestModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'leave_request_ids' => 'setLeaveRequestIds'
+        'leave_request_ids' => 'setLeaveRequestIds',
+        'align_to_pay_run_period' => 'setAlignToPayRunPeriod'
     ];
 
     /**
@@ -114,7 +118,8 @@ class BulkApplyLeaveRequestModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'leave_request_ids' => 'getLeaveRequestIds'
+        'leave_request_ids' => 'getLeaveRequestIds',
+        'align_to_pay_run_period' => 'getAlignToPayRunPeriod'
     ];
 
     /**
@@ -178,6 +183,7 @@ class BulkApplyLeaveRequestModel implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['leave_request_ids'] = isset($data['leave_request_ids']) ? $data['leave_request_ids'] : null;
+        $this->container['align_to_pay_run_period'] = isset($data['align_to_pay_run_period']) ? $data['align_to_pay_run_period'] : null;
     }
 
     /**
@@ -224,6 +230,30 @@ class BulkApplyLeaveRequestModel implements ModelInterface, ArrayAccess
     public function setLeaveRequestIds($leave_request_ids)
     {
         $this->container['leave_request_ids'] = $leave_request_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets align_to_pay_run_period
+     *
+     * @return bool
+     */
+    public function getAlignToPayRunPeriod()
+    {
+        return $this->container['align_to_pay_run_period'];
+    }
+
+    /**
+     * Sets align_to_pay_run_period
+     *
+     * @param bool $align_to_pay_run_period 
+     *
+     * @return $this
+     */
+    public function setAlignToPayRunPeriod($align_to_pay_run_period)
+    {
+        $this->container['align_to_pay_run_period'] = $align_to_pay_run_period;
 
         return $this;
     }

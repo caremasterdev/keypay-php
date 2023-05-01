@@ -59,7 +59,8 @@ class RosterShiftBreakApiModel implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'int',
         'start_time' => '\DateTime',
-        'end_time' => '\DateTime'
+        'end_time' => '\DateTime',
+        'is_paid_break' => 'bool'
     ];
 
     /**
@@ -70,7 +71,8 @@ class RosterShiftBreakApiModel implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'id' => 'int32',
         'start_time' => 'date-time',
-        'end_time' => 'date-time'
+        'end_time' => 'date-time',
+        'is_paid_break' => null
     ];
 
     /**
@@ -102,7 +104,8 @@ class RosterShiftBreakApiModel implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'start_time' => 'startTime',
-        'end_time' => 'endTime'
+        'end_time' => 'endTime',
+        'is_paid_break' => 'isPaidBreak'
     ];
 
     /**
@@ -113,7 +116,8 @@ class RosterShiftBreakApiModel implements ModelInterface, ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'start_time' => 'setStartTime',
-        'end_time' => 'setEndTime'
+        'end_time' => 'setEndTime',
+        'is_paid_break' => 'setIsPaidBreak'
     ];
 
     /**
@@ -124,7 +128,8 @@ class RosterShiftBreakApiModel implements ModelInterface, ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'start_time' => 'getStartTime',
-        'end_time' => 'getEndTime'
+        'end_time' => 'getEndTime',
+        'is_paid_break' => 'getIsPaidBreak'
     ];
 
     /**
@@ -190,6 +195,7 @@ class RosterShiftBreakApiModel implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
         $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
+        $this->container['is_paid_break'] = isset($data['is_paid_break']) ? $data['is_paid_break'] : null;
     }
 
     /**
@@ -284,6 +290,30 @@ class RosterShiftBreakApiModel implements ModelInterface, ArrayAccess
     public function setEndTime($end_time)
     {
         $this->container['end_time'] = $end_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_paid_break
+     *
+     * @return bool
+     */
+    public function getIsPaidBreak()
+    {
+        return $this->container['is_paid_break'];
+    }
+
+    /**
+     * Sets is_paid_break
+     *
+     * @param bool $is_paid_break 
+     *
+     * @return $this
+     */
+    public function setIsPaidBreak($is_paid_break)
+    {
+        $this->container['is_paid_break'] = $is_paid_break;
 
         return $this;
     }

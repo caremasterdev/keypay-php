@@ -57,9 +57,12 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'shift_id' => 'string',
         'state' => 'string',
+        'override_rates' => '\Swagger\Client\Model\RateOverride[]',
         'classification_id' => 'string',
         'classification' => 'string',
+        'location_is_deleted' => 'bool',
         'id' => 'int',
         'employee_id' => 'int',
         'start_time' => '\DateTime',
@@ -91,9 +94,12 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'shift_id' => null,
         'state' => null,
+        'override_rates' => null,
         'classification_id' => null,
         'classification' => null,
+        'location_is_deleted' => null,
         'id' => 'int32',
         'employee_id' => 'int32',
         'start_time' => 'date-time',
@@ -146,9 +152,12 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'shift_id' => 'shiftId',
         'state' => 'state',
+        'override_rates' => 'overrideRates',
         'classification_id' => 'classificationId',
         'classification' => 'classification',
+        'location_is_deleted' => 'locationIsDeleted',
         'id' => 'id',
         'employee_id' => 'employeeId',
         'start_time' => 'startTime',
@@ -180,9 +189,12 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'shift_id' => 'setShiftId',
         'state' => 'setState',
+        'override_rates' => 'setOverrideRates',
         'classification_id' => 'setClassificationId',
         'classification' => 'setClassification',
+        'location_is_deleted' => 'setLocationIsDeleted',
         'id' => 'setId',
         'employee_id' => 'setEmployeeId',
         'start_time' => 'setStartTime',
@@ -214,9 +226,12 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'shift_id' => 'getShiftId',
         'state' => 'getState',
+        'override_rates' => 'getOverrideRates',
         'classification_id' => 'getClassificationId',
         'classification' => 'getClassification',
+        'location_is_deleted' => 'getLocationIsDeleted',
         'id' => 'getId',
         'employee_id' => 'getEmployeeId',
         'start_time' => 'getStartTime',
@@ -353,6 +368,11 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess
     const SOURCE_QUICKFILE = 'Quickfile';
     const SOURCE_TIDE = 'Tide';
     const SOURCE_TIDE_SSO = 'TideSso';
+    const SOURCE_FREE_AGENT = 'FreeAgent';
+    const SOURCE_AKAHU = 'Akahu';
+    const SOURCE_INSTA_PAY = 'InstaPay';
+    const SOURCE_ZEPTO = 'Zepto';
+    const SOURCE_SLACK = 'Slack';
     
 
     
@@ -434,6 +454,11 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess
             self::SOURCE_QUICKFILE,
             self::SOURCE_TIDE,
             self::SOURCE_TIDE_SSO,
+            self::SOURCE_FREE_AGENT,
+            self::SOURCE_AKAHU,
+            self::SOURCE_INSTA_PAY,
+            self::SOURCE_ZEPTO,
+            self::SOURCE_SLACK,
         ];
     }
     
@@ -453,9 +478,12 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['shift_id'] = isset($data['shift_id']) ? $data['shift_id'] : null;
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
+        $this->container['override_rates'] = isset($data['override_rates']) ? $data['override_rates'] : null;
         $this->container['classification_id'] = isset($data['classification_id']) ? $data['classification_id'] : null;
         $this->container['classification'] = isset($data['classification']) ? $data['classification'] : null;
+        $this->container['location_is_deleted'] = isset($data['location_is_deleted']) ? $data['location_is_deleted'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['employee_id'] = isset($data['employee_id']) ? $data['employee_id'] : null;
         $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
@@ -514,6 +542,30 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets shift_id
+     *
+     * @return string
+     */
+    public function getShiftId()
+    {
+        return $this->container['shift_id'];
+    }
+
+    /**
+     * Sets shift_id
+     *
+     * @param string $shift_id 
+     *
+     * @return $this
+     */
+    public function setShiftId($shift_id)
+    {
+        $this->container['shift_id'] = $shift_id;
+
+        return $this;
+    }
+
+    /**
      * Gets state
      *
      * @return string
@@ -533,6 +585,30 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess
     public function setState($state)
     {
         $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets override_rates
+     *
+     * @return \Swagger\Client\Model\RateOverride[]
+     */
+    public function getOverrideRates()
+    {
+        return $this->container['override_rates'];
+    }
+
+    /**
+     * Sets override_rates
+     *
+     * @param \Swagger\Client\Model\RateOverride[] $override_rates 
+     *
+     * @return $this
+     */
+    public function setOverrideRates($override_rates)
+    {
+        $this->container['override_rates'] = $override_rates;
 
         return $this;
     }
@@ -581,6 +657,30 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess
     public function setClassification($classification)
     {
         $this->container['classification'] = $classification;
+
+        return $this;
+    }
+
+    /**
+     * Gets location_is_deleted
+     *
+     * @return bool
+     */
+    public function getLocationIsDeleted()
+    {
+        return $this->container['location_is_deleted'];
+    }
+
+    /**
+     * Sets location_is_deleted
+     *
+     * @param bool $location_is_deleted 
+     *
+     * @return $this
+     */
+    public function setLocationIsDeleted($location_is_deleted)
+    {
+        $this->container['location_is_deleted'] = $location_is_deleted;
 
         return $this;
     }

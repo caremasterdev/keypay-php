@@ -73,11 +73,13 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'is_exempt_from_flood_levy' => 'bool',
         'has_approved_working_holiday_visa' => 'bool',
         'working_holiday_visa_country' => 'string',
+        'working_holiday_visa_start_date' => '\DateTime',
         'is_seasonal_worker' => 'bool',
         'has_withholding_variation' => 'bool',
         'tax_variation' => 'double',
         'date_tax_file_declaration_signed' => '\DateTime',
         'date_tax_file_declaration_reported' => '\DateTime',
+        'business_award_package' => 'string',
         'employment_agreement' => 'string',
         'is_exempt_from_payroll_tax' => 'bool',
         'bank_account1_bsb' => 'string',
@@ -111,6 +113,7 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'postal_address_is_overseas' => 'bool',
         'residential_address_is_overseas' => 'bool',
         'employment_type' => 'string',
+        'contractor_abn' => 'string',
         'termination_reason' => 'string',
         'tax_category' => 'string',
         'medicare_levy_surcharge_withholding_tier' => 'string',
@@ -184,7 +187,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'leave_accrual_start_date_type' => 'string',
         'leave_year_start' => '\DateTime',
         'status' => 'string',
-        'date_created' => '\DateTime'
+        'date_created' => '\DateTime',
+        'reporting_dimension_values' => 'string'
     ];
 
     /**
@@ -209,11 +213,13 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'is_exempt_from_flood_levy' => null,
         'has_approved_working_holiday_visa' => null,
         'working_holiday_visa_country' => null,
+        'working_holiday_visa_start_date' => 'date-time',
         'is_seasonal_worker' => null,
         'has_withholding_variation' => null,
         'tax_variation' => 'double',
         'date_tax_file_declaration_signed' => 'date-time',
         'date_tax_file_declaration_reported' => 'date-time',
+        'business_award_package' => null,
         'employment_agreement' => null,
         'is_exempt_from_payroll_tax' => null,
         'bank_account1_bsb' => null,
@@ -247,6 +253,7 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'postal_address_is_overseas' => null,
         'residential_address_is_overseas' => null,
         'employment_type' => null,
+        'contractor_abn' => null,
         'termination_reason' => null,
         'tax_category' => null,
         'medicare_levy_surcharge_withholding_tier' => null,
@@ -320,7 +327,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'leave_accrual_start_date_type' => null,
         'leave_year_start' => 'date-time',
         'status' => null,
-        'date_created' => 'date-time'
+        'date_created' => 'date-time',
+        'reporting_dimension_values' => null
     ];
 
     /**
@@ -366,11 +374,13 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'is_exempt_from_flood_levy' => 'isExemptFromFloodLevy',
         'has_approved_working_holiday_visa' => 'hasApprovedWorkingHolidayVisa',
         'working_holiday_visa_country' => 'workingHolidayVisaCountry',
+        'working_holiday_visa_start_date' => 'workingHolidayVisaStartDate',
         'is_seasonal_worker' => 'isSeasonalWorker',
         'has_withholding_variation' => 'hasWithholdingVariation',
         'tax_variation' => 'taxVariation',
         'date_tax_file_declaration_signed' => 'dateTaxFileDeclarationSigned',
         'date_tax_file_declaration_reported' => 'dateTaxFileDeclarationReported',
+        'business_award_package' => 'businessAwardPackage',
         'employment_agreement' => 'employmentAgreement',
         'is_exempt_from_payroll_tax' => 'isExemptFromPayrollTax',
         'bank_account1_bsb' => 'bankAccount1_BSB',
@@ -404,6 +414,7 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'postal_address_is_overseas' => 'postalAddressIsOverseas',
         'residential_address_is_overseas' => 'residentialAddressIsOverseas',
         'employment_type' => 'employmentType',
+        'contractor_abn' => 'contractorABN',
         'termination_reason' => 'terminationReason',
         'tax_category' => 'taxCategory',
         'medicare_levy_surcharge_withholding_tier' => 'medicareLevySurchargeWithholdingTier',
@@ -477,7 +488,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'leave_accrual_start_date_type' => 'leaveAccrualStartDateType',
         'leave_year_start' => 'leaveYearStart',
         'status' => 'status',
-        'date_created' => 'dateCreated'
+        'date_created' => 'dateCreated',
+        'reporting_dimension_values' => 'reportingDimensionValues'
     ];
 
     /**
@@ -502,11 +514,13 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'is_exempt_from_flood_levy' => 'setIsExemptFromFloodLevy',
         'has_approved_working_holiday_visa' => 'setHasApprovedWorkingHolidayVisa',
         'working_holiday_visa_country' => 'setWorkingHolidayVisaCountry',
+        'working_holiday_visa_start_date' => 'setWorkingHolidayVisaStartDate',
         'is_seasonal_worker' => 'setIsSeasonalWorker',
         'has_withholding_variation' => 'setHasWithholdingVariation',
         'tax_variation' => 'setTaxVariation',
         'date_tax_file_declaration_signed' => 'setDateTaxFileDeclarationSigned',
         'date_tax_file_declaration_reported' => 'setDateTaxFileDeclarationReported',
+        'business_award_package' => 'setBusinessAwardPackage',
         'employment_agreement' => 'setEmploymentAgreement',
         'is_exempt_from_payroll_tax' => 'setIsExemptFromPayrollTax',
         'bank_account1_bsb' => 'setBankAccount1Bsb',
@@ -540,6 +554,7 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'postal_address_is_overseas' => 'setPostalAddressIsOverseas',
         'residential_address_is_overseas' => 'setResidentialAddressIsOverseas',
         'employment_type' => 'setEmploymentType',
+        'contractor_abn' => 'setContractorAbn',
         'termination_reason' => 'setTerminationReason',
         'tax_category' => 'setTaxCategory',
         'medicare_levy_surcharge_withholding_tier' => 'setMedicareLevySurchargeWithholdingTier',
@@ -613,7 +628,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'leave_accrual_start_date_type' => 'setLeaveAccrualStartDateType',
         'leave_year_start' => 'setLeaveYearStart',
         'status' => 'setStatus',
-        'date_created' => 'setDateCreated'
+        'date_created' => 'setDateCreated',
+        'reporting_dimension_values' => 'setReportingDimensionValues'
     ];
 
     /**
@@ -638,11 +654,13 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'is_exempt_from_flood_levy' => 'getIsExemptFromFloodLevy',
         'has_approved_working_holiday_visa' => 'getHasApprovedWorkingHolidayVisa',
         'working_holiday_visa_country' => 'getWorkingHolidayVisaCountry',
+        'working_holiday_visa_start_date' => 'getWorkingHolidayVisaStartDate',
         'is_seasonal_worker' => 'getIsSeasonalWorker',
         'has_withholding_variation' => 'getHasWithholdingVariation',
         'tax_variation' => 'getTaxVariation',
         'date_tax_file_declaration_signed' => 'getDateTaxFileDeclarationSigned',
         'date_tax_file_declaration_reported' => 'getDateTaxFileDeclarationReported',
+        'business_award_package' => 'getBusinessAwardPackage',
         'employment_agreement' => 'getEmploymentAgreement',
         'is_exempt_from_payroll_tax' => 'getIsExemptFromPayrollTax',
         'bank_account1_bsb' => 'getBankAccount1Bsb',
@@ -676,6 +694,7 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'postal_address_is_overseas' => 'getPostalAddressIsOverseas',
         'residential_address_is_overseas' => 'getResidentialAddressIsOverseas',
         'employment_type' => 'getEmploymentType',
+        'contractor_abn' => 'getContractorAbn',
         'termination_reason' => 'getTerminationReason',
         'tax_category' => 'getTaxCategory',
         'medicare_levy_surcharge_withholding_tier' => 'getMedicareLevySurchargeWithholdingTier',
@@ -749,7 +768,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'leave_accrual_start_date_type' => 'getLeaveAccrualStartDateType',
         'leave_year_start' => 'getLeaveYearStart',
         'status' => 'getStatus',
-        'date_created' => 'getDateCreated'
+        'date_created' => 'getDateCreated',
+        'reporting_dimension_values' => 'getReportingDimensionValues'
     ];
 
     /**
@@ -819,6 +839,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
     const LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE = 'EmployeeStartDate';
     const LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE = 'SpecifiedDate';
     const LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR = 'CalendarYear';
+    const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH = 'RollingYear12Month';
+    const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH = 'RollingYear24Month';
     const STATUS_ACTIVE = 'Active';
     const STATUS_TERMINATED = 'Terminated';
     const STATUS_INCOMPLETE = 'Incomplete';
@@ -903,6 +925,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
             self::LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH,
         ];
     }
     
@@ -952,11 +976,13 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         $this->container['is_exempt_from_flood_levy'] = isset($data['is_exempt_from_flood_levy']) ? $data['is_exempt_from_flood_levy'] : null;
         $this->container['has_approved_working_holiday_visa'] = isset($data['has_approved_working_holiday_visa']) ? $data['has_approved_working_holiday_visa'] : null;
         $this->container['working_holiday_visa_country'] = isset($data['working_holiday_visa_country']) ? $data['working_holiday_visa_country'] : null;
+        $this->container['working_holiday_visa_start_date'] = isset($data['working_holiday_visa_start_date']) ? $data['working_holiday_visa_start_date'] : null;
         $this->container['is_seasonal_worker'] = isset($data['is_seasonal_worker']) ? $data['is_seasonal_worker'] : null;
         $this->container['has_withholding_variation'] = isset($data['has_withholding_variation']) ? $data['has_withholding_variation'] : null;
         $this->container['tax_variation'] = isset($data['tax_variation']) ? $data['tax_variation'] : null;
         $this->container['date_tax_file_declaration_signed'] = isset($data['date_tax_file_declaration_signed']) ? $data['date_tax_file_declaration_signed'] : null;
         $this->container['date_tax_file_declaration_reported'] = isset($data['date_tax_file_declaration_reported']) ? $data['date_tax_file_declaration_reported'] : null;
+        $this->container['business_award_package'] = isset($data['business_award_package']) ? $data['business_award_package'] : null;
         $this->container['employment_agreement'] = isset($data['employment_agreement']) ? $data['employment_agreement'] : null;
         $this->container['is_exempt_from_payroll_tax'] = isset($data['is_exempt_from_payroll_tax']) ? $data['is_exempt_from_payroll_tax'] : null;
         $this->container['bank_account1_bsb'] = isset($data['bank_account1_bsb']) ? $data['bank_account1_bsb'] : null;
@@ -990,6 +1016,7 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         $this->container['postal_address_is_overseas'] = isset($data['postal_address_is_overseas']) ? $data['postal_address_is_overseas'] : null;
         $this->container['residential_address_is_overseas'] = isset($data['residential_address_is_overseas']) ? $data['residential_address_is_overseas'] : null;
         $this->container['employment_type'] = isset($data['employment_type']) ? $data['employment_type'] : null;
+        $this->container['contractor_abn'] = isset($data['contractor_abn']) ? $data['contractor_abn'] : null;
         $this->container['termination_reason'] = isset($data['termination_reason']) ? $data['termination_reason'] : null;
         $this->container['tax_category'] = isset($data['tax_category']) ? $data['tax_category'] : null;
         $this->container['medicare_levy_surcharge_withholding_tier'] = isset($data['medicare_levy_surcharge_withholding_tier']) ? $data['medicare_levy_surcharge_withholding_tier'] : null;
@@ -1064,6 +1091,7 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         $this->container['leave_year_start'] = isset($data['leave_year_start']) ? $data['leave_year_start'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['date_created'] = isset($data['date_created']) ? $data['date_created'] : null;
+        $this->container['reporting_dimension_values'] = isset($data['reporting_dimension_values']) ? $data['reporting_dimension_values'] : null;
     }
 
     /**
@@ -1603,6 +1631,30 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets working_holiday_visa_start_date
+     *
+     * @return \DateTime
+     */
+    public function getWorkingHolidayVisaStartDate()
+    {
+        return $this->container['working_holiday_visa_start_date'];
+    }
+
+    /**
+     * Sets working_holiday_visa_start_date
+     *
+     * @param \DateTime $working_holiday_visa_start_date 
+     *
+     * @return $this
+     */
+    public function setWorkingHolidayVisaStartDate($working_holiday_visa_start_date)
+    {
+        $this->container['working_holiday_visa_start_date'] = $working_holiday_visa_start_date;
+
+        return $this;
+    }
+
+    /**
      * Gets is_seasonal_worker
      *
      * @return bool
@@ -1718,6 +1770,30 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
     public function setDateTaxFileDeclarationReported($date_tax_file_declaration_reported)
     {
         $this->container['date_tax_file_declaration_reported'] = $date_tax_file_declaration_reported;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_award_package
+     *
+     * @return string
+     */
+    public function getBusinessAwardPackage()
+    {
+        return $this->container['business_award_package'];
+    }
+
+    /**
+     * Sets business_award_package
+     *
+     * @param string $business_award_package 
+     *
+     * @return $this
+     */
+    public function setBusinessAwardPackage($business_award_package)
+    {
+        $this->container['business_award_package'] = $business_award_package;
 
         return $this;
     }
@@ -2528,6 +2604,30 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
     public function setEmploymentType($employment_type)
     {
         $this->container['employment_type'] = $employment_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets contractor_abn
+     *
+     * @return string
+     */
+    public function getContractorAbn()
+    {
+        return $this->container['contractor_abn'];
+    }
+
+    /**
+     * Sets contractor_abn
+     *
+     * @param string $contractor_abn 
+     *
+     * @return $this
+     */
+    public function setContractorAbn($contractor_abn)
+    {
+        $this->container['contractor_abn'] = $contractor_abn;
 
         return $this;
     }
@@ -4410,6 +4510,30 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
     public function setDateCreated($date_created)
     {
         $this->container['date_created'] = $date_created;
+
+        return $this;
+    }
+
+    /**
+     * Gets reporting_dimension_values
+     *
+     * @return string
+     */
+    public function getReportingDimensionValues()
+    {
+        return $this->container['reporting_dimension_values'];
+    }
+
+    /**
+     * Sets reporting_dimension_values
+     *
+     * @param string $reporting_dimension_values 
+     *
+     * @return $this
+     */
+    public function setReportingDimensionValues($reporting_dimension_values)
+    {
+        $this->container['reporting_dimension_values'] = $reporting_dimension_values;
 
         return $this;
     }

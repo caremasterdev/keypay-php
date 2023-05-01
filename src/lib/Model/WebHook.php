@@ -231,9 +231,6 @@ class WebHook implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['web_hook_uri'] === null) {
-            $invalidProperties[] = "'web_hook_uri' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -286,7 +283,7 @@ class WebHook implements ModelInterface, ArrayAccess
     /**
      * Sets web_hook_uri
      *
-     * @param string $web_hook_uri Required
+     * @param string $web_hook_uri 
      *
      * @return $this
      */

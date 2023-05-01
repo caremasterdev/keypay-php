@@ -66,7 +66,10 @@ class AuBusinessTimesheetSettingsModel implements ModelInterface, ArrayAccess
         'timesheet_rejection_notifications' => 'bool',
         'managers_can_create_timesheets_for_employees_that_are_not_enabled' => 'bool',
         'timesheets_enabled' => 'bool',
-        'approve_if_matches_roster_shift' => 'bool'
+        'approve_if_matches_roster_shift' => 'bool',
+        'allow_paid_breaks' => 'bool',
+        'has_maximum_paid_break_duration' => 'bool',
+        'maximum_paid_break_duration' => 'int'
     ];
 
     /**
@@ -84,7 +87,10 @@ class AuBusinessTimesheetSettingsModel implements ModelInterface, ArrayAccess
         'timesheet_rejection_notifications' => null,
         'managers_can_create_timesheets_for_employees_that_are_not_enabled' => null,
         'timesheets_enabled' => null,
-        'approve_if_matches_roster_shift' => null
+        'approve_if_matches_roster_shift' => null,
+        'allow_paid_breaks' => null,
+        'has_maximum_paid_break_duration' => null,
+        'maximum_paid_break_duration' => 'int32'
     ];
 
     /**
@@ -123,7 +129,10 @@ class AuBusinessTimesheetSettingsModel implements ModelInterface, ArrayAccess
         'timesheet_rejection_notifications' => 'timesheetRejectionNotifications',
         'managers_can_create_timesheets_for_employees_that_are_not_enabled' => 'managersCanCreateTimesheetsForEmployeesThatAreNotEnabled',
         'timesheets_enabled' => 'timesheetsEnabled',
-        'approve_if_matches_roster_shift' => 'approveIfMatchesRosterShift'
+        'approve_if_matches_roster_shift' => 'approveIfMatchesRosterShift',
+        'allow_paid_breaks' => 'allowPaidBreaks',
+        'has_maximum_paid_break_duration' => 'hasMaximumPaidBreakDuration',
+        'maximum_paid_break_duration' => 'maximumPaidBreakDuration'
     ];
 
     /**
@@ -141,7 +150,10 @@ class AuBusinessTimesheetSettingsModel implements ModelInterface, ArrayAccess
         'timesheet_rejection_notifications' => 'setTimesheetRejectionNotifications',
         'managers_can_create_timesheets_for_employees_that_are_not_enabled' => 'setManagersCanCreateTimesheetsForEmployeesThatAreNotEnabled',
         'timesheets_enabled' => 'setTimesheetsEnabled',
-        'approve_if_matches_roster_shift' => 'setApproveIfMatchesRosterShift'
+        'approve_if_matches_roster_shift' => 'setApproveIfMatchesRosterShift',
+        'allow_paid_breaks' => 'setAllowPaidBreaks',
+        'has_maximum_paid_break_duration' => 'setHasMaximumPaidBreakDuration',
+        'maximum_paid_break_duration' => 'setMaximumPaidBreakDuration'
     ];
 
     /**
@@ -159,7 +171,10 @@ class AuBusinessTimesheetSettingsModel implements ModelInterface, ArrayAccess
         'timesheet_rejection_notifications' => 'getTimesheetRejectionNotifications',
         'managers_can_create_timesheets_for_employees_that_are_not_enabled' => 'getManagersCanCreateTimesheetsForEmployeesThatAreNotEnabled',
         'timesheets_enabled' => 'getTimesheetsEnabled',
-        'approve_if_matches_roster_shift' => 'getApproveIfMatchesRosterShift'
+        'approve_if_matches_roster_shift' => 'getApproveIfMatchesRosterShift',
+        'allow_paid_breaks' => 'getAllowPaidBreaks',
+        'has_maximum_paid_break_duration' => 'getHasMaximumPaidBreakDuration',
+        'maximum_paid_break_duration' => 'getMaximumPaidBreakDuration'
     ];
 
     /**
@@ -232,6 +247,9 @@ class AuBusinessTimesheetSettingsModel implements ModelInterface, ArrayAccess
         $this->container['managers_can_create_timesheets_for_employees_that_are_not_enabled'] = isset($data['managers_can_create_timesheets_for_employees_that_are_not_enabled']) ? $data['managers_can_create_timesheets_for_employees_that_are_not_enabled'] : null;
         $this->container['timesheets_enabled'] = isset($data['timesheets_enabled']) ? $data['timesheets_enabled'] : null;
         $this->container['approve_if_matches_roster_shift'] = isset($data['approve_if_matches_roster_shift']) ? $data['approve_if_matches_roster_shift'] : null;
+        $this->container['allow_paid_breaks'] = isset($data['allow_paid_breaks']) ? $data['allow_paid_breaks'] : null;
+        $this->container['has_maximum_paid_break_duration'] = isset($data['has_maximum_paid_break_duration']) ? $data['has_maximum_paid_break_duration'] : null;
+        $this->container['maximum_paid_break_duration'] = isset($data['maximum_paid_break_duration']) ? $data['maximum_paid_break_duration'] : null;
     }
 
     /**
@@ -494,6 +512,78 @@ class AuBusinessTimesheetSettingsModel implements ModelInterface, ArrayAccess
     public function setApproveIfMatchesRosterShift($approve_if_matches_roster_shift)
     {
         $this->container['approve_if_matches_roster_shift'] = $approve_if_matches_roster_shift;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_paid_breaks
+     *
+     * @return bool
+     */
+    public function getAllowPaidBreaks()
+    {
+        return $this->container['allow_paid_breaks'];
+    }
+
+    /**
+     * Sets allow_paid_breaks
+     *
+     * @param bool $allow_paid_breaks 
+     *
+     * @return $this
+     */
+    public function setAllowPaidBreaks($allow_paid_breaks)
+    {
+        $this->container['allow_paid_breaks'] = $allow_paid_breaks;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_maximum_paid_break_duration
+     *
+     * @return bool
+     */
+    public function getHasMaximumPaidBreakDuration()
+    {
+        return $this->container['has_maximum_paid_break_duration'];
+    }
+
+    /**
+     * Sets has_maximum_paid_break_duration
+     *
+     * @param bool $has_maximum_paid_break_duration 
+     *
+     * @return $this
+     */
+    public function setHasMaximumPaidBreakDuration($has_maximum_paid_break_duration)
+    {
+        $this->container['has_maximum_paid_break_duration'] = $has_maximum_paid_break_duration;
+
+        return $this;
+    }
+
+    /**
+     * Gets maximum_paid_break_duration
+     *
+     * @return int
+     */
+    public function getMaximumPaidBreakDuration()
+    {
+        return $this->container['maximum_paid_break_duration'];
+    }
+
+    /**
+     * Sets maximum_paid_break_duration
+     *
+     * @param int $maximum_paid_break_duration 
+     *
+     * @return $this
+     */
+    public function setMaximumPaidBreakDuration($maximum_paid_break_duration)
+    {
+        $this->container['maximum_paid_break_duration'] = $maximum_paid_break_duration;
 
         return $this;
     }

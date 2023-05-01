@@ -64,6 +64,8 @@ class EmployeeExpenseModel implements ModelInterface, ArrayAccess
         'tax_code' => 'string',
         'tax_rate' => 'double',
         'tax_code_display_name' => 'string',
+        'reporting_dimension_value_ids' => 'int[]',
+        'reporting_dimension_value_names' => 'map[string,string[]]',
         'id' => 'int',
         'external_id' => 'string',
         'location_id' => 'string',
@@ -86,6 +88,8 @@ class EmployeeExpenseModel implements ModelInterface, ArrayAccess
         'tax_code' => null,
         'tax_rate' => 'double',
         'tax_code_display_name' => null,
+        'reporting_dimension_value_ids' => 'int32',
+        'reporting_dimension_value_names' => null,
         'id' => 'int32',
         'external_id' => null,
         'location_id' => null,
@@ -129,6 +133,8 @@ class EmployeeExpenseModel implements ModelInterface, ArrayAccess
         'tax_code' => 'taxCode',
         'tax_rate' => 'taxRate',
         'tax_code_display_name' => 'taxCodeDisplayName',
+        'reporting_dimension_value_ids' => 'reportingDimensionValueIds',
+        'reporting_dimension_value_names' => 'reportingDimensionValueNames',
         'id' => 'id',
         'external_id' => 'externalId',
         'location_id' => 'locationId',
@@ -151,6 +157,8 @@ class EmployeeExpenseModel implements ModelInterface, ArrayAccess
         'tax_code' => 'setTaxCode',
         'tax_rate' => 'setTaxRate',
         'tax_code_display_name' => 'setTaxCodeDisplayName',
+        'reporting_dimension_value_ids' => 'setReportingDimensionValueIds',
+        'reporting_dimension_value_names' => 'setReportingDimensionValueNames',
         'id' => 'setId',
         'external_id' => 'setExternalId',
         'location_id' => 'setLocationId',
@@ -173,6 +181,8 @@ class EmployeeExpenseModel implements ModelInterface, ArrayAccess
         'tax_code' => 'getTaxCode',
         'tax_rate' => 'getTaxRate',
         'tax_code_display_name' => 'getTaxCodeDisplayName',
+        'reporting_dimension_value_ids' => 'getReportingDimensionValueIds',
+        'reporting_dimension_value_names' => 'getReportingDimensionValueNames',
         'id' => 'getId',
         'external_id' => 'getExternalId',
         'location_id' => 'getLocationId',
@@ -249,6 +259,8 @@ class EmployeeExpenseModel implements ModelInterface, ArrayAccess
         $this->container['tax_code'] = isset($data['tax_code']) ? $data['tax_code'] : null;
         $this->container['tax_rate'] = isset($data['tax_rate']) ? $data['tax_rate'] : null;
         $this->container['tax_code_display_name'] = isset($data['tax_code_display_name']) ? $data['tax_code_display_name'] : null;
+        $this->container['reporting_dimension_value_ids'] = isset($data['reporting_dimension_value_ids']) ? $data['reporting_dimension_value_ids'] : null;
+        $this->container['reporting_dimension_value_names'] = isset($data['reporting_dimension_value_names']) ? $data['reporting_dimension_value_names'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
         $this->container['location_id'] = isset($data['location_id']) ? $data['location_id'] : null;
@@ -446,6 +458,54 @@ class EmployeeExpenseModel implements ModelInterface, ArrayAccess
     public function setTaxCodeDisplayName($tax_code_display_name)
     {
         $this->container['tax_code_display_name'] = $tax_code_display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets reporting_dimension_value_ids
+     *
+     * @return int[]
+     */
+    public function getReportingDimensionValueIds()
+    {
+        return $this->container['reporting_dimension_value_ids'];
+    }
+
+    /**
+     * Sets reporting_dimension_value_ids
+     *
+     * @param int[] $reporting_dimension_value_ids Nullable</p><p><i>Note:</i> Only applicable to businesses where the Dimensions feature is enabled.</p><p>Specify an array of dimension value ids (normally only one-per dimension) eg [1,3,7].</p><p>If you prefer to specify dimension values by name, use the ReportingDimensionValueNames field instead.</p><p>If this field is used, ReportingDimensionValueNames will be ignored (the Ids take precedence)
+     *
+     * @return $this
+     */
+    public function setReportingDimensionValueIds($reporting_dimension_value_ids)
+    {
+        $this->container['reporting_dimension_value_ids'] = $reporting_dimension_value_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets reporting_dimension_value_names
+     *
+     * @return map[string,string[]]
+     */
+    public function getReportingDimensionValueNames()
+    {
+        return $this->container['reporting_dimension_value_names'];
+    }
+
+    /**
+     * Sets reporting_dimension_value_names
+     *
+     * @param map[string,string[]] $reporting_dimension_value_names Nullable</p><p><i>Note:</i> Only applicable to businesses where the Dimensions feature is enabled.</p><p>Specify an object with dimension names and for each one, specify an array of associated value names (normally one-per dimension) eg { \"Department\": [\"Accounting\"], \"Job Code\": [\"JC1\"] }.</p><p>If you prefer to specify dimension values directly by Id, use the ReportingDimensionValueIds field instead.</p><p>If ReportingDimensionValueIds is used, ReportingDimensionValueNames will be ignored (the Ids take precedence)
+     *
+     * @return $this
+     */
+    public function setReportingDimensionValueNames($reporting_dimension_value_names)
+    {
+        $this->container['reporting_dimension_value_names'] = $reporting_dimension_value_names;
 
         return $this;
     }

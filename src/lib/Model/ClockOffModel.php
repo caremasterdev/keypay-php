@@ -58,6 +58,7 @@ class ClockOffModel implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'note' => 'string',
+        'is_paid_break' => 'bool',
         'employee_id' => 'int',
         'latitude' => 'double',
         'longitude' => 'double',
@@ -77,6 +78,7 @@ class ClockOffModel implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'note' => null,
+        'is_paid_break' => null,
         'employee_id' => 'int32',
         'latitude' => 'double',
         'longitude' => 'double',
@@ -117,6 +119,7 @@ class ClockOffModel implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'note' => 'note',
+        'is_paid_break' => 'isPaidBreak',
         'employee_id' => 'employeeId',
         'latitude' => 'latitude',
         'longitude' => 'longitude',
@@ -136,6 +139,7 @@ class ClockOffModel implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'note' => 'setNote',
+        'is_paid_break' => 'setIsPaidBreak',
         'employee_id' => 'setEmployeeId',
         'latitude' => 'setLatitude',
         'longitude' => 'setLongitude',
@@ -155,6 +159,7 @@ class ClockOffModel implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'note' => 'getNote',
+        'is_paid_break' => 'getIsPaidBreak',
         'employee_id' => 'getEmployeeId',
         'latitude' => 'getLatitude',
         'longitude' => 'getLongitude',
@@ -243,6 +248,7 @@ class ClockOffModel implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['note'] = isset($data['note']) ? $data['note'] : null;
+        $this->container['is_paid_break'] = isset($data['is_paid_break']) ? $data['is_paid_break'] : null;
         $this->container['employee_id'] = isset($data['employee_id']) ? $data['employee_id'] : null;
         $this->container['latitude'] = isset($data['latitude']) ? $data['latitude'] : null;
         $this->container['longitude'] = isset($data['longitude']) ? $data['longitude'] : null;
@@ -311,6 +317,30 @@ class ClockOffModel implements ModelInterface, ArrayAccess
     public function setNote($note)
     {
         $this->container['note'] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_paid_break
+     *
+     * @return bool
+     */
+    public function getIsPaidBreak()
+    {
+        return $this->container['is_paid_break'];
+    }
+
+    /**
+     * Sets is_paid_break
+     *
+     * @param bool $is_paid_break 
+     *
+     * @return $this
+     */
+    public function setIsPaidBreak($is_paid_break)
+    {
+        $this->container['is_paid_break'] = $is_paid_break;
 
         return $this;
     }

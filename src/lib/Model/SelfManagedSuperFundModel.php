@@ -65,7 +65,8 @@ class SelfManagedSuperFundModel implements ModelInterface, ArrayAccess
         'bsb' => 'string',
         'electronic_service_address' => 'string',
         'email' => 'string',
-        'employee_id' => 'int'
+        'employee_id' => 'int',
+        'external_id' => 'string'
     ];
 
     /**
@@ -82,7 +83,8 @@ class SelfManagedSuperFundModel implements ModelInterface, ArrayAccess
         'bsb' => null,
         'electronic_service_address' => null,
         'email' => null,
-        'employee_id' => 'int32'
+        'employee_id' => 'int32',
+        'external_id' => null
     ];
 
     /**
@@ -120,7 +122,8 @@ class SelfManagedSuperFundModel implements ModelInterface, ArrayAccess
         'bsb' => 'bsb',
         'electronic_service_address' => 'electronicServiceAddress',
         'email' => 'email',
-        'employee_id' => 'employeeId'
+        'employee_id' => 'employeeId',
+        'external_id' => 'externalId'
     ];
 
     /**
@@ -137,7 +140,8 @@ class SelfManagedSuperFundModel implements ModelInterface, ArrayAccess
         'bsb' => 'setBsb',
         'electronic_service_address' => 'setElectronicServiceAddress',
         'email' => 'setEmail',
-        'employee_id' => 'setEmployeeId'
+        'employee_id' => 'setEmployeeId',
+        'external_id' => 'setExternalId'
     ];
 
     /**
@@ -154,7 +158,8 @@ class SelfManagedSuperFundModel implements ModelInterface, ArrayAccess
         'bsb' => 'getBsb',
         'electronic_service_address' => 'getElectronicServiceAddress',
         'email' => 'getEmail',
-        'employee_id' => 'getEmployeeId'
+        'employee_id' => 'getEmployeeId',
+        'external_id' => 'getExternalId'
     ];
 
     /**
@@ -226,6 +231,7 @@ class SelfManagedSuperFundModel implements ModelInterface, ArrayAccess
         $this->container['electronic_service_address'] = isset($data['electronic_service_address']) ? $data['electronic_service_address'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
         $this->container['employee_id'] = isset($data['employee_id']) ? $data['employee_id'] : null;
+        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
     }
 
     /**
@@ -464,6 +470,30 @@ class SelfManagedSuperFundModel implements ModelInterface, ArrayAccess
     public function setEmployeeId($employee_id)
     {
         $this->container['employee_id'] = $employee_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_id
+     *
+     * @return string
+     */
+    public function getExternalId()
+    {
+        return $this->container['external_id'];
+    }
+
+    /**
+     * Sets external_id
+     *
+     * @param string $external_id 
+     *
+     * @return $this
+     */
+    public function setExternalId($external_id)
+    {
+        $this->container['external_id'] = $external_id;
 
         return $this;
     }

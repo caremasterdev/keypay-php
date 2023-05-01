@@ -59,6 +59,7 @@ class CostingReportRequestModel implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'show_zero_pay_categories' => 'bool',
         'pay_schedule_id' => 'int',
+        'include_post_tax_deductions' => 'bool',
         'from_date' => '\DateTime',
         'to_date' => '\DateTime',
         'location_id' => 'int',
@@ -73,6 +74,7 @@ class CostingReportRequestModel implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'show_zero_pay_categories' => null,
         'pay_schedule_id' => 'int32',
+        'include_post_tax_deductions' => null,
         'from_date' => 'date-time',
         'to_date' => 'date-time',
         'location_id' => 'int32',
@@ -108,6 +110,7 @@ class CostingReportRequestModel implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'show_zero_pay_categories' => 'showZeroPayCategories',
         'pay_schedule_id' => 'payScheduleId',
+        'include_post_tax_deductions' => 'includePostTaxDeductions',
         'from_date' => 'fromDate',
         'to_date' => 'toDate',
         'location_id' => 'locationId',
@@ -122,6 +125,7 @@ class CostingReportRequestModel implements ModelInterface, ArrayAccess
     protected static $setters = [
         'show_zero_pay_categories' => 'setShowZeroPayCategories',
         'pay_schedule_id' => 'setPayScheduleId',
+        'include_post_tax_deductions' => 'setIncludePostTaxDeductions',
         'from_date' => 'setFromDate',
         'to_date' => 'setToDate',
         'location_id' => 'setLocationId',
@@ -136,6 +140,7 @@ class CostingReportRequestModel implements ModelInterface, ArrayAccess
     protected static $getters = [
         'show_zero_pay_categories' => 'getShowZeroPayCategories',
         'pay_schedule_id' => 'getPayScheduleId',
+        'include_post_tax_deductions' => 'getIncludePostTaxDeductions',
         'from_date' => 'getFromDate',
         'to_date' => 'getToDate',
         'location_id' => 'getLocationId',
@@ -204,6 +209,7 @@ class CostingReportRequestModel implements ModelInterface, ArrayAccess
     {
         $this->container['show_zero_pay_categories'] = isset($data['show_zero_pay_categories']) ? $data['show_zero_pay_categories'] : null;
         $this->container['pay_schedule_id'] = isset($data['pay_schedule_id']) ? $data['pay_schedule_id'] : null;
+        $this->container['include_post_tax_deductions'] = isset($data['include_post_tax_deductions']) ? $data['include_post_tax_deductions'] : null;
         $this->container['from_date'] = isset($data['from_date']) ? $data['from_date'] : null;
         $this->container['to_date'] = isset($data['to_date']) ? $data['to_date'] : null;
         $this->container['location_id'] = isset($data['location_id']) ? $data['location_id'] : null;
@@ -278,6 +284,30 @@ class CostingReportRequestModel implements ModelInterface, ArrayAccess
     public function setPayScheduleId($pay_schedule_id)
     {
         $this->container['pay_schedule_id'] = $pay_schedule_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets include_post_tax_deductions
+     *
+     * @return bool
+     */
+    public function getIncludePostTaxDeductions()
+    {
+        return $this->container['include_post_tax_deductions'];
+    }
+
+    /**
+     * Sets include_post_tax_deductions
+     *
+     * @param bool $include_post_tax_deductions 
+     *
+     * @return $this
+     */
+    public function setIncludePostTaxDeductions($include_post_tax_deductions)
+    {
+        $this->container['include_post_tax_deductions'] = $include_post_tax_deductions;
 
         return $this;
     }
