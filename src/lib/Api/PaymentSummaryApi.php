@@ -377,14 +377,18 @@ class PaymentSummaryApi
      *
      * @param  int $financial_year_ending financial_year_ending (required)
      * @param  string $business_id business_id (required)
+     * @param  string $filter filter (optional)
+     * @param  string $orderby orderby (optional)
+     * @param  int $top top (optional)
+     * @param  int $skip skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\PaygPaymentSummaryModel[]
      */
-    public function auPaymentSummaryGet($financial_year_ending, $business_id)
+    public function auPaymentSummaryGet($financial_year_ending, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auPaymentSummaryGetWithHttpInfo($financial_year_ending, $business_id);
+        list($response) = $this->auPaymentSummaryGetWithHttpInfo($financial_year_ending, $business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -395,15 +399,19 @@ class PaymentSummaryApi
      *
      * @param  int $financial_year_ending (required)
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\PaygPaymentSummaryModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auPaymentSummaryGetWithHttpInfo($financial_year_ending, $business_id)
+    public function auPaymentSummaryGetWithHttpInfo($financial_year_ending, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\PaygPaymentSummaryModel[]';
-        $request = $this->auPaymentSummaryGetRequest($financial_year_ending, $business_id);
+        $request = $this->auPaymentSummaryGetRequest($financial_year_ending, $business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -471,13 +479,17 @@ class PaymentSummaryApi
      *
      * @param  int $financial_year_ending (required)
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auPaymentSummaryGetAsync($financial_year_ending, $business_id)
+    public function auPaymentSummaryGetAsync($financial_year_ending, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auPaymentSummaryGetAsyncWithHttpInfo($financial_year_ending, $business_id)
+        return $this->auPaymentSummaryGetAsyncWithHttpInfo($financial_year_ending, $business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -492,14 +504,18 @@ class PaymentSummaryApi
      *
      * @param  int $financial_year_ending (required)
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auPaymentSummaryGetAsyncWithHttpInfo($financial_year_ending, $business_id)
+    public function auPaymentSummaryGetAsyncWithHttpInfo($financial_year_ending, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\PaygPaymentSummaryModel[]';
-        $request = $this->auPaymentSummaryGetRequest($financial_year_ending, $business_id);
+        $request = $this->auPaymentSummaryGetRequest($financial_year_ending, $business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -543,11 +559,15 @@ class PaymentSummaryApi
      *
      * @param  int $financial_year_ending (required)
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auPaymentSummaryGetRequest($financial_year_ending, $business_id)
+    protected function auPaymentSummaryGetRequest($financial_year_ending, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         // verify the required parameter 'financial_year_ending' is set
         if ($financial_year_ending === null || (is_array($financial_year_ending) && count($financial_year_ending) === 0)) {
@@ -569,6 +589,22 @@ class PaymentSummaryApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($filter !== null) {
+            $queryParams['$filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($orderby !== null) {
+            $queryParams['$orderby'] = ObjectSerializer::toQueryValue($orderby);
+        }
+        // query params
+        if ($top !== null) {
+            $queryParams['$top'] = ObjectSerializer::toQueryValue($top);
+        }
+        // query params
+        if ($skip !== null) {
+            $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
 
         // path params
         if ($financial_year_ending !== null) {
