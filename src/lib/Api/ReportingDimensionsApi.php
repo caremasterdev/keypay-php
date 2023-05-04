@@ -642,14 +642,18 @@ class ReportingDimensionsApi
      * List Dimensions
      *
      * @param  string $business_id business_id (required)
+     * @param  string $filter filter (optional)
+     * @param  string $orderby orderby (optional)
+     * @param  int $top top (optional)
+     * @param  int $skip skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\ReportingDimensionApiModel[]
      */
-    public function reportingDimensionGetDimensions($business_id)
+    public function reportingDimensionGetDimensions($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->reportingDimensionGetDimensionsWithHttpInfo($business_id);
+        list($response) = $this->reportingDimensionGetDimensionsWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -659,15 +663,19 @@ class ReportingDimensionsApi
      * List Dimensions
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\ReportingDimensionApiModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function reportingDimensionGetDimensionsWithHttpInfo($business_id)
+    public function reportingDimensionGetDimensionsWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\ReportingDimensionApiModel[]';
-        $request = $this->reportingDimensionGetDimensionsRequest($business_id);
+        $request = $this->reportingDimensionGetDimensionsRequest($business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -734,13 +742,17 @@ class ReportingDimensionsApi
      * List Dimensions
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function reportingDimensionGetDimensionsAsync($business_id)
+    public function reportingDimensionGetDimensionsAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->reportingDimensionGetDimensionsAsyncWithHttpInfo($business_id)
+        return $this->reportingDimensionGetDimensionsAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -754,14 +766,18 @@ class ReportingDimensionsApi
      * List Dimensions
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function reportingDimensionGetDimensionsAsyncWithHttpInfo($business_id)
+    public function reportingDimensionGetDimensionsAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\ReportingDimensionApiModel[]';
-        $request = $this->reportingDimensionGetDimensionsRequest($business_id);
+        $request = $this->reportingDimensionGetDimensionsRequest($business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -804,11 +820,15 @@ class ReportingDimensionsApi
      * Create request for operation 'reportingDimensionGetDimensions'
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function reportingDimensionGetDimensionsRequest($business_id)
+    protected function reportingDimensionGetDimensionsRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -824,6 +844,22 @@ class ReportingDimensionsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($filter !== null) {
+            $queryParams['$filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($orderby !== null) {
+            $queryParams['$orderby'] = ObjectSerializer::toQueryValue($orderby);
+        }
+        // query params
+        if ($top !== null) {
+            $queryParams['$top'] = ObjectSerializer::toQueryValue($top);
+        }
+        // query params
+        if ($skip !== null) {
+            $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
 
         // path params
         if ($business_id !== null) {
@@ -2099,14 +2135,18 @@ class ReportingDimensionsApi
      *
      * @param  int $dimension_id dimension_id (required)
      * @param  string $business_id business_id (required)
+     * @param  string $filter filter (optional)
+     * @param  string $orderby orderby (optional)
+     * @param  int $top top (optional)
+     * @param  int $skip skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\ReportingDimensionValueApiModel[]
      */
-    public function reportingDimensionValueGetDimensionValues($dimension_id, $business_id)
+    public function reportingDimensionValueGetDimensionValues($dimension_id, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->reportingDimensionValueGetDimensionValuesWithHttpInfo($dimension_id, $business_id);
+        list($response) = $this->reportingDimensionValueGetDimensionValuesWithHttpInfo($dimension_id, $business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -2117,15 +2157,19 @@ class ReportingDimensionsApi
      *
      * @param  int $dimension_id (required)
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\ReportingDimensionValueApiModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function reportingDimensionValueGetDimensionValuesWithHttpInfo($dimension_id, $business_id)
+    public function reportingDimensionValueGetDimensionValuesWithHttpInfo($dimension_id, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\ReportingDimensionValueApiModel[]';
-        $request = $this->reportingDimensionValueGetDimensionValuesRequest($dimension_id, $business_id);
+        $request = $this->reportingDimensionValueGetDimensionValuesRequest($dimension_id, $business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2193,13 +2237,17 @@ class ReportingDimensionsApi
      *
      * @param  int $dimension_id (required)
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function reportingDimensionValueGetDimensionValuesAsync($dimension_id, $business_id)
+    public function reportingDimensionValueGetDimensionValuesAsync($dimension_id, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->reportingDimensionValueGetDimensionValuesAsyncWithHttpInfo($dimension_id, $business_id)
+        return $this->reportingDimensionValueGetDimensionValuesAsyncWithHttpInfo($dimension_id, $business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2214,14 +2262,18 @@ class ReportingDimensionsApi
      *
      * @param  int $dimension_id (required)
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function reportingDimensionValueGetDimensionValuesAsyncWithHttpInfo($dimension_id, $business_id)
+    public function reportingDimensionValueGetDimensionValuesAsyncWithHttpInfo($dimension_id, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\ReportingDimensionValueApiModel[]';
-        $request = $this->reportingDimensionValueGetDimensionValuesRequest($dimension_id, $business_id);
+        $request = $this->reportingDimensionValueGetDimensionValuesRequest($dimension_id, $business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2265,11 +2317,15 @@ class ReportingDimensionsApi
      *
      * @param  int $dimension_id (required)
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function reportingDimensionValueGetDimensionValuesRequest($dimension_id, $business_id)
+    protected function reportingDimensionValueGetDimensionValuesRequest($dimension_id, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         // verify the required parameter 'dimension_id' is set
         if ($dimension_id === null || (is_array($dimension_id) && count($dimension_id) === 0)) {
@@ -2291,6 +2347,22 @@ class ReportingDimensionsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($filter !== null) {
+            $queryParams['$filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($orderby !== null) {
+            $queryParams['$orderby'] = ObjectSerializer::toQueryValue($orderby);
+        }
+        // query params
+        if ($top !== null) {
+            $queryParams['$top'] = ObjectSerializer::toQueryValue($top);
+        }
+        // query params
+        if ($skip !== null) {
+            $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
 
         // path params
         if ($dimension_id !== null) {

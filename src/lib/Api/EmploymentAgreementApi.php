@@ -1000,14 +1000,18 @@ class EmploymentAgreementApi
      * List Employment Agreements
      *
      * @param  string $business_id business_id (required)
+     * @param  string $filter filter (optional)
+     * @param  string $orderby orderby (optional)
+     * @param  int $top top (optional)
+     * @param  int $skip skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\BasicEmploymentAgreementModel[]
      */
-    public function auEmploymentAgreementGetAll($business_id)
+    public function auEmploymentAgreementGetAll($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auEmploymentAgreementGetAllWithHttpInfo($business_id);
+        list($response) = $this->auEmploymentAgreementGetAllWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -1017,15 +1021,19 @@ class EmploymentAgreementApi
      * List Employment Agreements
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\BasicEmploymentAgreementModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auEmploymentAgreementGetAllWithHttpInfo($business_id)
+    public function auEmploymentAgreementGetAllWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\BasicEmploymentAgreementModel[]';
-        $request = $this->auEmploymentAgreementGetAllRequest($business_id);
+        $request = $this->auEmploymentAgreementGetAllRequest($business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1092,13 +1100,17 @@ class EmploymentAgreementApi
      * List Employment Agreements
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auEmploymentAgreementGetAllAsync($business_id)
+    public function auEmploymentAgreementGetAllAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auEmploymentAgreementGetAllAsyncWithHttpInfo($business_id)
+        return $this->auEmploymentAgreementGetAllAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1112,14 +1124,18 @@ class EmploymentAgreementApi
      * List Employment Agreements
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auEmploymentAgreementGetAllAsyncWithHttpInfo($business_id)
+    public function auEmploymentAgreementGetAllAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\BasicEmploymentAgreementModel[]';
-        $request = $this->auEmploymentAgreementGetAllRequest($business_id);
+        $request = $this->auEmploymentAgreementGetAllRequest($business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1162,11 +1178,15 @@ class EmploymentAgreementApi
      * Create request for operation 'auEmploymentAgreementGetAll'
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auEmploymentAgreementGetAllRequest($business_id)
+    protected function auEmploymentAgreementGetAllRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -1182,6 +1202,22 @@ class EmploymentAgreementApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($filter !== null) {
+            $queryParams['$filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($orderby !== null) {
+            $queryParams['$orderby'] = ObjectSerializer::toQueryValue($orderby);
+        }
+        // query params
+        if ($top !== null) {
+            $queryParams['$top'] = ObjectSerializer::toQueryValue($top);
+        }
+        // query params
+        if ($skip !== null) {
+            $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
 
         // path params
         if ($business_id !== null) {

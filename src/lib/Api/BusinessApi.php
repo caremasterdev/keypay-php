@@ -1984,14 +1984,18 @@ class BusinessApi
      *
      * List Businesses
      *
+     * @param  string $filter filter (optional)
+     * @param  string $orderby orderby (optional)
+     * @param  int $top top (optional)
+     * @param  int $skip skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuBusinessExportModel[]
      */
-    public function auBusinessGetBusinesses()
+    public function auBusinessGetBusinesses($filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auBusinessGetBusinessesWithHttpInfo();
+        list($response) = $this->auBusinessGetBusinessesWithHttpInfo($filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -2000,15 +2004,19 @@ class BusinessApi
      *
      * List Businesses
      *
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuBusinessExportModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auBusinessGetBusinessesWithHttpInfo()
+    public function auBusinessGetBusinessesWithHttpInfo($filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuBusinessExportModel[]';
-        $request = $this->auBusinessGetBusinessesRequest();
+        $request = $this->auBusinessGetBusinessesRequest($filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2074,13 +2082,17 @@ class BusinessApi
      *
      * List Businesses
      *
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auBusinessGetBusinessesAsync()
+    public function auBusinessGetBusinessesAsync($filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auBusinessGetBusinessesAsyncWithHttpInfo()
+        return $this->auBusinessGetBusinessesAsyncWithHttpInfo($filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2093,14 +2105,18 @@ class BusinessApi
      *
      * List Businesses
      *
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auBusinessGetBusinessesAsyncWithHttpInfo()
+    public function auBusinessGetBusinessesAsyncWithHttpInfo($filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuBusinessExportModel[]';
-        $request = $this->auBusinessGetBusinessesRequest();
+        $request = $this->auBusinessGetBusinessesRequest($filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2142,11 +2158,15 @@ class BusinessApi
     /**
      * Create request for operation 'auBusinessGetBusinesses'
      *
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auBusinessGetBusinessesRequest()
+    protected function auBusinessGetBusinessesRequest($filter = null, $orderby = null, $top = null, $skip = null)
     {
 
         $resourcePath = '/api/v2/business';
@@ -2156,6 +2176,22 @@ class BusinessApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($filter !== null) {
+            $queryParams['$filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($orderby !== null) {
+            $queryParams['$orderby'] = ObjectSerializer::toQueryValue($orderby);
+        }
+        // query params
+        if ($top !== null) {
+            $queryParams['$top'] = ObjectSerializer::toQueryValue($top);
+        }
+        // query params
+        if ($skip !== null) {
+            $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
 
 
         // body params
@@ -5995,14 +6031,18 @@ class BusinessApi
      * List All Business Access Users
      *
      * @param  string $business_id business_id (required)
+     * @param  string $filter filter (optional)
+     * @param  string $orderby orderby (optional)
+     * @param  int $top top (optional)
+     * @param  int $skip skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\BusinessAccessModel[]
      */
-    public function businessAccessGetAll($business_id)
+    public function businessAccessGetAll($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->businessAccessGetAllWithHttpInfo($business_id);
+        list($response) = $this->businessAccessGetAllWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -6012,15 +6052,19 @@ class BusinessApi
      * List All Business Access Users
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\BusinessAccessModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function businessAccessGetAllWithHttpInfo($business_id)
+    public function businessAccessGetAllWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\BusinessAccessModel[]';
-        $request = $this->businessAccessGetAllRequest($business_id);
+        $request = $this->businessAccessGetAllRequest($business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6087,13 +6131,17 @@ class BusinessApi
      * List All Business Access Users
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function businessAccessGetAllAsync($business_id)
+    public function businessAccessGetAllAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->businessAccessGetAllAsyncWithHttpInfo($business_id)
+        return $this->businessAccessGetAllAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6107,14 +6155,18 @@ class BusinessApi
      * List All Business Access Users
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function businessAccessGetAllAsyncWithHttpInfo($business_id)
+    public function businessAccessGetAllAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\BusinessAccessModel[]';
-        $request = $this->businessAccessGetAllRequest($business_id);
+        $request = $this->businessAccessGetAllRequest($business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6157,11 +6209,15 @@ class BusinessApi
      * Create request for operation 'businessAccessGetAll'
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function businessAccessGetAllRequest($business_id)
+    protected function businessAccessGetAllRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -6177,6 +6233,22 @@ class BusinessApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($filter !== null) {
+            $queryParams['$filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($orderby !== null) {
+            $queryParams['$orderby'] = ObjectSerializer::toQueryValue($orderby);
+        }
+        // query params
+        if ($top !== null) {
+            $queryParams['$top'] = ObjectSerializer::toQueryValue($top);
+        }
+        // query params
+        if ($skip !== null) {
+            $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
 
         // path params
         if ($business_id !== null) {

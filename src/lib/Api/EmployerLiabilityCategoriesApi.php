@@ -642,14 +642,18 @@ class EmployerLiabilityCategoriesApi
      * List Employer Liability Categories
      *
      * @param  string $business_id business_id (required)
+     * @param  string $filter filter (optional)
+     * @param  string $orderby orderby (optional)
+     * @param  int $top top (optional)
+     * @param  int $skip skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\EmployerLiabilityCategoryModel[]
      */
-    public function employerLiabilityCategoryGetEmployerLiabilityCategories($business_id)
+    public function employerLiabilityCategoryGetEmployerLiabilityCategories($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->employerLiabilityCategoryGetEmployerLiabilityCategoriesWithHttpInfo($business_id);
+        list($response) = $this->employerLiabilityCategoryGetEmployerLiabilityCategoriesWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -659,15 +663,19 @@ class EmployerLiabilityCategoriesApi
      * List Employer Liability Categories
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\EmployerLiabilityCategoryModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function employerLiabilityCategoryGetEmployerLiabilityCategoriesWithHttpInfo($business_id)
+    public function employerLiabilityCategoryGetEmployerLiabilityCategoriesWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\EmployerLiabilityCategoryModel[]';
-        $request = $this->employerLiabilityCategoryGetEmployerLiabilityCategoriesRequest($business_id);
+        $request = $this->employerLiabilityCategoryGetEmployerLiabilityCategoriesRequest($business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -734,13 +742,17 @@ class EmployerLiabilityCategoriesApi
      * List Employer Liability Categories
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function employerLiabilityCategoryGetEmployerLiabilityCategoriesAsync($business_id)
+    public function employerLiabilityCategoryGetEmployerLiabilityCategoriesAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->employerLiabilityCategoryGetEmployerLiabilityCategoriesAsyncWithHttpInfo($business_id)
+        return $this->employerLiabilityCategoryGetEmployerLiabilityCategoriesAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -754,14 +766,18 @@ class EmployerLiabilityCategoriesApi
      * List Employer Liability Categories
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function employerLiabilityCategoryGetEmployerLiabilityCategoriesAsyncWithHttpInfo($business_id)
+    public function employerLiabilityCategoryGetEmployerLiabilityCategoriesAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\EmployerLiabilityCategoryModel[]';
-        $request = $this->employerLiabilityCategoryGetEmployerLiabilityCategoriesRequest($business_id);
+        $request = $this->employerLiabilityCategoryGetEmployerLiabilityCategoriesRequest($business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -804,11 +820,15 @@ class EmployerLiabilityCategoriesApi
      * Create request for operation 'employerLiabilityCategoryGetEmployerLiabilityCategories'
      *
      * @param  string $business_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function employerLiabilityCategoryGetEmployerLiabilityCategoriesRequest($business_id)
+    protected function employerLiabilityCategoryGetEmployerLiabilityCategoriesRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -824,6 +844,22 @@ class EmployerLiabilityCategoriesApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($filter !== null) {
+            $queryParams['$filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($orderby !== null) {
+            $queryParams['$orderby'] = ObjectSerializer::toQueryValue($orderby);
+        }
+        // query params
+        if ($top !== null) {
+            $queryParams['$top'] = ObjectSerializer::toQueryValue($top);
+        }
+        // query params
+        if ($skip !== null) {
+            $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
 
         // path params
         if ($business_id !== null) {

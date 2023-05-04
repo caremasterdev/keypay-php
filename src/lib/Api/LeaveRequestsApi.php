@@ -2034,14 +2034,18 @@ class LeaveRequestsApi
      *
      * @param  string $business_id business_id (required)
      * @param  string $employee_id employee_id (required)
+     * @param  string $filter filter (optional)
+     * @param  string $orderby orderby (optional)
+     * @param  int $top top (optional)
+     * @param  int $skip skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\HourLeaveRequestResponseModel[]
      */
-    public function auHoursLeaveRequestGetLeaveRequests($business_id, $employee_id)
+    public function auHoursLeaveRequestGetLeaveRequests($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auHoursLeaveRequestGetLeaveRequestsWithHttpInfo($business_id, $employee_id);
+        list($response) = $this->auHoursLeaveRequestGetLeaveRequestsWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -2052,15 +2056,19 @@ class LeaveRequestsApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\HourLeaveRequestResponseModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auHoursLeaveRequestGetLeaveRequestsWithHttpInfo($business_id, $employee_id)
+    public function auHoursLeaveRequestGetLeaveRequestsWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\HourLeaveRequestResponseModel[]';
-        $request = $this->auHoursLeaveRequestGetLeaveRequestsRequest($business_id, $employee_id);
+        $request = $this->auHoursLeaveRequestGetLeaveRequestsRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2128,13 +2136,17 @@ class LeaveRequestsApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auHoursLeaveRequestGetLeaveRequestsAsync($business_id, $employee_id)
+    public function auHoursLeaveRequestGetLeaveRequestsAsync($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auHoursLeaveRequestGetLeaveRequestsAsyncWithHttpInfo($business_id, $employee_id)
+        return $this->auHoursLeaveRequestGetLeaveRequestsAsyncWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2149,14 +2161,18 @@ class LeaveRequestsApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auHoursLeaveRequestGetLeaveRequestsAsyncWithHttpInfo($business_id, $employee_id)
+    public function auHoursLeaveRequestGetLeaveRequestsAsyncWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\HourLeaveRequestResponseModel[]';
-        $request = $this->auHoursLeaveRequestGetLeaveRequestsRequest($business_id, $employee_id);
+        $request = $this->auHoursLeaveRequestGetLeaveRequestsRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2200,11 +2216,15 @@ class LeaveRequestsApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auHoursLeaveRequestGetLeaveRequestsRequest($business_id, $employee_id)
+    protected function auHoursLeaveRequestGetLeaveRequestsRequest($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -2226,6 +2246,22 @@ class LeaveRequestsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($filter !== null) {
+            $queryParams['$filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($orderby !== null) {
+            $queryParams['$orderby'] = ObjectSerializer::toQueryValue($orderby);
+        }
+        // query params
+        if ($top !== null) {
+            $queryParams['$top'] = ObjectSerializer::toQueryValue($top);
+        }
+        // query params
+        if ($skip !== null) {
+            $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
 
         // path params
         if ($business_id !== null) {

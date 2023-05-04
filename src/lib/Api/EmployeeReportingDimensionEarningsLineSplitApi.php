@@ -388,14 +388,18 @@ class EmployeeReportingDimensionEarningsLineSplitApi
      *
      * @param  string $business_id business_id (required)
      * @param  string $employee_id employee_id (required)
+     * @param  string $filter filter (optional)
+     * @param  string $orderby orderby (optional)
+     * @param  int $top top (optional)
+     * @param  int $skip skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\DimensionEarningsLineSplitApiModel[]
      */
-    public function genericDimensionEarningsLineSplitGet($business_id, $employee_id)
+    public function genericDimensionEarningsLineSplitGet($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->genericDimensionEarningsLineSplitGetWithHttpInfo($business_id, $employee_id);
+        list($response) = $this->genericDimensionEarningsLineSplitGetWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -406,15 +410,19 @@ class EmployeeReportingDimensionEarningsLineSplitApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\DimensionEarningsLineSplitApiModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function genericDimensionEarningsLineSplitGetWithHttpInfo($business_id, $employee_id)
+    public function genericDimensionEarningsLineSplitGetWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\DimensionEarningsLineSplitApiModel[]';
-        $request = $this->genericDimensionEarningsLineSplitGetRequest($business_id, $employee_id);
+        $request = $this->genericDimensionEarningsLineSplitGetRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -482,13 +490,17 @@ class EmployeeReportingDimensionEarningsLineSplitApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function genericDimensionEarningsLineSplitGetAsync($business_id, $employee_id)
+    public function genericDimensionEarningsLineSplitGetAsync($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->genericDimensionEarningsLineSplitGetAsyncWithHttpInfo($business_id, $employee_id)
+        return $this->genericDimensionEarningsLineSplitGetAsyncWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -503,14 +515,18 @@ class EmployeeReportingDimensionEarningsLineSplitApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function genericDimensionEarningsLineSplitGetAsyncWithHttpInfo($business_id, $employee_id)
+    public function genericDimensionEarningsLineSplitGetAsyncWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\DimensionEarningsLineSplitApiModel[]';
-        $request = $this->genericDimensionEarningsLineSplitGetRequest($business_id, $employee_id);
+        $request = $this->genericDimensionEarningsLineSplitGetRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -554,11 +570,15 @@ class EmployeeReportingDimensionEarningsLineSplitApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function genericDimensionEarningsLineSplitGetRequest($business_id, $employee_id)
+    protected function genericDimensionEarningsLineSplitGetRequest($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -580,6 +600,22 @@ class EmployeeReportingDimensionEarningsLineSplitApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($filter !== null) {
+            $queryParams['$filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($orderby !== null) {
+            $queryParams['$orderby'] = ObjectSerializer::toQueryValue($orderby);
+        }
+        // query params
+        if ($top !== null) {
+            $queryParams['$top'] = ObjectSerializer::toQueryValue($top);
+        }
+        // query params
+        if ($skip !== null) {
+            $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
 
         // path params
         if ($business_id !== null) {
@@ -683,14 +719,18 @@ class EmployeeReportingDimensionEarningsLineSplitApi
      * @param  int $dimension_value_id dimension_value_id (required)
      * @param  string $business_id business_id (required)
      * @param  string $employee_id employee_id (required)
+     * @param  string $filter filter (optional)
+     * @param  string $orderby orderby (optional)
+     * @param  int $top top (optional)
+     * @param  int $skip skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function genericDimensionEarningsLineSplitGetById($dimension_id, $dimension_value_id, $business_id, $employee_id)
+    public function genericDimensionEarningsLineSplitGetById($dimension_id, $dimension_value_id, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        $this->genericDimensionEarningsLineSplitGetByIdWithHttpInfo($dimension_id, $dimension_value_id, $business_id, $employee_id);
+        $this->genericDimensionEarningsLineSplitGetByIdWithHttpInfo($dimension_id, $dimension_value_id, $business_id, $employee_id, $filter, $orderby, $top, $skip);
     }
 
     /**
@@ -702,15 +742,19 @@ class EmployeeReportingDimensionEarningsLineSplitApi
      * @param  int $dimension_value_id (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function genericDimensionEarningsLineSplitGetByIdWithHttpInfo($dimension_id, $dimension_value_id, $business_id, $employee_id)
+    public function genericDimensionEarningsLineSplitGetByIdWithHttpInfo($dimension_id, $dimension_value_id, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '';
-        $request = $this->genericDimensionEarningsLineSplitGetByIdRequest($dimension_id, $dimension_value_id, $business_id, $employee_id);
+        $request = $this->genericDimensionEarningsLineSplitGetByIdRequest($dimension_id, $dimension_value_id, $business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -758,13 +802,17 @@ class EmployeeReportingDimensionEarningsLineSplitApi
      * @param  int $dimension_value_id (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function genericDimensionEarningsLineSplitGetByIdAsync($dimension_id, $dimension_value_id, $business_id, $employee_id)
+    public function genericDimensionEarningsLineSplitGetByIdAsync($dimension_id, $dimension_value_id, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->genericDimensionEarningsLineSplitGetByIdAsyncWithHttpInfo($dimension_id, $dimension_value_id, $business_id, $employee_id)
+        return $this->genericDimensionEarningsLineSplitGetByIdAsyncWithHttpInfo($dimension_id, $dimension_value_id, $business_id, $employee_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -781,14 +829,18 @@ class EmployeeReportingDimensionEarningsLineSplitApi
      * @param  int $dimension_value_id (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function genericDimensionEarningsLineSplitGetByIdAsyncWithHttpInfo($dimension_id, $dimension_value_id, $business_id, $employee_id)
+    public function genericDimensionEarningsLineSplitGetByIdAsyncWithHttpInfo($dimension_id, $dimension_value_id, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '';
-        $request = $this->genericDimensionEarningsLineSplitGetByIdRequest($dimension_id, $dimension_value_id, $business_id, $employee_id);
+        $request = $this->genericDimensionEarningsLineSplitGetByIdRequest($dimension_id, $dimension_value_id, $business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -820,11 +872,15 @@ class EmployeeReportingDimensionEarningsLineSplitApi
      * @param  int $dimension_value_id (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function genericDimensionEarningsLineSplitGetByIdRequest($dimension_id, $dimension_value_id, $business_id, $employee_id)
+    protected function genericDimensionEarningsLineSplitGetByIdRequest($dimension_id, $dimension_value_id, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         // verify the required parameter 'dimension_id' is set
         if ($dimension_id === null || (is_array($dimension_id) && count($dimension_id) === 0)) {
@@ -858,6 +914,22 @@ class EmployeeReportingDimensionEarningsLineSplitApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($filter !== null) {
+            $queryParams['$filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($orderby !== null) {
+            $queryParams['$orderby'] = ObjectSerializer::toQueryValue($orderby);
+        }
+        // query params
+        if ($top !== null) {
+            $queryParams['$top'] = ObjectSerializer::toQueryValue($top);
+        }
+        // query params
+        if ($skip !== null) {
+            $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
 
         // path params
         if ($dimension_id !== null) {

@@ -1245,14 +1245,18 @@ class EmployeeExpenseRequestApi
      *
      * @param  string $business_id business_id (required)
      * @param  string $employee_id employee_id (required)
+     * @param  string $filter filter (optional)
+     * @param  string $orderby orderby (optional)
+     * @param  int $top top (optional)
+     * @param  int $skip skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\ExpenseRequestResponseModel[]
      */
-    public function expenseRequestGetExpenseRequests($business_id, $employee_id)
+    public function expenseRequestGetExpenseRequests($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->expenseRequestGetExpenseRequestsWithHttpInfo($business_id, $employee_id);
+        list($response) = $this->expenseRequestGetExpenseRequestsWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -1263,15 +1267,19 @@ class EmployeeExpenseRequestApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\ExpenseRequestResponseModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function expenseRequestGetExpenseRequestsWithHttpInfo($business_id, $employee_id)
+    public function expenseRequestGetExpenseRequestsWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\ExpenseRequestResponseModel[]';
-        $request = $this->expenseRequestGetExpenseRequestsRequest($business_id, $employee_id);
+        $request = $this->expenseRequestGetExpenseRequestsRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1339,13 +1347,17 @@ class EmployeeExpenseRequestApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function expenseRequestGetExpenseRequestsAsync($business_id, $employee_id)
+    public function expenseRequestGetExpenseRequestsAsync($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->expenseRequestGetExpenseRequestsAsyncWithHttpInfo($business_id, $employee_id)
+        return $this->expenseRequestGetExpenseRequestsAsyncWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1360,14 +1372,18 @@ class EmployeeExpenseRequestApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function expenseRequestGetExpenseRequestsAsyncWithHttpInfo($business_id, $employee_id)
+    public function expenseRequestGetExpenseRequestsAsyncWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\ExpenseRequestResponseModel[]';
-        $request = $this->expenseRequestGetExpenseRequestsRequest($business_id, $employee_id);
+        $request = $this->expenseRequestGetExpenseRequestsRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1411,11 +1427,15 @@ class EmployeeExpenseRequestApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
+     * @param  string $filter (optional)
+     * @param  string $orderby (optional)
+     * @param  int $top (optional)
+     * @param  int $skip (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function expenseRequestGetExpenseRequestsRequest($business_id, $employee_id)
+    protected function expenseRequestGetExpenseRequestsRequest($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -1437,6 +1457,22 @@ class EmployeeExpenseRequestApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($filter !== null) {
+            $queryParams['$filter'] = ObjectSerializer::toQueryValue($filter);
+        }
+        // query params
+        if ($orderby !== null) {
+            $queryParams['$orderby'] = ObjectSerializer::toQueryValue($orderby);
+        }
+        // query params
+        if ($top !== null) {
+            $queryParams['$top'] = ObjectSerializer::toQueryValue($top);
+        }
+        // query params
+        if ($skip !== null) {
+            $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
 
         // path params
         if ($business_id !== null) {
