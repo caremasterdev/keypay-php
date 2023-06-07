@@ -641,6 +641,7 @@ class PayCategoryApi
      *
      * List Pay Categories
      *
+     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -651,9 +652,9 @@ class PayCategoryApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuPayCategoryModel[]
      */
-    public function auPayCategoryGetPayCategories($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayCategoryGetPayCategories($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auPayCategoryGetPayCategoriesWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auPayCategoryGetPayCategoriesWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -662,6 +663,7 @@ class PayCategoryApi
      *
      * List Pay Categories
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -672,10 +674,10 @@ class PayCategoryApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuPayCategoryModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auPayCategoryGetPayCategoriesWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayCategoryGetPayCategoriesWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuPayCategoryModel[]';
-        $request = $this->auPayCategoryGetPayCategoriesRequest($business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auPayCategoryGetPayCategoriesRequest($query, $business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -741,6 +743,7 @@ class PayCategoryApi
      *
      * List Pay Categories
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -750,9 +753,9 @@ class PayCategoryApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auPayCategoryGetPayCategoriesAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayCategoryGetPayCategoriesAsync($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auPayCategoryGetPayCategoriesAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
+        return $this->auPayCategoryGetPayCategoriesAsyncWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -765,6 +768,7 @@ class PayCategoryApi
      *
      * List Pay Categories
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -774,10 +778,10 @@ class PayCategoryApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auPayCategoryGetPayCategoriesAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayCategoryGetPayCategoriesAsyncWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuPayCategoryModel[]';
-        $request = $this->auPayCategoryGetPayCategoriesRequest($business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auPayCategoryGetPayCategoriesRequest($query, $business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -819,6 +823,7 @@ class PayCategoryApi
     /**
      * Create request for operation 'auPayCategoryGetPayCategories'
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -828,8 +833,14 @@ class PayCategoryApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auPayCategoryGetPayCategoriesRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auPayCategoryGetPayCategoriesRequest($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
+        // verify the required parameter 'query' is set
+        if ($query === null || (is_array($query) && count($query) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $query when calling auPayCategoryGetPayCategories'
+            );
+        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -859,6 +870,10 @@ class PayCategoryApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
+        // header params
+        if ($query !== null) {
+            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

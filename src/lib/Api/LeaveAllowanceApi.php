@@ -1209,6 +1209,7 @@ class LeaveAllowanceApi
      *
      * List Leave Allowance Templates
      *
+     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -1219,9 +1220,9 @@ class LeaveAllowanceApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuLeaveAllowanceTemplateModel[]
      */
-    public function auLeaveAllowanceTemplateGetLeaveAllowanceTemplates($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLeaveAllowanceTemplateGetLeaveAllowanceTemplates($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -1230,6 +1231,7 @@ class LeaveAllowanceApi
      *
      * List Leave Allowance Templates
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -1240,10 +1242,10 @@ class LeaveAllowanceApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuLeaveAllowanceTemplateModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuLeaveAllowanceTemplateModel[]';
-        $request = $this->auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesRequest($business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesRequest($query, $business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1309,6 +1311,7 @@ class LeaveAllowanceApi
      *
      * List Leave Allowance Templates
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -1318,9 +1321,9 @@ class LeaveAllowanceApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesAsync($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
+        return $this->auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesAsyncWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1333,6 +1336,7 @@ class LeaveAllowanceApi
      *
      * List Leave Allowance Templates
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -1342,10 +1346,10 @@ class LeaveAllowanceApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesAsyncWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuLeaveAllowanceTemplateModel[]';
-        $request = $this->auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesRequest($business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesRequest($query, $business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1387,6 +1391,7 @@ class LeaveAllowanceApi
     /**
      * Create request for operation 'auLeaveAllowanceTemplateGetLeaveAllowanceTemplates'
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -1396,8 +1401,14 @@ class LeaveAllowanceApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auLeaveAllowanceTemplateGetLeaveAllowanceTemplatesRequest($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
+        // verify the required parameter 'query' is set
+        if ($query === null || (is_array($query) && count($query) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $query when calling auLeaveAllowanceTemplateGetLeaveAllowanceTemplates'
+            );
+        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1427,6 +1438,10 @@ class LeaveAllowanceApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
+        // header params
+        if ($query !== null) {
+            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

@@ -1,6 +1,6 @@
 <?php
 /**
- * ODataQueryOptionsEmploymentAgreement
+ * ODataQueryOptionsOfEmployeeExpenseCategory
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ODataQueryOptionsEmploymentAgreement Class Doc Comment
+ * ODataQueryOptionsOfEmployeeExpenseCategory Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ODataQueryOptionsEmploymentAgreement implements ModelInterface, ArrayAccess
+class ODataQueryOptionsOfEmployeeExpenseCategory implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ODataQueryOptionsEmploymentAgreement implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ODataQueryOptions[EmploymentAgreement]';
+    protected static $swaggerModelName = 'ODataQueryOptionsOfEmployeeExpenseCategory';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

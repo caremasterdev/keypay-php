@@ -1,6 +1,6 @@
 <?php
 /**
- * ODataQueryOptionsEmployerLiabilityCategory
+ * ODataQueryOptionsOfPayRateTemplate
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ODataQueryOptionsEmployerLiabilityCategory Class Doc Comment
+ * ODataQueryOptionsOfPayRateTemplate Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ODataQueryOptionsEmployerLiabilityCategory implements ModelInterface, ArrayAccess
+class ODataQueryOptionsOfPayRateTemplate implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ODataQueryOptionsEmployerLiabilityCategory implements ModelInterface, Arra
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ODataQueryOptions[EmployerLiabilityCategory]';
+    protected static $swaggerModelName = 'ODataQueryOptionsOfPayRateTemplate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

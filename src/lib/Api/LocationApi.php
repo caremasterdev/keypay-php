@@ -641,6 +641,7 @@ class LocationApi
      *
      * List Employee Locations
      *
+     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $employee_id employee_id (required)
      * @param  string $filter filter (optional)
@@ -652,9 +653,9 @@ class LocationApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuLocationModel[]
      */
-    public function auLocationGetEmployeeLocations($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLocationGetEmployeeLocations($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auLocationGetEmployeeLocationsWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auLocationGetEmployeeLocationsWithHttpInfo($query, $business_id, $employee_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -663,6 +664,7 @@ class LocationApi
      *
      * List Employee Locations
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -674,10 +676,10 @@ class LocationApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuLocationModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auLocationGetEmployeeLocationsWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLocationGetEmployeeLocationsWithHttpInfo($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuLocationModel[]';
-        $request = $this->auLocationGetEmployeeLocationsRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
+        $request = $this->auLocationGetEmployeeLocationsRequest($query, $business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -743,6 +745,7 @@ class LocationApi
      *
      * List Employee Locations
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -753,9 +756,9 @@ class LocationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auLocationGetEmployeeLocationsAsync($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLocationGetEmployeeLocationsAsync($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auLocationGetEmployeeLocationsAsyncWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip)
+        return $this->auLocationGetEmployeeLocationsAsyncWithHttpInfo($query, $business_id, $employee_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -768,6 +771,7 @@ class LocationApi
      *
      * List Employee Locations
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -778,10 +782,10 @@ class LocationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auLocationGetEmployeeLocationsAsyncWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLocationGetEmployeeLocationsAsyncWithHttpInfo($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuLocationModel[]';
-        $request = $this->auLocationGetEmployeeLocationsRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
+        $request = $this->auLocationGetEmployeeLocationsRequest($query, $business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -823,6 +827,7 @@ class LocationApi
     /**
      * Create request for operation 'auLocationGetEmployeeLocations'
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -833,8 +838,14 @@ class LocationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auLocationGetEmployeeLocationsRequest($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auLocationGetEmployeeLocationsRequest($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
+        // verify the required parameter 'query' is set
+        if ($query === null || (is_array($query) && count($query) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $query when calling auLocationGetEmployeeLocations'
+            );
+        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -870,6 +881,10 @@ class LocationApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
+        // header params
+        if ($query !== null) {
+            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params
@@ -970,6 +985,7 @@ class LocationApi
      *
      * List Business Locations
      *
+     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -980,9 +996,9 @@ class LocationApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuLocationModel[]
      */
-    public function auLocationGetLocations($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLocationGetLocations($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auLocationGetLocationsWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auLocationGetLocationsWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -991,6 +1007,7 @@ class LocationApi
      *
      * List Business Locations
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -1001,10 +1018,10 @@ class LocationApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuLocationModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auLocationGetLocationsWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLocationGetLocationsWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuLocationModel[]';
-        $request = $this->auLocationGetLocationsRequest($business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auLocationGetLocationsRequest($query, $business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1070,6 +1087,7 @@ class LocationApi
      *
      * List Business Locations
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -1079,9 +1097,9 @@ class LocationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auLocationGetLocationsAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLocationGetLocationsAsync($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auLocationGetLocationsAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
+        return $this->auLocationGetLocationsAsyncWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1094,6 +1112,7 @@ class LocationApi
      *
      * List Business Locations
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -1103,10 +1122,10 @@ class LocationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auLocationGetLocationsAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLocationGetLocationsAsyncWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuLocationModel[]';
-        $request = $this->auLocationGetLocationsRequest($business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auLocationGetLocationsRequest($query, $business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1148,6 +1167,7 @@ class LocationApi
     /**
      * Create request for operation 'auLocationGetLocations'
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -1157,8 +1177,14 @@ class LocationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auLocationGetLocationsRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auLocationGetLocationsRequest($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
+        // verify the required parameter 'query' is set
+        if ($query === null || (is_array($query) && count($query) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $query when calling auLocationGetLocations'
+            );
+        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1188,6 +1214,10 @@ class LocationApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
+        // header params
+        if ($query !== null) {
+            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

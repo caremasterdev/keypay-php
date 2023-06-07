@@ -641,6 +641,7 @@ class AbaSettingsApi
      *
      * List ABA Settings
      *
+     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -651,9 +652,9 @@ class AbaSettingsApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\BusinessAbaModel[]
      */
-    public function auAbaGetAbaDetails($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auAbaGetAbaDetails($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auAbaGetAbaDetailsWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auAbaGetAbaDetailsWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -662,6 +663,7 @@ class AbaSettingsApi
      *
      * List ABA Settings
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -672,10 +674,10 @@ class AbaSettingsApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\BusinessAbaModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auAbaGetAbaDetailsWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auAbaGetAbaDetailsWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\BusinessAbaModel[]';
-        $request = $this->auAbaGetAbaDetailsRequest($business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auAbaGetAbaDetailsRequest($query, $business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -741,6 +743,7 @@ class AbaSettingsApi
      *
      * List ABA Settings
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -750,9 +753,9 @@ class AbaSettingsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auAbaGetAbaDetailsAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auAbaGetAbaDetailsAsync($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auAbaGetAbaDetailsAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
+        return $this->auAbaGetAbaDetailsAsyncWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -765,6 +768,7 @@ class AbaSettingsApi
      *
      * List ABA Settings
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -774,10 +778,10 @@ class AbaSettingsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auAbaGetAbaDetailsAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auAbaGetAbaDetailsAsyncWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\BusinessAbaModel[]';
-        $request = $this->auAbaGetAbaDetailsRequest($business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auAbaGetAbaDetailsRequest($query, $business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -819,6 +823,7 @@ class AbaSettingsApi
     /**
      * Create request for operation 'auAbaGetAbaDetails'
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -828,8 +833,14 @@ class AbaSettingsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auAbaGetAbaDetailsRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auAbaGetAbaDetailsRequest($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
+        // verify the required parameter 'query' is set
+        if ($query === null || (is_array($query) && count($query) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $query when calling auAbaGetAbaDetails'
+            );
+        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -859,6 +870,10 @@ class AbaSettingsApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
+        // header params
+        if ($query !== null) {
+            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

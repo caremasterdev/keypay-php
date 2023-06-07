@@ -1,6 +1,6 @@
 <?php
 /**
- * ODataQueryOptionsPayRateTemplate
+ * ODataQueryOptionsOfSelfManagedSuperFund
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ODataQueryOptionsPayRateTemplate Class Doc Comment
+ * ODataQueryOptionsOfSelfManagedSuperFund Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ODataQueryOptionsPayRateTemplate implements ModelInterface, ArrayAccess
+class ODataQueryOptionsOfSelfManagedSuperFund implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ODataQueryOptionsPayRateTemplate implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ODataQueryOptions[PayRateTemplate]';
+    protected static $swaggerModelName = 'ODataQueryOptionsOfSelfManagedSuperFund';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

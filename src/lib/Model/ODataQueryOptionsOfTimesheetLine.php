@@ -1,6 +1,6 @@
 <?php
 /**
- * ODataQueryOptionsEmployeeExpenseRequest
+ * ODataQueryOptionsOfTimesheetLine
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ODataQueryOptionsEmployeeExpenseRequest Class Doc Comment
+ * ODataQueryOptionsOfTimesheetLine Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ODataQueryOptionsEmployeeExpenseRequest implements ModelInterface, ArrayAccess
+class ODataQueryOptionsOfTimesheetLine implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ODataQueryOptionsEmployeeExpenseRequest implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ODataQueryOptions[EmployeeExpenseRequest]';
+    protected static $swaggerModelName = 'ODataQueryOptionsOfTimesheetLine';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

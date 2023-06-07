@@ -8376,7 +8376,7 @@ class EssApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\PagedResultModelSuburbModel
+     * @return \Swagger\Client\Model\PagedResultModelOfSuburbModel
      */
     public function auEssLookupSuburbs($term, $employee_id, $page_num = '1', $page_size = '20', $country_id = null)
     {
@@ -8397,11 +8397,11 @@ class EssApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\PagedResultModelSuburbModel, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\PagedResultModelOfSuburbModel, HTTP status code, HTTP response headers (array of strings)
      */
     public function auEssLookupSuburbsWithHttpInfo($term, $employee_id, $page_num = '1', $page_size = '20', $country_id = null)
     {
-        $returnType = '\Swagger\Client\Model\PagedResultModelSuburbModel';
+        $returnType = '\Swagger\Client\Model\PagedResultModelOfSuburbModel';
         $request = $this->auEssLookupSuburbsRequest($term, $employee_id, $page_num, $page_size, $country_id);
 
         try {
@@ -8453,7 +8453,7 @@ class EssApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\PagedResultModelSuburbModel',
+                        '\Swagger\Client\Model\PagedResultModelOfSuburbModel',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8503,7 +8503,7 @@ class EssApi
      */
     public function auEssLookupSuburbsAsyncWithHttpInfo($term, $employee_id, $page_num = '1', $page_size = '20', $country_id = null)
     {
-        $returnType = '\Swagger\Client\Model\PagedResultModelSuburbModel';
+        $returnType = '\Swagger\Client\Model\PagedResultModelOfSuburbModel';
         $request = $this->auEssLookupSuburbsRequest($term, $employee_id, $page_num, $page_size, $country_id);
 
         return $this->client
@@ -9525,6 +9525,7 @@ class EssApi
      *
      * List Self Managed Super Funds
      *
+     * @param  object $query query (required)
      * @param  string $employee_id employee_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -9535,9 +9536,9 @@ class EssApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\SelfManagedSuperFundModel[]
      */
-    public function auEssSelfManagedSuperFundGetFunds($employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auEssSelfManagedSuperFundGetFunds($query, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auEssSelfManagedSuperFundGetFundsWithHttpInfo($employee_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auEssSelfManagedSuperFundGetFundsWithHttpInfo($query, $employee_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -9546,6 +9547,7 @@ class EssApi
      *
      * List Self Managed Super Funds
      *
+     * @param  object $query (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -9556,10 +9558,10 @@ class EssApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\SelfManagedSuperFundModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auEssSelfManagedSuperFundGetFundsWithHttpInfo($employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auEssSelfManagedSuperFundGetFundsWithHttpInfo($query, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\SelfManagedSuperFundModel[]';
-        $request = $this->auEssSelfManagedSuperFundGetFundsRequest($employee_id, $filter, $orderby, $top, $skip);
+        $request = $this->auEssSelfManagedSuperFundGetFundsRequest($query, $employee_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9625,6 +9627,7 @@ class EssApi
      *
      * List Self Managed Super Funds
      *
+     * @param  object $query (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -9634,9 +9637,9 @@ class EssApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auEssSelfManagedSuperFundGetFundsAsync($employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auEssSelfManagedSuperFundGetFundsAsync($query, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auEssSelfManagedSuperFundGetFundsAsyncWithHttpInfo($employee_id, $filter, $orderby, $top, $skip)
+        return $this->auEssSelfManagedSuperFundGetFundsAsyncWithHttpInfo($query, $employee_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9649,6 +9652,7 @@ class EssApi
      *
      * List Self Managed Super Funds
      *
+     * @param  object $query (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -9658,10 +9662,10 @@ class EssApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auEssSelfManagedSuperFundGetFundsAsyncWithHttpInfo($employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auEssSelfManagedSuperFundGetFundsAsyncWithHttpInfo($query, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\SelfManagedSuperFundModel[]';
-        $request = $this->auEssSelfManagedSuperFundGetFundsRequest($employee_id, $filter, $orderby, $top, $skip);
+        $request = $this->auEssSelfManagedSuperFundGetFundsRequest($query, $employee_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9703,6 +9707,7 @@ class EssApi
     /**
      * Create request for operation 'auEssSelfManagedSuperFundGetFunds'
      *
+     * @param  object $query (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -9712,8 +9717,14 @@ class EssApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auEssSelfManagedSuperFundGetFundsRequest($employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auEssSelfManagedSuperFundGetFundsRequest($query, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
+        // verify the required parameter 'query' is set
+        if ($query === null || (is_array($query) && count($query) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $query when calling auEssSelfManagedSuperFundGetFunds'
+            );
+        }
         // verify the required parameter 'employee_id' is set
         if ($employee_id === null || (is_array($employee_id) && count($employee_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -9743,6 +9754,10 @@ class EssApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
+        // header params
+        if ($query !== null) {
+            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

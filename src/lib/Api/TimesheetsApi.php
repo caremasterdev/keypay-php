@@ -348,6 +348,7 @@ class TimesheetsApi
      *
      * Get Business Timesheets
      *
+     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -358,9 +359,9 @@ class TimesheetsApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuTimesheetLineModel[]
      */
-    public function auTimesheetGet($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auTimesheetGet($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auTimesheetGetWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auTimesheetGetWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -369,6 +370,7 @@ class TimesheetsApi
      *
      * Get Business Timesheets
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -379,10 +381,10 @@ class TimesheetsApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuTimesheetLineModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auTimesheetGetWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auTimesheetGetWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuTimesheetLineModel[]';
-        $request = $this->auTimesheetGetRequest($business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auTimesheetGetRequest($query, $business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -448,6 +450,7 @@ class TimesheetsApi
      *
      * Get Business Timesheets
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -457,9 +460,9 @@ class TimesheetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auTimesheetGetAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auTimesheetGetAsync($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auTimesheetGetAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
+        return $this->auTimesheetGetAsyncWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -472,6 +475,7 @@ class TimesheetsApi
      *
      * Get Business Timesheets
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -481,10 +485,10 @@ class TimesheetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auTimesheetGetAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auTimesheetGetAsyncWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuTimesheetLineModel[]';
-        $request = $this->auTimesheetGetRequest($business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auTimesheetGetRequest($query, $business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -526,6 +530,7 @@ class TimesheetsApi
     /**
      * Create request for operation 'auTimesheetGet'
      *
+     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -535,8 +540,14 @@ class TimesheetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auTimesheetGetRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auTimesheetGetRequest($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
+        // verify the required parameter 'query' is set
+        if ($query === null || (is_array($query) && count($query) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $query when calling auTimesheetGet'
+            );
+        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -566,6 +577,10 @@ class TimesheetsApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
+        // header params
+        if ($query !== null) {
+            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

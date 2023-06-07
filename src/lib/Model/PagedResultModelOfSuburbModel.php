@@ -1,6 +1,6 @@
 <?php
 /**
- * IFutureValueInt32
+ * PagedResultModelOfSuburbModel
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * IFutureValueInt32 Class Doc Comment
+ * PagedResultModelOfSuburbModel Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class IFutureValueInt32 implements ModelInterface, ArrayAccess
+class PagedResultModelOfSuburbModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class IFutureValueInt32 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'IFutureValue[Int32]';
+    protected static $swaggerModelName = 'PagedResultModelOfSuburbModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,12 @@ class IFutureValueInt32 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'value' => 'int'
+        'item_count_future' => '\Swagger\Client\Model\IFutureValueOfInt32',
+        'item_count' => 'int',
+        'items' => '\Swagger\Client\Model\SuburbModel[]',
+        'current_page' => 'int',
+        'page_size' => 'int',
+        'page_count' => 'int'
     ];
 
     /**
@@ -66,7 +71,12 @@ class IFutureValueInt32 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'value' => 'int32'
+        'item_count_future' => null,
+        'item_count' => 'int32',
+        'items' => null,
+        'current_page' => 'int32',
+        'page_size' => 'int32',
+        'page_count' => 'int32'
     ];
 
     /**
@@ -96,7 +106,12 @@ class IFutureValueInt32 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'value' => 'value'
+        'item_count_future' => 'itemCountFuture',
+        'item_count' => 'itemCount',
+        'items' => 'items',
+        'current_page' => 'currentPage',
+        'page_size' => 'pageSize',
+        'page_count' => 'pageCount'
     ];
 
     /**
@@ -105,7 +120,12 @@ class IFutureValueInt32 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'value' => 'setValue'
+        'item_count_future' => 'setItemCountFuture',
+        'item_count' => 'setItemCount',
+        'items' => 'setItems',
+        'current_page' => 'setCurrentPage',
+        'page_size' => 'setPageSize',
+        'page_count' => 'setPageCount'
     ];
 
     /**
@@ -114,7 +134,12 @@ class IFutureValueInt32 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'value' => 'getValue'
+        'item_count_future' => 'getItemCountFuture',
+        'item_count' => 'getItemCount',
+        'items' => 'getItems',
+        'current_page' => 'getCurrentPage',
+        'page_size' => 'getPageSize',
+        'page_count' => 'getPageCount'
     ];
 
     /**
@@ -177,7 +202,12 @@ class IFutureValueInt32 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['item_count_future'] = isset($data['item_count_future']) ? $data['item_count_future'] : null;
+        $this->container['item_count'] = isset($data['item_count']) ? $data['item_count'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
+        $this->container['current_page'] = isset($data['current_page']) ? $data['current_page'] : null;
+        $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
+        $this->container['page_count'] = isset($data['page_count']) ? $data['page_count'] : null;
     }
 
     /**
@@ -205,25 +235,145 @@ class IFutureValueInt32 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets value
+     * Gets item_count_future
      *
-     * @return int
+     * @return \Swagger\Client\Model\IFutureValueOfInt32
      */
-    public function getValue()
+    public function getItemCountFuture()
     {
-        return $this->container['value'];
+        return $this->container['item_count_future'];
     }
 
     /**
-     * Sets value
+     * Sets item_count_future
      *
-     * @param int $value 
+     * @param \Swagger\Client\Model\IFutureValueOfInt32 $item_count_future 
      *
      * @return $this
      */
-    public function setValue($value)
+    public function setItemCountFuture($item_count_future)
     {
-        $this->container['value'] = $value;
+        $this->container['item_count_future'] = $item_count_future;
+
+        return $this;
+    }
+
+    /**
+     * Gets item_count
+     *
+     * @return int
+     */
+    public function getItemCount()
+    {
+        return $this->container['item_count'];
+    }
+
+    /**
+     * Sets item_count
+     *
+     * @param int $item_count 
+     *
+     * @return $this
+     */
+    public function setItemCount($item_count)
+    {
+        $this->container['item_count'] = $item_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets items
+     *
+     * @return \Swagger\Client\Model\SuburbModel[]
+     */
+    public function getItems()
+    {
+        return $this->container['items'];
+    }
+
+    /**
+     * Sets items
+     *
+     * @param \Swagger\Client\Model\SuburbModel[] $items 
+     *
+     * @return $this
+     */
+    public function setItems($items)
+    {
+        $this->container['items'] = $items;
+
+        return $this;
+    }
+
+    /**
+     * Gets current_page
+     *
+     * @return int
+     */
+    public function getCurrentPage()
+    {
+        return $this->container['current_page'];
+    }
+
+    /**
+     * Sets current_page
+     *
+     * @param int $current_page 
+     *
+     * @return $this
+     */
+    public function setCurrentPage($current_page)
+    {
+        $this->container['current_page'] = $current_page;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_size
+     *
+     * @return int
+     */
+    public function getPageSize()
+    {
+        return $this->container['page_size'];
+    }
+
+    /**
+     * Sets page_size
+     *
+     * @param int $page_size 
+     *
+     * @return $this
+     */
+    public function setPageSize($page_size)
+    {
+        $this->container['page_size'] = $page_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_count
+     *
+     * @return int
+     */
+    public function getPageCount()
+    {
+        return $this->container['page_count'];
+    }
+
+    /**
+     * Sets page_count
+     *
+     * @param int $page_count 
+     *
+     * @return $this
+     */
+    public function setPageCount($page_count)
+    {
+        $this->container['page_count'] = $page_count;
 
         return $this;
     }

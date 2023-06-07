@@ -1,6 +1,6 @@
 <?php
 /**
- * ODataQueryOptionsLeaveCategory
+ * ODataQueryOptionsOfEmployee
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ODataQueryOptionsLeaveCategory Class Doc Comment
+ * ODataQueryOptionsOfEmployee Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ODataQueryOptionsLeaveCategory implements ModelInterface, ArrayAccess
+class ODataQueryOptionsOfEmployee implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ODataQueryOptionsLeaveCategory implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ODataQueryOptions[LeaveCategory]';
+    protected static $swaggerModelName = 'ODataQueryOptionsOfEmployee';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

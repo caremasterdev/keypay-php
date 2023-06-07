@@ -278,6 +278,7 @@ class AuLeaveAllowanceTemplateModel implements ModelInterface, ArrayAccess
     const SOURCE_INSTA_PAY = 'InstaPay';
     const SOURCE_ZEPTO = 'Zepto';
     const SOURCE_SLACK = 'Slack';
+    const SOURCE_CAXTON = 'Caxton';
     const LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE = 'EmployeeStartDate';
     const LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE = 'SpecifiedDate';
     const LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR = 'CalendarYear';
@@ -369,6 +370,7 @@ class AuLeaveAllowanceTemplateModel implements ModelInterface, ArrayAccess
             self::SOURCE_INSTA_PAY,
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
+            self::SOURCE_CAXTON,
         ];
     }
     
