@@ -1,6 +1,6 @@
 <?php
 /**
- * ODataQueryOptionsOfPayCycle
+ * ODataQueryOptionsLeaveAllowanceTemplate
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ODataQueryOptionsOfPayCycle Class Doc Comment
+ * ODataQueryOptionsLeaveAllowanceTemplate Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ODataQueryOptionsOfPayCycle implements ModelInterface, ArrayAccess
+class ODataQueryOptionsLeaveAllowanceTemplate implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ODataQueryOptionsOfPayCycle implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ODataQueryOptionsOfPayCycle';
+    protected static $swaggerModelName = 'ODataQueryOptions[LeaveAllowanceTemplate]';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

@@ -298,7 +298,6 @@ class SuperProductModel implements ModelInterface, ArrayAccess
     const SOURCE_INSTA_PAY = 'InstaPay';
     const SOURCE_ZEPTO = 'Zepto';
     const SOURCE_SLACK = 'Slack';
-    const SOURCE_CAXTON = 'Caxton';
     
 
     
@@ -385,7 +384,6 @@ class SuperProductModel implements ModelInterface, ArrayAccess
             self::SOURCE_INSTA_PAY,
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
-            self::SOURCE_CAXTON,
         ];
     }
     

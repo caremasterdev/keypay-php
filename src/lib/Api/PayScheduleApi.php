@@ -915,7 +915,6 @@ class PayScheduleApi
      *
      * List Pay Schedules
      *
-     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -926,9 +925,9 @@ class PayScheduleApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuPayScheduleModel[]
      */
-    public function auPayScheduleGetPaySchedules($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayScheduleGetPaySchedules($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auPayScheduleGetPaySchedulesWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auPayScheduleGetPaySchedulesWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -937,7 +936,6 @@ class PayScheduleApi
      *
      * List Pay Schedules
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -948,10 +946,10 @@ class PayScheduleApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuPayScheduleModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auPayScheduleGetPaySchedulesWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayScheduleGetPaySchedulesWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuPayScheduleModel[]';
-        $request = $this->auPayScheduleGetPaySchedulesRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auPayScheduleGetPaySchedulesRequest($business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1017,7 +1015,6 @@ class PayScheduleApi
      *
      * List Pay Schedules
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -1027,9 +1024,9 @@ class PayScheduleApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auPayScheduleGetPaySchedulesAsync($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayScheduleGetPaySchedulesAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auPayScheduleGetPaySchedulesAsyncWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip)
+        return $this->auPayScheduleGetPaySchedulesAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1042,7 +1039,6 @@ class PayScheduleApi
      *
      * List Pay Schedules
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -1052,10 +1048,10 @@ class PayScheduleApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auPayScheduleGetPaySchedulesAsyncWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayScheduleGetPaySchedulesAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuPayScheduleModel[]';
-        $request = $this->auPayScheduleGetPaySchedulesRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auPayScheduleGetPaySchedulesRequest($business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1097,7 +1093,6 @@ class PayScheduleApi
     /**
      * Create request for operation 'auPayScheduleGetPaySchedules'
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -1107,14 +1102,8 @@ class PayScheduleApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auPayScheduleGetPaySchedulesRequest($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auPayScheduleGetPaySchedulesRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        // verify the required parameter 'query' is set
-        if ($query === null || (is_array($query) && count($query) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $query when calling auPayScheduleGetPaySchedules'
-            );
-        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1144,10 +1133,6 @@ class PayScheduleApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
-        }
-        // header params
-        if ($query !== null) {
-            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

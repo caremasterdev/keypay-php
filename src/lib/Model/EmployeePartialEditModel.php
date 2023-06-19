@@ -530,7 +530,6 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
     const SOURCE_INSTA_PAY = 'InstaPay';
     const SOURCE_ZEPTO = 'Zepto';
     const SOURCE_SLACK = 'Slack';
-    const SOURCE_CAXTON = 'Caxton';
     const TIMESHEET_SETTING_DISABLED = 'Disabled';
     const TIMESHEET_SETTING_ENABLED = 'Enabled';
     const TIMESHEET_SETTING_ENABLED_FOR_EXCEPTIONS = 'EnabledForExceptions';
@@ -639,7 +638,6 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess
             self::SOURCE_INSTA_PAY,
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
-            self::SOURCE_CAXTON,
         ];
     }
     

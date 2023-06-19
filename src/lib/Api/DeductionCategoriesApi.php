@@ -641,7 +641,6 @@ class DeductionCategoriesApi
      *
      * List Deduction Categories
      *
-     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -652,9 +651,9 @@ class DeductionCategoriesApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuDeductionCategoryModel[]
      */
-    public function auDeductionCategoryGetDeductionCategories($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auDeductionCategoryGetDeductionCategories($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auDeductionCategoryGetDeductionCategoriesWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auDeductionCategoryGetDeductionCategoriesWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -663,7 +662,6 @@ class DeductionCategoriesApi
      *
      * List Deduction Categories
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -674,10 +672,10 @@ class DeductionCategoriesApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuDeductionCategoryModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auDeductionCategoryGetDeductionCategoriesWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auDeductionCategoryGetDeductionCategoriesWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuDeductionCategoryModel[]';
-        $request = $this->auDeductionCategoryGetDeductionCategoriesRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auDeductionCategoryGetDeductionCategoriesRequest($business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -743,7 +741,6 @@ class DeductionCategoriesApi
      *
      * List Deduction Categories
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -753,9 +750,9 @@ class DeductionCategoriesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auDeductionCategoryGetDeductionCategoriesAsync($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auDeductionCategoryGetDeductionCategoriesAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auDeductionCategoryGetDeductionCategoriesAsyncWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip)
+        return $this->auDeductionCategoryGetDeductionCategoriesAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -768,7 +765,6 @@ class DeductionCategoriesApi
      *
      * List Deduction Categories
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -778,10 +774,10 @@ class DeductionCategoriesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auDeductionCategoryGetDeductionCategoriesAsyncWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auDeductionCategoryGetDeductionCategoriesAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuDeductionCategoryModel[]';
-        $request = $this->auDeductionCategoryGetDeductionCategoriesRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auDeductionCategoryGetDeductionCategoriesRequest($business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -823,7 +819,6 @@ class DeductionCategoriesApi
     /**
      * Create request for operation 'auDeductionCategoryGetDeductionCategories'
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -833,14 +828,8 @@ class DeductionCategoriesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auDeductionCategoryGetDeductionCategoriesRequest($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auDeductionCategoryGetDeductionCategoriesRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        // verify the required parameter 'query' is set
-        if ($query === null || (is_array($query) && count($query) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $query when calling auDeductionCategoryGetDeductionCategories'
-            );
-        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -870,10 +859,6 @@ class DeductionCategoriesApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
-        }
-        // header params
-        if ($query !== null) {
-            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

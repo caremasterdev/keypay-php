@@ -641,7 +641,6 @@ class WorkTypeApi
      *
      * List Work Types
      *
-     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -652,9 +651,9 @@ class WorkTypeApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuWorkTypeModel[]
      */
-    public function auWorkTypeGetWorkTypes($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auWorkTypeGetWorkTypes($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auWorkTypeGetWorkTypesWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auWorkTypeGetWorkTypesWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -663,7 +662,6 @@ class WorkTypeApi
      *
      * List Work Types
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -674,10 +672,10 @@ class WorkTypeApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuWorkTypeModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auWorkTypeGetWorkTypesWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auWorkTypeGetWorkTypesWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuWorkTypeModel[]';
-        $request = $this->auWorkTypeGetWorkTypesRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auWorkTypeGetWorkTypesRequest($business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -743,7 +741,6 @@ class WorkTypeApi
      *
      * List Work Types
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -753,9 +750,9 @@ class WorkTypeApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auWorkTypeGetWorkTypesAsync($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auWorkTypeGetWorkTypesAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auWorkTypeGetWorkTypesAsyncWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip)
+        return $this->auWorkTypeGetWorkTypesAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -768,7 +765,6 @@ class WorkTypeApi
      *
      * List Work Types
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -778,10 +774,10 @@ class WorkTypeApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auWorkTypeGetWorkTypesAsyncWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auWorkTypeGetWorkTypesAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuWorkTypeModel[]';
-        $request = $this->auWorkTypeGetWorkTypesRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auWorkTypeGetWorkTypesRequest($business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -823,7 +819,6 @@ class WorkTypeApi
     /**
      * Create request for operation 'auWorkTypeGetWorkTypes'
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -833,14 +828,8 @@ class WorkTypeApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auWorkTypeGetWorkTypesRequest($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auWorkTypeGetWorkTypesRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        // verify the required parameter 'query' is set
-        if ($query === null || (is_array($query) && count($query) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $query when calling auWorkTypeGetWorkTypes'
-            );
-        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -870,10 +859,6 @@ class WorkTypeApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
-        }
-        // header params
-        if ($query !== null) {
-            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

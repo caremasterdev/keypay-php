@@ -641,7 +641,6 @@ class LeaveCategoriesApi
      *
      * List Leave Categories
      *
-     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -652,9 +651,9 @@ class LeaveCategoriesApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuLeaveCategoryModel[]
      */
-    public function auLeaveCategoryGetLeaveCategories($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLeaveCategoryGetLeaveCategories($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auLeaveCategoryGetLeaveCategoriesWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auLeaveCategoryGetLeaveCategoriesWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -663,7 +662,6 @@ class LeaveCategoriesApi
      *
      * List Leave Categories
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -674,10 +672,10 @@ class LeaveCategoriesApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuLeaveCategoryModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auLeaveCategoryGetLeaveCategoriesWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLeaveCategoryGetLeaveCategoriesWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuLeaveCategoryModel[]';
-        $request = $this->auLeaveCategoryGetLeaveCategoriesRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auLeaveCategoryGetLeaveCategoriesRequest($business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -743,7 +741,6 @@ class LeaveCategoriesApi
      *
      * List Leave Categories
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -753,9 +750,9 @@ class LeaveCategoriesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auLeaveCategoryGetLeaveCategoriesAsync($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLeaveCategoryGetLeaveCategoriesAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auLeaveCategoryGetLeaveCategoriesAsyncWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip)
+        return $this->auLeaveCategoryGetLeaveCategoriesAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -768,7 +765,6 @@ class LeaveCategoriesApi
      *
      * List Leave Categories
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -778,10 +774,10 @@ class LeaveCategoriesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auLeaveCategoryGetLeaveCategoriesAsyncWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auLeaveCategoryGetLeaveCategoriesAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\AuLeaveCategoryModel[]';
-        $request = $this->auLeaveCategoryGetLeaveCategoriesRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auLeaveCategoryGetLeaveCategoriesRequest($business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -823,7 +819,6 @@ class LeaveCategoriesApi
     /**
      * Create request for operation 'auLeaveCategoryGetLeaveCategories'
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -833,14 +828,8 @@ class LeaveCategoriesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auLeaveCategoryGetLeaveCategoriesRequest($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auLeaveCategoryGetLeaveCategoriesRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        // verify the required parameter 'query' is set
-        if ($query === null || (is_array($query) && count($query) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $query when calling auLeaveCategoryGetLeaveCategories'
-            );
-        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -870,10 +859,6 @@ class LeaveCategoriesApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
-        }
-        // header params
-        if ($query !== null) {
-            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

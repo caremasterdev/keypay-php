@@ -62,7 +62,6 @@ class AuLocationModel implements ModelInterface, ArrayAccess
         'parent_id' => 'int',
         'name' => 'string',
         'external_id' => 'string',
-        'external_accounting_location_id' => 'string',
         'source' => 'string',
         'fully_qualified_name' => 'string',
         'is_global' => 'bool',
@@ -83,7 +82,6 @@ class AuLocationModel implements ModelInterface, ArrayAccess
         'parent_id' => 'int32',
         'name' => null,
         'external_id' => null,
-        'external_accounting_location_id' => null,
         'source' => null,
         'fully_qualified_name' => null,
         'is_global' => null,
@@ -125,7 +123,6 @@ class AuLocationModel implements ModelInterface, ArrayAccess
         'parent_id' => 'parentId',
         'name' => 'name',
         'external_id' => 'externalId',
-        'external_accounting_location_id' => 'externalAccountingLocationId',
         'source' => 'source',
         'fully_qualified_name' => 'fullyQualifiedName',
         'is_global' => 'isGlobal',
@@ -146,7 +143,6 @@ class AuLocationModel implements ModelInterface, ArrayAccess
         'parent_id' => 'setParentId',
         'name' => 'setName',
         'external_id' => 'setExternalId',
-        'external_accounting_location_id' => 'setExternalAccountingLocationId',
         'source' => 'setSource',
         'fully_qualified_name' => 'setFullyQualifiedName',
         'is_global' => 'setIsGlobal',
@@ -167,7 +163,6 @@ class AuLocationModel implements ModelInterface, ArrayAccess
         'parent_id' => 'getParentId',
         'name' => 'getName',
         'external_id' => 'getExternalId',
-        'external_accounting_location_id' => 'getExternalAccountingLocationId',
         'source' => 'getSource',
         'fully_qualified_name' => 'getFullyQualifiedName',
         'is_global' => 'getIsGlobal',
@@ -242,7 +237,6 @@ class AuLocationModel implements ModelInterface, ArrayAccess
         $this->container['parent_id'] = isset($data['parent_id']) ? $data['parent_id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
-        $this->container['external_accounting_location_id'] = isset($data['external_accounting_location_id']) ? $data['external_accounting_location_id'] : null;
         $this->container['source'] = isset($data['source']) ? $data['source'] : null;
         $this->container['fully_qualified_name'] = isset($data['fully_qualified_name']) ? $data['fully_qualified_name'] : null;
         $this->container['is_global'] = isset($data['is_global']) ? $data['is_global'] : null;
@@ -392,30 +386,6 @@ class AuLocationModel implements ModelInterface, ArrayAccess
     public function setExternalId($external_id)
     {
         $this->container['external_id'] = $external_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets external_accounting_location_id
-     *
-     * @return string
-     */
-    public function getExternalAccountingLocationId()
-    {
-        return $this->container['external_accounting_location_id'];
-    }
-
-    /**
-     * Sets external_accounting_location_id
-     *
-     * @param string $external_accounting_location_id 
-     *
-     * @return $this
-     */
-    public function setExternalAccountingLocationId($external_accounting_location_id)
-    {
-        $this->container['external_accounting_location_id'] = $external_accounting_location_id;
 
         return $this;
     }

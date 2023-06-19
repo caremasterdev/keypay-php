@@ -1102,9 +1102,9 @@ class AuthenticationApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
+        // query params
         if ($request !== null) {
-            $headerParams['request'] = ObjectSerializer::toHeaderValue($request);
+            $queryParams['request'] = ObjectSerializer::toQueryValue($request);
         }
 
 

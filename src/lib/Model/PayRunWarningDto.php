@@ -278,8 +278,6 @@ class PayRunWarningDto implements ModelInterface, ArrayAccess
     const WARNING_TYPE_OCCUPATIONAL_LEAVE_APPLIED = 'OccupationalLeaveApplied';
     const WARNING_TYPE_OCCUPATIONAL_LEAVE_APPLIED_PREVIOUS = 'OccupationalLeaveAppliedPrevious';
     const WARNING_TYPE_OCCUPATIONAL_LEAVE_ENTITLEMENT_EXHAUSTED = 'OccupationalLeaveEntitlementExhausted';
-    const WARNING_TYPE_ANNUAL_LEAVE_CASHED_OUT = 'AnnualLeaveCashedOut';
-    const WARNING_TYPE_EMPLOYEE_HAS_TAKEN_PAID_FAMILY_AND_DOMESTIC_VIOLENCE_LEAVE = 'EmployeeHasTakenPaidFamilyAndDomesticViolenceLeave';
     
 
     
@@ -371,8 +369,6 @@ class PayRunWarningDto implements ModelInterface, ArrayAccess
             self::WARNING_TYPE_OCCUPATIONAL_LEAVE_APPLIED,
             self::WARNING_TYPE_OCCUPATIONAL_LEAVE_APPLIED_PREVIOUS,
             self::WARNING_TYPE_OCCUPATIONAL_LEAVE_ENTITLEMENT_EXHAUSTED,
-            self::WARNING_TYPE_ANNUAL_LEAVE_CASHED_OUT,
-            self::WARNING_TYPE_EMPLOYEE_HAS_TAKEN_PAID_FAMILY_AND_DOMESTIC_VIOLENCE_LEAVE,
         ];
     }
     

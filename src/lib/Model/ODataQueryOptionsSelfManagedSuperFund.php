@@ -1,6 +1,6 @@
 <?php
 /**
- * ODataQueryOptionsOfDeductionCategory
+ * ODataQueryOptionsSelfManagedSuperFund
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ODataQueryOptionsOfDeductionCategory Class Doc Comment
+ * ODataQueryOptionsSelfManagedSuperFund Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ODataQueryOptionsOfDeductionCategory implements ModelInterface, ArrayAccess
+class ODataQueryOptionsSelfManagedSuperFund implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ODataQueryOptionsOfDeductionCategory implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ODataQueryOptionsOfDeductionCategory';
+    protected static $swaggerModelName = 'ODataQueryOptions[SelfManagedSuperFund]';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

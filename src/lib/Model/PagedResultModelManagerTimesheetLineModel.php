@@ -1,6 +1,6 @@
 <?php
 /**
- * PagedResultModelOfManagerExpenseRequestModel
+ * PagedResultModelManagerTimesheetLineModel
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * PagedResultModelOfManagerExpenseRequestModel Class Doc Comment
+ * PagedResultModelManagerTimesheetLineModel Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PagedResultModelOfManagerExpenseRequestModel implements ModelInterface, ArrayAccess
+class PagedResultModelManagerTimesheetLineModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PagedResultModelOfManagerExpenseRequestModel implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $swaggerModelName = 'PagedResultModelOfManagerExpenseRequestModel';
+    protected static $swaggerModelName = 'PagedResultModel[ManagerTimesheetLineModel]';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,9 @@ class PagedResultModelOfManagerExpenseRequestModel implements ModelInterface, Ar
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'item_count_future' => '\Swagger\Client\Model\IFutureValueOfInt32',
+        'item_count_future' => '\Swagger\Client\Model\IFutureValueInt32',
         'item_count' => 'int',
-        'items' => '\Swagger\Client\Model\ManagerExpenseRequestModel[]',
+        'items' => '\Swagger\Client\Model\ManagerTimesheetLineModel[]',
         'current_page' => 'int',
         'page_size' => 'int',
         'page_count' => 'int'
@@ -237,7 +237,7 @@ class PagedResultModelOfManagerExpenseRequestModel implements ModelInterface, Ar
     /**
      * Gets item_count_future
      *
-     * @return \Swagger\Client\Model\IFutureValueOfInt32
+     * @return \Swagger\Client\Model\IFutureValueInt32
      */
     public function getItemCountFuture()
     {
@@ -247,7 +247,7 @@ class PagedResultModelOfManagerExpenseRequestModel implements ModelInterface, Ar
     /**
      * Sets item_count_future
      *
-     * @param \Swagger\Client\Model\IFutureValueOfInt32 $item_count_future 
+     * @param \Swagger\Client\Model\IFutureValueInt32 $item_count_future 
      *
      * @return $this
      */
@@ -285,7 +285,7 @@ class PagedResultModelOfManagerExpenseRequestModel implements ModelInterface, Ar
     /**
      * Gets items
      *
-     * @return \Swagger\Client\Model\ManagerExpenseRequestModel[]
+     * @return \Swagger\Client\Model\ManagerTimesheetLineModel[]
      */
     public function getItems()
     {
@@ -295,7 +295,7 @@ class PagedResultModelOfManagerExpenseRequestModel implements ModelInterface, Ar
     /**
      * Sets items
      *
-     * @param \Swagger\Client\Model\ManagerExpenseRequestModel[] $items 
+     * @param \Swagger\Client\Model\ManagerTimesheetLineModel[] $items 
      *
      * @return $this
      */

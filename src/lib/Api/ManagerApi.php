@@ -13295,7 +13295,7 @@ class ManagerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\PagedResultModelOfManagerTimesheetLineModel
+     * @return \Swagger\Client\Model\PagedResultModelManagerTimesheetLineModel
      */
     public function genericManagerTimesheetGet($business_id, $filter_from_date = null, $filter_to_date = null, $filter_status = null, $filter_employee_id = null, $filter_employee_group_id = null, $filter_location_id = null, $filter_include_costs = null, $filter_current_page = null, $filter_page_size = null, $filter_order_by = null)
     {
@@ -13322,11 +13322,11 @@ class ManagerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\PagedResultModelOfManagerTimesheetLineModel, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\PagedResultModelManagerTimesheetLineModel, HTTP status code, HTTP response headers (array of strings)
      */
     public function genericManagerTimesheetGetWithHttpInfo($business_id, $filter_from_date = null, $filter_to_date = null, $filter_status = null, $filter_employee_id = null, $filter_employee_group_id = null, $filter_location_id = null, $filter_include_costs = null, $filter_current_page = null, $filter_page_size = null, $filter_order_by = null)
     {
-        $returnType = '\Swagger\Client\Model\PagedResultModelOfManagerTimesheetLineModel';
+        $returnType = '\Swagger\Client\Model\PagedResultModelManagerTimesheetLineModel';
         $request = $this->genericManagerTimesheetGetRequest($business_id, $filter_from_date, $filter_to_date, $filter_status, $filter_employee_id, $filter_employee_group_id, $filter_location_id, $filter_include_costs, $filter_current_page, $filter_page_size, $filter_order_by);
 
         try {
@@ -13378,7 +13378,7 @@ class ManagerApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\PagedResultModelOfManagerTimesheetLineModel',
+                        '\Swagger\Client\Model\PagedResultModelManagerTimesheetLineModel',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -13440,7 +13440,7 @@ class ManagerApi
      */
     public function genericManagerTimesheetGetAsyncWithHttpInfo($business_id, $filter_from_date = null, $filter_to_date = null, $filter_status = null, $filter_employee_id = null, $filter_employee_group_id = null, $filter_location_id = null, $filter_include_costs = null, $filter_current_page = null, $filter_page_size = null, $filter_order_by = null)
     {
-        $returnType = '\Swagger\Client\Model\PagedResultModelOfManagerTimesheetLineModel';
+        $returnType = '\Swagger\Client\Model\PagedResultModelManagerTimesheetLineModel';
         $request = $this->genericManagerTimesheetGetRequest($business_id, $filter_from_date, $filter_to_date, $filter_status, $filter_employee_id, $filter_employee_group_id, $filter_location_id, $filter_include_costs, $filter_current_page, $filter_page_size, $filter_order_by);
 
         return $this->client
@@ -22398,7 +22398,7 @@ class ManagerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\PagedResultModelOfManagerExpenseRequestModel
+     * @return \Swagger\Client\Model\PagedResultModelManagerExpenseRequestModel
      */
     public function managerExpenseGet($business_id, $filter_status = null, $filter_from_date = null, $filter_to_date = null, $filter_employee_id = null, $filter_location_id = null, $filter_expense_category_id = null, $filter_group_by = null, $filter_current_page = null, $filter_page_size = null)
     {
@@ -22424,11 +22424,11 @@ class ManagerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\PagedResultModelOfManagerExpenseRequestModel, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\PagedResultModelManagerExpenseRequestModel, HTTP status code, HTTP response headers (array of strings)
      */
     public function managerExpenseGetWithHttpInfo($business_id, $filter_status = null, $filter_from_date = null, $filter_to_date = null, $filter_employee_id = null, $filter_location_id = null, $filter_expense_category_id = null, $filter_group_by = null, $filter_current_page = null, $filter_page_size = null)
     {
-        $returnType = '\Swagger\Client\Model\PagedResultModelOfManagerExpenseRequestModel';
+        $returnType = '\Swagger\Client\Model\PagedResultModelManagerExpenseRequestModel';
         $request = $this->managerExpenseGetRequest($business_id, $filter_status, $filter_from_date, $filter_to_date, $filter_employee_id, $filter_location_id, $filter_expense_category_id, $filter_group_by, $filter_current_page, $filter_page_size);
 
         try {
@@ -22480,7 +22480,7 @@ class ManagerApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\PagedResultModelOfManagerExpenseRequestModel',
+                        '\Swagger\Client\Model\PagedResultModelManagerExpenseRequestModel',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -22540,7 +22540,7 @@ class ManagerApi
      */
     public function managerExpenseGetAsyncWithHttpInfo($business_id, $filter_status = null, $filter_from_date = null, $filter_to_date = null, $filter_employee_id = null, $filter_location_id = null, $filter_expense_category_id = null, $filter_group_by = null, $filter_current_page = null, $filter_page_size = null)
     {
-        $returnType = '\Swagger\Client\Model\PagedResultModelOfManagerExpenseRequestModel';
+        $returnType = '\Swagger\Client\Model\PagedResultModelManagerExpenseRequestModel';
         $request = $this->managerExpenseGetRequest($business_id, $filter_status, $filter_from_date, $filter_to_date, $filter_employee_id, $filter_location_id, $filter_expense_category_id, $filter_group_by, $filter_current_page, $filter_page_size);
 
         return $this->client
@@ -24951,7 +24951,6 @@ class ManagerApi
      *
      * Get Business Timesheets
      *
-     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -24962,9 +24961,9 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\TimesheetLineModel[]
      */
-    public function managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheet($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheet($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -24973,7 +24972,6 @@ class ManagerApi
      *
      * Get Business Timesheets
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -24984,10 +24982,10 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\TimesheetLineModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\TimesheetLineModel[]';
-        $request = $this->managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetRequest($business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -25053,7 +25051,6 @@ class ManagerApi
      *
      * Get Business Timesheets
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -25063,9 +25060,9 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetAsync($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetAsyncWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip)
+        return $this->managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -25078,7 +25075,6 @@ class ManagerApi
      *
      * Get Business Timesheets
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -25088,10 +25084,10 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetAsyncWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\TimesheetLineModel[]';
-        $request = $this->managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetRequest($business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -25133,7 +25129,6 @@ class ManagerApi
     /**
      * Create request for operation 'managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheet'
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -25143,14 +25138,8 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetRequest($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheetRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        // verify the required parameter 'query' is set
-        if ($query === null || (is_array($query) && count($query) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $query when calling managerKioskGetApiV2BusinessByBusinessIdManagerKioskTimesheet'
-            );
-        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -25180,10 +25169,6 @@ class ManagerApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
-        }
-        // header params
-        if ($query !== null) {
-            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params
@@ -27022,7 +27007,6 @@ class ManagerApi
      *
      * List Employee Locations
      *
-     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $employee_id employee_id (required)
      * @param  string $filter filter (optional)
@@ -27034,9 +27018,9 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\LocationModel[]
      */
-    public function managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocation($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocation($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationWithHttpInfo($query, $business_id, $employee_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -27045,7 +27029,6 @@ class ManagerApi
      *
      * List Employee Locations
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -27057,10 +27040,10 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\LocationModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationWithHttpInfo($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\LocationModel[]';
-        $request = $this->managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationRequest($query, $business_id, $employee_id, $filter, $orderby, $top, $skip);
+        $request = $this->managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -27126,7 +27109,6 @@ class ManagerApi
      *
      * List Employee Locations
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -27137,9 +27119,9 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationAsync($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationAsync($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationAsyncWithHttpInfo($query, $business_id, $employee_id, $filter, $orderby, $top, $skip)
+        return $this->managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationAsyncWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -27152,7 +27134,6 @@ class ManagerApi
      *
      * List Employee Locations
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -27163,10 +27144,10 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationAsyncWithHttpInfo($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationAsyncWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\LocationModel[]';
-        $request = $this->managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationRequest($query, $business_id, $employee_id, $filter, $orderby, $top, $skip);
+        $request = $this->managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -27208,7 +27189,6 @@ class ManagerApi
     /**
      * Create request for operation 'managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocation'
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -27219,14 +27199,8 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationRequest($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocationRequest($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        // verify the required parameter 'query' is set
-        if ($query === null || (is_array($query) && count($query) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $query when calling managerLocationGetApiV2BusinessByBusinessIdManagerEmployeeByEmployeeIdLocation'
-            );
-        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -27262,10 +27236,6 @@ class ManagerApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
-        }
-        // header params
-        if ($query !== null) {
-            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params
@@ -27366,7 +27336,6 @@ class ManagerApi
      *
      * List Employee Locations
      *
-     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -27377,9 +27346,9 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\LocationModel[]
      */
-    public function managerLocationGetLocations($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function managerLocationGetLocations($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->managerLocationGetLocationsWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->managerLocationGetLocationsWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -27388,7 +27357,6 @@ class ManagerApi
      *
      * List Employee Locations
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -27399,10 +27367,10 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\LocationModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function managerLocationGetLocationsWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function managerLocationGetLocationsWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\LocationModel[]';
-        $request = $this->managerLocationGetLocationsRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->managerLocationGetLocationsRequest($business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -27468,7 +27436,6 @@ class ManagerApi
      *
      * List Employee Locations
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -27478,9 +27445,9 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function managerLocationGetLocationsAsync($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function managerLocationGetLocationsAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->managerLocationGetLocationsAsyncWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip)
+        return $this->managerLocationGetLocationsAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -27493,7 +27460,6 @@ class ManagerApi
      *
      * List Employee Locations
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -27503,10 +27469,10 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function managerLocationGetLocationsAsyncWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function managerLocationGetLocationsAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\LocationModel[]';
-        $request = $this->managerLocationGetLocationsRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->managerLocationGetLocationsRequest($business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -27548,7 +27514,6 @@ class ManagerApi
     /**
      * Create request for operation 'managerLocationGetLocations'
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -27558,14 +27523,8 @@ class ManagerApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function managerLocationGetLocationsRequest($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function managerLocationGetLocationsRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        // verify the required parameter 'query' is set
-        if ($query === null || (is_array($query) && count($query) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $query when calling managerLocationGetLocations'
-            );
-        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -27595,10 +27554,6 @@ class ManagerApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
-        }
-        // header params
-        if ($query !== null) {
-            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

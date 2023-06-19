@@ -4682,7 +4682,6 @@ class PayRunApi
      *
      * List Pay Runs Summaries
      *
-     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -4693,9 +4692,9 @@ class PayRunApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\PayRunSummaryModel[]
      */
-    public function auPayRunGetPayRunSummaries($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayRunGetPayRunSummaries($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auPayRunGetPayRunSummariesWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auPayRunGetPayRunSummariesWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -4704,7 +4703,6 @@ class PayRunApi
      *
      * List Pay Runs Summaries
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -4715,10 +4713,10 @@ class PayRunApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\PayRunSummaryModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auPayRunGetPayRunSummariesWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayRunGetPayRunSummariesWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\PayRunSummaryModel[]';
-        $request = $this->auPayRunGetPayRunSummariesRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auPayRunGetPayRunSummariesRequest($business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4784,7 +4782,6 @@ class PayRunApi
      *
      * List Pay Runs Summaries
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -4794,9 +4791,9 @@ class PayRunApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auPayRunGetPayRunSummariesAsync($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayRunGetPayRunSummariesAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auPayRunGetPayRunSummariesAsyncWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip)
+        return $this->auPayRunGetPayRunSummariesAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4809,7 +4806,6 @@ class PayRunApi
      *
      * List Pay Runs Summaries
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -4819,10 +4815,10 @@ class PayRunApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auPayRunGetPayRunSummariesAsyncWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayRunGetPayRunSummariesAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\PayRunSummaryModel[]';
-        $request = $this->auPayRunGetPayRunSummariesRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auPayRunGetPayRunSummariesRequest($business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4864,7 +4860,6 @@ class PayRunApi
     /**
      * Create request for operation 'auPayRunGetPayRunSummaries'
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -4874,14 +4869,8 @@ class PayRunApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auPayRunGetPayRunSummariesRequest($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auPayRunGetPayRunSummariesRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        // verify the required parameter 'query' is set
-        if ($query === null || (is_array($query) && count($query) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $query when calling auPayRunGetPayRunSummaries'
-            );
-        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -4911,10 +4900,6 @@ class PayRunApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
-        }
-        // header params
-        if ($query !== null) {
-            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params
@@ -5300,7 +5285,6 @@ class PayRunApi
      *
      * List Pay Runs
      *
-     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -5311,9 +5295,9 @@ class PayRunApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\PayRunModel[]
      */
-    public function auPayRunGetPayRuns($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayRunGetPayRuns($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auPayRunGetPayRunsWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auPayRunGetPayRunsWithHttpInfo($business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -5322,7 +5306,6 @@ class PayRunApi
      *
      * List Pay Runs
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -5333,10 +5316,10 @@ class PayRunApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\PayRunModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auPayRunGetPayRunsWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayRunGetPayRunsWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\PayRunModel[]';
-        $request = $this->auPayRunGetPayRunsRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auPayRunGetPayRunsRequest($business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5402,7 +5385,6 @@ class PayRunApi
      *
      * List Pay Runs
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -5412,9 +5394,9 @@ class PayRunApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auPayRunGetPayRunsAsync($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayRunGetPayRunsAsync($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auPayRunGetPayRunsAsyncWithHttpInfo($query, $business_id, $filter, $orderby, $top, $skip)
+        return $this->auPayRunGetPayRunsAsyncWithHttpInfo($business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5427,7 +5409,6 @@ class PayRunApi
      *
      * List Pay Runs
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -5437,10 +5418,10 @@ class PayRunApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auPayRunGetPayRunsAsyncWithHttpInfo($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPayRunGetPayRunsAsyncWithHttpInfo($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\PayRunModel[]';
-        $request = $this->auPayRunGetPayRunsRequest($query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auPayRunGetPayRunsRequest($business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5482,7 +5463,6 @@ class PayRunApi
     /**
      * Create request for operation 'auPayRunGetPayRuns'
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -5492,14 +5472,8 @@ class PayRunApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auPayRunGetPayRunsRequest($query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auPayRunGetPayRunsRequest($business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        // verify the required parameter 'query' is set
-        if ($query === null || (is_array($query) && count($query) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $query when calling auPayRunGetPayRuns'
-            );
-        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -5529,10 +5503,6 @@ class PayRunApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
-        }
-        // header params
-        if ($query !== null) {
-            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

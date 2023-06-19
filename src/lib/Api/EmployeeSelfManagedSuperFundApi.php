@@ -404,7 +404,6 @@ class EmployeeSelfManagedSuperFundApi
      *
      * List Self Managed Super Funds
      *
-     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $employee_id employee_id (required)
      * @param  string $filter filter (optional)
@@ -416,9 +415,9 @@ class EmployeeSelfManagedSuperFundApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\SelfManagedSuperFundModel[]
      */
-    public function auEmployeeSelfManagedSuperFundGetFunds($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auEmployeeSelfManagedSuperFundGetFunds($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auEmployeeSelfManagedSuperFundGetFundsWithHttpInfo($query, $business_id, $employee_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auEmployeeSelfManagedSuperFundGetFundsWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -427,7 +426,6 @@ class EmployeeSelfManagedSuperFundApi
      *
      * List Self Managed Super Funds
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -439,10 +437,10 @@ class EmployeeSelfManagedSuperFundApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\SelfManagedSuperFundModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auEmployeeSelfManagedSuperFundGetFundsWithHttpInfo($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auEmployeeSelfManagedSuperFundGetFundsWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\SelfManagedSuperFundModel[]';
-        $request = $this->auEmployeeSelfManagedSuperFundGetFundsRequest($query, $business_id, $employee_id, $filter, $orderby, $top, $skip);
+        $request = $this->auEmployeeSelfManagedSuperFundGetFundsRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -508,7 +506,6 @@ class EmployeeSelfManagedSuperFundApi
      *
      * List Self Managed Super Funds
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -519,9 +516,9 @@ class EmployeeSelfManagedSuperFundApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auEmployeeSelfManagedSuperFundGetFundsAsync($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auEmployeeSelfManagedSuperFundGetFundsAsync($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auEmployeeSelfManagedSuperFundGetFundsAsyncWithHttpInfo($query, $business_id, $employee_id, $filter, $orderby, $top, $skip)
+        return $this->auEmployeeSelfManagedSuperFundGetFundsAsyncWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -534,7 +531,6 @@ class EmployeeSelfManagedSuperFundApi
      *
      * List Self Managed Super Funds
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -545,10 +541,10 @@ class EmployeeSelfManagedSuperFundApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auEmployeeSelfManagedSuperFundGetFundsAsyncWithHttpInfo($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auEmployeeSelfManagedSuperFundGetFundsAsyncWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\SelfManagedSuperFundModel[]';
-        $request = $this->auEmployeeSelfManagedSuperFundGetFundsRequest($query, $business_id, $employee_id, $filter, $orderby, $top, $skip);
+        $request = $this->auEmployeeSelfManagedSuperFundGetFundsRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -590,7 +586,6 @@ class EmployeeSelfManagedSuperFundApi
     /**
      * Create request for operation 'auEmployeeSelfManagedSuperFundGetFunds'
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -601,14 +596,8 @@ class EmployeeSelfManagedSuperFundApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auEmployeeSelfManagedSuperFundGetFundsRequest($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auEmployeeSelfManagedSuperFundGetFundsRequest($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        // verify the required parameter 'query' is set
-        if ($query === null || (is_array($query) && count($query) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $query when calling auEmployeeSelfManagedSuperFundGetFunds'
-            );
-        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -644,10 +633,6 @@ class EmployeeSelfManagedSuperFundApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
-        }
-        // header params
-        if ($query !== null) {
-            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

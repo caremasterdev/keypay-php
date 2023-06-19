@@ -1,6 +1,6 @@
 <?php
 /**
- * ODataQueryOptionsOfPaygPaymentSummarySnapshot
+ * ODataQueryOptionsDeductionCategory
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ODataQueryOptionsOfPaygPaymentSummarySnapshot Class Doc Comment
+ * ODataQueryOptionsDeductionCategory Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ODataQueryOptionsOfPaygPaymentSummarySnapshot implements ModelInterface, ArrayAccess
+class ODataQueryOptionsDeductionCategory implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ODataQueryOptionsOfPaygPaymentSummarySnapshot implements ModelInterface, A
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ODataQueryOptionsOfPaygPaymentSummarySnapshot';
+    protected static $swaggerModelName = 'ODataQueryOptions[DeductionCategory]';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

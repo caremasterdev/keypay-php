@@ -1,6 +1,6 @@
 <?php
 /**
- * ODataQueryOptionsOfHourLeaveRequestQueryModel
+ * ODataQueryOptionsAbaDetails
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ODataQueryOptionsOfHourLeaveRequestQueryModel Class Doc Comment
+ * ODataQueryOptionsAbaDetails Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ODataQueryOptionsOfHourLeaveRequestQueryModel implements ModelInterface, ArrayAccess
+class ODataQueryOptionsAbaDetails implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ODataQueryOptionsOfHourLeaveRequestQueryModel implements ModelInterface, A
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ODataQueryOptionsOfHourLeaveRequestQueryModel';
+    protected static $swaggerModelName = 'ODataQueryOptions[AbaDetails]';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

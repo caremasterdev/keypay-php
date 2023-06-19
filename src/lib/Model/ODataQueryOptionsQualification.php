@@ -1,6 +1,6 @@
 <?php
 /**
- * ODataQueryOptionsOfPayRun
+ * ODataQueryOptionsQualification
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ODataQueryOptionsOfPayRun Class Doc Comment
+ * ODataQueryOptionsQualification Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ODataQueryOptionsOfPayRun implements ModelInterface, ArrayAccess
+class ODataQueryOptionsQualification implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ODataQueryOptionsOfPayRun implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ODataQueryOptionsOfPayRun';
+    protected static $swaggerModelName = 'ODataQueryOptions[Qualification]';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

@@ -266,7 +266,6 @@ class JournalExportResult implements ModelInterface, ArrayAccess
     const JOURNAL_SOURCE_INSTA_PAY = 'InstaPay';
     const JOURNAL_SOURCE_ZEPTO = 'Zepto';
     const JOURNAL_SOURCE_SLACK = 'Slack';
-    const JOURNAL_SOURCE_CAXTON = 'Caxton';
     
 
     
@@ -382,7 +381,6 @@ class JournalExportResult implements ModelInterface, ArrayAccess
             self::JOURNAL_SOURCE_INSTA_PAY,
             self::JOURNAL_SOURCE_ZEPTO,
             self::JOURNAL_SOURCE_SLACK,
-            self::JOURNAL_SOURCE_CAXTON,
         ];
     }
     

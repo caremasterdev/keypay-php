@@ -376,7 +376,6 @@ class PaymentSummaryApi
      * List Payment Summaries
      *
      * @param  int $financial_year_ending financial_year_ending (required)
-     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
@@ -387,9 +386,9 @@ class PaymentSummaryApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\PaygPaymentSummaryModel[]
      */
-    public function auPaymentSummaryGet($financial_year_ending, $query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPaymentSummaryGet($financial_year_ending, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auPaymentSummaryGetWithHttpInfo($financial_year_ending, $query, $business_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auPaymentSummaryGetWithHttpInfo($financial_year_ending, $business_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -399,7 +398,6 @@ class PaymentSummaryApi
      * List Payment Summaries
      *
      * @param  int $financial_year_ending (required)
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -410,10 +408,10 @@ class PaymentSummaryApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\PaygPaymentSummaryModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auPaymentSummaryGetWithHttpInfo($financial_year_ending, $query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPaymentSummaryGetWithHttpInfo($financial_year_ending, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\PaygPaymentSummaryModel[]';
-        $request = $this->auPaymentSummaryGetRequest($financial_year_ending, $query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auPaymentSummaryGetRequest($financial_year_ending, $business_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -480,7 +478,6 @@ class PaymentSummaryApi
      * List Payment Summaries
      *
      * @param  int $financial_year_ending (required)
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -490,9 +487,9 @@ class PaymentSummaryApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auPaymentSummaryGetAsync($financial_year_ending, $query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPaymentSummaryGetAsync($financial_year_ending, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auPaymentSummaryGetAsyncWithHttpInfo($financial_year_ending, $query, $business_id, $filter, $orderby, $top, $skip)
+        return $this->auPaymentSummaryGetAsyncWithHttpInfo($financial_year_ending, $business_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -506,7 +503,6 @@ class PaymentSummaryApi
      * List Payment Summaries
      *
      * @param  int $financial_year_ending (required)
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -516,10 +512,10 @@ class PaymentSummaryApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auPaymentSummaryGetAsyncWithHttpInfo($financial_year_ending, $query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auPaymentSummaryGetAsyncWithHttpInfo($financial_year_ending, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\PaygPaymentSummaryModel[]';
-        $request = $this->auPaymentSummaryGetRequest($financial_year_ending, $query, $business_id, $filter, $orderby, $top, $skip);
+        $request = $this->auPaymentSummaryGetRequest($financial_year_ending, $business_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -562,7 +558,6 @@ class PaymentSummaryApi
      * Create request for operation 'auPaymentSummaryGet'
      *
      * @param  int $financial_year_ending (required)
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
@@ -572,18 +567,12 @@ class PaymentSummaryApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auPaymentSummaryGetRequest($financial_year_ending, $query, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auPaymentSummaryGetRequest($financial_year_ending, $business_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         // verify the required parameter 'financial_year_ending' is set
         if ($financial_year_ending === null || (is_array($financial_year_ending) && count($financial_year_ending) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $financial_year_ending when calling auPaymentSummaryGet'
-            );
-        }
-        // verify the required parameter 'query' is set
-        if ($query === null || (is_array($query) && count($query) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $query when calling auPaymentSummaryGet'
             );
         }
         // verify the required parameter 'business_id' is set
@@ -615,10 +604,6 @@ class PaymentSummaryApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
-        }
-        // header params
-        if ($query !== null) {
-            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

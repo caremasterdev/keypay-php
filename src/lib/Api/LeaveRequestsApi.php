@@ -2032,7 +2032,6 @@ class LeaveRequestsApi
      *
      * Get Leave Requests for Employee
      *
-     * @param  object $query query (required)
      * @param  string $business_id business_id (required)
      * @param  string $employee_id employee_id (required)
      * @param  string $filter filter (optional)
@@ -2044,9 +2043,9 @@ class LeaveRequestsApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\HourLeaveRequestResponseModel[]
      */
-    public function auHoursLeaveRequestGetLeaveRequests($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auHoursLeaveRequestGetLeaveRequests($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        list($response) = $this->auHoursLeaveRequestGetLeaveRequestsWithHttpInfo($query, $business_id, $employee_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auHoursLeaveRequestGetLeaveRequestsWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip);
         return $response;
     }
 
@@ -2055,7 +2054,6 @@ class LeaveRequestsApi
      *
      * Get Leave Requests for Employee
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -2067,10 +2065,10 @@ class LeaveRequestsApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\HourLeaveRequestResponseModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auHoursLeaveRequestGetLeaveRequestsWithHttpInfo($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auHoursLeaveRequestGetLeaveRequestsWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\HourLeaveRequestResponseModel[]';
-        $request = $this->auHoursLeaveRequestGetLeaveRequestsRequest($query, $business_id, $employee_id, $filter, $orderby, $top, $skip);
+        $request = $this->auHoursLeaveRequestGetLeaveRequestsRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2136,7 +2134,6 @@ class LeaveRequestsApi
      *
      * Get Leave Requests for Employee
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -2147,9 +2144,9 @@ class LeaveRequestsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auHoursLeaveRequestGetLeaveRequestsAsync($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auHoursLeaveRequestGetLeaveRequestsAsync($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        return $this->auHoursLeaveRequestGetLeaveRequestsAsyncWithHttpInfo($query, $business_id, $employee_id, $filter, $orderby, $top, $skip)
+        return $this->auHoursLeaveRequestGetLeaveRequestsAsyncWithHttpInfo($business_id, $employee_id, $filter, $orderby, $top, $skip)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2162,7 +2159,6 @@ class LeaveRequestsApi
      *
      * Get Leave Requests for Employee
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -2173,10 +2169,10 @@ class LeaveRequestsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auHoursLeaveRequestGetLeaveRequestsAsyncWithHttpInfo($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auHoursLeaveRequestGetLeaveRequestsAsyncWithHttpInfo($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
         $returnType = '\Swagger\Client\Model\HourLeaveRequestResponseModel[]';
-        $request = $this->auHoursLeaveRequestGetLeaveRequestsRequest($query, $business_id, $employee_id, $filter, $orderby, $top, $skip);
+        $request = $this->auHoursLeaveRequestGetLeaveRequestsRequest($business_id, $employee_id, $filter, $orderby, $top, $skip);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2218,7 +2214,6 @@ class LeaveRequestsApi
     /**
      * Create request for operation 'auHoursLeaveRequestGetLeaveRequests'
      *
-     * @param  object $query (required)
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
      * @param  string $filter (optional)
@@ -2229,14 +2224,8 @@ class LeaveRequestsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auHoursLeaveRequestGetLeaveRequestsRequest($query, $business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auHoursLeaveRequestGetLeaveRequestsRequest($business_id, $employee_id, $filter = null, $orderby = null, $top = null, $skip = null)
     {
-        // verify the required parameter 'query' is set
-        if ($query === null || (is_array($query) && count($query) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $query when calling auHoursLeaveRequestGetLeaveRequests'
-            );
-        }
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -2272,10 +2261,6 @@ class LeaveRequestsApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
-        }
-        // header params
-        if ($query !== null) {
-            $headerParams['query'] = ObjectSerializer::toHeaderValue($query);
         }
 
         // path params

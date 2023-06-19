@@ -1,6 +1,6 @@
 <?php
 /**
- * ODataQueryOptionsOfReportingDimension
+ * ODataQueryOptionsBusiness
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ODataQueryOptionsOfReportingDimension Class Doc Comment
+ * ODataQueryOptionsBusiness Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ODataQueryOptionsOfReportingDimension implements ModelInterface, ArrayAccess
+class ODataQueryOptionsBusiness implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ODataQueryOptionsOfReportingDimension implements ModelInterface, ArrayAcce
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ODataQueryOptionsOfReportingDimension';
+    protected static $swaggerModelName = 'ODataQueryOptions[Business]';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
