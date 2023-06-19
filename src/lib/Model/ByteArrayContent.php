@@ -57,7 +57,7 @@ class ByteArrayContent implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'headers' => '\Swagger\Client\Model\KeyValuePairStringIEnumerableString[]'
+        'headers' => '\Swagger\Client\Model\KeyValuePairOfStringAndIEnumerableOfString[]'
     ];
 
     /**
@@ -207,7 +207,7 @@ class ByteArrayContent implements ModelInterface, ArrayAccess
     /**
      * Gets headers
      *
-     * @return \Swagger\Client\Model\KeyValuePairStringIEnumerableString[]
+     * @return \Swagger\Client\Model\KeyValuePairOfStringAndIEnumerableOfString[]
      */
     public function getHeaders()
     {
@@ -217,7 +217,7 @@ class ByteArrayContent implements ModelInterface, ArrayAccess
     /**
      * Sets headers
      *
-     * @param \Swagger\Client\Model\KeyValuePairStringIEnumerableString[] $headers 
+     * @param \Swagger\Client\Model\KeyValuePairOfStringAndIEnumerableOfString[] $headers 
      *
      * @return $this
      */

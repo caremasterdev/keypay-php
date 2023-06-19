@@ -200,6 +200,8 @@ class AuInitialEarningsModel implements ModelInterface, ArrayAccess
     const PAY_CATEGORY_TYPE_ETP_SUPERABLE_TYPE_P_TAX_FREE = 'EtpSuperableTypePTaxFree';
     const PAY_CATEGORY_TYPE_ETP_TYPE_P_UNUSED_LEAVE_PAYMENT = 'EtpTypePUnusedLeavePayment';
     const PAY_CATEGORY_TYPE_NORMAL_TERMINATION_LEAVE_LOADING = 'NormalTerminationLeaveLoading';
+    const PAY_CATEGORY_TYPE_UNUSED_LEAVE_PAYMENT_NORMAL_TERMINATION = 'UnusedLeavePaymentNormalTermination';
+    const PAY_CATEGORY_TYPE_PAID_FAMILY_AND_DOMESTIC_VIOLENCE_LEAVE = 'PaidFamilyAndDomesticViolenceLeave';
     
 
     
@@ -233,6 +235,8 @@ class AuInitialEarningsModel implements ModelInterface, ArrayAccess
             self::PAY_CATEGORY_TYPE_ETP_SUPERABLE_TYPE_P_TAX_FREE,
             self::PAY_CATEGORY_TYPE_ETP_TYPE_P_UNUSED_LEAVE_PAYMENT,
             self::PAY_CATEGORY_TYPE_NORMAL_TERMINATION_LEAVE_LOADING,
+            self::PAY_CATEGORY_TYPE_UNUSED_LEAVE_PAYMENT_NORMAL_TERMINATION,
+            self::PAY_CATEGORY_TYPE_PAID_FAMILY_AND_DOMESTIC_VIOLENCE_LEAVE,
         ];
     }
     

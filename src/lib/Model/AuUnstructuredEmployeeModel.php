@@ -120,6 +120,7 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'claim_medicare_levy_reduction' => 'bool',
         'medicare_levy_reduction_spouse' => 'bool',
         'medicare_levy_reduction_dependent_count' => 'int',
+        'dvl_pay_slip_description' => 'string',
         'id' => 'int',
         'title' => 'string',
         'preferred_name' => 'string',
@@ -260,6 +261,7 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'claim_medicare_levy_reduction' => null,
         'medicare_levy_reduction_spouse' => null,
         'medicare_levy_reduction_dependent_count' => 'int32',
+        'dvl_pay_slip_description' => null,
         'id' => 'int32',
         'title' => null,
         'preferred_name' => null,
@@ -421,6 +423,7 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'claim_medicare_levy_reduction' => 'claimMedicareLevyReduction',
         'medicare_levy_reduction_spouse' => 'medicareLevyReductionSpouse',
         'medicare_levy_reduction_dependent_count' => 'medicareLevyReductionDependentCount',
+        'dvl_pay_slip_description' => 'dvlPaySlipDescription',
         'id' => 'id',
         'title' => 'title',
         'preferred_name' => 'preferredName',
@@ -561,6 +564,7 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'claim_medicare_levy_reduction' => 'setClaimMedicareLevyReduction',
         'medicare_levy_reduction_spouse' => 'setMedicareLevyReductionSpouse',
         'medicare_levy_reduction_dependent_count' => 'setMedicareLevyReductionDependentCount',
+        'dvl_pay_slip_description' => 'setDvlPaySlipDescription',
         'id' => 'setId',
         'title' => 'setTitle',
         'preferred_name' => 'setPreferredName',
@@ -701,6 +705,7 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         'claim_medicare_levy_reduction' => 'getClaimMedicareLevyReduction',
         'medicare_levy_reduction_spouse' => 'getMedicareLevyReductionSpouse',
         'medicare_levy_reduction_dependent_count' => 'getMedicareLevyReductionDependentCount',
+        'dvl_pay_slip_description' => 'getDvlPaySlipDescription',
         'id' => 'getId',
         'title' => 'getTitle',
         'preferred_name' => 'getPreferredName',
@@ -1023,6 +1028,7 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
         $this->container['claim_medicare_levy_reduction'] = isset($data['claim_medicare_levy_reduction']) ? $data['claim_medicare_levy_reduction'] : null;
         $this->container['medicare_levy_reduction_spouse'] = isset($data['medicare_levy_reduction_spouse']) ? $data['medicare_levy_reduction_spouse'] : null;
         $this->container['medicare_levy_reduction_dependent_count'] = isset($data['medicare_levy_reduction_dependent_count']) ? $data['medicare_levy_reduction_dependent_count'] : null;
+        $this->container['dvl_pay_slip_description'] = isset($data['dvl_pay_slip_description']) ? $data['dvl_pay_slip_description'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
         $this->container['preferred_name'] = isset($data['preferred_name']) ? $data['preferred_name'] : null;
@@ -2790,6 +2796,30 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess
     public function setMedicareLevyReductionDependentCount($medicare_levy_reduction_dependent_count)
     {
         $this->container['medicare_levy_reduction_dependent_count'] = $medicare_levy_reduction_dependent_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets dvl_pay_slip_description
+     *
+     * @return string
+     */
+    public function getDvlPaySlipDescription()
+    {
+        return $this->container['dvl_pay_slip_description'];
+    }
+
+    /**
+     * Sets dvl_pay_slip_description
+     *
+     * @param string $dvl_pay_slip_description String</p><p>Possible values are:</p><ul class=\"list-bullet\"><li><code>EmployeePrimaryPayCategory</code></li><li>The name of any other pay category</li></ul><p>
+     *
+     * @return $this
+     */
+    public function setDvlPaySlipDescription($dvl_pay_slip_description)
+    {
+        $this->container['dvl_pay_slip_description'] = $dvl_pay_slip_description;
 
         return $this;
     }

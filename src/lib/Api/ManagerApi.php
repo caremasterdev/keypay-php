@@ -13295,7 +13295,7 @@ class ManagerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\PagedResultModelManagerTimesheetLineModel
+     * @return \Swagger\Client\Model\PagedResultModelOfManagerTimesheetLineModel
      */
     public function genericManagerTimesheetGet($business_id, $filter_from_date = null, $filter_to_date = null, $filter_status = null, $filter_employee_id = null, $filter_employee_group_id = null, $filter_location_id = null, $filter_include_costs = null, $filter_current_page = null, $filter_page_size = null, $filter_order_by = null)
     {
@@ -13322,11 +13322,11 @@ class ManagerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\PagedResultModelManagerTimesheetLineModel, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\PagedResultModelOfManagerTimesheetLineModel, HTTP status code, HTTP response headers (array of strings)
      */
     public function genericManagerTimesheetGetWithHttpInfo($business_id, $filter_from_date = null, $filter_to_date = null, $filter_status = null, $filter_employee_id = null, $filter_employee_group_id = null, $filter_location_id = null, $filter_include_costs = null, $filter_current_page = null, $filter_page_size = null, $filter_order_by = null)
     {
-        $returnType = '\Swagger\Client\Model\PagedResultModelManagerTimesheetLineModel';
+        $returnType = '\Swagger\Client\Model\PagedResultModelOfManagerTimesheetLineModel';
         $request = $this->genericManagerTimesheetGetRequest($business_id, $filter_from_date, $filter_to_date, $filter_status, $filter_employee_id, $filter_employee_group_id, $filter_location_id, $filter_include_costs, $filter_current_page, $filter_page_size, $filter_order_by);
 
         try {
@@ -13378,7 +13378,7 @@ class ManagerApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\PagedResultModelManagerTimesheetLineModel',
+                        '\Swagger\Client\Model\PagedResultModelOfManagerTimesheetLineModel',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -13440,7 +13440,7 @@ class ManagerApi
      */
     public function genericManagerTimesheetGetAsyncWithHttpInfo($business_id, $filter_from_date = null, $filter_to_date = null, $filter_status = null, $filter_employee_id = null, $filter_employee_group_id = null, $filter_location_id = null, $filter_include_costs = null, $filter_current_page = null, $filter_page_size = null, $filter_order_by = null)
     {
-        $returnType = '\Swagger\Client\Model\PagedResultModelManagerTimesheetLineModel';
+        $returnType = '\Swagger\Client\Model\PagedResultModelOfManagerTimesheetLineModel';
         $request = $this->genericManagerTimesheetGetRequest($business_id, $filter_from_date, $filter_to_date, $filter_status, $filter_employee_id, $filter_employee_group_id, $filter_location_id, $filter_include_costs, $filter_current_page, $filter_page_size, $filter_order_by);
 
         return $this->client
@@ -22398,7 +22398,7 @@ class ManagerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\PagedResultModelManagerExpenseRequestModel
+     * @return \Swagger\Client\Model\PagedResultModelOfManagerExpenseRequestModel
      */
     public function managerExpenseGet($business_id, $filter_status = null, $filter_from_date = null, $filter_to_date = null, $filter_employee_id = null, $filter_location_id = null, $filter_expense_category_id = null, $filter_group_by = null, $filter_current_page = null, $filter_page_size = null)
     {
@@ -22424,11 +22424,11 @@ class ManagerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\PagedResultModelManagerExpenseRequestModel, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\PagedResultModelOfManagerExpenseRequestModel, HTTP status code, HTTP response headers (array of strings)
      */
     public function managerExpenseGetWithHttpInfo($business_id, $filter_status = null, $filter_from_date = null, $filter_to_date = null, $filter_employee_id = null, $filter_location_id = null, $filter_expense_category_id = null, $filter_group_by = null, $filter_current_page = null, $filter_page_size = null)
     {
-        $returnType = '\Swagger\Client\Model\PagedResultModelManagerExpenseRequestModel';
+        $returnType = '\Swagger\Client\Model\PagedResultModelOfManagerExpenseRequestModel';
         $request = $this->managerExpenseGetRequest($business_id, $filter_status, $filter_from_date, $filter_to_date, $filter_employee_id, $filter_location_id, $filter_expense_category_id, $filter_group_by, $filter_current_page, $filter_page_size);
 
         try {
@@ -22480,7 +22480,7 @@ class ManagerApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\PagedResultModelManagerExpenseRequestModel',
+                        '\Swagger\Client\Model\PagedResultModelOfManagerExpenseRequestModel',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -22540,7 +22540,7 @@ class ManagerApi
      */
     public function managerExpenseGetAsyncWithHttpInfo($business_id, $filter_status = null, $filter_from_date = null, $filter_to_date = null, $filter_employee_id = null, $filter_location_id = null, $filter_expense_category_id = null, $filter_group_by = null, $filter_current_page = null, $filter_page_size = null)
     {
-        $returnType = '\Swagger\Client\Model\PagedResultModelManagerExpenseRequestModel';
+        $returnType = '\Swagger\Client\Model\PagedResultModelOfManagerExpenseRequestModel';
         $request = $this->managerExpenseGetRequest($business_id, $filter_status, $filter_from_date, $filter_to_date, $filter_employee_id, $filter_location_id, $filter_expense_category_id, $filter_group_by, $filter_current_page, $filter_page_size);
 
         return $this->client
