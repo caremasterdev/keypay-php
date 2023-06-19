@@ -432,6 +432,7 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
     const SOURCE_INSTA_PAY = 'InstaPay';
     const SOURCE_ZEPTO = 'Zepto';
     const SOURCE_SLACK = 'Slack';
+    const SOURCE_CAXTON = 'Caxton';
     const NUMBER_OF_EMPLOYEES_ONE_TO_TEN = 'OneToTen';
     const NUMBER_OF_EMPLOYEES_ELEVEN_TO_FIFTY = 'ElevenToFifty';
     const NUMBER_OF_EMPLOYEES_FIFTY_ONE_TO_TWO_FIFTY = 'FiftyOneToTwoFifty';
@@ -576,6 +577,7 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess
             self::SOURCE_INSTA_PAY,
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
+            self::SOURCE_CAXTON,
         ];
     }
     

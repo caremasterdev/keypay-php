@@ -313,6 +313,7 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess
     const SOURCE_INSTA_PAY = 'InstaPay';
     const SOURCE_ZEPTO = 'Zepto';
     const SOURCE_SLACK = 'Slack';
+    const SOURCE_CAXTON = 'Caxton';
     const ACCOUNT_TYPE_ELECTRONIC = 'Electronic';
     const ACCOUNT_TYPE_MANUAL_DEPOSIT = 'ManualDeposit';
     const ACCOUNT_TYPE_CASH_OR_CHEQUE = 'CashOrCheque';
@@ -403,6 +404,7 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess
             self::SOURCE_INSTA_PAY,
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
+            self::SOURCE_CAXTON,
         ];
     }
     

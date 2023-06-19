@@ -8376,7 +8376,7 @@ class EssApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\PagedResultModelSuburbModel
+     * @return \Swagger\Client\Model\PagedResultModelOfSuburbModel
      */
     public function auEssLookupSuburbs($term, $employee_id, $page_num = '1', $page_size = '20', $country_id = null)
     {
@@ -8397,11 +8397,11 @@ class EssApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\PagedResultModelSuburbModel, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\PagedResultModelOfSuburbModel, HTTP status code, HTTP response headers (array of strings)
      */
     public function auEssLookupSuburbsWithHttpInfo($term, $employee_id, $page_num = '1', $page_size = '20', $country_id = null)
     {
-        $returnType = '\Swagger\Client\Model\PagedResultModelSuburbModel';
+        $returnType = '\Swagger\Client\Model\PagedResultModelOfSuburbModel';
         $request = $this->auEssLookupSuburbsRequest($term, $employee_id, $page_num, $page_size, $country_id);
 
         try {
@@ -8453,7 +8453,7 @@ class EssApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\PagedResultModelSuburbModel',
+                        '\Swagger\Client\Model\PagedResultModelOfSuburbModel',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8503,7 +8503,7 @@ class EssApi
      */
     public function auEssLookupSuburbsAsyncWithHttpInfo($term, $employee_id, $page_num = '1', $page_size = '20', $country_id = null)
     {
-        $returnType = '\Swagger\Client\Model\PagedResultModelSuburbModel';
+        $returnType = '\Swagger\Client\Model\PagedResultModelOfSuburbModel';
         $request = $this->auEssLookupSuburbsRequest($term, $employee_id, $page_num, $page_size, $country_id);
 
         return $this->client

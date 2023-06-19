@@ -1253,14 +1253,15 @@ class EmployeeApi
      * @param  string $orderby orderby (optional)
      * @param  int $top top (optional)
      * @param  int $skip skip (optional)
+     * @param  object $options options (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AuUnstructuredEmployeeModel[]
      */
-    public function auEmployeeGetEmployees($business_id, $filter_pay_schedule_id = null, $filter_location_id = null, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auEmployeeGetEmployees($business_id, $filter_pay_schedule_id = null, $filter_location_id = null, $filter = null, $orderby = null, $top = null, $skip = null, $options = null)
     {
-        list($response) = $this->auEmployeeGetEmployeesWithHttpInfo($business_id, $filter_pay_schedule_id, $filter_location_id, $filter, $orderby, $top, $skip);
+        list($response) = $this->auEmployeeGetEmployeesWithHttpInfo($business_id, $filter_pay_schedule_id, $filter_location_id, $filter, $orderby, $top, $skip, $options);
         return $response;
     }
 
@@ -1276,15 +1277,16 @@ class EmployeeApi
      * @param  string $orderby (optional)
      * @param  int $top (optional)
      * @param  int $skip (optional)
+     * @param  object $options (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AuUnstructuredEmployeeModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auEmployeeGetEmployeesWithHttpInfo($business_id, $filter_pay_schedule_id = null, $filter_location_id = null, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auEmployeeGetEmployeesWithHttpInfo($business_id, $filter_pay_schedule_id = null, $filter_location_id = null, $filter = null, $orderby = null, $top = null, $skip = null, $options = null)
     {
         $returnType = '\Swagger\Client\Model\AuUnstructuredEmployeeModel[]';
-        $request = $this->auEmployeeGetEmployeesRequest($business_id, $filter_pay_schedule_id, $filter_location_id, $filter, $orderby, $top, $skip);
+        $request = $this->auEmployeeGetEmployeesRequest($business_id, $filter_pay_schedule_id, $filter_location_id, $filter, $orderby, $top, $skip, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1357,13 +1359,14 @@ class EmployeeApi
      * @param  string $orderby (optional)
      * @param  int $top (optional)
      * @param  int $skip (optional)
+     * @param  object $options (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auEmployeeGetEmployeesAsync($business_id, $filter_pay_schedule_id = null, $filter_location_id = null, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auEmployeeGetEmployeesAsync($business_id, $filter_pay_schedule_id = null, $filter_location_id = null, $filter = null, $orderby = null, $top = null, $skip = null, $options = null)
     {
-        return $this->auEmployeeGetEmployeesAsyncWithHttpInfo($business_id, $filter_pay_schedule_id, $filter_location_id, $filter, $orderby, $top, $skip)
+        return $this->auEmployeeGetEmployeesAsyncWithHttpInfo($business_id, $filter_pay_schedule_id, $filter_location_id, $filter, $orderby, $top, $skip, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1383,14 +1386,15 @@ class EmployeeApi
      * @param  string $orderby (optional)
      * @param  int $top (optional)
      * @param  int $skip (optional)
+     * @param  object $options (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auEmployeeGetEmployeesAsyncWithHttpInfo($business_id, $filter_pay_schedule_id = null, $filter_location_id = null, $filter = null, $orderby = null, $top = null, $skip = null)
+    public function auEmployeeGetEmployeesAsyncWithHttpInfo($business_id, $filter_pay_schedule_id = null, $filter_location_id = null, $filter = null, $orderby = null, $top = null, $skip = null, $options = null)
     {
         $returnType = '\Swagger\Client\Model\AuUnstructuredEmployeeModel[]';
-        $request = $this->auEmployeeGetEmployeesRequest($business_id, $filter_pay_schedule_id, $filter_location_id, $filter, $orderby, $top, $skip);
+        $request = $this->auEmployeeGetEmployeesRequest($business_id, $filter_pay_schedule_id, $filter_location_id, $filter, $orderby, $top, $skip, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1439,11 +1443,12 @@ class EmployeeApi
      * @param  string $orderby (optional)
      * @param  int $top (optional)
      * @param  int $skip (optional)
+     * @param  object $options (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function auEmployeeGetEmployeesRequest($business_id, $filter_pay_schedule_id = null, $filter_location_id = null, $filter = null, $orderby = null, $top = null, $skip = null)
+    protected function auEmployeeGetEmployeesRequest($business_id, $filter_pay_schedule_id = null, $filter_location_id = null, $filter = null, $orderby = null, $top = null, $skip = null, $options = null)
     {
         // verify the required parameter 'business_id' is set
         if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
@@ -1482,6 +1487,10 @@ class EmployeeApi
         // query params
         if ($skip !== null) {
             $queryParams['$skip'] = ObjectSerializer::toQueryValue($skip);
+        }
+        // header params
+        if ($options !== null) {
+            $headerParams['options'] = ObjectSerializer::toHeaderValue($options);
         }
 
         // path params
