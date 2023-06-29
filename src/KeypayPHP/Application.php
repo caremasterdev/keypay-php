@@ -4,7 +4,7 @@ namespace KeypayPHP;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-use Swagger\Client\Configuration;
+use OpenAPI\Client\Configuration;
 
 class Application
 {
