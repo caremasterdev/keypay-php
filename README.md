@@ -31,9 +31,9 @@ Once you have a valid access token, you can instantiate a KeypayPHP\Application,
 $application = new \KeypayPHP\Application($access_token);
 ```
 ### Access a particular API Group
-All of the API classes are available under ``Swagget\Client\Api``. Using ``forApi()`` will allow you to access the API using your application object's transport
+All of the API classes are available under ``OpenAPI\Client\Api``. Using ``forApi()`` will allow you to access the API using your application object's transport
 ```php
-$employees = $application->forApi('Swagger\Client\Api\EmployeeApi')->auEmployeeGetEmployees($business_id);
+$employees = $application->forApi('\OpenAPI\Client\Api\EmployeeApi')->auEmployeeGetEmployees($business_id);
 ```
 
 ## Testing
