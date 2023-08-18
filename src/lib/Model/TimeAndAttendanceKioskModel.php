@@ -74,7 +74,8 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess, \JsonS
         'is_photo_required' => 'bool',
         'can_add_employees' => 'bool',
         'available_to_all_restricted_users_with_kiosk_access' => 'bool',
-        'paid_breaks_enabled' => 'bool'
+        'paid_breaks_enabled' => 'bool',
+        'timesheet_dimensions_enabled' => 'bool'
     ];
 
     /**
@@ -102,7 +103,8 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess, \JsonS
         'is_photo_required' => null,
         'can_add_employees' => null,
         'available_to_all_restricted_users_with_kiosk_access' => null,
-        'paid_breaks_enabled' => null
+        'paid_breaks_enabled' => null,
+        'timesheet_dimensions_enabled' => null
     ];
 
     /**
@@ -128,7 +130,8 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess, \JsonS
 		'is_photo_required' => false,
 		'can_add_employees' => false,
 		'available_to_all_restricted_users_with_kiosk_access' => false,
-		'paid_breaks_enabled' => false
+		'paid_breaks_enabled' => false,
+		'timesheet_dimensions_enabled' => false
     ];
 
     /**
@@ -234,7 +237,8 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess, \JsonS
         'is_photo_required' => 'isPhotoRequired',
         'can_add_employees' => 'canAddEmployees',
         'available_to_all_restricted_users_with_kiosk_access' => 'availableToAllRestrictedUsersWithKioskAccess',
-        'paid_breaks_enabled' => 'paidBreaksEnabled'
+        'paid_breaks_enabled' => 'paidBreaksEnabled',
+        'timesheet_dimensions_enabled' => 'timesheetDimensionsEnabled'
     ];
 
     /**
@@ -260,7 +264,8 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess, \JsonS
         'is_photo_required' => 'setIsPhotoRequired',
         'can_add_employees' => 'setCanAddEmployees',
         'available_to_all_restricted_users_with_kiosk_access' => 'setAvailableToAllRestrictedUsersWithKioskAccess',
-        'paid_breaks_enabled' => 'setPaidBreaksEnabled'
+        'paid_breaks_enabled' => 'setPaidBreaksEnabled',
+        'timesheet_dimensions_enabled' => 'setTimesheetDimensionsEnabled'
     ];
 
     /**
@@ -286,7 +291,8 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess, \JsonS
         'is_photo_required' => 'getIsPhotoRequired',
         'can_add_employees' => 'getCanAddEmployees',
         'available_to_all_restricted_users_with_kiosk_access' => 'getAvailableToAllRestrictedUsersWithKioskAccess',
-        'paid_breaks_enabled' => 'getPaidBreaksEnabled'
+        'paid_breaks_enabled' => 'getPaidBreaksEnabled',
+        'timesheet_dimensions_enabled' => 'getTimesheetDimensionsEnabled'
     ];
 
     /**
@@ -364,6 +370,7 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('can_add_employees', $data ?? [], null);
         $this->setIfExists('available_to_all_restricted_users_with_kiosk_access', $data ?? [], null);
         $this->setIfExists('paid_breaks_enabled', $data ?? [], null);
+        $this->setIfExists('timesheet_dimensions_enabled', $data ?? [], null);
     }
 
     /**
@@ -890,6 +897,33 @@ class TimeAndAttendanceKioskModel implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable paid_breaks_enabled cannot be null');
         }
         $this->container['paid_breaks_enabled'] = $paid_breaks_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets timesheet_dimensions_enabled
+     *
+     * @return bool|null
+     */
+    public function getTimesheetDimensionsEnabled()
+    {
+        return $this->container['timesheet_dimensions_enabled'];
+    }
+
+    /**
+     * Sets timesheet_dimensions_enabled
+     *
+     * @param bool|null $timesheet_dimensions_enabled 
+     *
+     * @return self
+     */
+    public function setTimesheetDimensionsEnabled($timesheet_dimensions_enabled)
+    {
+        if (is_null($timesheet_dimensions_enabled)) {
+            throw new \InvalidArgumentException('non-nullable timesheet_dimensions_enabled cannot be null');
+        }
+        $this->container['timesheet_dimensions_enabled'] = $timesheet_dimensions_enabled;
 
         return $this;
     }

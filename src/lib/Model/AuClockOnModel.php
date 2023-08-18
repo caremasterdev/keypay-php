@@ -62,6 +62,7 @@ class AuClockOnModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'work_type_id' => 'int',
         'shift_condition_ids' => 'int[]',
         'note' => 'string',
+        'dimension_value_ids' => 'int[]',
         'employee_id' => 'int',
         'latitude' => 'float',
         'longitude' => 'float',
@@ -87,6 +88,7 @@ class AuClockOnModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'work_type_id' => 'int32',
         'shift_condition_ids' => 'int32',
         'note' => null,
+        'dimension_value_ids' => 'int32',
         'employee_id' => 'int32',
         'latitude' => 'double',
         'longitude' => 'double',
@@ -110,6 +112,7 @@ class AuClockOnModel implements ModelInterface, ArrayAccess, \JsonSerializable
 		'work_type_id' => false,
 		'shift_condition_ids' => false,
 		'note' => false,
+		'dimension_value_ids' => false,
 		'employee_id' => false,
 		'latitude' => false,
 		'longitude' => false,
@@ -213,6 +216,7 @@ class AuClockOnModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'work_type_id' => 'workTypeId',
         'shift_condition_ids' => 'shiftConditionIds',
         'note' => 'note',
+        'dimension_value_ids' => 'dimensionValueIds',
         'employee_id' => 'employeeId',
         'latitude' => 'latitude',
         'longitude' => 'longitude',
@@ -236,6 +240,7 @@ class AuClockOnModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'work_type_id' => 'setWorkTypeId',
         'shift_condition_ids' => 'setShiftConditionIds',
         'note' => 'setNote',
+        'dimension_value_ids' => 'setDimensionValueIds',
         'employee_id' => 'setEmployeeId',
         'latitude' => 'setLatitude',
         'longitude' => 'setLongitude',
@@ -259,6 +264,7 @@ class AuClockOnModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'work_type_id' => 'getWorkTypeId',
         'shift_condition_ids' => 'getShiftConditionIds',
         'note' => 'getNote',
+        'dimension_value_ids' => 'getDimensionValueIds',
         'employee_id' => 'getEmployeeId',
         'latitude' => 'getLatitude',
         'longitude' => 'getLongitude',
@@ -348,6 +354,7 @@ class AuClockOnModel implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('work_type_id', $data ?? [], null);
         $this->setIfExists('shift_condition_ids', $data ?? [], null);
         $this->setIfExists('note', $data ?? [], null);
+        $this->setIfExists('dimension_value_ids', $data ?? [], null);
         $this->setIfExists('employee_id', $data ?? [], null);
         $this->setIfExists('latitude', $data ?? [], null);
         $this->setIfExists('longitude', $data ?? [], null);
@@ -546,6 +553,33 @@ class AuClockOnModel implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable note cannot be null');
         }
         $this->container['note'] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimension_value_ids
+     *
+     * @return int[]|null
+     */
+    public function getDimensionValueIds()
+    {
+        return $this->container['dimension_value_ids'];
+    }
+
+    /**
+     * Sets dimension_value_ids
+     *
+     * @param int[]|null $dimension_value_ids 
+     *
+     * @return self
+     */
+    public function setDimensionValueIds($dimension_value_ids)
+    {
+        if (is_null($dimension_value_ids)) {
+            throw new \InvalidArgumentException('non-nullable dimension_value_ids cannot be null');
+        }
+        $this->container['dimension_value_ids'] = $dimension_value_ids;
 
         return $this;
     }

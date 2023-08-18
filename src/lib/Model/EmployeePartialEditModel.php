@@ -116,7 +116,17 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
         'email' => 'string',
         'home_phone' => 'string',
         'work_phone' => 'string',
-        'mobile_phone' => 'string'
+        'mobile_phone' => 'string',
+        'residential_address_mdm_id' => 'string',
+        'residential_address_mdm_version' => 'int',
+        'residential_address_mdm_schema_version' => 'string',
+        'postal_address_mdm_id' => 'string',
+        'postal_address_mdm_version' => 'int',
+        'postal_address_mdm_schema_version' => 'string',
+        'triggered_from_mdm' => 'bool',
+        'send_to_mdm' => 'bool',
+        'ignore_fields' => 'array<string,string>',
+        'mdm_sync_user' => 'bool'
     ];
 
     /**
@@ -186,7 +196,17 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
         'email' => null,
         'home_phone' => null,
         'work_phone' => null,
-        'mobile_phone' => null
+        'mobile_phone' => null,
+        'residential_address_mdm_id' => null,
+        'residential_address_mdm_version' => 'int64',
+        'residential_address_mdm_schema_version' => null,
+        'postal_address_mdm_id' => null,
+        'postal_address_mdm_version' => 'int64',
+        'postal_address_mdm_schema_version' => null,
+        'triggered_from_mdm' => null,
+        'send_to_mdm' => null,
+        'ignore_fields' => null,
+        'mdm_sync_user' => null
     ];
 
     /**
@@ -254,7 +274,17 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
 		'email' => false,
 		'home_phone' => false,
 		'work_phone' => false,
-		'mobile_phone' => false
+		'mobile_phone' => false,
+		'residential_address_mdm_id' => false,
+		'residential_address_mdm_version' => false,
+		'residential_address_mdm_schema_version' => false,
+		'postal_address_mdm_id' => false,
+		'postal_address_mdm_version' => false,
+		'postal_address_mdm_schema_version' => false,
+		'triggered_from_mdm' => false,
+		'send_to_mdm' => false,
+		'ignore_fields' => false,
+		'mdm_sync_user' => false
     ];
 
     /**
@@ -402,7 +432,17 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
         'email' => 'email',
         'home_phone' => 'homePhone',
         'work_phone' => 'workPhone',
-        'mobile_phone' => 'mobilePhone'
+        'mobile_phone' => 'mobilePhone',
+        'residential_address_mdm_id' => 'residentialAddress_MdmId',
+        'residential_address_mdm_version' => 'residentialAddress_MdmVersion',
+        'residential_address_mdm_schema_version' => 'residentialAddress_MdmSchemaVersion',
+        'postal_address_mdm_id' => 'postalAddress_MdmId',
+        'postal_address_mdm_version' => 'postalAddress_MdmVersion',
+        'postal_address_mdm_schema_version' => 'postalAddress_MdmSchemaVersion',
+        'triggered_from_mdm' => 'triggeredFromMdm',
+        'send_to_mdm' => 'sendToMdm',
+        'ignore_fields' => 'ignoreFields',
+        'mdm_sync_user' => 'mdmSyncUser'
     ];
 
     /**
@@ -470,7 +510,17 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
         'email' => 'setEmail',
         'home_phone' => 'setHomePhone',
         'work_phone' => 'setWorkPhone',
-        'mobile_phone' => 'setMobilePhone'
+        'mobile_phone' => 'setMobilePhone',
+        'residential_address_mdm_id' => 'setResidentialAddressMdmId',
+        'residential_address_mdm_version' => 'setResidentialAddressMdmVersion',
+        'residential_address_mdm_schema_version' => 'setResidentialAddressMdmSchemaVersion',
+        'postal_address_mdm_id' => 'setPostalAddressMdmId',
+        'postal_address_mdm_version' => 'setPostalAddressMdmVersion',
+        'postal_address_mdm_schema_version' => 'setPostalAddressMdmSchemaVersion',
+        'triggered_from_mdm' => 'setTriggeredFromMdm',
+        'send_to_mdm' => 'setSendToMdm',
+        'ignore_fields' => 'setIgnoreFields',
+        'mdm_sync_user' => 'setMdmSyncUser'
     ];
 
     /**
@@ -538,7 +588,17 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
         'email' => 'getEmail',
         'home_phone' => 'getHomePhone',
         'work_phone' => 'getWorkPhone',
-        'mobile_phone' => 'getMobilePhone'
+        'mobile_phone' => 'getMobilePhone',
+        'residential_address_mdm_id' => 'getResidentialAddressMdmId',
+        'residential_address_mdm_version' => 'getResidentialAddressMdmVersion',
+        'residential_address_mdm_schema_version' => 'getResidentialAddressMdmSchemaVersion',
+        'postal_address_mdm_id' => 'getPostalAddressMdmId',
+        'postal_address_mdm_version' => 'getPostalAddressMdmVersion',
+        'postal_address_mdm_schema_version' => 'getPostalAddressMdmSchemaVersion',
+        'triggered_from_mdm' => 'getTriggeredFromMdm',
+        'send_to_mdm' => 'getSendToMdm',
+        'ignore_fields' => 'getIgnoreFields',
+        'mdm_sync_user' => 'getMdmSyncUser'
     ];
 
     /**
@@ -660,6 +720,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
     public const SOURCE_ZEPTO = 'Zepto';
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
+    public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
     public const TIMESHEET_SETTING_DISABLED = 'Disabled';
     public const TIMESHEET_SETTING_ENABLED = 'Enabled';
     public const TIMESHEET_SETTING_ENABLED_FOR_EXCEPTIONS = 'EnabledForExceptions';
@@ -767,6 +828,7 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
+            self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
         ];
     }
 
@@ -887,6 +949,16 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('home_phone', $data ?? [], null);
         $this->setIfExists('work_phone', $data ?? [], null);
         $this->setIfExists('mobile_phone', $data ?? [], null);
+        $this->setIfExists('residential_address_mdm_id', $data ?? [], null);
+        $this->setIfExists('residential_address_mdm_version', $data ?? [], null);
+        $this->setIfExists('residential_address_mdm_schema_version', $data ?? [], null);
+        $this->setIfExists('postal_address_mdm_id', $data ?? [], null);
+        $this->setIfExists('postal_address_mdm_version', $data ?? [], null);
+        $this->setIfExists('postal_address_mdm_schema_version', $data ?? [], null);
+        $this->setIfExists('triggered_from_mdm', $data ?? [], null);
+        $this->setIfExists('send_to_mdm', $data ?? [], null);
+        $this->setIfExists('ignore_fields', $data ?? [], null);
+        $this->setIfExists('mdm_sync_user', $data ?? [], null);
     }
 
     /**
@@ -2642,6 +2714,276 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable mobile_phone cannot be null');
         }
         $this->container['mobile_phone'] = $mobile_phone;
+
+        return $this;
+    }
+
+    /**
+     * Gets residential_address_mdm_id
+     *
+     * @return string|null
+     */
+    public function getResidentialAddressMdmId()
+    {
+        return $this->container['residential_address_mdm_id'];
+    }
+
+    /**
+     * Sets residential_address_mdm_id
+     *
+     * @param string|null $residential_address_mdm_id 
+     *
+     * @return self
+     */
+    public function setResidentialAddressMdmId($residential_address_mdm_id)
+    {
+        if (is_null($residential_address_mdm_id)) {
+            throw new \InvalidArgumentException('non-nullable residential_address_mdm_id cannot be null');
+        }
+        $this->container['residential_address_mdm_id'] = $residential_address_mdm_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets residential_address_mdm_version
+     *
+     * @return int|null
+     */
+    public function getResidentialAddressMdmVersion()
+    {
+        return $this->container['residential_address_mdm_version'];
+    }
+
+    /**
+     * Sets residential_address_mdm_version
+     *
+     * @param int|null $residential_address_mdm_version 
+     *
+     * @return self
+     */
+    public function setResidentialAddressMdmVersion($residential_address_mdm_version)
+    {
+        if (is_null($residential_address_mdm_version)) {
+            throw new \InvalidArgumentException('non-nullable residential_address_mdm_version cannot be null');
+        }
+        $this->container['residential_address_mdm_version'] = $residential_address_mdm_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets residential_address_mdm_schema_version
+     *
+     * @return string|null
+     */
+    public function getResidentialAddressMdmSchemaVersion()
+    {
+        return $this->container['residential_address_mdm_schema_version'];
+    }
+
+    /**
+     * Sets residential_address_mdm_schema_version
+     *
+     * @param string|null $residential_address_mdm_schema_version 
+     *
+     * @return self
+     */
+    public function setResidentialAddressMdmSchemaVersion($residential_address_mdm_schema_version)
+    {
+        if (is_null($residential_address_mdm_schema_version)) {
+            throw new \InvalidArgumentException('non-nullable residential_address_mdm_schema_version cannot be null');
+        }
+        $this->container['residential_address_mdm_schema_version'] = $residential_address_mdm_schema_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets postal_address_mdm_id
+     *
+     * @return string|null
+     */
+    public function getPostalAddressMdmId()
+    {
+        return $this->container['postal_address_mdm_id'];
+    }
+
+    /**
+     * Sets postal_address_mdm_id
+     *
+     * @param string|null $postal_address_mdm_id 
+     *
+     * @return self
+     */
+    public function setPostalAddressMdmId($postal_address_mdm_id)
+    {
+        if (is_null($postal_address_mdm_id)) {
+            throw new \InvalidArgumentException('non-nullable postal_address_mdm_id cannot be null');
+        }
+        $this->container['postal_address_mdm_id'] = $postal_address_mdm_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets postal_address_mdm_version
+     *
+     * @return int|null
+     */
+    public function getPostalAddressMdmVersion()
+    {
+        return $this->container['postal_address_mdm_version'];
+    }
+
+    /**
+     * Sets postal_address_mdm_version
+     *
+     * @param int|null $postal_address_mdm_version 
+     *
+     * @return self
+     */
+    public function setPostalAddressMdmVersion($postal_address_mdm_version)
+    {
+        if (is_null($postal_address_mdm_version)) {
+            throw new \InvalidArgumentException('non-nullable postal_address_mdm_version cannot be null');
+        }
+        $this->container['postal_address_mdm_version'] = $postal_address_mdm_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets postal_address_mdm_schema_version
+     *
+     * @return string|null
+     */
+    public function getPostalAddressMdmSchemaVersion()
+    {
+        return $this->container['postal_address_mdm_schema_version'];
+    }
+
+    /**
+     * Sets postal_address_mdm_schema_version
+     *
+     * @param string|null $postal_address_mdm_schema_version 
+     *
+     * @return self
+     */
+    public function setPostalAddressMdmSchemaVersion($postal_address_mdm_schema_version)
+    {
+        if (is_null($postal_address_mdm_schema_version)) {
+            throw new \InvalidArgumentException('non-nullable postal_address_mdm_schema_version cannot be null');
+        }
+        $this->container['postal_address_mdm_schema_version'] = $postal_address_mdm_schema_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets triggered_from_mdm
+     *
+     * @return bool|null
+     */
+    public function getTriggeredFromMdm()
+    {
+        return $this->container['triggered_from_mdm'];
+    }
+
+    /**
+     * Sets triggered_from_mdm
+     *
+     * @param bool|null $triggered_from_mdm 
+     *
+     * @return self
+     */
+    public function setTriggeredFromMdm($triggered_from_mdm)
+    {
+        if (is_null($triggered_from_mdm)) {
+            throw new \InvalidArgumentException('non-nullable triggered_from_mdm cannot be null');
+        }
+        $this->container['triggered_from_mdm'] = $triggered_from_mdm;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_to_mdm
+     *
+     * @return bool|null
+     */
+    public function getSendToMdm()
+    {
+        return $this->container['send_to_mdm'];
+    }
+
+    /**
+     * Sets send_to_mdm
+     *
+     * @param bool|null $send_to_mdm 
+     *
+     * @return self
+     */
+    public function setSendToMdm($send_to_mdm)
+    {
+        if (is_null($send_to_mdm)) {
+            throw new \InvalidArgumentException('non-nullable send_to_mdm cannot be null');
+        }
+        $this->container['send_to_mdm'] = $send_to_mdm;
+
+        return $this;
+    }
+
+    /**
+     * Gets ignore_fields
+     *
+     * @return array<string,string>|null
+     */
+    public function getIgnoreFields()
+    {
+        return $this->container['ignore_fields'];
+    }
+
+    /**
+     * Sets ignore_fields
+     *
+     * @param array<string,string>|null $ignore_fields 
+     *
+     * @return self
+     */
+    public function setIgnoreFields($ignore_fields)
+    {
+        if (is_null($ignore_fields)) {
+            throw new \InvalidArgumentException('non-nullable ignore_fields cannot be null');
+        }
+        $this->container['ignore_fields'] = $ignore_fields;
+
+        return $this;
+    }
+
+    /**
+     * Gets mdm_sync_user
+     *
+     * @return bool|null
+     */
+    public function getMdmSyncUser()
+    {
+        return $this->container['mdm_sync_user'];
+    }
+
+    /**
+     * Sets mdm_sync_user
+     *
+     * @param bool|null $mdm_sync_user 
+     *
+     * @return self
+     */
+    public function setMdmSyncUser($mdm_sync_user)
+    {
+        if (is_null($mdm_sync_user)) {
+            throw new \InvalidArgumentException('non-nullable mdm_sync_user cannot be null');
+        }
+        $this->container['mdm_sync_user'] = $mdm_sync_user;
 
         return $this;
     }

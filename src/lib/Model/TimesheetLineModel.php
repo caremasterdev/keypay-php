@@ -80,7 +80,8 @@ class TimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializab
         'classification' => 'string',
         'shift_conditions' => '\OpenAPI\Client\Model\TimesheetShiftConditionModel[]',
         'hidden_comments' => 'string',
-        'submitted_by_user' => 'string'
+        'submitted_by_user' => 'string',
+        'dimension_values' => '\OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]'
     ];
 
     /**
@@ -114,7 +115,8 @@ class TimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializab
         'classification' => null,
         'shift_conditions' => null,
         'hidden_comments' => null,
-        'submitted_by_user' => null
+        'submitted_by_user' => null,
+        'dimension_values' => null
     ];
 
     /**
@@ -146,7 +148,8 @@ class TimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializab
 		'classification' => false,
 		'shift_conditions' => false,
 		'hidden_comments' => false,
-		'submitted_by_user' => false
+		'submitted_by_user' => false,
+		'dimension_values' => false
     ];
 
     /**
@@ -258,7 +261,8 @@ class TimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializab
         'classification' => 'classification',
         'shift_conditions' => 'shiftConditions',
         'hidden_comments' => 'hiddenComments',
-        'submitted_by_user' => 'submittedByUser'
+        'submitted_by_user' => 'submittedByUser',
+        'dimension_values' => 'dimensionValues'
     ];
 
     /**
@@ -290,7 +294,8 @@ class TimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializab
         'classification' => 'setClassification',
         'shift_conditions' => 'setShiftConditions',
         'hidden_comments' => 'setHiddenComments',
-        'submitted_by_user' => 'setSubmittedByUser'
+        'submitted_by_user' => 'setSubmittedByUser',
+        'dimension_values' => 'setDimensionValues'
     ];
 
     /**
@@ -322,7 +327,8 @@ class TimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializab
         'classification' => 'getClassification',
         'shift_conditions' => 'getShiftConditions',
         'hidden_comments' => 'getHiddenComments',
-        'submitted_by_user' => 'getSubmittedByUser'
+        'submitted_by_user' => 'getSubmittedByUser',
+        'dimension_values' => 'getDimensionValues'
     ];
 
     /**
@@ -442,6 +448,7 @@ class TimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializab
     public const SOURCE_ZEPTO = 'Zepto';
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
+    public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
 
     /**
      * Gets allowable values of the enum
@@ -527,6 +534,7 @@ class TimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializab
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
+            self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
         ];
     }
 
@@ -569,6 +577,7 @@ class TimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('shift_conditions', $data ?? [], null);
         $this->setIfExists('hidden_comments', $data ?? [], null);
         $this->setIfExists('submitted_by_user', $data ?? [], null);
+        $this->setIfExists('dimension_values', $data ?? [], null);
     }
 
     /**
@@ -1276,6 +1285,33 @@ class TimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable submitted_by_user cannot be null');
         }
         $this->container['submitted_by_user'] = $submitted_by_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimension_values
+     *
+     * @return \OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]|null
+     */
+    public function getDimensionValues()
+    {
+        return $this->container['dimension_values'];
+    }
+
+    /**
+     * Sets dimension_values
+     *
+     * @param \OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]|null $dimension_values 
+     *
+     * @return self
+     */
+    public function setDimensionValues($dimension_values)
+    {
+        if (is_null($dimension_values)) {
+            throw new \InvalidArgumentException('non-nullable dimension_values cannot be null');
+        }
+        $this->container['dimension_values'] = $dimension_values;
 
         return $this;
     }

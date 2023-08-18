@@ -340,6 +340,7 @@ class JournalExportResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const JOURNAL_SOURCE_ZEPTO = 'Zepto';
     public const JOURNAL_SOURCE_SLACK = 'Slack';
     public const JOURNAL_SOURCE_CAXTON = 'Caxton';
+    public const JOURNAL_SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
 
     /**
      * Gets allowable values of the enum
@@ -454,6 +455,7 @@ class JournalExportResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::JOURNAL_SOURCE_ZEPTO,
             self::JOURNAL_SOURCE_SLACK,
             self::JOURNAL_SOURCE_CAXTON,
+            self::JOURNAL_SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
         ];
     }
 

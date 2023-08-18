@@ -462,8 +462,6 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess, \JsonSeriali
     public const LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE = 'EmployeeStartDate';
     public const LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE = 'SpecifiedDate';
     public const LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR = 'CalendarYear';
-    public const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH = 'RollingYear12Month';
-    public const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH = 'RollingYear24Month';
     public const SOURCE_NONE = 'None';
     public const SOURCE_SAASU = 'Saasu';
     public const SOURCE_XERO = 'Xero';
@@ -540,6 +538,7 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess, \JsonSeriali
     public const SOURCE_ZEPTO = 'Zepto';
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
+    public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
     public const NUMBER_OF_EMPLOYEES_ONE_TO_TEN = 'OneToTen';
     public const NUMBER_OF_EMPLOYEES_ELEVEN_TO_FIFTY = 'ElevenToFifty';
     public const NUMBER_OF_EMPLOYEES_FIFTY_ONE_TO_TWO_FIFTY = 'FiftyOneToTwoFifty';
@@ -594,8 +593,6 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess, \JsonSeriali
             self::LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR,
-            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH,
-            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH,
         ];
     }
 
@@ -683,6 +680,7 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess, \JsonSeriali
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
+            self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
         ];
     }
 

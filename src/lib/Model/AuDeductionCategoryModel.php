@@ -373,6 +373,7 @@ class AuDeductionCategoryModel implements ModelInterface, ArrayAccess, \JsonSeri
     public const SOURCE_ZEPTO = 'Zepto';
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
+    public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
 
     /**
      * Gets allowable values of the enum
@@ -489,6 +490,7 @@ class AuDeductionCategoryModel implements ModelInterface, ArrayAccess, \JsonSeri
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
+            self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
         ];
     }
 

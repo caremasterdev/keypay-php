@@ -62,7 +62,10 @@ class AuTimeAndAttendanceLookupDataModel implements ModelInterface, ArrayAccess,
         'classifications' => '\OpenAPI\Client\Model\ClassificationLookupModel[]',
         'default_location' => '\OpenAPI\Client\Model\LocationSelectModel',
         'shift_conditions' => '\OpenAPI\Client\Model\ShiftConditionSelectModel[]',
-        'location_shift_conditions' => '\OpenAPI\Client\Model\LocationShiftConditionsModel[]'
+        'location_shift_conditions' => '\OpenAPI\Client\Model\LocationShiftConditionsModel[]',
+        'reporting_dimensions_enabled' => 'bool',
+        'reporting_dimension_groups' => '\OpenAPI\Client\Model\NumericNullableSelectListItem[]',
+        'reporting_dimension_values' => '\OpenAPI\Client\Model\ReportingDimensionValueSelectModel[]'
     ];
 
     /**
@@ -78,7 +81,10 @@ class AuTimeAndAttendanceLookupDataModel implements ModelInterface, ArrayAccess,
         'classifications' => null,
         'default_location' => null,
         'shift_conditions' => null,
-        'location_shift_conditions' => null
+        'location_shift_conditions' => null,
+        'reporting_dimensions_enabled' => null,
+        'reporting_dimension_groups' => null,
+        'reporting_dimension_values' => null
     ];
 
     /**
@@ -92,7 +98,10 @@ class AuTimeAndAttendanceLookupDataModel implements ModelInterface, ArrayAccess,
 		'classifications' => false,
 		'default_location' => false,
 		'shift_conditions' => false,
-		'location_shift_conditions' => false
+		'location_shift_conditions' => false,
+		'reporting_dimensions_enabled' => false,
+		'reporting_dimension_groups' => false,
+		'reporting_dimension_values' => false
     ];
 
     /**
@@ -186,7 +195,10 @@ class AuTimeAndAttendanceLookupDataModel implements ModelInterface, ArrayAccess,
         'classifications' => 'classifications',
         'default_location' => 'defaultLocation',
         'shift_conditions' => 'shiftConditions',
-        'location_shift_conditions' => 'locationShiftConditions'
+        'location_shift_conditions' => 'locationShiftConditions',
+        'reporting_dimensions_enabled' => 'reportingDimensionsEnabled',
+        'reporting_dimension_groups' => 'reportingDimensionGroups',
+        'reporting_dimension_values' => 'reportingDimensionValues'
     ];
 
     /**
@@ -200,7 +212,10 @@ class AuTimeAndAttendanceLookupDataModel implements ModelInterface, ArrayAccess,
         'classifications' => 'setClassifications',
         'default_location' => 'setDefaultLocation',
         'shift_conditions' => 'setShiftConditions',
-        'location_shift_conditions' => 'setLocationShiftConditions'
+        'location_shift_conditions' => 'setLocationShiftConditions',
+        'reporting_dimensions_enabled' => 'setReportingDimensionsEnabled',
+        'reporting_dimension_groups' => 'setReportingDimensionGroups',
+        'reporting_dimension_values' => 'setReportingDimensionValues'
     ];
 
     /**
@@ -214,7 +229,10 @@ class AuTimeAndAttendanceLookupDataModel implements ModelInterface, ArrayAccess,
         'classifications' => 'getClassifications',
         'default_location' => 'getDefaultLocation',
         'shift_conditions' => 'getShiftConditions',
-        'location_shift_conditions' => 'getLocationShiftConditions'
+        'location_shift_conditions' => 'getLocationShiftConditions',
+        'reporting_dimensions_enabled' => 'getReportingDimensionsEnabled',
+        'reporting_dimension_groups' => 'getReportingDimensionGroups',
+        'reporting_dimension_values' => 'getReportingDimensionValues'
     ];
 
     /**
@@ -280,6 +298,9 @@ class AuTimeAndAttendanceLookupDataModel implements ModelInterface, ArrayAccess,
         $this->setIfExists('default_location', $data ?? [], null);
         $this->setIfExists('shift_conditions', $data ?? [], null);
         $this->setIfExists('location_shift_conditions', $data ?? [], null);
+        $this->setIfExists('reporting_dimensions_enabled', $data ?? [], null);
+        $this->setIfExists('reporting_dimension_groups', $data ?? [], null);
+        $this->setIfExists('reporting_dimension_values', $data ?? [], null);
     }
 
     /**
@@ -482,6 +503,87 @@ class AuTimeAndAttendanceLookupDataModel implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable location_shift_conditions cannot be null');
         }
         $this->container['location_shift_conditions'] = $location_shift_conditions;
+
+        return $this;
+    }
+
+    /**
+     * Gets reporting_dimensions_enabled
+     *
+     * @return bool|null
+     */
+    public function getReportingDimensionsEnabled()
+    {
+        return $this->container['reporting_dimensions_enabled'];
+    }
+
+    /**
+     * Sets reporting_dimensions_enabled
+     *
+     * @param bool|null $reporting_dimensions_enabled 
+     *
+     * @return self
+     */
+    public function setReportingDimensionsEnabled($reporting_dimensions_enabled)
+    {
+        if (is_null($reporting_dimensions_enabled)) {
+            throw new \InvalidArgumentException('non-nullable reporting_dimensions_enabled cannot be null');
+        }
+        $this->container['reporting_dimensions_enabled'] = $reporting_dimensions_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets reporting_dimension_groups
+     *
+     * @return \OpenAPI\Client\Model\NumericNullableSelectListItem[]|null
+     */
+    public function getReportingDimensionGroups()
+    {
+        return $this->container['reporting_dimension_groups'];
+    }
+
+    /**
+     * Sets reporting_dimension_groups
+     *
+     * @param \OpenAPI\Client\Model\NumericNullableSelectListItem[]|null $reporting_dimension_groups 
+     *
+     * @return self
+     */
+    public function setReportingDimensionGroups($reporting_dimension_groups)
+    {
+        if (is_null($reporting_dimension_groups)) {
+            throw new \InvalidArgumentException('non-nullable reporting_dimension_groups cannot be null');
+        }
+        $this->container['reporting_dimension_groups'] = $reporting_dimension_groups;
+
+        return $this;
+    }
+
+    /**
+     * Gets reporting_dimension_values
+     *
+     * @return \OpenAPI\Client\Model\ReportingDimensionValueSelectModel[]|null
+     */
+    public function getReportingDimensionValues()
+    {
+        return $this->container['reporting_dimension_values'];
+    }
+
+    /**
+     * Sets reporting_dimension_values
+     *
+     * @param \OpenAPI\Client\Model\ReportingDimensionValueSelectModel[]|null $reporting_dimension_values 
+     *
+     * @return self
+     */
+    public function setReportingDimensionValues($reporting_dimension_values)
+    {
+        if (is_null($reporting_dimension_values)) {
+            throw new \InvalidArgumentException('non-nullable reporting_dimension_values cannot be null');
+        }
+        $this->container['reporting_dimension_values'] = $reporting_dimension_values;
 
         return $this;
     }

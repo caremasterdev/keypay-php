@@ -2244,20 +2244,20 @@ class BusinessApi
      *
      * List Businesses
      *
+     * @param  mixed $query query (optional)
      * @param  string $filter filter (optional)
      * @param  string $orderby orderby (optional)
      * @param  int $top top (optional)
      * @param  int $skip skip (optional)
-     * @param  mixed $query query (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessGetBusinesses'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AuBusinessExportModel[]
      */
-    public function auBusinessGetBusinesses($filter = null, $orderby = null, $top = null, $skip = null, $query = null, string $contentType = self::contentTypes['auBusinessGetBusinesses'][0])
+    public function auBusinessGetBusinesses($query = null, $filter = null, $orderby = null, $top = null, $skip = null, string $contentType = self::contentTypes['auBusinessGetBusinesses'][0])
     {
-        list($response) = $this->auBusinessGetBusinessesWithHttpInfo($filter, $orderby, $top, $skip, $query, $contentType);
+        list($response) = $this->auBusinessGetBusinessesWithHttpInfo($query, $filter, $orderby, $top, $skip, $contentType);
         return $response;
     }
 
@@ -2266,20 +2266,20 @@ class BusinessApi
      *
      * List Businesses
      *
+     * @param  mixed $query (optional)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
      * @param  int $top (optional)
      * @param  int $skip (optional)
-     * @param  mixed $query (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessGetBusinesses'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AuBusinessExportModel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function auBusinessGetBusinessesWithHttpInfo($filter = null, $orderby = null, $top = null, $skip = null, $query = null, string $contentType = self::contentTypes['auBusinessGetBusinesses'][0])
+    public function auBusinessGetBusinessesWithHttpInfo($query = null, $filter = null, $orderby = null, $top = null, $skip = null, string $contentType = self::contentTypes['auBusinessGetBusinesses'][0])
     {
-        $request = $this->auBusinessGetBusinessesRequest($filter, $orderby, $top, $skip, $query, $contentType);
+        $request = $this->auBusinessGetBusinessesRequest($query, $filter, $orderby, $top, $skip, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2370,19 +2370,19 @@ class BusinessApi
      *
      * List Businesses
      *
+     * @param  mixed $query (optional)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
      * @param  int $top (optional)
      * @param  int $skip (optional)
-     * @param  mixed $query (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessGetBusinesses'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auBusinessGetBusinessesAsync($filter = null, $orderby = null, $top = null, $skip = null, $query = null, string $contentType = self::contentTypes['auBusinessGetBusinesses'][0])
+    public function auBusinessGetBusinessesAsync($query = null, $filter = null, $orderby = null, $top = null, $skip = null, string $contentType = self::contentTypes['auBusinessGetBusinesses'][0])
     {
-        return $this->auBusinessGetBusinessesAsyncWithHttpInfo($filter, $orderby, $top, $skip, $query, $contentType)
+        return $this->auBusinessGetBusinessesAsyncWithHttpInfo($query, $filter, $orderby, $top, $skip, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2395,20 +2395,20 @@ class BusinessApi
      *
      * List Businesses
      *
+     * @param  mixed $query (optional)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
      * @param  int $top (optional)
      * @param  int $skip (optional)
-     * @param  mixed $query (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessGetBusinesses'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auBusinessGetBusinessesAsyncWithHttpInfo($filter = null, $orderby = null, $top = null, $skip = null, $query = null, string $contentType = self::contentTypes['auBusinessGetBusinesses'][0])
+    public function auBusinessGetBusinessesAsyncWithHttpInfo($query = null, $filter = null, $orderby = null, $top = null, $skip = null, string $contentType = self::contentTypes['auBusinessGetBusinesses'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AuBusinessExportModel[]';
-        $request = $this->auBusinessGetBusinessesRequest($filter, $orderby, $top, $skip, $query, $contentType);
+        $request = $this->auBusinessGetBusinessesRequest($query, $filter, $orderby, $top, $skip, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2449,17 +2449,17 @@ class BusinessApi
     /**
      * Create request for operation 'auBusinessGetBusinesses'
      *
+     * @param  mixed $query (optional)
      * @param  string $filter (optional)
      * @param  string $orderby (optional)
      * @param  int $top (optional)
      * @param  int $skip (optional)
-     * @param  mixed $query (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessGetBusinesses'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function auBusinessGetBusinessesRequest($filter = null, $orderby = null, $top = null, $skip = null, $query = null, string $contentType = self::contentTypes['auBusinessGetBusinesses'][0])
+    public function auBusinessGetBusinessesRequest($query = null, $filter = null, $orderby = null, $top = null, $skip = null, string $contentType = self::contentTypes['auBusinessGetBusinesses'][0])
     {
 
 

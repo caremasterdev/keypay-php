@@ -86,7 +86,8 @@ class EssLeaveRequestModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'unit_type' => 'string',
         'banner' => '\OpenAPI\Client\Model\PartiallyAppliedLeaveRequestBannerModel',
         'manually_applied' => 'bool',
-        'applied_leave_unit_type_description' => 'string'
+        'applied_leave_unit_type_description' => 'string',
+        'return_to_work_interview_url' => 'string'
     ];
 
     /**
@@ -126,7 +127,8 @@ class EssLeaveRequestModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'unit_type' => null,
         'banner' => null,
         'manually_applied' => null,
-        'applied_leave_unit_type_description' => null
+        'applied_leave_unit_type_description' => null,
+        'return_to_work_interview_url' => null
     ];
 
     /**
@@ -164,7 +166,8 @@ class EssLeaveRequestModel implements ModelInterface, ArrayAccess, \JsonSerializ
 		'unit_type' => false,
 		'banner' => false,
 		'manually_applied' => false,
-		'applied_leave_unit_type_description' => false
+		'applied_leave_unit_type_description' => false,
+		'return_to_work_interview_url' => false
     ];
 
     /**
@@ -282,7 +285,8 @@ class EssLeaveRequestModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'unit_type' => 'unitType',
         'banner' => 'banner',
         'manually_applied' => 'manuallyApplied',
-        'applied_leave_unit_type_description' => 'appliedLeaveUnitTypeDescription'
+        'applied_leave_unit_type_description' => 'appliedLeaveUnitTypeDescription',
+        'return_to_work_interview_url' => 'returnToWorkInterviewUrl'
     ];
 
     /**
@@ -320,7 +324,8 @@ class EssLeaveRequestModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'unit_type' => 'setUnitType',
         'banner' => 'setBanner',
         'manually_applied' => 'setManuallyApplied',
-        'applied_leave_unit_type_description' => 'setAppliedLeaveUnitTypeDescription'
+        'applied_leave_unit_type_description' => 'setAppliedLeaveUnitTypeDescription',
+        'return_to_work_interview_url' => 'setReturnToWorkInterviewUrl'
     ];
 
     /**
@@ -358,7 +363,8 @@ class EssLeaveRequestModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'unit_type' => 'getUnitType',
         'banner' => 'getBanner',
         'manually_applied' => 'getManuallyApplied',
-        'applied_leave_unit_type_description' => 'getAppliedLeaveUnitTypeDescription'
+        'applied_leave_unit_type_description' => 'getAppliedLeaveUnitTypeDescription',
+        'return_to_work_interview_url' => 'getReturnToWorkInterviewUrl'
     ];
 
     /**
@@ -465,6 +471,7 @@ class EssLeaveRequestModel implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('banner', $data ?? [], null);
         $this->setIfExists('manually_applied', $data ?? [], null);
         $this->setIfExists('applied_leave_unit_type_description', $data ?? [], null);
+        $this->setIfExists('return_to_work_interview_url', $data ?? [], null);
     }
 
     /**
@@ -1334,6 +1341,33 @@ class EssLeaveRequestModel implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable applied_leave_unit_type_description cannot be null');
         }
         $this->container['applied_leave_unit_type_description'] = $applied_leave_unit_type_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets return_to_work_interview_url
+     *
+     * @return string|null
+     */
+    public function getReturnToWorkInterviewUrl()
+    {
+        return $this->container['return_to_work_interview_url'];
+    }
+
+    /**
+     * Sets return_to_work_interview_url
+     *
+     * @param string|null $return_to_work_interview_url 
+     *
+     * @return self
+     */
+    public function setReturnToWorkInterviewUrl($return_to_work_interview_url)
+    {
+        if (is_null($return_to_work_interview_url)) {
+            throw new \InvalidArgumentException('non-nullable return_to_work_interview_url cannot be null');
+        }
+        $this->container['return_to_work_interview_url'] = $return_to_work_interview_url;
 
         return $this;
     }

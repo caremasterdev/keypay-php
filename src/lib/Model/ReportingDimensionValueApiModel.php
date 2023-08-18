@@ -57,15 +57,15 @@ class ReportingDimensionValueApiModel implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'name' => 'string',
-        'reporting_dimension_id' => 'int',
         'source' => 'string',
         'external_id' => 'string',
         'all_employees' => 'bool',
         'specific_employees' => 'string',
         'filter_combination_strategy' => 'string',
-        'filters' => '\OpenAPI\Client\Model\ReportingDimensionValueFilterApiModel[]'
+        'filters' => '\OpenAPI\Client\Model\ReportingDimensionValueFilterApiModel[]',
+        'id' => 'int',
+        'name' => 'string',
+        'reporting_dimension_id' => 'int'
     ];
 
     /**
@@ -76,15 +76,15 @@ class ReportingDimensionValueApiModel implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'int32',
-        'name' => null,
-        'reporting_dimension_id' => 'int32',
         'source' => null,
         'external_id' => null,
         'all_employees' => null,
         'specific_employees' => null,
         'filter_combination_strategy' => null,
-        'filters' => null
+        'filters' => null,
+        'id' => 'int32',
+        'name' => null,
+        'reporting_dimension_id' => 'int32'
     ];
 
     /**
@@ -93,15 +93,15 @@ class ReportingDimensionValueApiModel implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-		'name' => false,
-		'reporting_dimension_id' => false,
-		'source' => false,
+        'source' => false,
 		'external_id' => false,
 		'all_employees' => false,
 		'specific_employees' => false,
 		'filter_combination_strategy' => false,
-		'filters' => false
+		'filters' => false,
+		'id' => false,
+		'name' => false,
+		'reporting_dimension_id' => false
     ];
 
     /**
@@ -190,15 +190,15 @@ class ReportingDimensionValueApiModel implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'reporting_dimension_id' => 'reportingDimensionId',
         'source' => 'source',
         'external_id' => 'externalId',
         'all_employees' => 'allEmployees',
         'specific_employees' => 'specificEmployees',
         'filter_combination_strategy' => 'filterCombinationStrategy',
-        'filters' => 'filters'
+        'filters' => 'filters',
+        'id' => 'id',
+        'name' => 'name',
+        'reporting_dimension_id' => 'reportingDimensionId'
     ];
 
     /**
@@ -207,15 +207,15 @@ class ReportingDimensionValueApiModel implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'reporting_dimension_id' => 'setReportingDimensionId',
         'source' => 'setSource',
         'external_id' => 'setExternalId',
         'all_employees' => 'setAllEmployees',
         'specific_employees' => 'setSpecificEmployees',
         'filter_combination_strategy' => 'setFilterCombinationStrategy',
-        'filters' => 'setFilters'
+        'filters' => 'setFilters',
+        'id' => 'setId',
+        'name' => 'setName',
+        'reporting_dimension_id' => 'setReportingDimensionId'
     ];
 
     /**
@@ -224,15 +224,15 @@ class ReportingDimensionValueApiModel implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'reporting_dimension_id' => 'getReportingDimensionId',
         'source' => 'getSource',
         'external_id' => 'getExternalId',
         'all_employees' => 'getAllEmployees',
         'specific_employees' => 'getSpecificEmployees',
         'filter_combination_strategy' => 'getFilterCombinationStrategy',
-        'filters' => 'getFilters'
+        'filters' => 'getFilters',
+        'id' => 'getId',
+        'name' => 'getName',
+        'reporting_dimension_id' => 'getReportingDimensionId'
     ];
 
     /**
@@ -352,6 +352,7 @@ class ReportingDimensionValueApiModel implements ModelInterface, ArrayAccess, \J
     public const SOURCE_ZEPTO = 'Zepto';
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
+    public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
 
     /**
      * Gets allowable values of the enum
@@ -437,6 +438,7 @@ class ReportingDimensionValueApiModel implements ModelInterface, ArrayAccess, \J
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
+            self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
         ];
     }
 
@@ -455,15 +457,15 @@ class ReportingDimensionValueApiModel implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('reporting_dimension_id', $data ?? [], null);
         $this->setIfExists('source', $data ?? [], null);
         $this->setIfExists('external_id', $data ?? [], null);
         $this->setIfExists('all_employees', $data ?? [], null);
         $this->setIfExists('specific_employees', $data ?? [], null);
         $this->setIfExists('filter_combination_strategy', $data ?? [], null);
         $this->setIfExists('filters', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('reporting_dimension_id', $data ?? [], null);
     }
 
     /**
@@ -516,87 +518,6 @@ class ReportingDimensionValueApiModel implements ModelInterface, ArrayAccess, \J
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return int|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int|null $id 
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name 
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets reporting_dimension_id
-     *
-     * @return int|null
-     */
-    public function getReportingDimensionId()
-    {
-        return $this->container['reporting_dimension_id'];
-    }
-
-    /**
-     * Sets reporting_dimension_id
-     *
-     * @param int|null $reporting_dimension_id 
-     *
-     * @return self
-     */
-    public function setReportingDimensionId($reporting_dimension_id)
-    {
-        if (is_null($reporting_dimension_id)) {
-            throw new \InvalidArgumentException('non-nullable reporting_dimension_id cannot be null');
-        }
-        $this->container['reporting_dimension_id'] = $reporting_dimension_id;
-
-        return $this;
-    }
 
     /**
      * Gets source
@@ -766,6 +687,87 @@ class ReportingDimensionValueApiModel implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable filters cannot be null');
         }
         $this->container['filters'] = $filters;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return int|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int|null $id 
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name 
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets reporting_dimension_id
+     *
+     * @return int|null
+     */
+    public function getReportingDimensionId()
+    {
+        return $this->container['reporting_dimension_id'];
+    }
+
+    /**
+     * Sets reporting_dimension_id
+     *
+     * @param int|null $reporting_dimension_id 
+     *
+     * @return self
+     */
+    public function setReportingDimensionId($reporting_dimension_id)
+    {
+        if (is_null($reporting_dimension_id)) {
+            throw new \InvalidArgumentException('non-nullable reporting_dimension_id cannot be null');
+        }
+        $this->container['reporting_dimension_id'] = $reporting_dimension_id;
 
         return $this;
     }

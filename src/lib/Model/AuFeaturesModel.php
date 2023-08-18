@@ -88,7 +88,8 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'shift_bidding' => 'bool',
         'allow_to_select_higher_classification' => 'bool',
         'allow_employee_work_eligibility_self_service' => 'bool',
-        'paid_breaks_enabled' => 'bool'
+        'paid_breaks_enabled' => 'bool',
+        'timesheet_dimensions_enabled' => 'bool'
     ];
 
     /**
@@ -130,7 +131,8 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'shift_bidding' => null,
         'allow_to_select_higher_classification' => null,
         'allow_employee_work_eligibility_self_service' => null,
-        'paid_breaks_enabled' => null
+        'paid_breaks_enabled' => null,
+        'timesheet_dimensions_enabled' => null
     ];
 
     /**
@@ -170,7 +172,8 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess, \JsonSerializable
 		'shift_bidding' => false,
 		'allow_to_select_higher_classification' => false,
 		'allow_employee_work_eligibility_self_service' => false,
-		'paid_breaks_enabled' => false
+		'paid_breaks_enabled' => false,
+		'timesheet_dimensions_enabled' => false
     ];
 
     /**
@@ -290,7 +293,8 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'shift_bidding' => 'shiftBidding',
         'allow_to_select_higher_classification' => 'allowToSelectHigherClassification',
         'allow_employee_work_eligibility_self_service' => 'allowEmployeeWorkEligibilitySelfService',
-        'paid_breaks_enabled' => 'paidBreaksEnabled'
+        'paid_breaks_enabled' => 'paidBreaksEnabled',
+        'timesheet_dimensions_enabled' => 'timesheetDimensionsEnabled'
     ];
 
     /**
@@ -330,7 +334,8 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'shift_bidding' => 'setShiftBidding',
         'allow_to_select_higher_classification' => 'setAllowToSelectHigherClassification',
         'allow_employee_work_eligibility_self_service' => 'setAllowEmployeeWorkEligibilitySelfService',
-        'paid_breaks_enabled' => 'setPaidBreaksEnabled'
+        'paid_breaks_enabled' => 'setPaidBreaksEnabled',
+        'timesheet_dimensions_enabled' => 'setTimesheetDimensionsEnabled'
     ];
 
     /**
@@ -370,7 +375,8 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'shift_bidding' => 'getShiftBidding',
         'allow_to_select_higher_classification' => 'getAllowToSelectHigherClassification',
         'allow_employee_work_eligibility_self_service' => 'getAllowEmployeeWorkEligibilitySelfService',
-        'paid_breaks_enabled' => 'getPaidBreaksEnabled'
+        'paid_breaks_enabled' => 'getPaidBreaksEnabled',
+        'timesheet_dimensions_enabled' => 'getTimesheetDimensionsEnabled'
     ];
 
     /**
@@ -483,6 +489,7 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('allow_to_select_higher_classification', $data ?? [], null);
         $this->setIfExists('allow_employee_work_eligibility_self_service', $data ?? [], null);
         $this->setIfExists('paid_breaks_enabled', $data ?? [], null);
+        $this->setIfExists('timesheet_dimensions_enabled', $data ?? [], null);
     }
 
     /**
@@ -1406,6 +1413,33 @@ class AuFeaturesModel implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable paid_breaks_enabled cannot be null');
         }
         $this->container['paid_breaks_enabled'] = $paid_breaks_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets timesheet_dimensions_enabled
+     *
+     * @return bool|null
+     */
+    public function getTimesheetDimensionsEnabled()
+    {
+        return $this->container['timesheet_dimensions_enabled'];
+    }
+
+    /**
+     * Sets timesheet_dimensions_enabled
+     *
+     * @param bool|null $timesheet_dimensions_enabled 
+     *
+     * @return self
+     */
+    public function setTimesheetDimensionsEnabled($timesheet_dimensions_enabled)
+    {
+        if (is_null($timesheet_dimensions_enabled)) {
+            throw new \InvalidArgumentException('non-nullable timesheet_dimensions_enabled cannot be null');
+        }
+        $this->container['timesheet_dimensions_enabled'] = $timesheet_dimensions_enabled;
 
         return $this;
     }
