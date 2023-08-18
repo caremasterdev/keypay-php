@@ -85,7 +85,8 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess, \Js
         'shift_conditions' => '\OpenAPI\Client\Model\TimesheetShiftConditionModelv3[]',
         'hidden_comments' => 'string',
         'attachment' => '\OpenAPI\Client\Model\Attachment',
-        'submitted_by_user' => 'string'
+        'submitted_by_user' => 'string',
+        'dimension_values' => '\OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]'
     ];
 
     /**
@@ -124,7 +125,8 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess, \Js
         'shift_conditions' => null,
         'hidden_comments' => null,
         'attachment' => null,
-        'submitted_by_user' => null
+        'submitted_by_user' => null,
+        'dimension_values' => null
     ];
 
     /**
@@ -161,7 +163,8 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess, \Js
 		'shift_conditions' => false,
 		'hidden_comments' => false,
 		'attachment' => false,
-		'submitted_by_user' => false
+		'submitted_by_user' => false,
+		'dimension_values' => false
     ];
 
     /**
@@ -278,7 +281,8 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess, \Js
         'shift_conditions' => 'shiftConditions',
         'hidden_comments' => 'hiddenComments',
         'attachment' => 'attachment',
-        'submitted_by_user' => 'submittedByUser'
+        'submitted_by_user' => 'submittedByUser',
+        'dimension_values' => 'dimensionValues'
     ];
 
     /**
@@ -315,7 +319,8 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess, \Js
         'shift_conditions' => 'setShiftConditions',
         'hidden_comments' => 'setHiddenComments',
         'attachment' => 'setAttachment',
-        'submitted_by_user' => 'setSubmittedByUser'
+        'submitted_by_user' => 'setSubmittedByUser',
+        'dimension_values' => 'setDimensionValues'
     ];
 
     /**
@@ -352,7 +357,8 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess, \Js
         'shift_conditions' => 'getShiftConditions',
         'hidden_comments' => 'getHiddenComments',
         'attachment' => 'getAttachment',
-        'submitted_by_user' => 'getSubmittedByUser'
+        'submitted_by_user' => 'getSubmittedByUser',
+        'dimension_values' => 'getDimensionValues'
     ];
 
     /**
@@ -472,6 +478,7 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess, \Js
     public const SOURCE_ZEPTO = 'Zepto';
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
+    public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
 
     /**
      * Gets allowable values of the enum
@@ -557,6 +564,7 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess, \Js
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
+            self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
         ];
     }
 
@@ -604,6 +612,7 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('hidden_comments', $data ?? [], null);
         $this->setIfExists('attachment', $data ?? [], null);
         $this->setIfExists('submitted_by_user', $data ?? [], null);
+        $this->setIfExists('dimension_values', $data ?? [], null);
     }
 
     /**
@@ -1446,6 +1455,33 @@ class ShiftCostingsRequestShiftModel implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable submitted_by_user cannot be null');
         }
         $this->container['submitted_by_user'] = $submitted_by_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimension_values
+     *
+     * @return \OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]|null
+     */
+    public function getDimensionValues()
+    {
+        return $this->container['dimension_values'];
+    }
+
+    /**
+     * Sets dimension_values
+     *
+     * @param \OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]|null $dimension_values 
+     *
+     * @return self
+     */
+    public function setDimensionValues($dimension_values)
+    {
+        if (is_null($dimension_values)) {
+            throw new \InvalidArgumentException('non-nullable dimension_values cannot be null');
+        }
+        $this->container['dimension_values'] = $dimension_values;
 
         return $this;
     }

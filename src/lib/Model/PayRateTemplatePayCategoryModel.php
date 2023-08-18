@@ -35,7 +35,6 @@ use \OpenAPI\Client\ObjectSerializer;
  * PayRateTemplatePayCategoryModel Class Doc Comment
  *
  * @category Class
- * @description TODO: Can we get away with not having UserSuppliedRate and CalculatedRate? can we just have &#39;Rate&#39; and work   (which is interpreted as UserSuppliedRate) and determine calculated rate from there?
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

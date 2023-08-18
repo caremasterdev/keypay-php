@@ -81,7 +81,8 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess, \Js
         'fully_qualified_location_name' => 'string',
         'shift_conditions' => '\OpenAPI\Client\Model\TimesheetShiftConditionModelv3[]',
         'hidden_comments' => 'string',
-        'attachment' => '\OpenAPI\Client\Model\Attachment'
+        'attachment' => '\OpenAPI\Client\Model\Attachment',
+        'dimension_value_ids' => 'int[]'
     ];
 
     /**
@@ -116,7 +117,8 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess, \Js
         'fully_qualified_location_name' => null,
         'shift_conditions' => null,
         'hidden_comments' => null,
-        'attachment' => null
+        'attachment' => null,
+        'dimension_value_ids' => 'int32'
     ];
 
     /**
@@ -149,7 +151,8 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess, \Js
 		'fully_qualified_location_name' => false,
 		'shift_conditions' => false,
 		'hidden_comments' => false,
-		'attachment' => false
+		'attachment' => false,
+		'dimension_value_ids' => false
     ];
 
     /**
@@ -262,7 +265,8 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess, \Js
         'fully_qualified_location_name' => 'fullyQualifiedLocationName',
         'shift_conditions' => 'shiftConditions',
         'hidden_comments' => 'hiddenComments',
-        'attachment' => 'attachment'
+        'attachment' => 'attachment',
+        'dimension_value_ids' => 'dimensionValueIds'
     ];
 
     /**
@@ -295,7 +299,8 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess, \Js
         'fully_qualified_location_name' => 'setFullyQualifiedLocationName',
         'shift_conditions' => 'setShiftConditions',
         'hidden_comments' => 'setHiddenComments',
-        'attachment' => 'setAttachment'
+        'attachment' => 'setAttachment',
+        'dimension_value_ids' => 'setDimensionValueIds'
     ];
 
     /**
@@ -328,7 +333,8 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess, \Js
         'fully_qualified_location_name' => 'getFullyQualifiedLocationName',
         'shift_conditions' => 'getShiftConditions',
         'hidden_comments' => 'getHiddenComments',
-        'attachment' => 'getAttachment'
+        'attachment' => 'getAttachment',
+        'dimension_value_ids' => 'getDimensionValueIds'
     ];
 
     /**
@@ -448,6 +454,7 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess, \Js
     public const SOURCE_ZEPTO = 'Zepto';
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
+    public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
 
     /**
      * Gets allowable values of the enum
@@ -533,6 +540,7 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess, \Js
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
+            self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
         ];
     }
 
@@ -576,6 +584,7 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('shift_conditions', $data ?? [], null);
         $this->setIfExists('hidden_comments', $data ?? [], null);
         $this->setIfExists('attachment', $data ?? [], null);
+        $this->setIfExists('dimension_value_ids', $data ?? [], null);
     }
 
     /**
@@ -1310,6 +1319,33 @@ class AuIndividualTimesheetLineModel implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable attachment cannot be null');
         }
         $this->container['attachment'] = $attachment;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimension_value_ids
+     *
+     * @return int[]|null
+     */
+    public function getDimensionValueIds()
+    {
+        return $this->container['dimension_value_ids'];
+    }
+
+    /**
+     * Sets dimension_value_ids
+     *
+     * @param int[]|null $dimension_value_ids 
+     *
+     * @return self
+     */
+    public function setDimensionValueIds($dimension_value_ids)
+    {
+        if (is_null($dimension_value_ids)) {
+            throw new \InvalidArgumentException('non-nullable dimension_value_ids cannot be null');
+        }
+        $this->container['dimension_value_ids'] = $dimension_value_ids;
 
         return $this;
     }

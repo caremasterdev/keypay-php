@@ -35,7 +35,6 @@ use \OpenAPI\Client\ObjectSerializer;
  * EssEmployeeDetailsModel Class Doc Comment
  *
  * @category Class
- * @description this exists to give it a separate name from the API EmployeeeDetailsModel. As an aside, we should have had an api specific model for this
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

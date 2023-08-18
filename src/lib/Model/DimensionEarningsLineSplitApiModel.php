@@ -58,7 +58,7 @@ class DimensionEarningsLineSplitApiModel implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'id' => 'int',
-        'reporting_dimension_values' => '\OpenAPI\Client\Model\ReducedReportingDimensionValueApiModel[]',
+        'reporting_dimension_values' => '\OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]',
         'allocated_percentage' => 'float',
         'allocate_balance' => 'bool'
     ];
@@ -340,7 +340,7 @@ class DimensionEarningsLineSplitApiModel implements ModelInterface, ArrayAccess,
     /**
      * Gets reporting_dimension_values
      *
-     * @return \OpenAPI\Client\Model\ReducedReportingDimensionValueApiModel[]|null
+     * @return \OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]|null
      */
     public function getReportingDimensionValues()
     {
@@ -350,7 +350,7 @@ class DimensionEarningsLineSplitApiModel implements ModelInterface, ArrayAccess,
     /**
      * Sets reporting_dimension_values
      *
-     * @param \OpenAPI\Client\Model\ReducedReportingDimensionValueApiModel[]|null $reporting_dimension_values 
+     * @param \OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]|null $reporting_dimension_values 
      *
      * @return self
      */

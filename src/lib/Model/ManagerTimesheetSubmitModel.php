@@ -77,7 +77,8 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess, \JsonS
         'breaks' => '\OpenAPI\Client\Model\TimesheetBreakSubmitModel[]',
         'attachment' => '\OpenAPI\Client\Model\Attachment',
         'source' => 'string',
-        'location_is_deleted' => 'bool'
+        'location_is_deleted' => 'bool',
+        'dimension_value_ids' => 'int[]'
     ];
 
     /**
@@ -108,7 +109,8 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess, \JsonS
         'breaks' => null,
         'attachment' => null,
         'source' => null,
-        'location_is_deleted' => null
+        'location_is_deleted' => null,
+        'dimension_value_ids' => 'int32'
     ];
 
     /**
@@ -137,7 +139,8 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess, \JsonS
 		'breaks' => false,
 		'attachment' => false,
 		'source' => false,
-		'location_is_deleted' => false
+		'location_is_deleted' => false,
+		'dimension_value_ids' => false
     ];
 
     /**
@@ -246,7 +249,8 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess, \JsonS
         'breaks' => 'breaks',
         'attachment' => 'attachment',
         'source' => 'source',
-        'location_is_deleted' => 'locationIsDeleted'
+        'location_is_deleted' => 'locationIsDeleted',
+        'dimension_value_ids' => 'dimensionValueIds'
     ];
 
     /**
@@ -275,7 +279,8 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess, \JsonS
         'breaks' => 'setBreaks',
         'attachment' => 'setAttachment',
         'source' => 'setSource',
-        'location_is_deleted' => 'setLocationIsDeleted'
+        'location_is_deleted' => 'setLocationIsDeleted',
+        'dimension_value_ids' => 'setDimensionValueIds'
     ];
 
     /**
@@ -304,7 +309,8 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess, \JsonS
         'breaks' => 'getBreaks',
         'attachment' => 'getAttachment',
         'source' => 'getSource',
-        'location_is_deleted' => 'getLocationIsDeleted'
+        'location_is_deleted' => 'getLocationIsDeleted',
+        'dimension_value_ids' => 'getDimensionValueIds'
     ];
 
     /**
@@ -424,6 +430,7 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess, \JsonS
     public const SOURCE_ZEPTO = 'Zepto';
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
+    public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
 
     /**
      * Gets allowable values of the enum
@@ -509,6 +516,7 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess, \JsonS
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
+            self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
         ];
     }
 
@@ -548,6 +556,7 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('attachment', $data ?? [], null);
         $this->setIfExists('source', $data ?? [], null);
         $this->setIfExists('location_is_deleted', $data ?? [], null);
+        $this->setIfExists('dimension_value_ids', $data ?? [], null);
     }
 
     /**
@@ -1174,6 +1183,33 @@ class ManagerTimesheetSubmitModel implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable location_is_deleted cannot be null');
         }
         $this->container['location_is_deleted'] = $location_is_deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimension_value_ids
+     *
+     * @return int[]|null
+     */
+    public function getDimensionValueIds()
+    {
+        return $this->container['dimension_value_ids'];
+    }
+
+    /**
+     * Sets dimension_value_ids
+     *
+     * @param int[]|null $dimension_value_ids 
+     *
+     * @return self
+     */
+    public function setDimensionValueIds($dimension_value_ids)
+    {
+        if (is_null($dimension_value_ids)) {
+            throw new \InvalidArgumentException('non-nullable dimension_value_ids cannot be null');
+        }
+        $this->container['dimension_value_ids'] = $dimension_value_ids;
 
         return $this;
     }

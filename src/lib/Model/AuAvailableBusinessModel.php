@@ -83,6 +83,7 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess, \JsonSeri
         'paid_breaks_enabled' => 'bool',
         'location_permissions' => '\OpenAPI\Client\Model\LocationPermissionModel[]',
         'employee_group_permissions' => '\OpenAPI\Client\Model\EmployeeGroupPermissionModel[]',
+        'timesheet_dimensions_enabled' => 'bool',
         'id' => 'int',
         'name' => 'string',
         'region' => 'string',
@@ -149,6 +150,7 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess, \JsonSeri
         'paid_breaks_enabled' => null,
         'location_permissions' => null,
         'employee_group_permissions' => null,
+        'timesheet_dimensions_enabled' => null,
         'id' => 'int32',
         'name' => null,
         'region' => null,
@@ -213,6 +215,7 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess, \JsonSeri
 		'paid_breaks_enabled' => false,
 		'location_permissions' => false,
 		'employee_group_permissions' => false,
+		'timesheet_dimensions_enabled' => false,
 		'id' => false,
 		'name' => false,
 		'region' => false,
@@ -357,6 +360,7 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess, \JsonSeri
         'paid_breaks_enabled' => 'paidBreaksEnabled',
         'location_permissions' => 'locationPermissions',
         'employee_group_permissions' => 'employeeGroupPermissions',
+        'timesheet_dimensions_enabled' => 'timesheetDimensionsEnabled',
         'id' => 'id',
         'name' => 'name',
         'region' => 'region',
@@ -421,6 +425,7 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess, \JsonSeri
         'paid_breaks_enabled' => 'setPaidBreaksEnabled',
         'location_permissions' => 'setLocationPermissions',
         'employee_group_permissions' => 'setEmployeeGroupPermissions',
+        'timesheet_dimensions_enabled' => 'setTimesheetDimensionsEnabled',
         'id' => 'setId',
         'name' => 'setName',
         'region' => 'setRegion',
@@ -485,6 +490,7 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess, \JsonSeri
         'paid_breaks_enabled' => 'getPaidBreaksEnabled',
         'location_permissions' => 'getLocationPermissions',
         'employee_group_permissions' => 'getEmployeeGroupPermissions',
+        'timesheet_dimensions_enabled' => 'getTimesheetDimensionsEnabled',
         'id' => 'getId',
         'name' => 'getName',
         'region' => 'getRegion',
@@ -573,8 +579,6 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess, \JsonSeri
     public const LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE = 'EmployeeStartDate';
     public const LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE = 'SpecifiedDate';
     public const LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR = 'CalendarYear';
-    public const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH = 'RollingYear12Month';
-    public const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH = 'RollingYear24Month';
 
     /**
      * Gets allowable values of the enum
@@ -632,8 +636,6 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess, \JsonSeri
             self::LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR,
-            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH,
-            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH,
         ];
     }
 
@@ -678,6 +680,7 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('paid_breaks_enabled', $data ?? [], null);
         $this->setIfExists('location_permissions', $data ?? [], null);
         $this->setIfExists('employee_group_permissions', $data ?? [], null);
+        $this->setIfExists('timesheet_dimensions_enabled', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('region', $data ?? [], null);
@@ -1496,6 +1499,33 @@ class AuAvailableBusinessModel implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable employee_group_permissions cannot be null');
         }
         $this->container['employee_group_permissions'] = $employee_group_permissions;
+
+        return $this;
+    }
+
+    /**
+     * Gets timesheet_dimensions_enabled
+     *
+     * @return bool|null
+     */
+    public function getTimesheetDimensionsEnabled()
+    {
+        return $this->container['timesheet_dimensions_enabled'];
+    }
+
+    /**
+     * Sets timesheet_dimensions_enabled
+     *
+     * @param bool|null $timesheet_dimensions_enabled 
+     *
+     * @return self
+     */
+    public function setTimesheetDimensionsEnabled($timesheet_dimensions_enabled)
+    {
+        if (is_null($timesheet_dimensions_enabled)) {
+            throw new \InvalidArgumentException('non-nullable timesheet_dimensions_enabled cannot be null');
+        }
+        $this->container['timesheet_dimensions_enabled'] = $timesheet_dimensions_enabled;
 
         return $this;
     }

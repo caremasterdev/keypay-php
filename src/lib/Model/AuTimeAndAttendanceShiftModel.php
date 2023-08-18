@@ -73,7 +73,8 @@ class AuTimeAndAttendanceShiftModel implements ModelInterface, ArrayAccess, \Jso
         'timesheet_line_id' => 'int',
         'employee' => '\OpenAPI\Client\Model\BasicKioskEmployeeModel',
         'breaks' => '\OpenAPI\Client\Model\TimeAndAttendanceBreakModel[]',
-        'shift_conditions' => '\OpenAPI\Client\Model\ShiftConditionModel[]'
+        'shift_conditions' => '\OpenAPI\Client\Model\ShiftConditionModel[]',
+        'dimension_values' => '\OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]'
     ];
 
     /**
@@ -100,7 +101,8 @@ class AuTimeAndAttendanceShiftModel implements ModelInterface, ArrayAccess, \Jso
         'timesheet_line_id' => 'int32',
         'employee' => null,
         'breaks' => null,
-        'shift_conditions' => null
+        'shift_conditions' => null,
+        'dimension_values' => null
     ];
 
     /**
@@ -125,7 +127,8 @@ class AuTimeAndAttendanceShiftModel implements ModelInterface, ArrayAccess, \Jso
 		'timesheet_line_id' => false,
 		'employee' => false,
 		'breaks' => false,
-		'shift_conditions' => false
+		'shift_conditions' => false,
+		'dimension_values' => false
     ];
 
     /**
@@ -230,7 +233,8 @@ class AuTimeAndAttendanceShiftModel implements ModelInterface, ArrayAccess, \Jso
         'timesheet_line_id' => 'timesheetLineId',
         'employee' => 'employee',
         'breaks' => 'breaks',
-        'shift_conditions' => 'shiftConditions'
+        'shift_conditions' => 'shiftConditions',
+        'dimension_values' => 'dimensionValues'
     ];
 
     /**
@@ -255,7 +259,8 @@ class AuTimeAndAttendanceShiftModel implements ModelInterface, ArrayAccess, \Jso
         'timesheet_line_id' => 'setTimesheetLineId',
         'employee' => 'setEmployee',
         'breaks' => 'setBreaks',
-        'shift_conditions' => 'setShiftConditions'
+        'shift_conditions' => 'setShiftConditions',
+        'dimension_values' => 'setDimensionValues'
     ];
 
     /**
@@ -280,7 +285,8 @@ class AuTimeAndAttendanceShiftModel implements ModelInterface, ArrayAccess, \Jso
         'timesheet_line_id' => 'getTimesheetLineId',
         'employee' => 'getEmployee',
         'breaks' => 'getBreaks',
-        'shift_conditions' => 'getShiftConditions'
+        'shift_conditions' => 'getShiftConditions',
+        'dimension_values' => 'getDimensionValues'
     ];
 
     /**
@@ -357,6 +363,7 @@ class AuTimeAndAttendanceShiftModel implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('employee', $data ?? [], null);
         $this->setIfExists('breaks', $data ?? [], null);
         $this->setIfExists('shift_conditions', $data ?? [], null);
+        $this->setIfExists('dimension_values', $data ?? [], null);
     }
 
     /**
@@ -856,6 +863,33 @@ class AuTimeAndAttendanceShiftModel implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable shift_conditions cannot be null');
         }
         $this->container['shift_conditions'] = $shift_conditions;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimension_values
+     *
+     * @return \OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]|null
+     */
+    public function getDimensionValues()
+    {
+        return $this->container['dimension_values'];
+    }
+
+    /**
+     * Sets dimension_values
+     *
+     * @param \OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]|null $dimension_values 
+     *
+     * @return self
+     */
+    public function setDimensionValues($dimension_values)
+    {
+        if (is_null($dimension_values)) {
+            throw new \InvalidArgumentException('non-nullable dimension_values cannot be null');
+        }
+        $this->container['dimension_values'] = $dimension_values;
 
         return $this;
     }

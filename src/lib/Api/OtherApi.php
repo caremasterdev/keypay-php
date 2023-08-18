@@ -71,11 +71,43 @@ class OtherApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'auOnboardEmployeeCheckUserAccess' => [
+            'application/json',
+        ],
         'auPayRunDetailsGet' => [
+            'application/json',
+        ],
+        'awardPackagePost' => [
+            'application/json',
+            'text/json',
+            'application/xml',
+            'text/xml',
+            'application/x-www-form-urlencoded',
+        ],
+        'awardPackagePut' => [
+            'application/json',
+        ],
+        'reportsMLCSuperGet' => [
             'application/json',
         ],
         'reportsPaymentFileGet' => [
             'application/json',
+        ],
+        'reportsPayrollExemptGet' => [
+            'application/json',
+        ],
+        'reportsRosterLiveLeaveExportGet' => [
+            'application/json',
+        ],
+        'reportsWorkersCompGet' => [
+            'application/json',
+        ],
+        'teamCollaborationUpdateStatus' => [
+            'application/json',
+            'text/json',
+            'application/xml',
+            'text/xml',
+            'application/x-www-form-urlencoded',
         ],
     ];
 
@@ -123,6 +155,327 @@ class OtherApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation auOnboardEmployeeCheckUserAccess
+     *
+     * @param  int $employee_id employee_id (required)
+     * @param  string $email email (required)
+     * @param  string $business_id business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auOnboardEmployeeCheckUserAccess'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\UserAccessModel
+     */
+    public function auOnboardEmployeeCheckUserAccess($employee_id, $email, $business_id, string $contentType = self::contentTypes['auOnboardEmployeeCheckUserAccess'][0])
+    {
+        list($response) = $this->auOnboardEmployeeCheckUserAccessWithHttpInfo($employee_id, $email, $business_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation auOnboardEmployeeCheckUserAccessWithHttpInfo
+     *
+     * @param  int $employee_id (required)
+     * @param  string $email (required)
+     * @param  string $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auOnboardEmployeeCheckUserAccess'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\UserAccessModel, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function auOnboardEmployeeCheckUserAccessWithHttpInfo($employee_id, $email, $business_id, string $contentType = self::contentTypes['auOnboardEmployeeCheckUserAccess'][0])
+    {
+        $request = $this->auOnboardEmployeeCheckUserAccessRequest($employee_id, $email, $business_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\OpenAPI\Client\Model\UserAccessModel' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\UserAccessModel' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\UserAccessModel', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\OpenAPI\Client\Model\UserAccessModel';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\UserAccessModel',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation auOnboardEmployeeCheckUserAccessAsync
+     *
+     * @param  int $employee_id (required)
+     * @param  string $email (required)
+     * @param  string $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auOnboardEmployeeCheckUserAccess'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function auOnboardEmployeeCheckUserAccessAsync($employee_id, $email, $business_id, string $contentType = self::contentTypes['auOnboardEmployeeCheckUserAccess'][0])
+    {
+        return $this->auOnboardEmployeeCheckUserAccessAsyncWithHttpInfo($employee_id, $email, $business_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation auOnboardEmployeeCheckUserAccessAsyncWithHttpInfo
+     *
+     * @param  int $employee_id (required)
+     * @param  string $email (required)
+     * @param  string $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auOnboardEmployeeCheckUserAccess'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function auOnboardEmployeeCheckUserAccessAsyncWithHttpInfo($employee_id, $email, $business_id, string $contentType = self::contentTypes['auOnboardEmployeeCheckUserAccess'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\UserAccessModel';
+        $request = $this->auOnboardEmployeeCheckUserAccessRequest($employee_id, $email, $business_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'auOnboardEmployeeCheckUserAccess'
+     *
+     * @param  int $employee_id (required)
+     * @param  string $email (required)
+     * @param  string $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auOnboardEmployeeCheckUserAccess'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function auOnboardEmployeeCheckUserAccessRequest($employee_id, $email, $business_id, string $contentType = self::contentTypes['auOnboardEmployeeCheckUserAccess'][0])
+    {
+
+        // verify the required parameter 'employee_id' is set
+        if ($employee_id === null || (is_array($employee_id) && count($employee_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $employee_id when calling auOnboardEmployeeCheckUserAccess'
+            );
+        }
+
+        // verify the required parameter 'email' is set
+        if ($email === null || (is_array($email) && count($email) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $email when calling auOnboardEmployeeCheckUserAccess'
+            );
+        }
+
+        // verify the required parameter 'business_id' is set
+        if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $business_id when calling auOnboardEmployeeCheckUserAccess'
+            );
+        }
+
+
+        $resourcePath = '/api/v2/business/{businessId}/employee/{employeeId}/userAccess';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $email,
+            'email', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($employee_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'employeeId' . '}',
+                ObjectSerializer::toPathValue($employee_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($business_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'businessId' . '}',
+                ObjectSerializer::toPathValue($business_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', 'text/json', 'application/xml', 'text/xml', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('apiKey');
+        if ($apiKey !== null) {
+            $headers['apiKey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -357,6 +710,809 @@ class OtherApi
                 $resourcePath
             );
         }
+        // path params
+        if ($business_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'businessId' . '}',
+                ObjectSerializer::toPathValue($business_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', 'text/json', 'application/xml', 'text/xml', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('apiKey');
+        if ($apiKey !== null) {
+            $headers['apiKey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation awardPackagePost
+     *
+     * creates a new award package and assigns to the specified business
+     *
+     * @param  int $business_id business_id (required)
+     * @param  \OpenAPI\Client\Model\AwardPackageDataModel $package package (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awardPackagePost'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function awardPackagePost($business_id, $package, string $contentType = self::contentTypes['awardPackagePost'][0])
+    {
+        $this->awardPackagePostWithHttpInfo($business_id, $package, $contentType);
+    }
+
+    /**
+     * Operation awardPackagePostWithHttpInfo
+     *
+     * creates a new award package and assigns to the specified business
+     *
+     * @param  int $business_id (required)
+     * @param  \OpenAPI\Client\Model\AwardPackageDataModel $package (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awardPackagePost'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function awardPackagePostWithHttpInfo($business_id, $package, string $contentType = self::contentTypes['awardPackagePost'][0])
+    {
+        $request = $this->awardPackagePostRequest($business_id, $package, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation awardPackagePostAsync
+     *
+     * creates a new award package and assigns to the specified business
+     *
+     * @param  int $business_id (required)
+     * @param  \OpenAPI\Client\Model\AwardPackageDataModel $package (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awardPackagePost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function awardPackagePostAsync($business_id, $package, string $contentType = self::contentTypes['awardPackagePost'][0])
+    {
+        return $this->awardPackagePostAsyncWithHttpInfo($business_id, $package, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation awardPackagePostAsyncWithHttpInfo
+     *
+     * creates a new award package and assigns to the specified business
+     *
+     * @param  int $business_id (required)
+     * @param  \OpenAPI\Client\Model\AwardPackageDataModel $package (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awardPackagePost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function awardPackagePostAsyncWithHttpInfo($business_id, $package, string $contentType = self::contentTypes['awardPackagePost'][0])
+    {
+        $returnType = '';
+        $request = $this->awardPackagePostRequest($business_id, $package, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'awardPackagePost'
+     *
+     * @param  int $business_id (required)
+     * @param  \OpenAPI\Client\Model\AwardPackageDataModel $package (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awardPackagePost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function awardPackagePostRequest($business_id, $package, string $contentType = self::contentTypes['awardPackagePost'][0])
+    {
+
+        // verify the required parameter 'business_id' is set
+        if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $business_id when calling awardPackagePost'
+            );
+        }
+
+        // verify the required parameter 'package' is set
+        if ($package === null || (is_array($package) && count($package) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $package when calling awardPackagePost'
+            );
+        }
+
+
+        $resourcePath = '/api/v2/admin/awardpackage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $business_id,
+            'businessId', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            true // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($package)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($package));
+            } else {
+                $httpBody = $package;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('apiKey');
+        if ($apiKey !== null) {
+            $headers['apiKey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation awardPackagePut
+     *
+     * @param  string $url url (required)
+     * @param  int $business_id business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awardPackagePut'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function awardPackagePut($url, $business_id, string $contentType = self::contentTypes['awardPackagePut'][0])
+    {
+        $this->awardPackagePutWithHttpInfo($url, $business_id, $contentType);
+    }
+
+    /**
+     * Operation awardPackagePutWithHttpInfo
+     *
+     * @param  string $url (required)
+     * @param  int $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awardPackagePut'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function awardPackagePutWithHttpInfo($url, $business_id, string $contentType = self::contentTypes['awardPackagePut'][0])
+    {
+        $request = $this->awardPackagePutRequest($url, $business_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation awardPackagePutAsync
+     *
+     * @param  string $url (required)
+     * @param  int $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awardPackagePut'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function awardPackagePutAsync($url, $business_id, string $contentType = self::contentTypes['awardPackagePut'][0])
+    {
+        return $this->awardPackagePutAsyncWithHttpInfo($url, $business_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation awardPackagePutAsyncWithHttpInfo
+     *
+     * @param  string $url (required)
+     * @param  int $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awardPackagePut'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function awardPackagePutAsyncWithHttpInfo($url, $business_id, string $contentType = self::contentTypes['awardPackagePut'][0])
+    {
+        $returnType = '';
+        $request = $this->awardPackagePutRequest($url, $business_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'awardPackagePut'
+     *
+     * @param  string $url (required)
+     * @param  int $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awardPackagePut'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function awardPackagePutRequest($url, $business_id, string $contentType = self::contentTypes['awardPackagePut'][0])
+    {
+
+        // verify the required parameter 'url' is set
+        if ($url === null || (is_array($url) && count($url) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $url when calling awardPackagePut'
+            );
+        }
+
+        // verify the required parameter 'business_id' is set
+        if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $business_id when calling awardPackagePut'
+            );
+        }
+
+
+        $resourcePath = '/api/v2/admin/awardpackage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $url,
+            'url', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $business_id,
+            'businessId', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            true // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('apiKey');
+        if ($apiKey !== null) {
+            $headers['apiKey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation reportsMLCSuperGet
+     *
+     * @param  int[] $pay_schedule_ids pay_schedule_ids (required)
+     * @param  string $business_id business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsMLCSuperGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\MLCSuperReportExportModel[]
+     */
+    public function reportsMLCSuperGet($pay_schedule_ids, $business_id, string $contentType = self::contentTypes['reportsMLCSuperGet'][0])
+    {
+        list($response) = $this->reportsMLCSuperGetWithHttpInfo($pay_schedule_ids, $business_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation reportsMLCSuperGetWithHttpInfo
+     *
+     * @param  int[] $pay_schedule_ids (required)
+     * @param  string $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsMLCSuperGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\MLCSuperReportExportModel[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function reportsMLCSuperGetWithHttpInfo($pay_schedule_ids, $business_id, string $contentType = self::contentTypes['reportsMLCSuperGet'][0])
+    {
+        $request = $this->reportsMLCSuperGetRequest($pay_schedule_ids, $business_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\OpenAPI\Client\Model\MLCSuperReportExportModel[]' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\MLCSuperReportExportModel[]' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\MLCSuperReportExportModel[]', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\OpenAPI\Client\Model\MLCSuperReportExportModel[]';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\MLCSuperReportExportModel[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation reportsMLCSuperGetAsync
+     *
+     * @param  int[] $pay_schedule_ids (required)
+     * @param  string $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsMLCSuperGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reportsMLCSuperGetAsync($pay_schedule_ids, $business_id, string $contentType = self::contentTypes['reportsMLCSuperGet'][0])
+    {
+        return $this->reportsMLCSuperGetAsyncWithHttpInfo($pay_schedule_ids, $business_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation reportsMLCSuperGetAsyncWithHttpInfo
+     *
+     * @param  int[] $pay_schedule_ids (required)
+     * @param  string $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsMLCSuperGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reportsMLCSuperGetAsyncWithHttpInfo($pay_schedule_ids, $business_id, string $contentType = self::contentTypes['reportsMLCSuperGet'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\MLCSuperReportExportModel[]';
+        $request = $this->reportsMLCSuperGetRequest($pay_schedule_ids, $business_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'reportsMLCSuperGet'
+     *
+     * @param  int[] $pay_schedule_ids (required)
+     * @param  string $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsMLCSuperGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function reportsMLCSuperGetRequest($pay_schedule_ids, $business_id, string $contentType = self::contentTypes['reportsMLCSuperGet'][0])
+    {
+
+        // verify the required parameter 'pay_schedule_ids' is set
+        if ($pay_schedule_ids === null || (is_array($pay_schedule_ids) && count($pay_schedule_ids) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $pay_schedule_ids when calling reportsMLCSuperGet'
+            );
+        }
+
+        // verify the required parameter 'business_id' is set
+        if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $business_id when calling reportsMLCSuperGet'
+            );
+        }
+
+
+        $resourcePath = '/api/v2/business/{businessId}/report/mlcsuper';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $pay_schedule_ids,
+            'payScheduleIds', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
         // path params
         if ($business_id !== null) {
             $resourcePath = str_replace(
@@ -695,6 +1851,1318 @@ class OtherApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation reportsPayrollExemptGet
+     *
+     * @param  string $business_id business_id (required)
+     * @param  string $request_state request_state (optional)
+     * @param  int $request_pay_schedule_id request_pay_schedule_id (optional)
+     * @param  bool $request_include_post_tax_deductions request_include_post_tax_deductions (optional)
+     * @param  \DateTime $request_from_date request_from_date (optional)
+     * @param  \DateTime $request_to_date request_to_date (optional)
+     * @param  int $request_location_id request_location_id (optional)
+     * @param  int $request_employing_entity_id request_employing_entity_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsPayrollExemptGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\PayrollExemptReportExportModel[]
+     */
+    public function reportsPayrollExemptGet($business_id, $request_state = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null, string $contentType = self::contentTypes['reportsPayrollExemptGet'][0])
+    {
+        list($response) = $this->reportsPayrollExemptGetWithHttpInfo($business_id, $request_state, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation reportsPayrollExemptGetWithHttpInfo
+     *
+     * @param  string $business_id (required)
+     * @param  string $request_state (optional)
+     * @param  int $request_pay_schedule_id (optional)
+     * @param  bool $request_include_post_tax_deductions (optional)
+     * @param  \DateTime $request_from_date (optional)
+     * @param  \DateTime $request_to_date (optional)
+     * @param  int $request_location_id (optional)
+     * @param  int $request_employing_entity_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsPayrollExemptGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\PayrollExemptReportExportModel[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function reportsPayrollExemptGetWithHttpInfo($business_id, $request_state = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null, string $contentType = self::contentTypes['reportsPayrollExemptGet'][0])
+    {
+        $request = $this->reportsPayrollExemptGetRequest($business_id, $request_state, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\OpenAPI\Client\Model\PayrollExemptReportExportModel[]' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\PayrollExemptReportExportModel[]' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\PayrollExemptReportExportModel[]', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\OpenAPI\Client\Model\PayrollExemptReportExportModel[]';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PayrollExemptReportExportModel[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation reportsPayrollExemptGetAsync
+     *
+     * @param  string $business_id (required)
+     * @param  string $request_state (optional)
+     * @param  int $request_pay_schedule_id (optional)
+     * @param  bool $request_include_post_tax_deductions (optional)
+     * @param  \DateTime $request_from_date (optional)
+     * @param  \DateTime $request_to_date (optional)
+     * @param  int $request_location_id (optional)
+     * @param  int $request_employing_entity_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsPayrollExemptGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reportsPayrollExemptGetAsync($business_id, $request_state = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null, string $contentType = self::contentTypes['reportsPayrollExemptGet'][0])
+    {
+        return $this->reportsPayrollExemptGetAsyncWithHttpInfo($business_id, $request_state, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation reportsPayrollExemptGetAsyncWithHttpInfo
+     *
+     * @param  string $business_id (required)
+     * @param  string $request_state (optional)
+     * @param  int $request_pay_schedule_id (optional)
+     * @param  bool $request_include_post_tax_deductions (optional)
+     * @param  \DateTime $request_from_date (optional)
+     * @param  \DateTime $request_to_date (optional)
+     * @param  int $request_location_id (optional)
+     * @param  int $request_employing_entity_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsPayrollExemptGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reportsPayrollExemptGetAsyncWithHttpInfo($business_id, $request_state = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null, string $contentType = self::contentTypes['reportsPayrollExemptGet'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\PayrollExemptReportExportModel[]';
+        $request = $this->reportsPayrollExemptGetRequest($business_id, $request_state, $request_pay_schedule_id, $request_include_post_tax_deductions, $request_from_date, $request_to_date, $request_location_id, $request_employing_entity_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'reportsPayrollExemptGet'
+     *
+     * @param  string $business_id (required)
+     * @param  string $request_state (optional)
+     * @param  int $request_pay_schedule_id (optional)
+     * @param  bool $request_include_post_tax_deductions (optional)
+     * @param  \DateTime $request_from_date (optional)
+     * @param  \DateTime $request_to_date (optional)
+     * @param  int $request_location_id (optional)
+     * @param  int $request_employing_entity_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsPayrollExemptGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function reportsPayrollExemptGetRequest($business_id, $request_state = null, $request_pay_schedule_id = null, $request_include_post_tax_deductions = null, $request_from_date = null, $request_to_date = null, $request_location_id = null, $request_employing_entity_id = null, string $contentType = self::contentTypes['reportsPayrollExemptGet'][0])
+    {
+
+        // verify the required parameter 'business_id' is set
+        if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $business_id when calling reportsPayrollExemptGet'
+            );
+        }
+
+
+
+
+
+
+
+
+
+        $resourcePath = '/api/v2/business/{businessId}/report/payrollexempt';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $request_state,
+            'request.state', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $request_pay_schedule_id,
+            'request.payScheduleId', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $request_include_post_tax_deductions,
+            'request.includePostTaxDeductions', // param base name
+            'boolean', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $request_from_date,
+            'request.fromDate', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $request_to_date,
+            'request.toDate', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $request_location_id,
+            'request.locationId', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $request_employing_entity_id,
+            'request.employingEntityId', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($business_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'businessId' . '}',
+                ObjectSerializer::toPathValue($business_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', 'text/json', 'application/xml', 'text/xml', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('apiKey');
+        if ($apiKey !== null) {
+            $headers['apiKey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation reportsRosterLiveLeaveExportGet
+     *
+     * @param  int[] $pay_schedule_ids pay_schedule_ids (required)
+     * @param  string $business_id business_id (required)
+     * @param  \DateTime $as_at_date as_at_date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsRosterLiveLeaveExportGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\RosterLiveLeaveAccruals[]
+     */
+    public function reportsRosterLiveLeaveExportGet($pay_schedule_ids, $business_id, $as_at_date = null, string $contentType = self::contentTypes['reportsRosterLiveLeaveExportGet'][0])
+    {
+        list($response) = $this->reportsRosterLiveLeaveExportGetWithHttpInfo($pay_schedule_ids, $business_id, $as_at_date, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation reportsRosterLiveLeaveExportGetWithHttpInfo
+     *
+     * @param  int[] $pay_schedule_ids (required)
+     * @param  string $business_id (required)
+     * @param  \DateTime $as_at_date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsRosterLiveLeaveExportGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\RosterLiveLeaveAccruals[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function reportsRosterLiveLeaveExportGetWithHttpInfo($pay_schedule_ids, $business_id, $as_at_date = null, string $contentType = self::contentTypes['reportsRosterLiveLeaveExportGet'][0])
+    {
+        $request = $this->reportsRosterLiveLeaveExportGetRequest($pay_schedule_ids, $business_id, $as_at_date, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\OpenAPI\Client\Model\RosterLiveLeaveAccruals[]' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\RosterLiveLeaveAccruals[]' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\RosterLiveLeaveAccruals[]', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\OpenAPI\Client\Model\RosterLiveLeaveAccruals[]';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\RosterLiveLeaveAccruals[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation reportsRosterLiveLeaveExportGetAsync
+     *
+     * @param  int[] $pay_schedule_ids (required)
+     * @param  string $business_id (required)
+     * @param  \DateTime $as_at_date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsRosterLiveLeaveExportGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reportsRosterLiveLeaveExportGetAsync($pay_schedule_ids, $business_id, $as_at_date = null, string $contentType = self::contentTypes['reportsRosterLiveLeaveExportGet'][0])
+    {
+        return $this->reportsRosterLiveLeaveExportGetAsyncWithHttpInfo($pay_schedule_ids, $business_id, $as_at_date, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation reportsRosterLiveLeaveExportGetAsyncWithHttpInfo
+     *
+     * @param  int[] $pay_schedule_ids (required)
+     * @param  string $business_id (required)
+     * @param  \DateTime $as_at_date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsRosterLiveLeaveExportGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reportsRosterLiveLeaveExportGetAsyncWithHttpInfo($pay_schedule_ids, $business_id, $as_at_date = null, string $contentType = self::contentTypes['reportsRosterLiveLeaveExportGet'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\RosterLiveLeaveAccruals[]';
+        $request = $this->reportsRosterLiveLeaveExportGetRequest($pay_schedule_ids, $business_id, $as_at_date, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'reportsRosterLiveLeaveExportGet'
+     *
+     * @param  int[] $pay_schedule_ids (required)
+     * @param  string $business_id (required)
+     * @param  \DateTime $as_at_date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsRosterLiveLeaveExportGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function reportsRosterLiveLeaveExportGetRequest($pay_schedule_ids, $business_id, $as_at_date = null, string $contentType = self::contentTypes['reportsRosterLiveLeaveExportGet'][0])
+    {
+
+        // verify the required parameter 'pay_schedule_ids' is set
+        if ($pay_schedule_ids === null || (is_array($pay_schedule_ids) && count($pay_schedule_ids) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $pay_schedule_ids when calling reportsRosterLiveLeaveExportGet'
+            );
+        }
+
+        // verify the required parameter 'business_id' is set
+        if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $business_id when calling reportsRosterLiveLeaveExportGet'
+            );
+        }
+
+
+
+        $resourcePath = '/api/v2/business/{businessId}/report/leavebalancesexport';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $pay_schedule_ids,
+            'payScheduleIds', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $as_at_date,
+            'asAtDate', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($business_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'businessId' . '}',
+                ObjectSerializer::toPathValue($business_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', 'text/json', 'application/xml', 'text/xml', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('apiKey');
+        if ($apiKey !== null) {
+            $headers['apiKey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation reportsWorkersCompGet
+     *
+     * @param  \DateTime $from_date from_date (required)
+     * @param  \DateTime $to_date to_date (required)
+     * @param  string $business_id business_id (required)
+     * @param  int $location_id location_id (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsWorkersCompGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\WorkersCompReportGridModel[]
+     */
+    public function reportsWorkersCompGet($from_date, $to_date, $business_id, $location_id = 0, string $contentType = self::contentTypes['reportsWorkersCompGet'][0])
+    {
+        list($response) = $this->reportsWorkersCompGetWithHttpInfo($from_date, $to_date, $business_id, $location_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation reportsWorkersCompGetWithHttpInfo
+     *
+     * @param  \DateTime $from_date (required)
+     * @param  \DateTime $to_date (required)
+     * @param  string $business_id (required)
+     * @param  int $location_id (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsWorkersCompGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\WorkersCompReportGridModel[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function reportsWorkersCompGetWithHttpInfo($from_date, $to_date, $business_id, $location_id = 0, string $contentType = self::contentTypes['reportsWorkersCompGet'][0])
+    {
+        $request = $this->reportsWorkersCompGetRequest($from_date, $to_date, $business_id, $location_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\OpenAPI\Client\Model\WorkersCompReportGridModel[]' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\WorkersCompReportGridModel[]' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\WorkersCompReportGridModel[]', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\OpenAPI\Client\Model\WorkersCompReportGridModel[]';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\WorkersCompReportGridModel[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation reportsWorkersCompGetAsync
+     *
+     * @param  \DateTime $from_date (required)
+     * @param  \DateTime $to_date (required)
+     * @param  string $business_id (required)
+     * @param  int $location_id (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsWorkersCompGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reportsWorkersCompGetAsync($from_date, $to_date, $business_id, $location_id = 0, string $contentType = self::contentTypes['reportsWorkersCompGet'][0])
+    {
+        return $this->reportsWorkersCompGetAsyncWithHttpInfo($from_date, $to_date, $business_id, $location_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation reportsWorkersCompGetAsyncWithHttpInfo
+     *
+     * @param  \DateTime $from_date (required)
+     * @param  \DateTime $to_date (required)
+     * @param  string $business_id (required)
+     * @param  int $location_id (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsWorkersCompGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reportsWorkersCompGetAsyncWithHttpInfo($from_date, $to_date, $business_id, $location_id = 0, string $contentType = self::contentTypes['reportsWorkersCompGet'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\WorkersCompReportGridModel[]';
+        $request = $this->reportsWorkersCompGetRequest($from_date, $to_date, $business_id, $location_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'reportsWorkersCompGet'
+     *
+     * @param  \DateTime $from_date (required)
+     * @param  \DateTime $to_date (required)
+     * @param  string $business_id (required)
+     * @param  int $location_id (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reportsWorkersCompGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function reportsWorkersCompGetRequest($from_date, $to_date, $business_id, $location_id = 0, string $contentType = self::contentTypes['reportsWorkersCompGet'][0])
+    {
+
+        // verify the required parameter 'from_date' is set
+        if ($from_date === null || (is_array($from_date) && count($from_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $from_date when calling reportsWorkersCompGet'
+            );
+        }
+
+        // verify the required parameter 'to_date' is set
+        if ($to_date === null || (is_array($to_date) && count($to_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $to_date when calling reportsWorkersCompGet'
+            );
+        }
+
+        // verify the required parameter 'business_id' is set
+        if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $business_id when calling reportsWorkersCompGet'
+            );
+        }
+
+
+
+        $resourcePath = '/api/v2/business/{businessId}/report/workerscomp';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from_date,
+            'fromDate', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_date,
+            'toDate', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($business_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'businessId' . '}',
+                ObjectSerializer::toPathValue($business_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', 'text/json', 'application/xml', 'text/xml', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('apiKey');
+        if ($apiKey !== null) {
+            $headers['apiKey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation teamCollaborationUpdateStatus
+     *
+     * Update status event
+     *
+     * @param  string $service service (required)
+     * @param  string $business_id business_id (required)
+     * @param  \OpenAPI\Client\Model\TeamCollaborationUpdateStatusModel[] $model model (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['teamCollaborationUpdateStatus'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function teamCollaborationUpdateStatus($service, $business_id, $model, string $contentType = self::contentTypes['teamCollaborationUpdateStatus'][0])
+    {
+        $this->teamCollaborationUpdateStatusWithHttpInfo($service, $business_id, $model, $contentType);
+    }
+
+    /**
+     * Operation teamCollaborationUpdateStatusWithHttpInfo
+     *
+     * Update status event
+     *
+     * @param  string $service (required)
+     * @param  string $business_id (required)
+     * @param  \OpenAPI\Client\Model\TeamCollaborationUpdateStatusModel[] $model (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['teamCollaborationUpdateStatus'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function teamCollaborationUpdateStatusWithHttpInfo($service, $business_id, $model, string $contentType = self::contentTypes['teamCollaborationUpdateStatus'][0])
+    {
+        $request = $this->teamCollaborationUpdateStatusRequest($service, $business_id, $model, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation teamCollaborationUpdateStatusAsync
+     *
+     * Update status event
+     *
+     * @param  string $service (required)
+     * @param  string $business_id (required)
+     * @param  \OpenAPI\Client\Model\TeamCollaborationUpdateStatusModel[] $model (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['teamCollaborationUpdateStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function teamCollaborationUpdateStatusAsync($service, $business_id, $model, string $contentType = self::contentTypes['teamCollaborationUpdateStatus'][0])
+    {
+        return $this->teamCollaborationUpdateStatusAsyncWithHttpInfo($service, $business_id, $model, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation teamCollaborationUpdateStatusAsyncWithHttpInfo
+     *
+     * Update status event
+     *
+     * @param  string $service (required)
+     * @param  string $business_id (required)
+     * @param  \OpenAPI\Client\Model\TeamCollaborationUpdateStatusModel[] $model (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['teamCollaborationUpdateStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function teamCollaborationUpdateStatusAsyncWithHttpInfo($service, $business_id, $model, string $contentType = self::contentTypes['teamCollaborationUpdateStatus'][0])
+    {
+        $returnType = '';
+        $request = $this->teamCollaborationUpdateStatusRequest($service, $business_id, $model, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'teamCollaborationUpdateStatus'
+     *
+     * @param  string $service (required)
+     * @param  string $business_id (required)
+     * @param  \OpenAPI\Client\Model\TeamCollaborationUpdateStatusModel[] $model (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['teamCollaborationUpdateStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function teamCollaborationUpdateStatusRequest($service, $business_id, $model, string $contentType = self::contentTypes['teamCollaborationUpdateStatus'][0])
+    {
+
+        // verify the required parameter 'service' is set
+        if ($service === null || (is_array($service) && count($service) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $service when calling teamCollaborationUpdateStatus'
+            );
+        }
+
+        // verify the required parameter 'business_id' is set
+        if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $business_id when calling teamCollaborationUpdateStatus'
+            );
+        }
+
+        // verify the required parameter 'model' is set
+        if ($model === null || (is_array($model) && count($model) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $model when calling teamCollaborationUpdateStatus'
+            );
+        }
+
+
+        $resourcePath = '/api/v2/business/{businessId}/teamcollaboration/updatestatus';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $service,
+            'service', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($business_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'businessId' . '}',
+                ObjectSerializer::toPathValue($business_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($model)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($model));
+            } else {
+                $httpBody = $model;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('apiKey');
+        if ($apiKey !== null) {
+            $headers['apiKey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

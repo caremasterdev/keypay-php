@@ -73,7 +73,13 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'bank_swift' => 'string',
         'branch_code' => 'string',
         'my_bank_code' => 'string',
-        'my_other_bank_name' => 'string'
+        'my_other_bank_name' => 'string',
+        'mdm_id' => 'string',
+        'mdm_version' => 'int',
+        'mdm_schema_version' => 'string',
+        'triggered_from_mdm' => 'bool',
+        'send_to_mdm' => 'bool',
+        'ignore_fields' => 'array<string,string>'
     ];
 
     /**
@@ -100,7 +106,13 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'bank_swift' => null,
         'branch_code' => null,
         'my_bank_code' => null,
-        'my_other_bank_name' => null
+        'my_other_bank_name' => null,
+        'mdm_id' => null,
+        'mdm_version' => 'int64',
+        'mdm_schema_version' => null,
+        'triggered_from_mdm' => null,
+        'send_to_mdm' => null,
+        'ignore_fields' => null
     ];
 
     /**
@@ -125,7 +137,13 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess, \JsonSerializ
 		'bank_swift' => false,
 		'branch_code' => false,
 		'my_bank_code' => false,
-		'my_other_bank_name' => false
+		'my_other_bank_name' => false,
+		'mdm_id' => false,
+		'mdm_version' => false,
+		'mdm_schema_version' => false,
+		'triggered_from_mdm' => false,
+		'send_to_mdm' => false,
+		'ignore_fields' => false
     ];
 
     /**
@@ -230,7 +248,13 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'bank_swift' => 'bankSwift',
         'branch_code' => 'branchCode',
         'my_bank_code' => 'myBankCode',
-        'my_other_bank_name' => 'myOtherBankName'
+        'my_other_bank_name' => 'myOtherBankName',
+        'mdm_id' => 'mdmId',
+        'mdm_version' => 'mdmVersion',
+        'mdm_schema_version' => 'mdmSchemaVersion',
+        'triggered_from_mdm' => 'triggeredFromMdm',
+        'send_to_mdm' => 'sendToMdm',
+        'ignore_fields' => 'ignoreFields'
     ];
 
     /**
@@ -255,7 +279,13 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'bank_swift' => 'setBankSwift',
         'branch_code' => 'setBranchCode',
         'my_bank_code' => 'setMyBankCode',
-        'my_other_bank_name' => 'setMyOtherBankName'
+        'my_other_bank_name' => 'setMyOtherBankName',
+        'mdm_id' => 'setMdmId',
+        'mdm_version' => 'setMdmVersion',
+        'mdm_schema_version' => 'setMdmSchemaVersion',
+        'triggered_from_mdm' => 'setTriggeredFromMdm',
+        'send_to_mdm' => 'setSendToMdm',
+        'ignore_fields' => 'setIgnoreFields'
     ];
 
     /**
@@ -280,7 +310,13 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'bank_swift' => 'getBankSwift',
         'branch_code' => 'getBranchCode',
         'my_bank_code' => 'getMyBankCode',
-        'my_other_bank_name' => 'getMyOtherBankName'
+        'my_other_bank_name' => 'getMyOtherBankName',
+        'mdm_id' => 'getMdmId',
+        'mdm_version' => 'getMdmVersion',
+        'mdm_schema_version' => 'getMdmSchemaVersion',
+        'triggered_from_mdm' => 'getTriggeredFromMdm',
+        'send_to_mdm' => 'getSendToMdm',
+        'ignore_fields' => 'getIgnoreFields'
     ];
 
     /**
@@ -400,6 +436,7 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess, \JsonSerializ
     public const SOURCE_ZEPTO = 'Zepto';
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
+    public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
     public const ACCOUNT_TYPE_ELECTRONIC = 'Electronic';
     public const ACCOUNT_TYPE_MANUAL_DEPOSIT = 'ManualDeposit';
     public const ACCOUNT_TYPE_CASH_OR_CHEQUE = 'CashOrCheque';
@@ -489,6 +526,7 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess, \JsonSerializ
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
+            self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
         ];
     }
 
@@ -539,6 +577,12 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('branch_code', $data ?? [], null);
         $this->setIfExists('my_bank_code', $data ?? [], null);
         $this->setIfExists('my_other_bank_name', $data ?? [], null);
+        $this->setIfExists('mdm_id', $data ?? [], null);
+        $this->setIfExists('mdm_version', $data ?? [], null);
+        $this->setIfExists('mdm_schema_version', $data ?? [], null);
+        $this->setIfExists('triggered_from_mdm', $data ?? [], null);
+        $this->setIfExists('send_to_mdm', $data ?? [], null);
+        $this->setIfExists('ignore_fields', $data ?? [], null);
     }
 
     /**
@@ -1076,6 +1120,168 @@ class BankAccountEditModel implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable my_other_bank_name cannot be null');
         }
         $this->container['my_other_bank_name'] = $my_other_bank_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets mdm_id
+     *
+     * @return string|null
+     */
+    public function getMdmId()
+    {
+        return $this->container['mdm_id'];
+    }
+
+    /**
+     * Sets mdm_id
+     *
+     * @param string|null $mdm_id 
+     *
+     * @return self
+     */
+    public function setMdmId($mdm_id)
+    {
+        if (is_null($mdm_id)) {
+            throw new \InvalidArgumentException('non-nullable mdm_id cannot be null');
+        }
+        $this->container['mdm_id'] = $mdm_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets mdm_version
+     *
+     * @return int|null
+     */
+    public function getMdmVersion()
+    {
+        return $this->container['mdm_version'];
+    }
+
+    /**
+     * Sets mdm_version
+     *
+     * @param int|null $mdm_version 
+     *
+     * @return self
+     */
+    public function setMdmVersion($mdm_version)
+    {
+        if (is_null($mdm_version)) {
+            throw new \InvalidArgumentException('non-nullable mdm_version cannot be null');
+        }
+        $this->container['mdm_version'] = $mdm_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets mdm_schema_version
+     *
+     * @return string|null
+     */
+    public function getMdmSchemaVersion()
+    {
+        return $this->container['mdm_schema_version'];
+    }
+
+    /**
+     * Sets mdm_schema_version
+     *
+     * @param string|null $mdm_schema_version 
+     *
+     * @return self
+     */
+    public function setMdmSchemaVersion($mdm_schema_version)
+    {
+        if (is_null($mdm_schema_version)) {
+            throw new \InvalidArgumentException('non-nullable mdm_schema_version cannot be null');
+        }
+        $this->container['mdm_schema_version'] = $mdm_schema_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets triggered_from_mdm
+     *
+     * @return bool|null
+     */
+    public function getTriggeredFromMdm()
+    {
+        return $this->container['triggered_from_mdm'];
+    }
+
+    /**
+     * Sets triggered_from_mdm
+     *
+     * @param bool|null $triggered_from_mdm 
+     *
+     * @return self
+     */
+    public function setTriggeredFromMdm($triggered_from_mdm)
+    {
+        if (is_null($triggered_from_mdm)) {
+            throw new \InvalidArgumentException('non-nullable triggered_from_mdm cannot be null');
+        }
+        $this->container['triggered_from_mdm'] = $triggered_from_mdm;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_to_mdm
+     *
+     * @return bool|null
+     */
+    public function getSendToMdm()
+    {
+        return $this->container['send_to_mdm'];
+    }
+
+    /**
+     * Sets send_to_mdm
+     *
+     * @param bool|null $send_to_mdm 
+     *
+     * @return self
+     */
+    public function setSendToMdm($send_to_mdm)
+    {
+        if (is_null($send_to_mdm)) {
+            throw new \InvalidArgumentException('non-nullable send_to_mdm cannot be null');
+        }
+        $this->container['send_to_mdm'] = $send_to_mdm;
+
+        return $this;
+    }
+
+    /**
+     * Gets ignore_fields
+     *
+     * @return array<string,string>|null
+     */
+    public function getIgnoreFields()
+    {
+        return $this->container['ignore_fields'];
+    }
+
+    /**
+     * Sets ignore_fields
+     *
+     * @param array<string,string>|null $ignore_fields 
+     *
+     * @return self
+     */
+    public function setIgnoreFields($ignore_fields)
+    {
+        if (is_null($ignore_fields)) {
+            throw new \InvalidArgumentException('non-nullable ignore_fields cannot be null');
+        }
+        $this->container['ignore_fields'] = $ignore_fields;
 
         return $this;
     }

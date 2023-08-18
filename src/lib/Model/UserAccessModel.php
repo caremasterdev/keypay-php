@@ -1,6 +1,6 @@
 <?php
 /**
- * ReducedReportingDimensionValueApiModel
+ * UserAccessModel
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ReducedReportingDimensionValueApiModel Class Doc Comment
+ * UserAccessModel Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ReducedReportingDimensionValueApiModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class UserAccessModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ReducedReportingDimensionValueApiModel implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ReducedReportingDimensionValueApiModel';
+    protected static $openAPIModelName = 'UserAccessModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,7 @@ class ReducedReportingDimensionValueApiModel implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'name' => 'string',
-        'reporting_dimension_id' => 'int'
+        'access_type' => 'string'
     ];
 
     /**
@@ -70,9 +68,7 @@ class ReducedReportingDimensionValueApiModel implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'int32',
-        'name' => null,
-        'reporting_dimension_id' => 'int32'
+        'access_type' => null
     ];
 
     /**
@@ -81,9 +77,7 @@ class ReducedReportingDimensionValueApiModel implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-		'name' => false,
-		'reporting_dimension_id' => false
+        'access_type' => false
     ];
 
     /**
@@ -172,9 +166,7 @@ class ReducedReportingDimensionValueApiModel implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'reporting_dimension_id' => 'reportingDimensionId'
+        'access_type' => 'accessType'
     ];
 
     /**
@@ -183,9 +175,7 @@ class ReducedReportingDimensionValueApiModel implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'reporting_dimension_id' => 'setReportingDimensionId'
+        'access_type' => 'setAccessType'
     ];
 
     /**
@@ -194,9 +184,7 @@ class ReducedReportingDimensionValueApiModel implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'reporting_dimension_id' => 'getReportingDimensionId'
+        'access_type' => 'getAccessType'
     ];
 
     /**
@@ -240,6 +228,21 @@ class ReducedReportingDimensionValueApiModel implements ModelInterface, ArrayAcc
         return self::$openAPIModelName;
     }
 
+    public const ACCESS_TYPE_UNRESTRICTED = 'Unrestricted';
+    public const ACCESS_TYPE_RESTRICTED = 'Restricted';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAccessTypeAllowableValues()
+    {
+        return [
+            self::ACCESS_TYPE_UNRESTRICTED,
+            self::ACCESS_TYPE_RESTRICTED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -256,9 +259,7 @@ class ReducedReportingDimensionValueApiModel implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('reporting_dimension_id', $data ?? [], null);
+        $this->setIfExists('access_type', $data ?? [], null);
     }
 
     /**
@@ -288,6 +289,15 @@ class ReducedReportingDimensionValueApiModel implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getAccessTypeAllowableValues();
+        if (!is_null($this->container['access_type']) && !in_array($this->container['access_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'access_type', must be one of '%s'",
+                $this->container['access_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -304,82 +314,38 @@ class ReducedReportingDimensionValueApiModel implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets id
-     *
-     * @return int|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int|null $id 
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
+     * Gets access_type
      *
      * @return string|null
      */
-    public function getName()
+    public function getAccessType()
     {
-        return $this->container['name'];
+        return $this->container['access_type'];
     }
 
     /**
-     * Sets name
+     * Sets access_type
      *
-     * @param string|null $name 
+     * @param string|null $access_type 
      *
      * @return self
      */
-    public function setName($name)
+    public function setAccessType($access_type)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($access_type)) {
+            throw new \InvalidArgumentException('non-nullable access_type cannot be null');
         }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets reporting_dimension_id
-     *
-     * @return int|null
-     */
-    public function getReportingDimensionId()
-    {
-        return $this->container['reporting_dimension_id'];
-    }
-
-    /**
-     * Sets reporting_dimension_id
-     *
-     * @param int|null $reporting_dimension_id 
-     *
-     * @return self
-     */
-    public function setReportingDimensionId($reporting_dimension_id)
-    {
-        if (is_null($reporting_dimension_id)) {
-            throw new \InvalidArgumentException('non-nullable reporting_dimension_id cannot be null');
+        $allowedValues = $this->getAccessTypeAllowableValues();
+        if (!in_array($access_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'access_type', must be one of '%s'",
+                    $access_type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['reporting_dimension_id'] = $reporting_dimension_id;
+        $this->container['access_type'] = $access_type;
 
         return $this;
     }

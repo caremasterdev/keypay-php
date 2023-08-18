@@ -1046,8 +1046,6 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess, \JsonS
     public const LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE = 'EmployeeStartDate';
     public const LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE = 'SpecifiedDate';
     public const LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR = 'CalendarYear';
-    public const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH = 'RollingYear12Month';
-    public const LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH = 'RollingYear24Month';
     public const STATUS_ACTIVE = 'Active';
     public const STATUS_TERMINATED = 'Terminated';
     public const STATUS_INCOMPLETE = 'Incomplete';
@@ -1130,8 +1128,6 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess, \JsonS
             self::LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE,
             self::LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR,
-            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR12_MONTH,
-            self::LEAVE_ACCRUAL_START_DATE_TYPE_ROLLING_YEAR24_MONTH,
         ];
     }
 

@@ -63,7 +63,8 @@ class EmployerLiabilityCategoryModel implements ModelInterface, ArrayAccess, \Js
         'can_be_deleted' => 'bool',
         'hide_from_pay_slips' => 'bool',
         'show_total_payments' => 'bool',
-        'include_in_shift_costs' => 'bool'
+        'include_in_shift_costs' => 'bool',
+        'is_superannuation_fund' => 'bool'
     ];
 
     /**
@@ -80,7 +81,8 @@ class EmployerLiabilityCategoryModel implements ModelInterface, ArrayAccess, \Js
         'can_be_deleted' => null,
         'hide_from_pay_slips' => null,
         'show_total_payments' => null,
-        'include_in_shift_costs' => null
+        'include_in_shift_costs' => null,
+        'is_superannuation_fund' => null
     ];
 
     /**
@@ -95,7 +97,8 @@ class EmployerLiabilityCategoryModel implements ModelInterface, ArrayAccess, \Js
 		'can_be_deleted' => false,
 		'hide_from_pay_slips' => false,
 		'show_total_payments' => false,
-		'include_in_shift_costs' => false
+		'include_in_shift_costs' => false,
+		'is_superannuation_fund' => false
     ];
 
     /**
@@ -190,7 +193,8 @@ class EmployerLiabilityCategoryModel implements ModelInterface, ArrayAccess, \Js
         'can_be_deleted' => 'canBeDeleted',
         'hide_from_pay_slips' => 'hideFromPaySlips',
         'show_total_payments' => 'showTotalPayments',
-        'include_in_shift_costs' => 'includeInShiftCosts'
+        'include_in_shift_costs' => 'includeInShiftCosts',
+        'is_superannuation_fund' => 'isSuperannuationFund'
     ];
 
     /**
@@ -205,7 +209,8 @@ class EmployerLiabilityCategoryModel implements ModelInterface, ArrayAccess, \Js
         'can_be_deleted' => 'setCanBeDeleted',
         'hide_from_pay_slips' => 'setHideFromPaySlips',
         'show_total_payments' => 'setShowTotalPayments',
-        'include_in_shift_costs' => 'setIncludeInShiftCosts'
+        'include_in_shift_costs' => 'setIncludeInShiftCosts',
+        'is_superannuation_fund' => 'setIsSuperannuationFund'
     ];
 
     /**
@@ -220,7 +225,8 @@ class EmployerLiabilityCategoryModel implements ModelInterface, ArrayAccess, \Js
         'can_be_deleted' => 'getCanBeDeleted',
         'hide_from_pay_slips' => 'getHideFromPaySlips',
         'show_total_payments' => 'getShowTotalPayments',
-        'include_in_shift_costs' => 'getIncludeInShiftCosts'
+        'include_in_shift_costs' => 'getIncludeInShiftCosts',
+        'is_superannuation_fund' => 'getIsSuperannuationFund'
     ];
 
     /**
@@ -287,6 +293,7 @@ class EmployerLiabilityCategoryModel implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('hide_from_pay_slips', $data ?? [], null);
         $this->setIfExists('show_total_payments', $data ?? [], null);
         $this->setIfExists('include_in_shift_costs', $data ?? [], null);
+        $this->setIfExists('is_superannuation_fund', $data ?? [], null);
     }
 
     /**
@@ -516,6 +523,33 @@ class EmployerLiabilityCategoryModel implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable include_in_shift_costs cannot be null');
         }
         $this->container['include_in_shift_costs'] = $include_in_shift_costs;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_superannuation_fund
+     *
+     * @return bool|null
+     */
+    public function getIsSuperannuationFund()
+    {
+        return $this->container['is_superannuation_fund'];
+    }
+
+    /**
+     * Sets is_superannuation_fund
+     *
+     * @param bool|null $is_superannuation_fund 
+     *
+     * @return self
+     */
+    public function setIsSuperannuationFund($is_superannuation_fund)
+    {
+        if (is_null($is_superannuation_fund)) {
+            throw new \InvalidArgumentException('non-nullable is_superannuation_fund cannot be null');
+        }
+        $this->container['is_superannuation_fund'] = $is_superannuation_fund;
 
         return $this;
     }

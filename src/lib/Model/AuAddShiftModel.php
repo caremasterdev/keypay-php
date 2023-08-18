@@ -65,6 +65,7 @@ class AuAddShiftModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'recorded_start_time_utc' => '\DateTime',
         'recorded_end_time_utc' => '\DateTime',
         'breaks' => '\OpenAPI\Client\Model\ShiftBreakModel[]',
+        'dimension_value_ids' => 'int[]',
         'employee_id' => 'int',
         'latitude' => 'float',
         'longitude' => 'float',
@@ -93,6 +94,7 @@ class AuAddShiftModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'recorded_start_time_utc' => 'date-time',
         'recorded_end_time_utc' => 'date-time',
         'breaks' => null,
+        'dimension_value_ids' => 'int32',
         'employee_id' => 'int32',
         'latitude' => 'double',
         'longitude' => 'double',
@@ -119,6 +121,7 @@ class AuAddShiftModel implements ModelInterface, ArrayAccess, \JsonSerializable
 		'recorded_start_time_utc' => false,
 		'recorded_end_time_utc' => false,
 		'breaks' => false,
+		'dimension_value_ids' => false,
 		'employee_id' => false,
 		'latitude' => false,
 		'longitude' => false,
@@ -225,6 +228,7 @@ class AuAddShiftModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'recorded_start_time_utc' => 'recordedStartTimeUtc',
         'recorded_end_time_utc' => 'recordedEndTimeUtc',
         'breaks' => 'breaks',
+        'dimension_value_ids' => 'dimensionValueIds',
         'employee_id' => 'employeeId',
         'latitude' => 'latitude',
         'longitude' => 'longitude',
@@ -251,6 +255,7 @@ class AuAddShiftModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'recorded_start_time_utc' => 'setRecordedStartTimeUtc',
         'recorded_end_time_utc' => 'setRecordedEndTimeUtc',
         'breaks' => 'setBreaks',
+        'dimension_value_ids' => 'setDimensionValueIds',
         'employee_id' => 'setEmployeeId',
         'latitude' => 'setLatitude',
         'longitude' => 'setLongitude',
@@ -277,6 +282,7 @@ class AuAddShiftModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'recorded_start_time_utc' => 'getRecordedStartTimeUtc',
         'recorded_end_time_utc' => 'getRecordedEndTimeUtc',
         'breaks' => 'getBreaks',
+        'dimension_value_ids' => 'getDimensionValueIds',
         'employee_id' => 'getEmployeeId',
         'latitude' => 'getLatitude',
         'longitude' => 'getLongitude',
@@ -369,6 +375,7 @@ class AuAddShiftModel implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('recorded_start_time_utc', $data ?? [], null);
         $this->setIfExists('recorded_end_time_utc', $data ?? [], null);
         $this->setIfExists('breaks', $data ?? [], null);
+        $this->setIfExists('dimension_value_ids', $data ?? [], null);
         $this->setIfExists('employee_id', $data ?? [], null);
         $this->setIfExists('latitude', $data ?? [], null);
         $this->setIfExists('longitude', $data ?? [], null);
@@ -648,6 +655,33 @@ class AuAddShiftModel implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable breaks cannot be null');
         }
         $this->container['breaks'] = $breaks;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimension_value_ids
+     *
+     * @return int[]|null
+     */
+    public function getDimensionValueIds()
+    {
+        return $this->container['dimension_value_ids'];
+    }
+
+    /**
+     * Sets dimension_value_ids
+     *
+     * @param int[]|null $dimension_value_ids 
+     *
+     * @return self
+     */
+    public function setDimensionValueIds($dimension_value_ids)
+    {
+        if (is_null($dimension_value_ids)) {
+            throw new \InvalidArgumentException('non-nullable dimension_value_ids cannot be null');
+        }
+        $this->container['dimension_value_ids'] = $dimension_value_ids;
 
         return $this;
     }

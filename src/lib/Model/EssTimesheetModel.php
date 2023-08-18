@@ -106,7 +106,8 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess, \JsonSerializabl
         'duration_override' => 'string',
         'hidden_comments' => 'string',
         'read_only' => 'bool',
-        'ignore_rounding' => 'bool'
+        'ignore_rounding' => 'bool',
+        'dimension_value_ids' => 'int[]'
     ];
 
     /**
@@ -166,7 +167,8 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess, \JsonSerializabl
         'duration_override' => null,
         'hidden_comments' => null,
         'read_only' => null,
-        'ignore_rounding' => null
+        'ignore_rounding' => null,
+        'dimension_value_ids' => 'int32'
     ];
 
     /**
@@ -224,7 +226,8 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess, \JsonSerializabl
 		'duration_override' => false,
 		'hidden_comments' => false,
 		'read_only' => false,
-		'ignore_rounding' => false
+		'ignore_rounding' => false,
+		'dimension_value_ids' => false
     ];
 
     /**
@@ -362,7 +365,8 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess, \JsonSerializabl
         'duration_override' => 'durationOverride',
         'hidden_comments' => 'hiddenComments',
         'read_only' => 'readOnly',
-        'ignore_rounding' => 'ignoreRounding'
+        'ignore_rounding' => 'ignoreRounding',
+        'dimension_value_ids' => 'dimensionValueIds'
     ];
 
     /**
@@ -420,7 +424,8 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess, \JsonSerializabl
         'duration_override' => 'setDurationOverride',
         'hidden_comments' => 'setHiddenComments',
         'read_only' => 'setReadOnly',
-        'ignore_rounding' => 'setIgnoreRounding'
+        'ignore_rounding' => 'setIgnoreRounding',
+        'dimension_value_ids' => 'setDimensionValueIds'
     ];
 
     /**
@@ -478,7 +483,8 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess, \JsonSerializabl
         'duration_override' => 'getDurationOverride',
         'hidden_comments' => 'getHiddenComments',
         'read_only' => 'getReadOnly',
-        'ignore_rounding' => 'getIgnoreRounding'
+        'ignore_rounding' => 'getIgnoreRounding',
+        'dimension_value_ids' => 'getDimensionValueIds'
     ];
 
     /**
@@ -603,6 +609,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess, \JsonSerializabl
     public const SOURCE_ZEPTO = 'Zepto';
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
+    public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
 
     /**
      * Gets allowable values of the enum
@@ -704,6 +711,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess, \JsonSerializabl
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
+            self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
         ];
     }
 
@@ -772,6 +780,7 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('hidden_comments', $data ?? [], null);
         $this->setIfExists('read_only', $data ?? [], null);
         $this->setIfExists('ignore_rounding', $data ?? [], null);
+        $this->setIfExists('dimension_value_ids', $data ?? [], null);
     }
 
     /**
@@ -2200,6 +2209,33 @@ class EssTimesheetModel implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable ignore_rounding cannot be null');
         }
         $this->container['ignore_rounding'] = $ignore_rounding;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimension_value_ids
+     *
+     * @return int[]|null
+     */
+    public function getDimensionValueIds()
+    {
+        return $this->container['dimension_value_ids'];
+    }
+
+    /**
+     * Sets dimension_value_ids
+     *
+     * @param int[]|null $dimension_value_ids 
+     *
+     * @return self
+     */
+    public function setDimensionValueIds($dimension_value_ids)
+    {
+        if (is_null($dimension_value_ids)) {
+            throw new \InvalidArgumentException('non-nullable dimension_value_ids cannot be null');
+        }
+        $this->container['dimension_value_ids'] = $dimension_value_ids;
 
         return $this;
     }

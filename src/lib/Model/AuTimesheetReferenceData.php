@@ -60,7 +60,8 @@ class AuTimesheetReferenceData implements ModelInterface, ArrayAccess, \JsonSeri
         'classifications' => '\OpenAPI\Client\Model\ClassificationSelectModel[]',
         'work_types' => '\OpenAPI\Client\Model\AuEssWorkTypeModel[]',
         'shift_conditions' => '\OpenAPI\Client\Model\AuEssWorkTypeModel[]',
-        'locations' => '\OpenAPI\Client\Model\LocationModel[]'
+        'locations' => '\OpenAPI\Client\Model\LocationModel[]',
+        'dimension_values' => '\OpenAPI\Client\Model\ReportingDimensionValueSelectModel[]'
     ];
 
     /**
@@ -74,7 +75,8 @@ class AuTimesheetReferenceData implements ModelInterface, ArrayAccess, \JsonSeri
         'classifications' => null,
         'work_types' => null,
         'shift_conditions' => null,
-        'locations' => null
+        'locations' => null,
+        'dimension_values' => null
     ];
 
     /**
@@ -86,7 +88,8 @@ class AuTimesheetReferenceData implements ModelInterface, ArrayAccess, \JsonSeri
         'classifications' => false,
 		'work_types' => false,
 		'shift_conditions' => false,
-		'locations' => false
+		'locations' => false,
+		'dimension_values' => false
     ];
 
     /**
@@ -178,7 +181,8 @@ class AuTimesheetReferenceData implements ModelInterface, ArrayAccess, \JsonSeri
         'classifications' => 'classifications',
         'work_types' => 'workTypes',
         'shift_conditions' => 'shiftConditions',
-        'locations' => 'locations'
+        'locations' => 'locations',
+        'dimension_values' => 'dimensionValues'
     ];
 
     /**
@@ -190,7 +194,8 @@ class AuTimesheetReferenceData implements ModelInterface, ArrayAccess, \JsonSeri
         'classifications' => 'setClassifications',
         'work_types' => 'setWorkTypes',
         'shift_conditions' => 'setShiftConditions',
-        'locations' => 'setLocations'
+        'locations' => 'setLocations',
+        'dimension_values' => 'setDimensionValues'
     ];
 
     /**
@@ -202,7 +207,8 @@ class AuTimesheetReferenceData implements ModelInterface, ArrayAccess, \JsonSeri
         'classifications' => 'getClassifications',
         'work_types' => 'getWorkTypes',
         'shift_conditions' => 'getShiftConditions',
-        'locations' => 'getLocations'
+        'locations' => 'getLocations',
+        'dimension_values' => 'getDimensionValues'
     ];
 
     /**
@@ -266,6 +272,7 @@ class AuTimesheetReferenceData implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('work_types', $data ?? [], null);
         $this->setIfExists('shift_conditions', $data ?? [], null);
         $this->setIfExists('locations', $data ?? [], null);
+        $this->setIfExists('dimension_values', $data ?? [], null);
     }
 
     /**
@@ -414,6 +421,33 @@ class AuTimesheetReferenceData implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable locations cannot be null');
         }
         $this->container['locations'] = $locations;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimension_values
+     *
+     * @return \OpenAPI\Client\Model\ReportingDimensionValueSelectModel[]|null
+     */
+    public function getDimensionValues()
+    {
+        return $this->container['dimension_values'];
+    }
+
+    /**
+     * Sets dimension_values
+     *
+     * @param \OpenAPI\Client\Model\ReportingDimensionValueSelectModel[]|null $dimension_values 
+     *
+     * @return self
+     */
+    public function setDimensionValues($dimension_values)
+    {
+        if (is_null($dimension_values)) {
+            throw new \InvalidArgumentException('non-nullable dimension_values cannot be null');
+        }
+        $this->container['dimension_values'] = $dimension_values;
 
         return $this;
     }

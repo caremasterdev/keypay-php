@@ -309,6 +309,7 @@ class EmployerRecurringLiabilityModel implements ModelInterface, ArrayAccess, \J
     public const LIABILITY_TYPE_FIXED = 'Fixed';
     public const LIABILITY_TYPE_PERCENTAGE_GROSS = 'PercentageGross';
     public const LIABILITY_TYPE_PERCENTAGE_OTE = 'PercentageOTE';
+    public const LIABILITY_TYPE_PERCENTAGE_SUPERANNUATION = 'PercentageSuperannuation';
     public const SOURCE_NONE = 'None';
     public const SOURCE_SAASU = 'Saasu';
     public const SOURCE_XERO = 'Xero';
@@ -385,6 +386,7 @@ class EmployerRecurringLiabilityModel implements ModelInterface, ArrayAccess, \J
     public const SOURCE_ZEPTO = 'Zepto';
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
+    public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
 
     /**
      * Gets allowable values of the enum
@@ -397,6 +399,7 @@ class EmployerRecurringLiabilityModel implements ModelInterface, ArrayAccess, \J
             self::LIABILITY_TYPE_FIXED,
             self::LIABILITY_TYPE_PERCENTAGE_GROSS,
             self::LIABILITY_TYPE_PERCENTAGE_OTE,
+            self::LIABILITY_TYPE_PERCENTAGE_SUPERANNUATION,
         ];
     }
 
@@ -484,6 +487,7 @@ class EmployerRecurringLiabilityModel implements ModelInterface, ArrayAccess, \J
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
+            self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
         ];
     }
 

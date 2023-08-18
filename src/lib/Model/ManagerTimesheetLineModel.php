@@ -71,6 +71,8 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSer
         'can_approve' => 'bool',
         'termination_date' => '\DateTime',
         'employee_start_date' => '\DateTime',
+        'dimension_values' => '\OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]',
+        'classification' => '\OpenAPI\Client\Model\ClassificationSelection',
         'employee_name' => 'string',
         'id' => 'int',
         'employee_id' => 'int',
@@ -135,6 +137,8 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSer
         'can_approve' => null,
         'termination_date' => 'date-time',
         'employee_start_date' => 'date-time',
+        'dimension_values' => null,
+        'classification' => null,
         'employee_name' => null,
         'id' => 'int32',
         'employee_id' => 'int32',
@@ -197,6 +201,8 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSer
 		'can_approve' => false,
 		'termination_date' => false,
 		'employee_start_date' => false,
+		'dimension_values' => false,
+		'classification' => false,
 		'employee_name' => false,
 		'id' => false,
 		'employee_id' => false,
@@ -339,6 +345,8 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSer
         'can_approve' => 'canApprove',
         'termination_date' => 'terminationDate',
         'employee_start_date' => 'employeeStartDate',
+        'dimension_values' => 'dimensionValues',
+        'classification' => 'classification',
         'employee_name' => 'employeeName',
         'id' => 'id',
         'employee_id' => 'employeeId',
@@ -401,6 +409,8 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSer
         'can_approve' => 'setCanApprove',
         'termination_date' => 'setTerminationDate',
         'employee_start_date' => 'setEmployeeStartDate',
+        'dimension_values' => 'setDimensionValues',
+        'classification' => 'setClassification',
         'employee_name' => 'setEmployeeName',
         'id' => 'setId',
         'employee_id' => 'setEmployeeId',
@@ -463,6 +473,8 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSer
         'can_approve' => 'getCanApprove',
         'termination_date' => 'getTerminationDate',
         'employee_start_date' => 'getEmployeeStartDate',
+        'dimension_values' => 'getDimensionValues',
+        'classification' => 'getClassification',
         'employee_name' => 'getEmployeeName',
         'id' => 'getId',
         'employee_id' => 'getEmployeeId',
@@ -627,6 +639,7 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSer
     public const SOURCE_ZEPTO = 'Zepto';
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
+    public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
 
     /**
      * Gets allowable values of the enum
@@ -728,6 +741,7 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSer
             self::SOURCE_ZEPTO,
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
+            self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
         ];
     }
 
@@ -760,6 +774,8 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('can_approve', $data ?? [], null);
         $this->setIfExists('termination_date', $data ?? [], null);
         $this->setIfExists('employee_start_date', $data ?? [], null);
+        $this->setIfExists('dimension_values', $data ?? [], null);
+        $this->setIfExists('classification', $data ?? [], null);
         $this->setIfExists('employee_name', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('employee_id', $data ?? [], null);
@@ -1236,6 +1252,60 @@ class ManagerTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable employee_start_date cannot be null');
         }
         $this->container['employee_start_date'] = $employee_start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimension_values
+     *
+     * @return \OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]|null
+     */
+    public function getDimensionValues()
+    {
+        return $this->container['dimension_values'];
+    }
+
+    /**
+     * Sets dimension_values
+     *
+     * @param \OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]|null $dimension_values 
+     *
+     * @return self
+     */
+    public function setDimensionValues($dimension_values)
+    {
+        if (is_null($dimension_values)) {
+            throw new \InvalidArgumentException('non-nullable dimension_values cannot be null');
+        }
+        $this->container['dimension_values'] = $dimension_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets classification
+     *
+     * @return \OpenAPI\Client\Model\ClassificationSelection|null
+     */
+    public function getClassification()
+    {
+        return $this->container['classification'];
+    }
+
+    /**
+     * Sets classification
+     *
+     * @param \OpenAPI\Client\Model\ClassificationSelection|null $classification classification
+     *
+     * @return self
+     */
+    public function setClassification($classification)
+    {
+        if (is_null($classification)) {
+            throw new \InvalidArgumentException('non-nullable classification cannot be null');
+        }
+        $this->container['classification'] = $classification;
 
         return $this;
     }
