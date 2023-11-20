@@ -1,6 +1,6 @@
 <?php
 /**
- * ShiftAllowanceModel
+ * EmployeeQualificationRequest
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ShiftAllowanceModel Class Doc Comment
+ * EmployeeQualificationRequest Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class EmployeeQualificationRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ShiftAllowanceModel';
+    protected static $openAPIModelName = 'EmployeeQualificationRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,14 +57,11 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pay_category' => 'string',
-        'pay_category_id' => 'int',
-        'units' => 'float',
-        'cost' => 'float',
-        'rate_multiplier' => 'float',
-        'option' => 'string',
-        'type' => 'string',
-        'classification' => '\OpenAPI\Client\Model\NominalClassification'
+        'qualification_id' => 'int',
+        'name' => 'string',
+        'expiry_date' => '\DateTime',
+        'issue_date' => '\DateTime',
+        'reference_number' => 'string'
     ];
 
     /**
@@ -75,14 +72,11 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'pay_category' => null,
-        'pay_category_id' => 'int32',
-        'units' => 'double',
-        'cost' => 'double',
-        'rate_multiplier' => 'double',
-        'option' => null,
-        'type' => null,
-        'classification' => null
+        'qualification_id' => 'int32',
+        'name' => null,
+        'expiry_date' => 'date-time',
+        'issue_date' => 'date-time',
+        'reference_number' => null
     ];
 
     /**
@@ -91,14 +85,11 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pay_category' => false,
-		'pay_category_id' => false,
-		'units' => false,
-		'cost' => false,
-		'rate_multiplier' => false,
-		'option' => false,
-		'type' => false,
-		'classification' => false
+        'qualification_id' => false,
+		'name' => false,
+		'expiry_date' => false,
+		'issue_date' => false,
+		'reference_number' => false
     ];
 
     /**
@@ -187,14 +178,11 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'pay_category' => 'payCategory',
-        'pay_category_id' => 'payCategoryId',
-        'units' => 'units',
-        'cost' => 'cost',
-        'rate_multiplier' => 'rateMultiplier',
-        'option' => 'option',
-        'type' => 'type',
-        'classification' => 'classification'
+        'qualification_id' => 'qualificationId',
+        'name' => 'name',
+        'expiry_date' => 'expiryDate',
+        'issue_date' => 'issueDate',
+        'reference_number' => 'referenceNumber'
     ];
 
     /**
@@ -203,14 +191,11 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'pay_category' => 'setPayCategory',
-        'pay_category_id' => 'setPayCategoryId',
-        'units' => 'setUnits',
-        'cost' => 'setCost',
-        'rate_multiplier' => 'setRateMultiplier',
-        'option' => 'setOption',
-        'type' => 'setType',
-        'classification' => 'setClassification'
+        'qualification_id' => 'setQualificationId',
+        'name' => 'setName',
+        'expiry_date' => 'setExpiryDate',
+        'issue_date' => 'setIssueDate',
+        'reference_number' => 'setReferenceNumber'
     ];
 
     /**
@@ -219,14 +204,11 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'pay_category' => 'getPayCategory',
-        'pay_category_id' => 'getPayCategoryId',
-        'units' => 'getUnits',
-        'cost' => 'getCost',
-        'rate_multiplier' => 'getRateMultiplier',
-        'option' => 'getOption',
-        'type' => 'getType',
-        'classification' => 'getClassification'
+        'qualification_id' => 'getQualificationId',
+        'name' => 'getName',
+        'expiry_date' => 'getExpiryDate',
+        'issue_date' => 'getIssueDate',
+        'reference_number' => 'getReferenceNumber'
     ];
 
     /**
@@ -270,42 +252,6 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const OPTION_FIXED = 'Fixed';
-    public const OPTION_PER_HOUR_WORKED = 'PerHourWorked';
-    public const OPTION_PERCENTAGE_OF_SHIFT_COST = 'PercentageOfShiftCost';
-    public const OPTION_PER_SHIFT_UNIT = 'PerShiftUnit';
-    public const OPTION_PER_DAY = 'PerDay';
-    public const TYPE_STANDARD = 'Standard';
-    public const TYPE_ALL_PURPOSE = 'AllPurpose';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getOptionAllowableValues()
-    {
-        return [
-            self::OPTION_FIXED,
-            self::OPTION_PER_HOUR_WORKED,
-            self::OPTION_PERCENTAGE_OF_SHIFT_COST,
-            self::OPTION_PER_SHIFT_UNIT,
-            self::OPTION_PER_DAY,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_STANDARD,
-            self::TYPE_ALL_PURPOSE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -322,14 +268,11 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('pay_category', $data ?? [], null);
-        $this->setIfExists('pay_category_id', $data ?? [], null);
-        $this->setIfExists('units', $data ?? [], null);
-        $this->setIfExists('cost', $data ?? [], null);
-        $this->setIfExists('rate_multiplier', $data ?? [], null);
-        $this->setIfExists('option', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('classification', $data ?? [], null);
+        $this->setIfExists('qualification_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('expiry_date', $data ?? [], null);
+        $this->setIfExists('issue_date', $data ?? [], null);
+        $this->setIfExists('reference_number', $data ?? [], null);
     }
 
     /**
@@ -359,24 +302,6 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getOptionAllowableValues();
-        if (!is_null($this->container['option']) && !in_array($this->container['option'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'option', must be one of '%s'",
-                $this->container['option'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -393,237 +318,136 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets pay_category
-     *
-     * @return string|null
-     */
-    public function getPayCategory()
-    {
-        return $this->container['pay_category'];
-    }
-
-    /**
-     * Sets pay_category
-     *
-     * @param string|null $pay_category 
-     *
-     * @return self
-     */
-    public function setPayCategory($pay_category)
-    {
-        if (is_null($pay_category)) {
-            throw new \InvalidArgumentException('non-nullable pay_category cannot be null');
-        }
-        $this->container['pay_category'] = $pay_category;
-
-        return $this;
-    }
-
-    /**
-     * Gets pay_category_id
+     * Gets qualification_id
      *
      * @return int|null
      */
-    public function getPayCategoryId()
+    public function getQualificationId()
     {
-        return $this->container['pay_category_id'];
+        return $this->container['qualification_id'];
     }
 
     /**
-     * Sets pay_category_id
+     * Sets qualification_id
      *
-     * @param int|null $pay_category_id 
+     * @param int|null $qualification_id 
      *
      * @return self
      */
-    public function setPayCategoryId($pay_category_id)
+    public function setQualificationId($qualification_id)
     {
-        if (is_null($pay_category_id)) {
-            throw new \InvalidArgumentException('non-nullable pay_category_id cannot be null');
+        if (is_null($qualification_id)) {
+            throw new \InvalidArgumentException('non-nullable qualification_id cannot be null');
         }
-        $this->container['pay_category_id'] = $pay_category_id;
+        $this->container['qualification_id'] = $qualification_id;
 
         return $this;
     }
 
     /**
-     * Gets units
-     *
-     * @return float|null
-     */
-    public function getUnits()
-    {
-        return $this->container['units'];
-    }
-
-    /**
-     * Sets units
-     *
-     * @param float|null $units 
-     *
-     * @return self
-     */
-    public function setUnits($units)
-    {
-        if (is_null($units)) {
-            throw new \InvalidArgumentException('non-nullable units cannot be null');
-        }
-        $this->container['units'] = $units;
-
-        return $this;
-    }
-
-    /**
-     * Gets cost
-     *
-     * @return float|null
-     */
-    public function getCost()
-    {
-        return $this->container['cost'];
-    }
-
-    /**
-     * Sets cost
-     *
-     * @param float|null $cost 
-     *
-     * @return self
-     */
-    public function setCost($cost)
-    {
-        if (is_null($cost)) {
-            throw new \InvalidArgumentException('non-nullable cost cannot be null');
-        }
-        $this->container['cost'] = $cost;
-
-        return $this;
-    }
-
-    /**
-     * Gets rate_multiplier
-     *
-     * @return float|null
-     */
-    public function getRateMultiplier()
-    {
-        return $this->container['rate_multiplier'];
-    }
-
-    /**
-     * Sets rate_multiplier
-     *
-     * @param float|null $rate_multiplier 
-     *
-     * @return self
-     */
-    public function setRateMultiplier($rate_multiplier)
-    {
-        if (is_null($rate_multiplier)) {
-            throw new \InvalidArgumentException('non-nullable rate_multiplier cannot be null');
-        }
-        $this->container['rate_multiplier'] = $rate_multiplier;
-
-        return $this;
-    }
-
-    /**
-     * Gets option
+     * Gets name
      *
      * @return string|null
      */
-    public function getOption()
+    public function getName()
     {
-        return $this->container['option'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets option
+     * Sets name
      *
-     * @param string|null $option 
+     * @param string|null $name 
      *
      * @return self
      */
-    public function setOption($option)
+    public function setName($name)
     {
-        if (is_null($option)) {
-            throw new \InvalidArgumentException('non-nullable option cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $allowedValues = $this->getOptionAllowableValues();
-        if (!in_array($option, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'option', must be one of '%s'",
-                    $option,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['option'] = $option;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets expiry_date
+     *
+     * @return \DateTime|null
+     */
+    public function getExpiryDate()
+    {
+        return $this->container['expiry_date'];
+    }
+
+    /**
+     * Sets expiry_date
+     *
+     * @param \DateTime|null $expiry_date 
+     *
+     * @return self
+     */
+    public function setExpiryDate($expiry_date)
+    {
+        if (is_null($expiry_date)) {
+            throw new \InvalidArgumentException('non-nullable expiry_date cannot be null');
+        }
+        $this->container['expiry_date'] = $expiry_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets issue_date
+     *
+     * @return \DateTime|null
+     */
+    public function getIssueDate()
+    {
+        return $this->container['issue_date'];
+    }
+
+    /**
+     * Sets issue_date
+     *
+     * @param \DateTime|null $issue_date 
+     *
+     * @return self
+     */
+    public function setIssueDate($issue_date)
+    {
+        if (is_null($issue_date)) {
+            throw new \InvalidArgumentException('non-nullable issue_date cannot be null');
+        }
+        $this->container['issue_date'] = $issue_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets reference_number
      *
      * @return string|null
      */
-    public function getType()
+    public function getReferenceNumber()
     {
-        return $this->container['type'];
+        return $this->container['reference_number'];
     }
 
     /**
-     * Sets type
+     * Sets reference_number
      *
-     * @param string|null $type 
+     * @param string|null $reference_number 
      *
      * @return self
      */
-    public function setType($type)
+    public function setReferenceNumber($reference_number)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($reference_number)) {
+            throw new \InvalidArgumentException('non-nullable reference_number cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets classification
-     *
-     * @return \OpenAPI\Client\Model\NominalClassification|null
-     */
-    public function getClassification()
-    {
-        return $this->container['classification'];
-    }
-
-    /**
-     * Sets classification
-     *
-     * @param \OpenAPI\Client\Model\NominalClassification|null $classification classification
-     *
-     * @return self
-     */
-    public function setClassification($classification)
-    {
-        if (is_null($classification)) {
-            throw new \InvalidArgumentException('non-nullable classification cannot be null');
-        }
-        $this->container['classification'] = $classification;
+        $this->container['reference_number'] = $reference_number;
 
         return $this;
     }

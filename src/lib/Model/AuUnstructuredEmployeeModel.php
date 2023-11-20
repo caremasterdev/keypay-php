@@ -121,6 +121,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess, \JsonS
         'medicare_levy_reduction_spouse' => 'bool',
         'medicare_levy_reduction_dependent_count' => 'int',
         'dvl_pay_slip_description' => 'string',
+        'portable_long_service_leave_id' => 'string',
+        'include_in_portable_long_service_leave_report' => 'bool',
         'id' => 'int',
         'title' => 'string',
         'preferred_name' => 'string',
@@ -264,6 +266,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess, \JsonS
         'medicare_levy_reduction_spouse' => null,
         'medicare_levy_reduction_dependent_count' => 'int32',
         'dvl_pay_slip_description' => null,
+        'portable_long_service_leave_id' => null,
+        'include_in_portable_long_service_leave_report' => null,
         'id' => 'int32',
         'title' => null,
         'preferred_name' => null,
@@ -405,6 +409,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess, \JsonS
 		'medicare_levy_reduction_spouse' => false,
 		'medicare_levy_reduction_dependent_count' => false,
 		'dvl_pay_slip_description' => false,
+		'portable_long_service_leave_id' => false,
+		'include_in_portable_long_service_leave_report' => false,
 		'id' => false,
 		'title' => false,
 		'preferred_name' => false,
@@ -626,6 +632,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess, \JsonS
         'medicare_levy_reduction_spouse' => 'medicareLevyReductionSpouse',
         'medicare_levy_reduction_dependent_count' => 'medicareLevyReductionDependentCount',
         'dvl_pay_slip_description' => 'dvlPaySlipDescription',
+        'portable_long_service_leave_id' => 'portableLongServiceLeaveId',
+        'include_in_portable_long_service_leave_report' => 'includeInPortableLongServiceLeaveReport',
         'id' => 'id',
         'title' => 'title',
         'preferred_name' => 'preferredName',
@@ -767,6 +775,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess, \JsonS
         'medicare_levy_reduction_spouse' => 'setMedicareLevyReductionSpouse',
         'medicare_levy_reduction_dependent_count' => 'setMedicareLevyReductionDependentCount',
         'dvl_pay_slip_description' => 'setDvlPaySlipDescription',
+        'portable_long_service_leave_id' => 'setPortableLongServiceLeaveId',
+        'include_in_portable_long_service_leave_report' => 'setIncludeInPortableLongServiceLeaveReport',
         'id' => 'setId',
         'title' => 'setTitle',
         'preferred_name' => 'setPreferredName',
@@ -908,6 +918,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess, \JsonS
         'medicare_levy_reduction_spouse' => 'getMedicareLevyReductionSpouse',
         'medicare_levy_reduction_dependent_count' => 'getMedicareLevyReductionDependentCount',
         'dvl_pay_slip_description' => 'getDvlPaySlipDescription',
+        'portable_long_service_leave_id' => 'getPortableLongServiceLeaveId',
+        'include_in_portable_long_service_leave_report' => 'getIncludeInPortableLongServiceLeaveReport',
         'id' => 'getId',
         'title' => 'getTitle',
         'preferred_name' => 'getPreferredName',
@@ -1224,6 +1236,8 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('medicare_levy_reduction_spouse', $data ?? [], null);
         $this->setIfExists('medicare_levy_reduction_dependent_count', $data ?? [], null);
         $this->setIfExists('dvl_pay_slip_description', $data ?? [], null);
+        $this->setIfExists('portable_long_service_leave_id', $data ?? [], null);
+        $this->setIfExists('include_in_portable_long_service_leave_report', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('preferred_name', $data ?? [], null);
@@ -3235,6 +3249,60 @@ class AuUnstructuredEmployeeModel implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable dvl_pay_slip_description cannot be null');
         }
         $this->container['dvl_pay_slip_description'] = $dvl_pay_slip_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets portable_long_service_leave_id
+     *
+     * @return string|null
+     */
+    public function getPortableLongServiceLeaveId()
+    {
+        return $this->container['portable_long_service_leave_id'];
+    }
+
+    /**
+     * Sets portable_long_service_leave_id
+     *
+     * @param string|null $portable_long_service_leave_id 
+     *
+     * @return self
+     */
+    public function setPortableLongServiceLeaveId($portable_long_service_leave_id)
+    {
+        if (is_null($portable_long_service_leave_id)) {
+            throw new \InvalidArgumentException('non-nullable portable_long_service_leave_id cannot be null');
+        }
+        $this->container['portable_long_service_leave_id'] = $portable_long_service_leave_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets include_in_portable_long_service_leave_report
+     *
+     * @return bool|null
+     */
+    public function getIncludeInPortableLongServiceLeaveReport()
+    {
+        return $this->container['include_in_portable_long_service_leave_report'];
+    }
+
+    /**
+     * Sets include_in_portable_long_service_leave_report
+     *
+     * @param bool|null $include_in_portable_long_service_leave_report 
+     *
+     * @return self
+     */
+    public function setIncludeInPortableLongServiceLeaveReport($include_in_portable_long_service_leave_report)
+    {
+        if (is_null($include_in_portable_long_service_leave_report)) {
+            throw new \InvalidArgumentException('non-nullable include_in_portable_long_service_leave_report cannot be null');
+        }
+        $this->container['include_in_portable_long_service_leave_report'] = $include_in_portable_long_service_leave_report;
 
         return $this;
     }

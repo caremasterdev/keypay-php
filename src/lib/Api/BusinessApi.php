@@ -99,6 +99,16 @@ class BusinessApi
         'auBusinessGetBusinesses' => [
             'application/json',
         ],
+        'auBusinessLeaveSettingsGet' => [
+            'application/json',
+        ],
+        'auBusinessLeaveSettingsPut' => [
+            'application/json',
+            'text/json',
+            'application/xml',
+            'text/xml',
+            'application/x-www-form-urlencoded',
+        ],
         'auBusinessPost' => [
             'application/json',
             'text/json',
@@ -2571,6 +2581,493 @@ class BusinessApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation auBusinessLeaveSettingsGet
+     *
+     * Get the leave settings for the business
+     *
+     * @param  string $business_id business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessLeaveSettingsGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function auBusinessLeaveSettingsGet($business_id, string $contentType = self::contentTypes['auBusinessLeaveSettingsGet'][0])
+    {
+        $this->auBusinessLeaveSettingsGetWithHttpInfo($business_id, $contentType);
+    }
+
+    /**
+     * Operation auBusinessLeaveSettingsGetWithHttpInfo
+     *
+     * Get the leave settings for the business
+     *
+     * @param  string $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessLeaveSettingsGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function auBusinessLeaveSettingsGetWithHttpInfo($business_id, string $contentType = self::contentTypes['auBusinessLeaveSettingsGet'][0])
+    {
+        $request = $this->auBusinessLeaveSettingsGetRequest($business_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation auBusinessLeaveSettingsGetAsync
+     *
+     * Get the leave settings for the business
+     *
+     * @param  string $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessLeaveSettingsGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function auBusinessLeaveSettingsGetAsync($business_id, string $contentType = self::contentTypes['auBusinessLeaveSettingsGet'][0])
+    {
+        return $this->auBusinessLeaveSettingsGetAsyncWithHttpInfo($business_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation auBusinessLeaveSettingsGetAsyncWithHttpInfo
+     *
+     * Get the leave settings for the business
+     *
+     * @param  string $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessLeaveSettingsGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function auBusinessLeaveSettingsGetAsyncWithHttpInfo($business_id, string $contentType = self::contentTypes['auBusinessLeaveSettingsGet'][0])
+    {
+        $returnType = '';
+        $request = $this->auBusinessLeaveSettingsGetRequest($business_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'auBusinessLeaveSettingsGet'
+     *
+     * @param  string $business_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessLeaveSettingsGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function auBusinessLeaveSettingsGetRequest($business_id, string $contentType = self::contentTypes['auBusinessLeaveSettingsGet'][0])
+    {
+
+        // verify the required parameter 'business_id' is set
+        if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $business_id when calling auBusinessLeaveSettingsGet'
+            );
+        }
+
+
+        $resourcePath = '/api/v2/business/{businessId}/leavesettings';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($business_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'businessId' . '}',
+                ObjectSerializer::toPathValue($business_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('apiKey');
+        if ($apiKey !== null) {
+            $headers['apiKey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation auBusinessLeaveSettingsPut
+     *
+     * Update the leave settings for the business
+     *
+     * @param  string $business_id business_id (required)
+     * @param  \OpenAPI\Client\Model\AuBusinessLeaveSettingsModel $model model (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessLeaveSettingsPut'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function auBusinessLeaveSettingsPut($business_id, $model, string $contentType = self::contentTypes['auBusinessLeaveSettingsPut'][0])
+    {
+        $this->auBusinessLeaveSettingsPutWithHttpInfo($business_id, $model, $contentType);
+    }
+
+    /**
+     * Operation auBusinessLeaveSettingsPutWithHttpInfo
+     *
+     * Update the leave settings for the business
+     *
+     * @param  string $business_id (required)
+     * @param  \OpenAPI\Client\Model\AuBusinessLeaveSettingsModel $model (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessLeaveSettingsPut'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function auBusinessLeaveSettingsPutWithHttpInfo($business_id, $model, string $contentType = self::contentTypes['auBusinessLeaveSettingsPut'][0])
+    {
+        $request = $this->auBusinessLeaveSettingsPutRequest($business_id, $model, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation auBusinessLeaveSettingsPutAsync
+     *
+     * Update the leave settings for the business
+     *
+     * @param  string $business_id (required)
+     * @param  \OpenAPI\Client\Model\AuBusinessLeaveSettingsModel $model (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessLeaveSettingsPut'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function auBusinessLeaveSettingsPutAsync($business_id, $model, string $contentType = self::contentTypes['auBusinessLeaveSettingsPut'][0])
+    {
+        return $this->auBusinessLeaveSettingsPutAsyncWithHttpInfo($business_id, $model, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation auBusinessLeaveSettingsPutAsyncWithHttpInfo
+     *
+     * Update the leave settings for the business
+     *
+     * @param  string $business_id (required)
+     * @param  \OpenAPI\Client\Model\AuBusinessLeaveSettingsModel $model (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessLeaveSettingsPut'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function auBusinessLeaveSettingsPutAsyncWithHttpInfo($business_id, $model, string $contentType = self::contentTypes['auBusinessLeaveSettingsPut'][0])
+    {
+        $returnType = '';
+        $request = $this->auBusinessLeaveSettingsPutRequest($business_id, $model, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'auBusinessLeaveSettingsPut'
+     *
+     * @param  string $business_id (required)
+     * @param  \OpenAPI\Client\Model\AuBusinessLeaveSettingsModel $model (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auBusinessLeaveSettingsPut'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function auBusinessLeaveSettingsPutRequest($business_id, $model, string $contentType = self::contentTypes['auBusinessLeaveSettingsPut'][0])
+    {
+
+        // verify the required parameter 'business_id' is set
+        if ($business_id === null || (is_array($business_id) && count($business_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $business_id when calling auBusinessLeaveSettingsPut'
+            );
+        }
+
+        // verify the required parameter 'model' is set
+        if ($model === null || (is_array($model) && count($model) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $model when calling auBusinessLeaveSettingsPut'
+            );
+        }
+
+
+        $resourcePath = '/api/v2/business/{businessId}/leavesettings';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($business_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'businessId' . '}',
+                ObjectSerializer::toPathValue($business_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($model)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($model));
+            } else {
+                $httpBody = $model;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('apiKey');
+        if ($apiKey !== null) {
+            $headers['apiKey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

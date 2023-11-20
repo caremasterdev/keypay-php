@@ -539,6 +539,11 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess, \JsonSeriali
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
     public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
+    public const SOURCE_IMPORT_EMPLOYEE_SELF_SETUP = 'ImportEmployeeSelfSetup';
+    public const SOURCE_XERO_IDENTITY_PAYROLL_SIGN_UP = 'XeroIdentityPayrollSignUp';
+    public const SOURCE_XERO_IDENTITY_HR_SIGN_UP = 'XeroIdentityHrSignUp';
+    public const SOURCE_SAGE_INTACCT = 'SageIntacct';
+    public const SOURCE_DAILY_PAY = 'DailyPay';
     public const NUMBER_OF_EMPLOYEES_ONE_TO_TEN = 'OneToTen';
     public const NUMBER_OF_EMPLOYEES_ELEVEN_TO_FIFTY = 'ElevenToFifty';
     public const NUMBER_OF_EMPLOYEES_FIFTY_ONE_TO_TWO_FIFTY = 'FiftyOneToTwoFifty';
@@ -681,6 +686,11 @@ class AuBusinessExportModel implements ModelInterface, ArrayAccess, \JsonSeriali
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
             self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
+            self::SOURCE_IMPORT_EMPLOYEE_SELF_SETUP,
+            self::SOURCE_XERO_IDENTITY_PAYROLL_SIGN_UP,
+            self::SOURCE_XERO_IDENTITY_HR_SIGN_UP,
+            self::SOURCE_SAGE_INTACCT,
+            self::SOURCE_DAILY_PAY,
         ];
     }
 

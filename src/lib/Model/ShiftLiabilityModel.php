@@ -262,6 +262,7 @@ class ShiftLiabilityModel implements ModelInterface, ArrayAccess, \JsonSerializa
     public const OPTION_PER_HOUR_WORKED = 'PerHourWorked';
     public const OPTION_PERCENTAGE_OF_SHIFT_COST = 'PercentageOfShiftCost';
     public const OPTION_PER_SHIFT_UNIT = 'PerShiftUnit';
+    public const OPTION_PER_DAY = 'PerDay';
 
     /**
      * Gets allowable values of the enum
@@ -275,6 +276,7 @@ class ShiftLiabilityModel implements ModelInterface, ArrayAccess, \JsonSerializa
             self::OPTION_PER_HOUR_WORKED,
             self::OPTION_PERCENTAGE_OF_SHIFT_COST,
             self::OPTION_PER_SHIFT_UNIT,
+            self::OPTION_PER_DAY,
         ];
     }
 

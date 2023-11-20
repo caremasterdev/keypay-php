@@ -1,6 +1,6 @@
 <?php
 /**
- * ShiftAllowanceModel
+ * SetFunctionToggleModel
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ShiftAllowanceModel Class Doc Comment
+ * SetFunctionToggleModel Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class SetFunctionToggleModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ShiftAllowanceModel';
+    protected static $openAPIModelName = 'SetFunctionToggleModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,14 +57,8 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pay_category' => 'string',
-        'pay_category_id' => 'int',
-        'units' => 'float',
-        'cost' => 'float',
-        'rate_multiplier' => 'float',
-        'option' => 'string',
-        'type' => 'string',
-        'classification' => '\OpenAPI\Client\Model\NominalClassification'
+        'function_toggle' => 'string',
+        'function_name' => 'string'
     ];
 
     /**
@@ -75,14 +69,8 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'pay_category' => null,
-        'pay_category_id' => 'int32',
-        'units' => 'double',
-        'cost' => 'double',
-        'rate_multiplier' => 'double',
-        'option' => null,
-        'type' => null,
-        'classification' => null
+        'function_toggle' => null,
+        'function_name' => null
     ];
 
     /**
@@ -91,14 +79,8 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pay_category' => false,
-		'pay_category_id' => false,
-		'units' => false,
-		'cost' => false,
-		'rate_multiplier' => false,
-		'option' => false,
-		'type' => false,
-		'classification' => false
+        'function_toggle' => false,
+		'function_name' => false
     ];
 
     /**
@@ -187,14 +169,8 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'pay_category' => 'payCategory',
-        'pay_category_id' => 'payCategoryId',
-        'units' => 'units',
-        'cost' => 'cost',
-        'rate_multiplier' => 'rateMultiplier',
-        'option' => 'option',
-        'type' => 'type',
-        'classification' => 'classification'
+        'function_toggle' => 'functionToggle',
+        'function_name' => 'functionName'
     ];
 
     /**
@@ -203,14 +179,8 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'pay_category' => 'setPayCategory',
-        'pay_category_id' => 'setPayCategoryId',
-        'units' => 'setUnits',
-        'cost' => 'setCost',
-        'rate_multiplier' => 'setRateMultiplier',
-        'option' => 'setOption',
-        'type' => 'setType',
-        'classification' => 'setClassification'
+        'function_toggle' => 'setFunctionToggle',
+        'function_name' => 'setFunctionName'
     ];
 
     /**
@@ -219,14 +189,8 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'pay_category' => 'getPayCategory',
-        'pay_category_id' => 'getPayCategoryId',
-        'units' => 'getUnits',
-        'cost' => 'getCost',
-        'rate_multiplier' => 'getRateMultiplier',
-        'option' => 'getOption',
-        'type' => 'getType',
-        'classification' => 'getClassification'
+        'function_toggle' => 'getFunctionToggle',
+        'function_name' => 'getFunctionName'
     ];
 
     /**
@@ -270,40 +234,23 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const OPTION_FIXED = 'Fixed';
-    public const OPTION_PER_HOUR_WORKED = 'PerHourWorked';
-    public const OPTION_PERCENTAGE_OF_SHIFT_COST = 'PercentageOfShiftCost';
-    public const OPTION_PER_SHIFT_UNIT = 'PerShiftUnit';
-    public const OPTION_PER_DAY = 'PerDay';
-    public const TYPE_STANDARD = 'Standard';
-    public const TYPE_ALL_PURPOSE = 'AllPurpose';
+    public const FUNCTION_TOGGLE_DISABLED = 'Disabled';
+    public const FUNCTION_TOGGLE_ENABLED = 'Enabled';
+    public const FUNCTION_TOGGLE_UPSELL = 'Upsell';
+    public const FUNCTION_TOGGLE_COMING_SOON = 'ComingSoon';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getOptionAllowableValues()
+    public function getFunctionToggleAllowableValues()
     {
         return [
-            self::OPTION_FIXED,
-            self::OPTION_PER_HOUR_WORKED,
-            self::OPTION_PERCENTAGE_OF_SHIFT_COST,
-            self::OPTION_PER_SHIFT_UNIT,
-            self::OPTION_PER_DAY,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_STANDARD,
-            self::TYPE_ALL_PURPOSE,
+            self::FUNCTION_TOGGLE_DISABLED,
+            self::FUNCTION_TOGGLE_ENABLED,
+            self::FUNCTION_TOGGLE_UPSELL,
+            self::FUNCTION_TOGGLE_COMING_SOON,
         ];
     }
 
@@ -322,14 +269,8 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('pay_category', $data ?? [], null);
-        $this->setIfExists('pay_category_id', $data ?? [], null);
-        $this->setIfExists('units', $data ?? [], null);
-        $this->setIfExists('cost', $data ?? [], null);
-        $this->setIfExists('rate_multiplier', $data ?? [], null);
-        $this->setIfExists('option', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('classification', $data ?? [], null);
+        $this->setIfExists('function_toggle', $data ?? [], null);
+        $this->setIfExists('function_name', $data ?? [], null);
     }
 
     /**
@@ -359,20 +300,11 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getOptionAllowableValues();
-        if (!is_null($this->container['option']) && !in_array($this->container['option'], $allowedValues, true)) {
+        $allowedValues = $this->getFunctionToggleAllowableValues();
+        if (!is_null($this->container['function_toggle']) && !in_array($this->container['function_toggle'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'option', must be one of '%s'",
-                $this->container['option'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'function_toggle', must be one of '%s'",
+                $this->container['function_toggle'],
                 implode("', '", $allowedValues)
             );
         }
@@ -393,237 +325,65 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets pay_category
+     * Gets function_toggle
      *
      * @return string|null
      */
-    public function getPayCategory()
+    public function getFunctionToggle()
     {
-        return $this->container['pay_category'];
+        return $this->container['function_toggle'];
     }
 
     /**
-     * Sets pay_category
+     * Sets function_toggle
      *
-     * @param string|null $pay_category 
+     * @param string|null $function_toggle 
      *
      * @return self
      */
-    public function setPayCategory($pay_category)
+    public function setFunctionToggle($function_toggle)
     {
-        if (is_null($pay_category)) {
-            throw new \InvalidArgumentException('non-nullable pay_category cannot be null');
+        if (is_null($function_toggle)) {
+            throw new \InvalidArgumentException('non-nullable function_toggle cannot be null');
         }
-        $this->container['pay_category'] = $pay_category;
-
-        return $this;
-    }
-
-    /**
-     * Gets pay_category_id
-     *
-     * @return int|null
-     */
-    public function getPayCategoryId()
-    {
-        return $this->container['pay_category_id'];
-    }
-
-    /**
-     * Sets pay_category_id
-     *
-     * @param int|null $pay_category_id 
-     *
-     * @return self
-     */
-    public function setPayCategoryId($pay_category_id)
-    {
-        if (is_null($pay_category_id)) {
-            throw new \InvalidArgumentException('non-nullable pay_category_id cannot be null');
-        }
-        $this->container['pay_category_id'] = $pay_category_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets units
-     *
-     * @return float|null
-     */
-    public function getUnits()
-    {
-        return $this->container['units'];
-    }
-
-    /**
-     * Sets units
-     *
-     * @param float|null $units 
-     *
-     * @return self
-     */
-    public function setUnits($units)
-    {
-        if (is_null($units)) {
-            throw new \InvalidArgumentException('non-nullable units cannot be null');
-        }
-        $this->container['units'] = $units;
-
-        return $this;
-    }
-
-    /**
-     * Gets cost
-     *
-     * @return float|null
-     */
-    public function getCost()
-    {
-        return $this->container['cost'];
-    }
-
-    /**
-     * Sets cost
-     *
-     * @param float|null $cost 
-     *
-     * @return self
-     */
-    public function setCost($cost)
-    {
-        if (is_null($cost)) {
-            throw new \InvalidArgumentException('non-nullable cost cannot be null');
-        }
-        $this->container['cost'] = $cost;
-
-        return $this;
-    }
-
-    /**
-     * Gets rate_multiplier
-     *
-     * @return float|null
-     */
-    public function getRateMultiplier()
-    {
-        return $this->container['rate_multiplier'];
-    }
-
-    /**
-     * Sets rate_multiplier
-     *
-     * @param float|null $rate_multiplier 
-     *
-     * @return self
-     */
-    public function setRateMultiplier($rate_multiplier)
-    {
-        if (is_null($rate_multiplier)) {
-            throw new \InvalidArgumentException('non-nullable rate_multiplier cannot be null');
-        }
-        $this->container['rate_multiplier'] = $rate_multiplier;
-
-        return $this;
-    }
-
-    /**
-     * Gets option
-     *
-     * @return string|null
-     */
-    public function getOption()
-    {
-        return $this->container['option'];
-    }
-
-    /**
-     * Sets option
-     *
-     * @param string|null $option 
-     *
-     * @return self
-     */
-    public function setOption($option)
-    {
-        if (is_null($option)) {
-            throw new \InvalidArgumentException('non-nullable option cannot be null');
-        }
-        $allowedValues = $this->getOptionAllowableValues();
-        if (!in_array($option, $allowedValues, true)) {
+        $allowedValues = $this->getFunctionToggleAllowableValues();
+        if (!in_array($function_toggle, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'option', must be one of '%s'",
-                    $option,
+                    "Invalid value '%s' for 'function_toggle', must be one of '%s'",
+                    $function_toggle,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['option'] = $option;
+        $this->container['function_toggle'] = $function_toggle;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets function_name
      *
      * @return string|null
      */
-    public function getType()
+    public function getFunctionName()
     {
-        return $this->container['type'];
+        return $this->container['function_name'];
     }
 
     /**
-     * Sets type
+     * Sets function_name
      *
-     * @param string|null $type 
+     * @param string|null $function_name 
      *
      * @return self
      */
-    public function setType($type)
+    public function setFunctionName($function_name)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($function_name)) {
+            throw new \InvalidArgumentException('non-nullable function_name cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets classification
-     *
-     * @return \OpenAPI\Client\Model\NominalClassification|null
-     */
-    public function getClassification()
-    {
-        return $this->container['classification'];
-    }
-
-    /**
-     * Sets classification
-     *
-     * @param \OpenAPI\Client\Model\NominalClassification|null $classification classification
-     *
-     * @return self
-     */
-    public function setClassification($classification)
-    {
-        if (is_null($classification)) {
-            throw new \InvalidArgumentException('non-nullable classification cannot be null');
-        }
-        $this->container['classification'] = $classification;
+        $this->container['function_name'] = $function_name;
 
         return $this;
     }

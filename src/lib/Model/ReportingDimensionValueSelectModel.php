@@ -59,6 +59,7 @@ class ReportingDimensionValueSelectModel implements ModelInterface, ArrayAccess,
     protected static $openAPITypes = [
         'reporting_dimension_id' => 'int',
         'is_deleted' => 'bool',
+        'is_no_longer_allowed' => 'bool',
         'value' => 'int',
         'text' => 'string'
     ];
@@ -73,6 +74,7 @@ class ReportingDimensionValueSelectModel implements ModelInterface, ArrayAccess,
     protected static $openAPIFormats = [
         'reporting_dimension_id' => 'int32',
         'is_deleted' => null,
+        'is_no_longer_allowed' => null,
         'value' => 'int64',
         'text' => null
     ];
@@ -85,6 +87,7 @@ class ReportingDimensionValueSelectModel implements ModelInterface, ArrayAccess,
     protected static array $openAPINullables = [
         'reporting_dimension_id' => false,
 		'is_deleted' => false,
+		'is_no_longer_allowed' => false,
 		'value' => false,
 		'text' => false
     ];
@@ -177,6 +180,7 @@ class ReportingDimensionValueSelectModel implements ModelInterface, ArrayAccess,
     protected static $attributeMap = [
         'reporting_dimension_id' => 'reportingDimensionId',
         'is_deleted' => 'isDeleted',
+        'is_no_longer_allowed' => 'isNoLongerAllowed',
         'value' => 'value',
         'text' => 'text'
     ];
@@ -189,6 +193,7 @@ class ReportingDimensionValueSelectModel implements ModelInterface, ArrayAccess,
     protected static $setters = [
         'reporting_dimension_id' => 'setReportingDimensionId',
         'is_deleted' => 'setIsDeleted',
+        'is_no_longer_allowed' => 'setIsNoLongerAllowed',
         'value' => 'setValue',
         'text' => 'setText'
     ];
@@ -201,6 +206,7 @@ class ReportingDimensionValueSelectModel implements ModelInterface, ArrayAccess,
     protected static $getters = [
         'reporting_dimension_id' => 'getReportingDimensionId',
         'is_deleted' => 'getIsDeleted',
+        'is_no_longer_allowed' => 'getIsNoLongerAllowed',
         'value' => 'getValue',
         'text' => 'getText'
     ];
@@ -264,6 +270,7 @@ class ReportingDimensionValueSelectModel implements ModelInterface, ArrayAccess,
     {
         $this->setIfExists('reporting_dimension_id', $data ?? [], null);
         $this->setIfExists('is_deleted', $data ?? [], null);
+        $this->setIfExists('is_no_longer_allowed', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('text', $data ?? [], null);
     }
@@ -360,6 +367,33 @@ class ReportingDimensionValueSelectModel implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
         }
         $this->container['is_deleted'] = $is_deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_no_longer_allowed
+     *
+     * @return bool|null
+     */
+    public function getIsNoLongerAllowed()
+    {
+        return $this->container['is_no_longer_allowed'];
+    }
+
+    /**
+     * Sets is_no_longer_allowed
+     *
+     * @param bool|null $is_no_longer_allowed 
+     *
+     * @return self
+     */
+    public function setIsNoLongerAllowed($is_no_longer_allowed)
+    {
+        if (is_null($is_no_longer_allowed)) {
+            throw new \InvalidArgumentException('non-nullable is_no_longer_allowed cannot be null');
+        }
+        $this->container['is_no_longer_allowed'] = $is_no_longer_allowed;
 
         return $this;
     }

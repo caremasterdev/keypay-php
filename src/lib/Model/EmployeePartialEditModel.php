@@ -73,6 +73,8 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
         'tags_string' => 'string',
         'timesheet_setting' => 'string',
         'termination_reason' => 'string',
+        'portable_long_service_leave_id' => 'string',
+        'include_in_portable_long_service_leave_report' => 'bool',
         'title_id' => 'int',
         'first_name' => 'string',
         'other_name' => 'string',
@@ -153,6 +155,8 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
         'tags_string' => null,
         'timesheet_setting' => null,
         'termination_reason' => null,
+        'portable_long_service_leave_id' => null,
+        'include_in_portable_long_service_leave_report' => null,
         'title_id' => 'int32',
         'first_name' => null,
         'other_name' => null,
@@ -231,6 +235,8 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
 		'tags_string' => false,
 		'timesheet_setting' => false,
 		'termination_reason' => false,
+		'portable_long_service_leave_id' => false,
+		'include_in_portable_long_service_leave_report' => false,
 		'title_id' => false,
 		'first_name' => false,
 		'other_name' => false,
@@ -389,6 +395,8 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
         'tags_string' => 'tagsString',
         'timesheet_setting' => 'timesheetSetting',
         'termination_reason' => 'terminationReason',
+        'portable_long_service_leave_id' => 'portableLongServiceLeaveId',
+        'include_in_portable_long_service_leave_report' => 'includeInPortableLongServiceLeaveReport',
         'title_id' => 'titleId',
         'first_name' => 'firstName',
         'other_name' => 'otherName',
@@ -467,6 +475,8 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
         'tags_string' => 'setTagsString',
         'timesheet_setting' => 'setTimesheetSetting',
         'termination_reason' => 'setTerminationReason',
+        'portable_long_service_leave_id' => 'setPortableLongServiceLeaveId',
+        'include_in_portable_long_service_leave_report' => 'setIncludeInPortableLongServiceLeaveReport',
         'title_id' => 'setTitleId',
         'first_name' => 'setFirstName',
         'other_name' => 'setOtherName',
@@ -545,6 +555,8 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
         'tags_string' => 'getTagsString',
         'timesheet_setting' => 'getTimesheetSetting',
         'termination_reason' => 'getTerminationReason',
+        'portable_long_service_leave_id' => 'getPortableLongServiceLeaveId',
+        'include_in_portable_long_service_leave_report' => 'getIncludeInPortableLongServiceLeaveReport',
         'title_id' => 'getTitleId',
         'first_name' => 'getFirstName',
         'other_name' => 'getOtherName',
@@ -721,6 +733,11 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
     public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
+    public const SOURCE_IMPORT_EMPLOYEE_SELF_SETUP = 'ImportEmployeeSelfSetup';
+    public const SOURCE_XERO_IDENTITY_PAYROLL_SIGN_UP = 'XeroIdentityPayrollSignUp';
+    public const SOURCE_XERO_IDENTITY_HR_SIGN_UP = 'XeroIdentityHrSignUp';
+    public const SOURCE_SAGE_INTACCT = 'SageIntacct';
+    public const SOURCE_DAILY_PAY = 'DailyPay';
     public const TIMESHEET_SETTING_DISABLED = 'Disabled';
     public const TIMESHEET_SETTING_ENABLED = 'Enabled';
     public const TIMESHEET_SETTING_ENABLED_FOR_EXCEPTIONS = 'EnabledForExceptions';
@@ -829,6 +846,11 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
             self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
+            self::SOURCE_IMPORT_EMPLOYEE_SELF_SETUP,
+            self::SOURCE_XERO_IDENTITY_PAYROLL_SIGN_UP,
+            self::SOURCE_XERO_IDENTITY_HR_SIGN_UP,
+            self::SOURCE_SAGE_INTACCT,
+            self::SOURCE_DAILY_PAY,
         ];
     }
 
@@ -905,6 +927,8 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('tags_string', $data ?? [], null);
         $this->setIfExists('timesheet_setting', $data ?? [], null);
         $this->setIfExists('termination_reason', $data ?? [], null);
+        $this->setIfExists('portable_long_service_leave_id', $data ?? [], null);
+        $this->setIfExists('include_in_portable_long_service_leave_report', $data ?? [], null);
         $this->setIfExists('title_id', $data ?? [], null);
         $this->setIfExists('first_name', $data ?? [], null);
         $this->setIfExists('other_name', $data ?? [], null);
@@ -1506,6 +1530,60 @@ class EmployeePartialEditModel implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable termination_reason cannot be null');
         }
         $this->container['termination_reason'] = $termination_reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets portable_long_service_leave_id
+     *
+     * @return string|null
+     */
+    public function getPortableLongServiceLeaveId()
+    {
+        return $this->container['portable_long_service_leave_id'];
+    }
+
+    /**
+     * Sets portable_long_service_leave_id
+     *
+     * @param string|null $portable_long_service_leave_id 
+     *
+     * @return self
+     */
+    public function setPortableLongServiceLeaveId($portable_long_service_leave_id)
+    {
+        if (is_null($portable_long_service_leave_id)) {
+            throw new \InvalidArgumentException('non-nullable portable_long_service_leave_id cannot be null');
+        }
+        $this->container['portable_long_service_leave_id'] = $portable_long_service_leave_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets include_in_portable_long_service_leave_report
+     *
+     * @return bool|null
+     */
+    public function getIncludeInPortableLongServiceLeaveReport()
+    {
+        return $this->container['include_in_portable_long_service_leave_report'];
+    }
+
+    /**
+     * Sets include_in_portable_long_service_leave_report
+     *
+     * @param bool|null $include_in_portable_long_service_leave_report 
+     *
+     * @return self
+     */
+    public function setIncludeInPortableLongServiceLeaveReport($include_in_portable_long_service_leave_report)
+    {
+        if (is_null($include_in_portable_long_service_leave_report)) {
+            throw new \InvalidArgumentException('non-nullable include_in_portable_long_service_leave_report cannot be null');
+        }
+        $this->container['include_in_portable_long_service_leave_report'] = $include_in_portable_long_service_leave_report;
 
         return $this;
     }

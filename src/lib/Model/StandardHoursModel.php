@@ -61,7 +61,8 @@ class StandardHoursModel implements ModelInterface, ArrayAccess, \JsonSerializab
         'standard_hours_per_week' => 'float',
         'standard_hours_per_day' => 'float',
         'use_advanced_work_week' => 'bool',
-        'standard_work_days' => '\OpenAPI\Client\Model\StandardHoursDayModel[]'
+        'standard_work_days' => '\OpenAPI\Client\Model\StandardHoursDayModel[]',
+        'full_time_equivalent_hours' => 'float'
     ];
 
     /**
@@ -76,7 +77,8 @@ class StandardHoursModel implements ModelInterface, ArrayAccess, \JsonSerializab
         'standard_hours_per_week' => 'double',
         'standard_hours_per_day' => 'double',
         'use_advanced_work_week' => null,
-        'standard_work_days' => null
+        'standard_work_days' => null,
+        'full_time_equivalent_hours' => 'double'
     ];
 
     /**
@@ -89,7 +91,8 @@ class StandardHoursModel implements ModelInterface, ArrayAccess, \JsonSerializab
 		'standard_hours_per_week' => false,
 		'standard_hours_per_day' => false,
 		'use_advanced_work_week' => false,
-		'standard_work_days' => false
+		'standard_work_days' => false,
+		'full_time_equivalent_hours' => false
     ];
 
     /**
@@ -182,7 +185,8 @@ class StandardHoursModel implements ModelInterface, ArrayAccess, \JsonSerializab
         'standard_hours_per_week' => 'standardHoursPerWeek',
         'standard_hours_per_day' => 'standardHoursPerDay',
         'use_advanced_work_week' => 'useAdvancedWorkWeek',
-        'standard_work_days' => 'standardWorkDays'
+        'standard_work_days' => 'standardWorkDays',
+        'full_time_equivalent_hours' => 'fullTimeEquivalentHours'
     ];
 
     /**
@@ -195,7 +199,8 @@ class StandardHoursModel implements ModelInterface, ArrayAccess, \JsonSerializab
         'standard_hours_per_week' => 'setStandardHoursPerWeek',
         'standard_hours_per_day' => 'setStandardHoursPerDay',
         'use_advanced_work_week' => 'setUseAdvancedWorkWeek',
-        'standard_work_days' => 'setStandardWorkDays'
+        'standard_work_days' => 'setStandardWorkDays',
+        'full_time_equivalent_hours' => 'setFullTimeEquivalentHours'
     ];
 
     /**
@@ -208,7 +213,8 @@ class StandardHoursModel implements ModelInterface, ArrayAccess, \JsonSerializab
         'standard_hours_per_week' => 'getStandardHoursPerWeek',
         'standard_hours_per_day' => 'getStandardHoursPerDay',
         'use_advanced_work_week' => 'getUseAdvancedWorkWeek',
-        'standard_work_days' => 'getStandardWorkDays'
+        'standard_work_days' => 'getStandardWorkDays',
+        'full_time_equivalent_hours' => 'getFullTimeEquivalentHours'
     ];
 
     /**
@@ -273,6 +279,7 @@ class StandardHoursModel implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('standard_hours_per_day', $data ?? [], null);
         $this->setIfExists('use_advanced_work_week', $data ?? [], null);
         $this->setIfExists('standard_work_days', $data ?? [], null);
+        $this->setIfExists('full_time_equivalent_hours', $data ?? [], null);
     }
 
     /**
@@ -448,6 +455,33 @@ class StandardHoursModel implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable standard_work_days cannot be null');
         }
         $this->container['standard_work_days'] = $standard_work_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets full_time_equivalent_hours
+     *
+     * @return float|null
+     */
+    public function getFullTimeEquivalentHours()
+    {
+        return $this->container['full_time_equivalent_hours'];
+    }
+
+    /**
+     * Sets full_time_equivalent_hours
+     *
+     * @param float|null $full_time_equivalent_hours 
+     *
+     * @return self
+     */
+    public function setFullTimeEquivalentHours($full_time_equivalent_hours)
+    {
+        if (is_null($full_time_equivalent_hours)) {
+            throw new \InvalidArgumentException('non-nullable full_time_equivalent_hours cannot be null');
+        }
+        $this->container['full_time_equivalent_hours'] = $full_time_equivalent_hours;
 
         return $this;
     }

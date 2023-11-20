@@ -83,7 +83,7 @@ class AuTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'hidden_comments' => 'string',
         'attachment' => '\OpenAPI\Client\Model\Attachment',
         'submitted_by_user' => 'string',
-        'dimension_values' => '\OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]'
+        'dimension_value_ids' => 'int[]'
     ];
 
     /**
@@ -120,7 +120,7 @@ class AuTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'hidden_comments' => null,
         'attachment' => null,
         'submitted_by_user' => null,
-        'dimension_values' => null
+        'dimension_value_ids' => 'int32'
     ];
 
     /**
@@ -155,7 +155,7 @@ class AuTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializ
 		'hidden_comments' => false,
 		'attachment' => false,
 		'submitted_by_user' => false,
-		'dimension_values' => false
+		'dimension_value_ids' => false
     ];
 
     /**
@@ -270,7 +270,7 @@ class AuTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'hidden_comments' => 'hiddenComments',
         'attachment' => 'attachment',
         'submitted_by_user' => 'submittedByUser',
-        'dimension_values' => 'dimensionValues'
+        'dimension_value_ids' => 'dimensionValueIds'
     ];
 
     /**
@@ -305,7 +305,7 @@ class AuTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'hidden_comments' => 'setHiddenComments',
         'attachment' => 'setAttachment',
         'submitted_by_user' => 'setSubmittedByUser',
-        'dimension_values' => 'setDimensionValues'
+        'dimension_value_ids' => 'setDimensionValueIds'
     ];
 
     /**
@@ -340,7 +340,7 @@ class AuTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializ
         'hidden_comments' => 'getHiddenComments',
         'attachment' => 'getAttachment',
         'submitted_by_user' => 'getSubmittedByUser',
-        'dimension_values' => 'getDimensionValues'
+        'dimension_value_ids' => 'getDimensionValueIds'
     ];
 
     /**
@@ -461,6 +461,11 @@ class AuTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializ
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
     public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
+    public const SOURCE_IMPORT_EMPLOYEE_SELF_SETUP = 'ImportEmployeeSelfSetup';
+    public const SOURCE_XERO_IDENTITY_PAYROLL_SIGN_UP = 'XeroIdentityPayrollSignUp';
+    public const SOURCE_XERO_IDENTITY_HR_SIGN_UP = 'XeroIdentityHrSignUp';
+    public const SOURCE_SAGE_INTACCT = 'SageIntacct';
+    public const SOURCE_DAILY_PAY = 'DailyPay';
 
     /**
      * Gets allowable values of the enum
@@ -547,6 +552,11 @@ class AuTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializ
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
             self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
+            self::SOURCE_IMPORT_EMPLOYEE_SELF_SETUP,
+            self::SOURCE_XERO_IDENTITY_PAYROLL_SIGN_UP,
+            self::SOURCE_XERO_IDENTITY_HR_SIGN_UP,
+            self::SOURCE_SAGE_INTACCT,
+            self::SOURCE_DAILY_PAY,
         ];
     }
 
@@ -591,7 +601,7 @@ class AuTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('hidden_comments', $data ?? [], null);
         $this->setIfExists('attachment', $data ?? [], null);
         $this->setIfExists('submitted_by_user', $data ?? [], null);
-        $this->setIfExists('dimension_values', $data ?? [], null);
+        $this->setIfExists('dimension_value_ids', $data ?? [], null);
     }
 
     /**
@@ -1358,28 +1368,28 @@ class AuTimesheetLineModel implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets dimension_values
+     * Gets dimension_value_ids
      *
-     * @return \OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]|null
+     * @return int[]|null
      */
-    public function getDimensionValues()
+    public function getDimensionValueIds()
     {
-        return $this->container['dimension_values'];
+        return $this->container['dimension_value_ids'];
     }
 
     /**
-     * Sets dimension_values
+     * Sets dimension_value_ids
      *
-     * @param \OpenAPI\Client\Model\ReportingDimensionValueBaseApiModel[]|null $dimension_values 
+     * @param int[]|null $dimension_value_ids 
      *
      * @return self
      */
-    public function setDimensionValues($dimension_values)
+    public function setDimensionValueIds($dimension_value_ids)
     {
-        if (is_null($dimension_values)) {
-            throw new \InvalidArgumentException('non-nullable dimension_values cannot be null');
+        if (is_null($dimension_value_ids)) {
+            throw new \InvalidArgumentException('non-nullable dimension_value_ids cannot be null');
         }
-        $this->container['dimension_values'] = $dimension_values;
+        $this->container['dimension_value_ids'] = $dimension_value_ids;
 
         return $this;
     }

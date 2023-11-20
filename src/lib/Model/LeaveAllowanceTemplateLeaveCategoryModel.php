@@ -313,6 +313,7 @@ class LeaveAllowanceTemplateLeaveCategoryModel implements ModelInterface, ArrayA
     public const UNIT_TYPE_STANDARD_DAYS = 'StandardDays';
     public const UNIT_TYPE_STANDARD_WEEKS = 'StandardWeeks';
     public const UNIT_TYPE_DAY_PER_CALENDAR_DAY = 'DayPerCalendarDay';
+    public const UNIT_TYPE_DAY_PER_MONTH = 'DayPerMonth';
     public const LEAVE_ACCRUAL_RULE_ACCRUAL_TYPE_ONGOING = 'Ongoing';
     public const LEAVE_ACCRUAL_RULE_ACCRUAL_TYPE_YEARLY = 'Yearly';
     public const LEAVE_ACCRUAL_RULE_ACCRUAL_TYPE_BASED_ON_LENGTH_OF_SERVICE = 'BasedOnLengthOfService';
@@ -336,6 +337,7 @@ class LeaveAllowanceTemplateLeaveCategoryModel implements ModelInterface, ArrayA
             self::UNIT_TYPE_STANDARD_DAYS,
             self::UNIT_TYPE_STANDARD_WEEKS,
             self::UNIT_TYPE_DAY_PER_CALENDAR_DAY,
+            self::UNIT_TYPE_DAY_PER_MONTH,
         ];
     }
 
