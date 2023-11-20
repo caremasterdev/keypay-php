@@ -59,7 +59,7 @@ class AwardPackageDataModel implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPITypes = [
         'employment_agreements' => '\OpenAPI\Client\Model\EmploymentAgreementModel[]',
         'pay_categories' => '\OpenAPI\Client\Model\ConsolidatedPayCategoryModel[]',
-        'leave_categories' => '\OpenAPI\Client\Model\LeaveCategoryModel[]',
+        'leave_categories' => '\OpenAPI\Client\Model\AwardLeaveCategoryModel[]',
         'expense_categories' => '\OpenAPI\Client\Model\EmployeeExpenseCategoryModel[]',
         'work_types' => '\OpenAPI\Client\Model\WorkTypeModel[]',
         'tags' => '\OpenAPI\Client\Model\TagModel[]',
@@ -409,7 +409,7 @@ class AwardPackageDataModel implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets leave_categories
      *
-     * @return \OpenAPI\Client\Model\LeaveCategoryModel[]|null
+     * @return \OpenAPI\Client\Model\AwardLeaveCategoryModel[]|null
      */
     public function getLeaveCategories()
     {
@@ -419,7 +419,7 @@ class AwardPackageDataModel implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets leave_categories
      *
-     * @param \OpenAPI\Client\Model\LeaveCategoryModel[]|null $leave_categories 
+     * @param \OpenAPI\Client\Model\AwardLeaveCategoryModel[]|null $leave_categories 
      *
      * @return self
      */

@@ -387,6 +387,11 @@ class EmployerRecurringLiabilityModel implements ModelInterface, ArrayAccess, \J
     public const SOURCE_SLACK = 'Slack';
     public const SOURCE_CAXTON = 'Caxton';
     public const SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
+    public const SOURCE_IMPORT_EMPLOYEE_SELF_SETUP = 'ImportEmployeeSelfSetup';
+    public const SOURCE_XERO_IDENTITY_PAYROLL_SIGN_UP = 'XeroIdentityPayrollSignUp';
+    public const SOURCE_XERO_IDENTITY_HR_SIGN_UP = 'XeroIdentityHrSignUp';
+    public const SOURCE_SAGE_INTACCT = 'SageIntacct';
+    public const SOURCE_DAILY_PAY = 'DailyPay';
 
     /**
      * Gets allowable values of the enum
@@ -488,6 +493,11 @@ class EmployerRecurringLiabilityModel implements ModelInterface, ArrayAccess, \J
             self::SOURCE_SLACK,
             self::SOURCE_CAXTON,
             self::SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
+            self::SOURCE_IMPORT_EMPLOYEE_SELF_SETUP,
+            self::SOURCE_XERO_IDENTITY_PAYROLL_SIGN_UP,
+            self::SOURCE_XERO_IDENTITY_HR_SIGN_UP,
+            self::SOURCE_SAGE_INTACCT,
+            self::SOURCE_DAILY_PAY,
         ];
     }
 

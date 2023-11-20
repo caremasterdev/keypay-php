@@ -1,6 +1,6 @@
 <?php
 /**
- * AuLeaveCategoryModel
+ * AwardLeaveCategoryModel
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * AuLeaveCategoryModel Class Doc Comment
+ * AwardLeaveCategoryModel Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class AwardLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AuLeaveCategoryModel';
+    protected static $openAPIModelName = 'AwardLeaveCategoryModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,33 +57,34 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'contingent_period' => 'float',
-        'entitlement_period' => 'float',
-        'leave_loading' => 'float',
-        'unit_type' => 'string',
-        'leave_category_type' => 'string',
-        'leave_accrual_rule' => '\OpenAPI\Client\Model\AuLeaveAccrualRuleModel',
-        'transfer_on_termination_to_pay_category_id' => 'int',
         'id' => 'int',
         'name' => 'string',
+        'unit_type' => 'string',
         'units' => 'float',
         'automatically_accrues' => 'bool',
         'is_private' => 'bool',
         'exclude_from_termination_payout' => 'bool',
+        'payout_negative_balance' => 'bool',
         'external_id' => 'string',
         'source' => 'string',
+        'leave_loading' => 'float',
+        'contingent_period' => 'float',
+        'entitlement_period' => 'float',
         'is_balance_untracked' => 'bool',
+        'leave_category_type' => 'string',
         'deduct_from_primary_pay_category' => 'bool',
         'deduct_from_pay_category_id' => 'int',
+        'deduct_from_system_pay_category_name' => 'string',
         'transfer_to_pay_category_id' => 'int',
+        'transfer_to_system_pay_category_name' => 'string',
+        'transfer_unused_leave_to_pay_category_id' => 'int',
+        'transfer_unused_leave_to_system_pay_category_name' => 'string',
         'hide_accruals_on_payslip' => 'bool',
         'use_deduct_from_pay_category_rate' => 'bool',
+        'leave_accrual_rule' => '\OpenAPI\Client\Model\LeaveAccrualRuleViewModel',
         'is_name_private' => 'bool',
-        'leave_unit_type' => 'string',
-        'payout_as_etp' => 'bool',
         'accrues_first_pay_run_per_period_only' => 'bool',
-        'prevent_negative_balance_unpaid_leave_category_id' => 'int',
-        'leave_entitlement' => '\OpenAPI\Client\Model\LeaveEntitlementModel'
+        'prevent_negative_balance_unpaid_leave_category_id' => 'int'
     ];
 
     /**
@@ -94,33 +95,34 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'contingent_period' => 'double',
-        'entitlement_period' => 'double',
-        'leave_loading' => 'double',
-        'unit_type' => null,
-        'leave_category_type' => null,
-        'leave_accrual_rule' => null,
-        'transfer_on_termination_to_pay_category_id' => 'int32',
         'id' => 'int32',
         'name' => null,
+        'unit_type' => null,
         'units' => 'double',
         'automatically_accrues' => null,
         'is_private' => null,
         'exclude_from_termination_payout' => null,
+        'payout_negative_balance' => null,
         'external_id' => null,
         'source' => null,
+        'leave_loading' => 'double',
+        'contingent_period' => 'double',
+        'entitlement_period' => 'double',
         'is_balance_untracked' => null,
+        'leave_category_type' => null,
         'deduct_from_primary_pay_category' => null,
         'deduct_from_pay_category_id' => 'int32',
+        'deduct_from_system_pay_category_name' => null,
         'transfer_to_pay_category_id' => 'int32',
+        'transfer_to_system_pay_category_name' => null,
+        'transfer_unused_leave_to_pay_category_id' => 'int32',
+        'transfer_unused_leave_to_system_pay_category_name' => null,
         'hide_accruals_on_payslip' => null,
         'use_deduct_from_pay_category_rate' => null,
+        'leave_accrual_rule' => null,
         'is_name_private' => null,
-        'leave_unit_type' => null,
-        'payout_as_etp' => null,
         'accrues_first_pay_run_per_period_only' => null,
-        'prevent_negative_balance_unpaid_leave_category_id' => 'int32',
-        'leave_entitlement' => null
+        'prevent_negative_balance_unpaid_leave_category_id' => 'int32'
     ];
 
     /**
@@ -129,33 +131,34 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'contingent_period' => false,
-		'entitlement_period' => false,
-		'leave_loading' => false,
-		'unit_type' => false,
-		'leave_category_type' => false,
-		'leave_accrual_rule' => false,
-		'transfer_on_termination_to_pay_category_id' => false,
-		'id' => false,
+        'id' => false,
 		'name' => false,
+		'unit_type' => false,
 		'units' => false,
 		'automatically_accrues' => false,
 		'is_private' => false,
 		'exclude_from_termination_payout' => false,
+		'payout_negative_balance' => false,
 		'external_id' => false,
 		'source' => false,
+		'leave_loading' => false,
+		'contingent_period' => false,
+		'entitlement_period' => false,
 		'is_balance_untracked' => false,
+		'leave_category_type' => false,
 		'deduct_from_primary_pay_category' => false,
 		'deduct_from_pay_category_id' => false,
+		'deduct_from_system_pay_category_name' => false,
 		'transfer_to_pay_category_id' => false,
+		'transfer_to_system_pay_category_name' => false,
+		'transfer_unused_leave_to_pay_category_id' => false,
+		'transfer_unused_leave_to_system_pay_category_name' => false,
 		'hide_accruals_on_payslip' => false,
 		'use_deduct_from_pay_category_rate' => false,
+		'leave_accrual_rule' => false,
 		'is_name_private' => false,
-		'leave_unit_type' => false,
-		'payout_as_etp' => false,
 		'accrues_first_pay_run_per_period_only' => false,
-		'prevent_negative_balance_unpaid_leave_category_id' => false,
-		'leave_entitlement' => false
+		'prevent_negative_balance_unpaid_leave_category_id' => false
     ];
 
     /**
@@ -244,33 +247,34 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'contingent_period' => 'contingentPeriod',
-        'entitlement_period' => 'entitlementPeriod',
-        'leave_loading' => 'leaveLoading',
-        'unit_type' => 'unitType',
-        'leave_category_type' => 'leaveCategoryType',
-        'leave_accrual_rule' => 'leaveAccrualRule',
-        'transfer_on_termination_to_pay_category_id' => 'transferOnTerminationToPayCategoryId',
         'id' => 'id',
         'name' => 'name',
+        'unit_type' => 'unitType',
         'units' => 'units',
         'automatically_accrues' => 'automaticallyAccrues',
         'is_private' => 'isPrivate',
         'exclude_from_termination_payout' => 'excludeFromTerminationPayout',
+        'payout_negative_balance' => 'payoutNegativeBalance',
         'external_id' => 'externalId',
         'source' => 'source',
+        'leave_loading' => 'leaveLoading',
+        'contingent_period' => 'contingentPeriod',
+        'entitlement_period' => 'entitlementPeriod',
         'is_balance_untracked' => 'isBalanceUntracked',
+        'leave_category_type' => 'leaveCategoryType',
         'deduct_from_primary_pay_category' => 'deductFromPrimaryPayCategory',
         'deduct_from_pay_category_id' => 'deductFromPayCategoryId',
+        'deduct_from_system_pay_category_name' => 'deductFromSystemPayCategoryName',
         'transfer_to_pay_category_id' => 'transferToPayCategoryId',
+        'transfer_to_system_pay_category_name' => 'transferToSystemPayCategoryName',
+        'transfer_unused_leave_to_pay_category_id' => 'transferUnusedLeaveToPayCategoryId',
+        'transfer_unused_leave_to_system_pay_category_name' => 'transferUnusedLeaveToSystemPayCategoryName',
         'hide_accruals_on_payslip' => 'hideAccrualsOnPayslip',
         'use_deduct_from_pay_category_rate' => 'useDeductFromPayCategoryRate',
+        'leave_accrual_rule' => 'leaveAccrualRule',
         'is_name_private' => 'isNamePrivate',
-        'leave_unit_type' => 'leaveUnitType',
-        'payout_as_etp' => 'payoutAsETP',
         'accrues_first_pay_run_per_period_only' => 'accruesFirstPayRunPerPeriodOnly',
-        'prevent_negative_balance_unpaid_leave_category_id' => 'preventNegativeBalanceUnpaidLeaveCategoryId',
-        'leave_entitlement' => 'leaveEntitlement'
+        'prevent_negative_balance_unpaid_leave_category_id' => 'preventNegativeBalanceUnpaidLeaveCategoryId'
     ];
 
     /**
@@ -279,33 +283,34 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'contingent_period' => 'setContingentPeriod',
-        'entitlement_period' => 'setEntitlementPeriod',
-        'leave_loading' => 'setLeaveLoading',
-        'unit_type' => 'setUnitType',
-        'leave_category_type' => 'setLeaveCategoryType',
-        'leave_accrual_rule' => 'setLeaveAccrualRule',
-        'transfer_on_termination_to_pay_category_id' => 'setTransferOnTerminationToPayCategoryId',
         'id' => 'setId',
         'name' => 'setName',
+        'unit_type' => 'setUnitType',
         'units' => 'setUnits',
         'automatically_accrues' => 'setAutomaticallyAccrues',
         'is_private' => 'setIsPrivate',
         'exclude_from_termination_payout' => 'setExcludeFromTerminationPayout',
+        'payout_negative_balance' => 'setPayoutNegativeBalance',
         'external_id' => 'setExternalId',
         'source' => 'setSource',
+        'leave_loading' => 'setLeaveLoading',
+        'contingent_period' => 'setContingentPeriod',
+        'entitlement_period' => 'setEntitlementPeriod',
         'is_balance_untracked' => 'setIsBalanceUntracked',
+        'leave_category_type' => 'setLeaveCategoryType',
         'deduct_from_primary_pay_category' => 'setDeductFromPrimaryPayCategory',
         'deduct_from_pay_category_id' => 'setDeductFromPayCategoryId',
+        'deduct_from_system_pay_category_name' => 'setDeductFromSystemPayCategoryName',
         'transfer_to_pay_category_id' => 'setTransferToPayCategoryId',
+        'transfer_to_system_pay_category_name' => 'setTransferToSystemPayCategoryName',
+        'transfer_unused_leave_to_pay_category_id' => 'setTransferUnusedLeaveToPayCategoryId',
+        'transfer_unused_leave_to_system_pay_category_name' => 'setTransferUnusedLeaveToSystemPayCategoryName',
         'hide_accruals_on_payslip' => 'setHideAccrualsOnPayslip',
         'use_deduct_from_pay_category_rate' => 'setUseDeductFromPayCategoryRate',
+        'leave_accrual_rule' => 'setLeaveAccrualRule',
         'is_name_private' => 'setIsNamePrivate',
-        'leave_unit_type' => 'setLeaveUnitType',
-        'payout_as_etp' => 'setPayoutAsEtp',
         'accrues_first_pay_run_per_period_only' => 'setAccruesFirstPayRunPerPeriodOnly',
-        'prevent_negative_balance_unpaid_leave_category_id' => 'setPreventNegativeBalanceUnpaidLeaveCategoryId',
-        'leave_entitlement' => 'setLeaveEntitlement'
+        'prevent_negative_balance_unpaid_leave_category_id' => 'setPreventNegativeBalanceUnpaidLeaveCategoryId'
     ];
 
     /**
@@ -314,33 +319,34 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'contingent_period' => 'getContingentPeriod',
-        'entitlement_period' => 'getEntitlementPeriod',
-        'leave_loading' => 'getLeaveLoading',
-        'unit_type' => 'getUnitType',
-        'leave_category_type' => 'getLeaveCategoryType',
-        'leave_accrual_rule' => 'getLeaveAccrualRule',
-        'transfer_on_termination_to_pay_category_id' => 'getTransferOnTerminationToPayCategoryId',
         'id' => 'getId',
         'name' => 'getName',
+        'unit_type' => 'getUnitType',
         'units' => 'getUnits',
         'automatically_accrues' => 'getAutomaticallyAccrues',
         'is_private' => 'getIsPrivate',
         'exclude_from_termination_payout' => 'getExcludeFromTerminationPayout',
+        'payout_negative_balance' => 'getPayoutNegativeBalance',
         'external_id' => 'getExternalId',
         'source' => 'getSource',
+        'leave_loading' => 'getLeaveLoading',
+        'contingent_period' => 'getContingentPeriod',
+        'entitlement_period' => 'getEntitlementPeriod',
         'is_balance_untracked' => 'getIsBalanceUntracked',
+        'leave_category_type' => 'getLeaveCategoryType',
         'deduct_from_primary_pay_category' => 'getDeductFromPrimaryPayCategory',
         'deduct_from_pay_category_id' => 'getDeductFromPayCategoryId',
+        'deduct_from_system_pay_category_name' => 'getDeductFromSystemPayCategoryName',
         'transfer_to_pay_category_id' => 'getTransferToPayCategoryId',
+        'transfer_to_system_pay_category_name' => 'getTransferToSystemPayCategoryName',
+        'transfer_unused_leave_to_pay_category_id' => 'getTransferUnusedLeaveToPayCategoryId',
+        'transfer_unused_leave_to_system_pay_category_name' => 'getTransferUnusedLeaveToSystemPayCategoryName',
         'hide_accruals_on_payslip' => 'getHideAccrualsOnPayslip',
         'use_deduct_from_pay_category_rate' => 'getUseDeductFromPayCategoryRate',
+        'leave_accrual_rule' => 'getLeaveAccrualRule',
         'is_name_private' => 'getIsNamePrivate',
-        'leave_unit_type' => 'getLeaveUnitType',
-        'payout_as_etp' => 'getPayoutAsEtp',
         'accrues_first_pay_run_per_period_only' => 'getAccruesFirstPayRunPerPeriodOnly',
-        'prevent_negative_balance_unpaid_leave_category_id' => 'getPreventNegativeBalanceUnpaidLeaveCategoryId',
-        'leave_entitlement' => 'getLeaveEntitlement'
+        'prevent_negative_balance_unpaid_leave_category_id' => 'getPreventNegativeBalanceUnpaidLeaveCategoryId'
     ];
 
     /**
@@ -394,10 +400,16 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
     public const UNIT_TYPE_DAY_PER_MONTH = 'DayPerMonth';
     public const LEAVE_CATEGORY_TYPE_STANDARD = 'Standard';
     public const LEAVE_CATEGORY_TYPE_LONG_SERVICE_LEAVE = 'LongServiceLeave';
+    public const LEAVE_CATEGORY_TYPE_STATUTORY_SICK_LEAVE = 'StatutorySickLeave';
+    public const LEAVE_CATEGORY_TYPE_STATUTORY_MATERNITY_LEAVE = 'StatutoryMaternityLeave';
     public const LEAVE_CATEGORY_TYPE_PERSONAL_CARERS_LEAVE = 'PersonalCarersLeave';
-    public const LEAVE_UNIT_TYPE_HOURS = 'Hours';
-    public const LEAVE_UNIT_TYPE_DAYS = 'Days';
-    public const LEAVE_UNIT_TYPE_WEEKS = 'Weeks';
+    public const LEAVE_CATEGORY_TYPE_STATUTORY_ADOPTION_LEAVE = 'StatutoryAdoptionLeave';
+    public const LEAVE_CATEGORY_TYPE_STATUTORY_PATERNITY_LEAVE = 'StatutoryPaternityLeave';
+    public const LEAVE_CATEGORY_TYPE_STATUTORY_PARENTAL_BEREAVEMENT_LEAVE = 'StatutoryParentalBereavementLeave';
+    public const LEAVE_CATEGORY_TYPE_OCCUPATIONAL_SICK_LEAVE = 'OccupationalSickLeave';
+    public const LEAVE_CATEGORY_TYPE_PAID_FAMILYAND_DOMESTIC_VIOLENCE_LEAVE = 'PaidFamilyandDomesticViolenceLeave';
+    public const LEAVE_CATEGORY_TYPE_ENTITLEMENT_BASED_LEAVE = 'EntitlementBasedLeave';
+    public const LEAVE_CATEGORY_TYPE_OCCUPATIONAL_MATERNITY_LEAVE = 'OccupationalMaternityLeave';
 
     /**
      * Gets allowable values of the enum
@@ -428,21 +440,16 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
         return [
             self::LEAVE_CATEGORY_TYPE_STANDARD,
             self::LEAVE_CATEGORY_TYPE_LONG_SERVICE_LEAVE,
+            self::LEAVE_CATEGORY_TYPE_STATUTORY_SICK_LEAVE,
+            self::LEAVE_CATEGORY_TYPE_STATUTORY_MATERNITY_LEAVE,
             self::LEAVE_CATEGORY_TYPE_PERSONAL_CARERS_LEAVE,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getLeaveUnitTypeAllowableValues()
-    {
-        return [
-            self::LEAVE_UNIT_TYPE_HOURS,
-            self::LEAVE_UNIT_TYPE_DAYS,
-            self::LEAVE_UNIT_TYPE_WEEKS,
+            self::LEAVE_CATEGORY_TYPE_STATUTORY_ADOPTION_LEAVE,
+            self::LEAVE_CATEGORY_TYPE_STATUTORY_PATERNITY_LEAVE,
+            self::LEAVE_CATEGORY_TYPE_STATUTORY_PARENTAL_BEREAVEMENT_LEAVE,
+            self::LEAVE_CATEGORY_TYPE_OCCUPATIONAL_SICK_LEAVE,
+            self::LEAVE_CATEGORY_TYPE_PAID_FAMILYAND_DOMESTIC_VIOLENCE_LEAVE,
+            self::LEAVE_CATEGORY_TYPE_ENTITLEMENT_BASED_LEAVE,
+            self::LEAVE_CATEGORY_TYPE_OCCUPATIONAL_MATERNITY_LEAVE,
         ];
     }
 
@@ -461,33 +468,34 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('contingent_period', $data ?? [], null);
-        $this->setIfExists('entitlement_period', $data ?? [], null);
-        $this->setIfExists('leave_loading', $data ?? [], null);
-        $this->setIfExists('unit_type', $data ?? [], null);
-        $this->setIfExists('leave_category_type', $data ?? [], null);
-        $this->setIfExists('leave_accrual_rule', $data ?? [], null);
-        $this->setIfExists('transfer_on_termination_to_pay_category_id', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('unit_type', $data ?? [], null);
         $this->setIfExists('units', $data ?? [], null);
         $this->setIfExists('automatically_accrues', $data ?? [], null);
         $this->setIfExists('is_private', $data ?? [], null);
         $this->setIfExists('exclude_from_termination_payout', $data ?? [], null);
+        $this->setIfExists('payout_negative_balance', $data ?? [], null);
         $this->setIfExists('external_id', $data ?? [], null);
         $this->setIfExists('source', $data ?? [], null);
+        $this->setIfExists('leave_loading', $data ?? [], null);
+        $this->setIfExists('contingent_period', $data ?? [], null);
+        $this->setIfExists('entitlement_period', $data ?? [], null);
         $this->setIfExists('is_balance_untracked', $data ?? [], null);
+        $this->setIfExists('leave_category_type', $data ?? [], null);
         $this->setIfExists('deduct_from_primary_pay_category', $data ?? [], null);
         $this->setIfExists('deduct_from_pay_category_id', $data ?? [], null);
+        $this->setIfExists('deduct_from_system_pay_category_name', $data ?? [], null);
         $this->setIfExists('transfer_to_pay_category_id', $data ?? [], null);
+        $this->setIfExists('transfer_to_system_pay_category_name', $data ?? [], null);
+        $this->setIfExists('transfer_unused_leave_to_pay_category_id', $data ?? [], null);
+        $this->setIfExists('transfer_unused_leave_to_system_pay_category_name', $data ?? [], null);
         $this->setIfExists('hide_accruals_on_payslip', $data ?? [], null);
         $this->setIfExists('use_deduct_from_pay_category_rate', $data ?? [], null);
+        $this->setIfExists('leave_accrual_rule', $data ?? [], null);
         $this->setIfExists('is_name_private', $data ?? [], null);
-        $this->setIfExists('leave_unit_type', $data ?? [], null);
-        $this->setIfExists('payout_as_etp', $data ?? [], null);
         $this->setIfExists('accrues_first_pay_run_per_period_only', $data ?? [], null);
         $this->setIfExists('prevent_negative_balance_unpaid_leave_category_id', $data ?? [], null);
-        $this->setIfExists('leave_entitlement', $data ?? [], null);
     }
 
     /**
@@ -535,15 +543,6 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
             );
         }
 
-        $allowedValues = $this->getLeaveUnitTypeAllowableValues();
-        if (!is_null($this->container['leave_unit_type']) && !in_array($this->container['leave_unit_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'leave_unit_type', must be one of '%s'",
-                $this->container['leave_unit_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -558,215 +557,6 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets contingent_period
-     *
-     * @return float|null
-     */
-    public function getContingentPeriod()
-    {
-        return $this->container['contingent_period'];
-    }
-
-    /**
-     * Sets contingent_period
-     *
-     * @param float|null $contingent_period 
-     *
-     * @return self
-     */
-    public function setContingentPeriod($contingent_period)
-    {
-        if (is_null($contingent_period)) {
-            throw new \InvalidArgumentException('non-nullable contingent_period cannot be null');
-        }
-        $this->container['contingent_period'] = $contingent_period;
-
-        return $this;
-    }
-
-    /**
-     * Gets entitlement_period
-     *
-     * @return float|null
-     */
-    public function getEntitlementPeriod()
-    {
-        return $this->container['entitlement_period'];
-    }
-
-    /**
-     * Sets entitlement_period
-     *
-     * @param float|null $entitlement_period 
-     *
-     * @return self
-     */
-    public function setEntitlementPeriod($entitlement_period)
-    {
-        if (is_null($entitlement_period)) {
-            throw new \InvalidArgumentException('non-nullable entitlement_period cannot be null');
-        }
-        $this->container['entitlement_period'] = $entitlement_period;
-
-        return $this;
-    }
-
-    /**
-     * Gets leave_loading
-     *
-     * @return float|null
-     */
-    public function getLeaveLoading()
-    {
-        return $this->container['leave_loading'];
-    }
-
-    /**
-     * Sets leave_loading
-     *
-     * @param float|null $leave_loading 
-     *
-     * @return self
-     */
-    public function setLeaveLoading($leave_loading)
-    {
-        if (is_null($leave_loading)) {
-            throw new \InvalidArgumentException('non-nullable leave_loading cannot be null');
-        }
-        $this->container['leave_loading'] = $leave_loading;
-
-        return $this;
-    }
-
-    /**
-     * Gets unit_type
-     *
-     * @return string|null
-     */
-    public function getUnitType()
-    {
-        return $this->container['unit_type'];
-    }
-
-    /**
-     * Sets unit_type
-     *
-     * @param string|null $unit_type 
-     *
-     * @return self
-     */
-    public function setUnitType($unit_type)
-    {
-        if (is_null($unit_type)) {
-            throw new \InvalidArgumentException('non-nullable unit_type cannot be null');
-        }
-        $allowedValues = $this->getUnitTypeAllowableValues();
-        if (!in_array($unit_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'unit_type', must be one of '%s'",
-                    $unit_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['unit_type'] = $unit_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets leave_category_type
-     *
-     * @return string|null
-     */
-    public function getLeaveCategoryType()
-    {
-        return $this->container['leave_category_type'];
-    }
-
-    /**
-     * Sets leave_category_type
-     *
-     * @param string|null $leave_category_type 
-     *
-     * @return self
-     */
-    public function setLeaveCategoryType($leave_category_type)
-    {
-        if (is_null($leave_category_type)) {
-            throw new \InvalidArgumentException('non-nullable leave_category_type cannot be null');
-        }
-        $allowedValues = $this->getLeaveCategoryTypeAllowableValues();
-        if (!in_array($leave_category_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'leave_category_type', must be one of '%s'",
-                    $leave_category_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['leave_category_type'] = $leave_category_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets leave_accrual_rule
-     *
-     * @return \OpenAPI\Client\Model\AuLeaveAccrualRuleModel|null
-     */
-    public function getLeaveAccrualRule()
-    {
-        return $this->container['leave_accrual_rule'];
-    }
-
-    /**
-     * Sets leave_accrual_rule
-     *
-     * @param \OpenAPI\Client\Model\AuLeaveAccrualRuleModel|null $leave_accrual_rule leave_accrual_rule
-     *
-     * @return self
-     */
-    public function setLeaveAccrualRule($leave_accrual_rule)
-    {
-        if (is_null($leave_accrual_rule)) {
-            throw new \InvalidArgumentException('non-nullable leave_accrual_rule cannot be null');
-        }
-        $this->container['leave_accrual_rule'] = $leave_accrual_rule;
-
-        return $this;
-    }
-
-    /**
-     * Gets transfer_on_termination_to_pay_category_id
-     *
-     * @return int|null
-     */
-    public function getTransferOnTerminationToPayCategoryId()
-    {
-        return $this->container['transfer_on_termination_to_pay_category_id'];
-    }
-
-    /**
-     * Sets transfer_on_termination_to_pay_category_id
-     *
-     * @param int|null $transfer_on_termination_to_pay_category_id 
-     *
-     * @return self
-     */
-    public function setTransferOnTerminationToPayCategoryId($transfer_on_termination_to_pay_category_id)
-    {
-        if (is_null($transfer_on_termination_to_pay_category_id)) {
-            throw new \InvalidArgumentException('non-nullable transfer_on_termination_to_pay_category_id cannot be null');
-        }
-        $this->container['transfer_on_termination_to_pay_category_id'] = $transfer_on_termination_to_pay_category_id;
-
-        return $this;
-    }
 
     /**
      * Gets id
@@ -818,6 +608,43 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_type
+     *
+     * @return string|null
+     */
+    public function getUnitType()
+    {
+        return $this->container['unit_type'];
+    }
+
+    /**
+     * Sets unit_type
+     *
+     * @param string|null $unit_type 
+     *
+     * @return self
+     */
+    public function setUnitType($unit_type)
+    {
+        if (is_null($unit_type)) {
+            throw new \InvalidArgumentException('non-nullable unit_type cannot be null');
+        }
+        $allowedValues = $this->getUnitTypeAllowableValues();
+        if (!in_array($unit_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'unit_type', must be one of '%s'",
+                    $unit_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['unit_type'] = $unit_type;
 
         return $this;
     }
@@ -931,6 +758,33 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets payout_negative_balance
+     *
+     * @return bool|null
+     */
+    public function getPayoutNegativeBalance()
+    {
+        return $this->container['payout_negative_balance'];
+    }
+
+    /**
+     * Sets payout_negative_balance
+     *
+     * @param bool|null $payout_negative_balance 
+     *
+     * @return self
+     */
+    public function setPayoutNegativeBalance($payout_negative_balance)
+    {
+        if (is_null($payout_negative_balance)) {
+            throw new \InvalidArgumentException('non-nullable payout_negative_balance cannot be null');
+        }
+        $this->container['payout_negative_balance'] = $payout_negative_balance;
+
+        return $this;
+    }
+
+    /**
      * Gets external_id
      *
      * @return string|null
@@ -985,6 +839,87 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets leave_loading
+     *
+     * @return float|null
+     */
+    public function getLeaveLoading()
+    {
+        return $this->container['leave_loading'];
+    }
+
+    /**
+     * Sets leave_loading
+     *
+     * @param float|null $leave_loading 
+     *
+     * @return self
+     */
+    public function setLeaveLoading($leave_loading)
+    {
+        if (is_null($leave_loading)) {
+            throw new \InvalidArgumentException('non-nullable leave_loading cannot be null');
+        }
+        $this->container['leave_loading'] = $leave_loading;
+
+        return $this;
+    }
+
+    /**
+     * Gets contingent_period
+     *
+     * @return float|null
+     */
+    public function getContingentPeriod()
+    {
+        return $this->container['contingent_period'];
+    }
+
+    /**
+     * Sets contingent_period
+     *
+     * @param float|null $contingent_period 
+     *
+     * @return self
+     */
+    public function setContingentPeriod($contingent_period)
+    {
+        if (is_null($contingent_period)) {
+            throw new \InvalidArgumentException('non-nullable contingent_period cannot be null');
+        }
+        $this->container['contingent_period'] = $contingent_period;
+
+        return $this;
+    }
+
+    /**
+     * Gets entitlement_period
+     *
+     * @return float|null
+     */
+    public function getEntitlementPeriod()
+    {
+        return $this->container['entitlement_period'];
+    }
+
+    /**
+     * Sets entitlement_period
+     *
+     * @param float|null $entitlement_period 
+     *
+     * @return self
+     */
+    public function setEntitlementPeriod($entitlement_period)
+    {
+        if (is_null($entitlement_period)) {
+            throw new \InvalidArgumentException('non-nullable entitlement_period cannot be null');
+        }
+        $this->container['entitlement_period'] = $entitlement_period;
+
+        return $this;
+    }
+
+    /**
      * Gets is_balance_untracked
      *
      * @return bool|null
@@ -1007,6 +942,43 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable is_balance_untracked cannot be null');
         }
         $this->container['is_balance_untracked'] = $is_balance_untracked;
+
+        return $this;
+    }
+
+    /**
+     * Gets leave_category_type
+     *
+     * @return string|null
+     */
+    public function getLeaveCategoryType()
+    {
+        return $this->container['leave_category_type'];
+    }
+
+    /**
+     * Sets leave_category_type
+     *
+     * @param string|null $leave_category_type 
+     *
+     * @return self
+     */
+    public function setLeaveCategoryType($leave_category_type)
+    {
+        if (is_null($leave_category_type)) {
+            throw new \InvalidArgumentException('non-nullable leave_category_type cannot be null');
+        }
+        $allowedValues = $this->getLeaveCategoryTypeAllowableValues();
+        if (!in_array($leave_category_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'leave_category_type', must be one of '%s'",
+                    $leave_category_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['leave_category_type'] = $leave_category_type;
 
         return $this;
     }
@@ -1066,6 +1038,33 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets deduct_from_system_pay_category_name
+     *
+     * @return string|null
+     */
+    public function getDeductFromSystemPayCategoryName()
+    {
+        return $this->container['deduct_from_system_pay_category_name'];
+    }
+
+    /**
+     * Sets deduct_from_system_pay_category_name
+     *
+     * @param string|null $deduct_from_system_pay_category_name 
+     *
+     * @return self
+     */
+    public function setDeductFromSystemPayCategoryName($deduct_from_system_pay_category_name)
+    {
+        if (is_null($deduct_from_system_pay_category_name)) {
+            throw new \InvalidArgumentException('non-nullable deduct_from_system_pay_category_name cannot be null');
+        }
+        $this->container['deduct_from_system_pay_category_name'] = $deduct_from_system_pay_category_name;
+
+        return $this;
+    }
+
+    /**
      * Gets transfer_to_pay_category_id
      *
      * @return int|null
@@ -1088,6 +1087,87 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable transfer_to_pay_category_id cannot be null');
         }
         $this->container['transfer_to_pay_category_id'] = $transfer_to_pay_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets transfer_to_system_pay_category_name
+     *
+     * @return string|null
+     */
+    public function getTransferToSystemPayCategoryName()
+    {
+        return $this->container['transfer_to_system_pay_category_name'];
+    }
+
+    /**
+     * Sets transfer_to_system_pay_category_name
+     *
+     * @param string|null $transfer_to_system_pay_category_name 
+     *
+     * @return self
+     */
+    public function setTransferToSystemPayCategoryName($transfer_to_system_pay_category_name)
+    {
+        if (is_null($transfer_to_system_pay_category_name)) {
+            throw new \InvalidArgumentException('non-nullable transfer_to_system_pay_category_name cannot be null');
+        }
+        $this->container['transfer_to_system_pay_category_name'] = $transfer_to_system_pay_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets transfer_unused_leave_to_pay_category_id
+     *
+     * @return int|null
+     */
+    public function getTransferUnusedLeaveToPayCategoryId()
+    {
+        return $this->container['transfer_unused_leave_to_pay_category_id'];
+    }
+
+    /**
+     * Sets transfer_unused_leave_to_pay_category_id
+     *
+     * @param int|null $transfer_unused_leave_to_pay_category_id 
+     *
+     * @return self
+     */
+    public function setTransferUnusedLeaveToPayCategoryId($transfer_unused_leave_to_pay_category_id)
+    {
+        if (is_null($transfer_unused_leave_to_pay_category_id)) {
+            throw new \InvalidArgumentException('non-nullable transfer_unused_leave_to_pay_category_id cannot be null');
+        }
+        $this->container['transfer_unused_leave_to_pay_category_id'] = $transfer_unused_leave_to_pay_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets transfer_unused_leave_to_system_pay_category_name
+     *
+     * @return string|null
+     */
+    public function getTransferUnusedLeaveToSystemPayCategoryName()
+    {
+        return $this->container['transfer_unused_leave_to_system_pay_category_name'];
+    }
+
+    /**
+     * Sets transfer_unused_leave_to_system_pay_category_name
+     *
+     * @param string|null $transfer_unused_leave_to_system_pay_category_name 
+     *
+     * @return self
+     */
+    public function setTransferUnusedLeaveToSystemPayCategoryName($transfer_unused_leave_to_system_pay_category_name)
+    {
+        if (is_null($transfer_unused_leave_to_system_pay_category_name)) {
+            throw new \InvalidArgumentException('non-nullable transfer_unused_leave_to_system_pay_category_name cannot be null');
+        }
+        $this->container['transfer_unused_leave_to_system_pay_category_name'] = $transfer_unused_leave_to_system_pay_category_name;
 
         return $this;
     }
@@ -1147,6 +1227,33 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets leave_accrual_rule
+     *
+     * @return \OpenAPI\Client\Model\LeaveAccrualRuleViewModel|null
+     */
+    public function getLeaveAccrualRule()
+    {
+        return $this->container['leave_accrual_rule'];
+    }
+
+    /**
+     * Sets leave_accrual_rule
+     *
+     * @param \OpenAPI\Client\Model\LeaveAccrualRuleViewModel|null $leave_accrual_rule leave_accrual_rule
+     *
+     * @return self
+     */
+    public function setLeaveAccrualRule($leave_accrual_rule)
+    {
+        if (is_null($leave_accrual_rule)) {
+            throw new \InvalidArgumentException('non-nullable leave_accrual_rule cannot be null');
+        }
+        $this->container['leave_accrual_rule'] = $leave_accrual_rule;
+
+        return $this;
+    }
+
+    /**
      * Gets is_name_private
      *
      * @return bool|null
@@ -1169,70 +1276,6 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable is_name_private cannot be null');
         }
         $this->container['is_name_private'] = $is_name_private;
-
-        return $this;
-    }
-
-    /**
-     * Gets leave_unit_type
-     *
-     * @return string|null
-     */
-    public function getLeaveUnitType()
-    {
-        return $this->container['leave_unit_type'];
-    }
-
-    /**
-     * Sets leave_unit_type
-     *
-     * @param string|null $leave_unit_type 
-     *
-     * @return self
-     */
-    public function setLeaveUnitType($leave_unit_type)
-    {
-        if (is_null($leave_unit_type)) {
-            throw new \InvalidArgumentException('non-nullable leave_unit_type cannot be null');
-        }
-        $allowedValues = $this->getLeaveUnitTypeAllowableValues();
-        if (!in_array($leave_unit_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'leave_unit_type', must be one of '%s'",
-                    $leave_unit_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['leave_unit_type'] = $leave_unit_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets payout_as_etp
-     *
-     * @return bool|null
-     */
-    public function getPayoutAsEtp()
-    {
-        return $this->container['payout_as_etp'];
-    }
-
-    /**
-     * Sets payout_as_etp
-     *
-     * @param bool|null $payout_as_etp 
-     *
-     * @return self
-     */
-    public function setPayoutAsEtp($payout_as_etp)
-    {
-        if (is_null($payout_as_etp)) {
-            throw new \InvalidArgumentException('non-nullable payout_as_etp cannot be null');
-        }
-        $this->container['payout_as_etp'] = $payout_as_etp;
 
         return $this;
     }
@@ -1287,33 +1330,6 @@ class AuLeaveCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable prevent_negative_balance_unpaid_leave_category_id cannot be null');
         }
         $this->container['prevent_negative_balance_unpaid_leave_category_id'] = $prevent_negative_balance_unpaid_leave_category_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets leave_entitlement
-     *
-     * @return \OpenAPI\Client\Model\LeaveEntitlementModel|null
-     */
-    public function getLeaveEntitlement()
-    {
-        return $this->container['leave_entitlement'];
-    }
-
-    /**
-     * Sets leave_entitlement
-     *
-     * @param \OpenAPI\Client\Model\LeaveEntitlementModel|null $leave_entitlement leave_entitlement
-     *
-     * @return self
-     */
-    public function setLeaveEntitlement($leave_entitlement)
-    {
-        if (is_null($leave_entitlement)) {
-            throw new \InvalidArgumentException('non-nullable leave_entitlement cannot be null');
-        }
-        $this->container['leave_entitlement'] = $leave_entitlement;
 
         return $this;
     }

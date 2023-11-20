@@ -1,6 +1,6 @@
 <?php
 /**
- * ShiftAllowanceModel
+ * LeaveEntitlementTierModel
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ShiftAllowanceModel Class Doc Comment
+ * LeaveEntitlementTierModel Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class LeaveEntitlementTierModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ShiftAllowanceModel';
+    protected static $openAPIModelName = 'LeaveEntitlementTierModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,14 +57,12 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pay_category' => 'string',
-        'pay_category_id' => 'int',
-        'units' => 'float',
-        'cost' => 'float',
-        'rate_multiplier' => 'float',
-        'option' => 'string',
-        'type' => 'string',
-        'classification' => '\OpenAPI\Client\Model\NominalClassification'
+        'id' => 'int',
+        'accrual_start_after' => 'int',
+        'accrual_start_after_unit_type' => 'string',
+        'accrual_amount' => 'float',
+        'accrual_unit_type' => 'string',
+        'is_deleted' => 'bool'
     ];
 
     /**
@@ -75,14 +73,12 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'pay_category' => null,
-        'pay_category_id' => 'int32',
-        'units' => 'double',
-        'cost' => 'double',
-        'rate_multiplier' => 'double',
-        'option' => null,
-        'type' => null,
-        'classification' => null
+        'id' => 'int32',
+        'accrual_start_after' => 'int32',
+        'accrual_start_after_unit_type' => null,
+        'accrual_amount' => 'double',
+        'accrual_unit_type' => null,
+        'is_deleted' => null
     ];
 
     /**
@@ -91,14 +87,12 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pay_category' => false,
-		'pay_category_id' => false,
-		'units' => false,
-		'cost' => false,
-		'rate_multiplier' => false,
-		'option' => false,
-		'type' => false,
-		'classification' => false
+        'id' => false,
+		'accrual_start_after' => false,
+		'accrual_start_after_unit_type' => false,
+		'accrual_amount' => false,
+		'accrual_unit_type' => false,
+		'is_deleted' => false
     ];
 
     /**
@@ -187,14 +181,12 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'pay_category' => 'payCategory',
-        'pay_category_id' => 'payCategoryId',
-        'units' => 'units',
-        'cost' => 'cost',
-        'rate_multiplier' => 'rateMultiplier',
-        'option' => 'option',
-        'type' => 'type',
-        'classification' => 'classification'
+        'id' => 'id',
+        'accrual_start_after' => 'accrualStartAfter',
+        'accrual_start_after_unit_type' => 'accrualStartAfterUnitType',
+        'accrual_amount' => 'accrualAmount',
+        'accrual_unit_type' => 'accrualUnitType',
+        'is_deleted' => 'isDeleted'
     ];
 
     /**
@@ -203,14 +195,12 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'pay_category' => 'setPayCategory',
-        'pay_category_id' => 'setPayCategoryId',
-        'units' => 'setUnits',
-        'cost' => 'setCost',
-        'rate_multiplier' => 'setRateMultiplier',
-        'option' => 'setOption',
-        'type' => 'setType',
-        'classification' => 'setClassification'
+        'id' => 'setId',
+        'accrual_start_after' => 'setAccrualStartAfter',
+        'accrual_start_after_unit_type' => 'setAccrualStartAfterUnitType',
+        'accrual_amount' => 'setAccrualAmount',
+        'accrual_unit_type' => 'setAccrualUnitType',
+        'is_deleted' => 'setIsDeleted'
     ];
 
     /**
@@ -219,14 +209,12 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'pay_category' => 'getPayCategory',
-        'pay_category_id' => 'getPayCategoryId',
-        'units' => 'getUnits',
-        'cost' => 'getCost',
-        'rate_multiplier' => 'getRateMultiplier',
-        'option' => 'getOption',
-        'type' => 'getType',
-        'classification' => 'getClassification'
+        'id' => 'getId',
+        'accrual_start_after' => 'getAccrualStartAfter',
+        'accrual_start_after_unit_type' => 'getAccrualStartAfterUnitType',
+        'accrual_amount' => 'getAccrualAmount',
+        'accrual_unit_type' => 'getAccrualUnitType',
+        'is_deleted' => 'getIsDeleted'
     ];
 
     /**
@@ -270,27 +258,21 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const OPTION_FIXED = 'Fixed';
-    public const OPTION_PER_HOUR_WORKED = 'PerHourWorked';
-    public const OPTION_PERCENTAGE_OF_SHIFT_COST = 'PercentageOfShiftCost';
-    public const OPTION_PER_SHIFT_UNIT = 'PerShiftUnit';
-    public const OPTION_PER_DAY = 'PerDay';
-    public const TYPE_STANDARD = 'Standard';
-    public const TYPE_ALL_PURPOSE = 'AllPurpose';
+    public const ACCRUAL_START_AFTER_UNIT_TYPE_MONTH = 'Month';
+    public const ACCRUAL_START_AFTER_UNIT_TYPE_YEAR = 'Year';
+    public const ACCRUAL_UNIT_TYPE_MONTHLY = 'Monthly';
+    public const ACCRUAL_UNIT_TYPE_YEARLY = 'Yearly';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getOptionAllowableValues()
+    public function getAccrualStartAfterUnitTypeAllowableValues()
     {
         return [
-            self::OPTION_FIXED,
-            self::OPTION_PER_HOUR_WORKED,
-            self::OPTION_PERCENTAGE_OF_SHIFT_COST,
-            self::OPTION_PER_SHIFT_UNIT,
-            self::OPTION_PER_DAY,
+            self::ACCRUAL_START_AFTER_UNIT_TYPE_MONTH,
+            self::ACCRUAL_START_AFTER_UNIT_TYPE_YEAR,
         ];
     }
 
@@ -299,11 +281,11 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getAccrualUnitTypeAllowableValues()
     {
         return [
-            self::TYPE_STANDARD,
-            self::TYPE_ALL_PURPOSE,
+            self::ACCRUAL_UNIT_TYPE_MONTHLY,
+            self::ACCRUAL_UNIT_TYPE_YEARLY,
         ];
     }
 
@@ -322,14 +304,12 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('pay_category', $data ?? [], null);
-        $this->setIfExists('pay_category_id', $data ?? [], null);
-        $this->setIfExists('units', $data ?? [], null);
-        $this->setIfExists('cost', $data ?? [], null);
-        $this->setIfExists('rate_multiplier', $data ?? [], null);
-        $this->setIfExists('option', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('classification', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('accrual_start_after', $data ?? [], null);
+        $this->setIfExists('accrual_start_after_unit_type', $data ?? [], null);
+        $this->setIfExists('accrual_amount', $data ?? [], null);
+        $this->setIfExists('accrual_unit_type', $data ?? [], null);
+        $this->setIfExists('is_deleted', $data ?? [], null);
     }
 
     /**
@@ -359,20 +339,20 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getOptionAllowableValues();
-        if (!is_null($this->container['option']) && !in_array($this->container['option'], $allowedValues, true)) {
+        $allowedValues = $this->getAccrualStartAfterUnitTypeAllowableValues();
+        if (!is_null($this->container['accrual_start_after_unit_type']) && !in_array($this->container['accrual_start_after_unit_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'option', must be one of '%s'",
-                $this->container['option'],
+                "invalid value '%s' for 'accrual_start_after_unit_type', must be one of '%s'",
+                $this->container['accrual_start_after_unit_type'],
                 implode("', '", $allowedValues)
             );
         }
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        $allowedValues = $this->getAccrualUnitTypeAllowableValues();
+        if (!is_null($this->container['accrual_unit_type']) && !in_array($this->container['accrual_unit_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'accrual_unit_type', must be one of '%s'",
+                $this->container['accrual_unit_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -393,237 +373,183 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets pay_category
-     *
-     * @return string|null
-     */
-    public function getPayCategory()
-    {
-        return $this->container['pay_category'];
-    }
-
-    /**
-     * Sets pay_category
-     *
-     * @param string|null $pay_category 
-     *
-     * @return self
-     */
-    public function setPayCategory($pay_category)
-    {
-        if (is_null($pay_category)) {
-            throw new \InvalidArgumentException('non-nullable pay_category cannot be null');
-        }
-        $this->container['pay_category'] = $pay_category;
-
-        return $this;
-    }
-
-    /**
-     * Gets pay_category_id
+     * Gets id
      *
      * @return int|null
      */
-    public function getPayCategoryId()
+    public function getId()
     {
-        return $this->container['pay_category_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets pay_category_id
+     * Sets id
      *
-     * @param int|null $pay_category_id 
+     * @param int|null $id 
      *
      * @return self
      */
-    public function setPayCategoryId($pay_category_id)
+    public function setId($id)
     {
-        if (is_null($pay_category_id)) {
-            throw new \InvalidArgumentException('non-nullable pay_category_id cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['pay_category_id'] = $pay_category_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets units
+     * Gets accrual_start_after
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getUnits()
+    public function getAccrualStartAfter()
     {
-        return $this->container['units'];
+        return $this->container['accrual_start_after'];
     }
 
     /**
-     * Sets units
+     * Sets accrual_start_after
      *
-     * @param float|null $units 
+     * @param int|null $accrual_start_after 
      *
      * @return self
      */
-    public function setUnits($units)
+    public function setAccrualStartAfter($accrual_start_after)
     {
-        if (is_null($units)) {
-            throw new \InvalidArgumentException('non-nullable units cannot be null');
+        if (is_null($accrual_start_after)) {
+            throw new \InvalidArgumentException('non-nullable accrual_start_after cannot be null');
         }
-        $this->container['units'] = $units;
+        $this->container['accrual_start_after'] = $accrual_start_after;
 
         return $this;
     }
 
     /**
-     * Gets cost
-     *
-     * @return float|null
-     */
-    public function getCost()
-    {
-        return $this->container['cost'];
-    }
-
-    /**
-     * Sets cost
-     *
-     * @param float|null $cost 
-     *
-     * @return self
-     */
-    public function setCost($cost)
-    {
-        if (is_null($cost)) {
-            throw new \InvalidArgumentException('non-nullable cost cannot be null');
-        }
-        $this->container['cost'] = $cost;
-
-        return $this;
-    }
-
-    /**
-     * Gets rate_multiplier
-     *
-     * @return float|null
-     */
-    public function getRateMultiplier()
-    {
-        return $this->container['rate_multiplier'];
-    }
-
-    /**
-     * Sets rate_multiplier
-     *
-     * @param float|null $rate_multiplier 
-     *
-     * @return self
-     */
-    public function setRateMultiplier($rate_multiplier)
-    {
-        if (is_null($rate_multiplier)) {
-            throw new \InvalidArgumentException('non-nullable rate_multiplier cannot be null');
-        }
-        $this->container['rate_multiplier'] = $rate_multiplier;
-
-        return $this;
-    }
-
-    /**
-     * Gets option
+     * Gets accrual_start_after_unit_type
      *
      * @return string|null
      */
-    public function getOption()
+    public function getAccrualStartAfterUnitType()
     {
-        return $this->container['option'];
+        return $this->container['accrual_start_after_unit_type'];
     }
 
     /**
-     * Sets option
+     * Sets accrual_start_after_unit_type
      *
-     * @param string|null $option 
+     * @param string|null $accrual_start_after_unit_type 
      *
      * @return self
      */
-    public function setOption($option)
+    public function setAccrualStartAfterUnitType($accrual_start_after_unit_type)
     {
-        if (is_null($option)) {
-            throw new \InvalidArgumentException('non-nullable option cannot be null');
+        if (is_null($accrual_start_after_unit_type)) {
+            throw new \InvalidArgumentException('non-nullable accrual_start_after_unit_type cannot be null');
         }
-        $allowedValues = $this->getOptionAllowableValues();
-        if (!in_array($option, $allowedValues, true)) {
+        $allowedValues = $this->getAccrualStartAfterUnitTypeAllowableValues();
+        if (!in_array($accrual_start_after_unit_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'option', must be one of '%s'",
-                    $option,
+                    "Invalid value '%s' for 'accrual_start_after_unit_type', must be one of '%s'",
+                    $accrual_start_after_unit_type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['option'] = $option;
+        $this->container['accrual_start_after_unit_type'] = $accrual_start_after_unit_type;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets accrual_amount
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getType()
+    public function getAccrualAmount()
     {
-        return $this->container['type'];
+        return $this->container['accrual_amount'];
     }
 
     /**
-     * Sets type
+     * Sets accrual_amount
      *
-     * @param string|null $type 
+     * @param float|null $accrual_amount 
      *
      * @return self
      */
-    public function setType($type)
+    public function setAccrualAmount($accrual_amount)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($accrual_amount)) {
+            throw new \InvalidArgumentException('non-nullable accrual_amount cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
+        $this->container['accrual_amount'] = $accrual_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets accrual_unit_type
+     *
+     * @return string|null
+     */
+    public function getAccrualUnitType()
+    {
+        return $this->container['accrual_unit_type'];
+    }
+
+    /**
+     * Sets accrual_unit_type
+     *
+     * @param string|null $accrual_unit_type 
+     *
+     * @return self
+     */
+    public function setAccrualUnitType($accrual_unit_type)
+    {
+        if (is_null($accrual_unit_type)) {
+            throw new \InvalidArgumentException('non-nullable accrual_unit_type cannot be null');
+        }
+        $allowedValues = $this->getAccrualUnitTypeAllowableValues();
+        if (!in_array($accrual_unit_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
+                    "Invalid value '%s' for 'accrual_unit_type', must be one of '%s'",
+                    $accrual_unit_type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['type'] = $type;
+        $this->container['accrual_unit_type'] = $accrual_unit_type;
 
         return $this;
     }
 
     /**
-     * Gets classification
+     * Gets is_deleted
      *
-     * @return \OpenAPI\Client\Model\NominalClassification|null
+     * @return bool|null
      */
-    public function getClassification()
+    public function getIsDeleted()
     {
-        return $this->container['classification'];
+        return $this->container['is_deleted'];
     }
 
     /**
-     * Sets classification
+     * Sets is_deleted
      *
-     * @param \OpenAPI\Client\Model\NominalClassification|null $classification classification
+     * @param bool|null $is_deleted 
      *
      * @return self
      */
-    public function setClassification($classification)
+    public function setIsDeleted($is_deleted)
     {
-        if (is_null($classification)) {
-            throw new \InvalidArgumentException('non-nullable classification cannot be null');
+        if (is_null($is_deleted)) {
+            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
         }
-        $this->container['classification'] = $classification;
+        $this->container['is_deleted'] = $is_deleted;
 
         return $this;
     }

@@ -358,6 +358,12 @@ class PayRunWarningDto implements ModelInterface, ArrayAccess, \JsonSerializable
     public const WARNING_TYPE_OCCUPATIONAL_LEAVE_ENTITLEMENT_EXHAUSTED = 'OccupationalLeaveEntitlementExhausted';
     public const WARNING_TYPE_ANNUAL_LEAVE_CASHED_OUT = 'AnnualLeaveCashedOut';
     public const WARNING_TYPE_EMPLOYEE_HAS_TAKEN_PAID_FAMILY_AND_DOMESTIC_VIOLENCE_LEAVE = 'EmployeeHasTakenPaidFamilyAndDomesticViolenceLeave';
+    public const WARNING_TYPE_CONCURRENT_PAY_RUN_AU = 'ConcurrentPayRunAU';
+    public const WARNING_TYPE_EMPLOYEE_PENSION_OPTOUT_FOR_PERIOD = 'EmployeePensionOptoutForPeriod';
+    public const WARNING_TYPE_EMPLOYEE_PENSION_CONTRIBUTIONS_CEASED = 'EmployeePensionContributionsCeased';
+    public const WARNING_TYPE_EMPLOYEE_PENSION_OPTOUT_OR_CEASE = 'EmployeePensionOptoutOrCease';
+    public const WARNING_TYPE_EMPLOYEE_PENSION_OPTOUT_OR_CEASE = 'EmployeePensionOptoutOrCease';
+    public const WARNING_TYPE_PENSION_OPT_OUT_COULD_NOT_CONNECT = 'PensionOptOutCouldNotConnect';
 
     /**
      * Gets allowable values of the enum
@@ -449,6 +455,12 @@ class PayRunWarningDto implements ModelInterface, ArrayAccess, \JsonSerializable
             self::WARNING_TYPE_OCCUPATIONAL_LEAVE_ENTITLEMENT_EXHAUSTED,
             self::WARNING_TYPE_ANNUAL_LEAVE_CASHED_OUT,
             self::WARNING_TYPE_EMPLOYEE_HAS_TAKEN_PAID_FAMILY_AND_DOMESTIC_VIOLENCE_LEAVE,
+            self::WARNING_TYPE_CONCURRENT_PAY_RUN_AU,
+            self::WARNING_TYPE_EMPLOYEE_PENSION_OPTOUT_FOR_PERIOD,
+            self::WARNING_TYPE_EMPLOYEE_PENSION_CONTRIBUTIONS_CEASED,
+            self::WARNING_TYPE_EMPLOYEE_PENSION_OPTOUT_OR_CEASE,
+            self::WARNING_TYPE_EMPLOYEE_PENSION_OPTOUT_OR_CEASE,
+            self::WARNING_TYPE_PENSION_OPT_OUT_COULD_NOT_CONNECT,
         ];
     }
 

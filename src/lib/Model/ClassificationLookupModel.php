@@ -35,7 +35,6 @@ use \OpenAPI\Client\ObjectSerializer;
  * ClassificationLookupModel Class Doc Comment
  *
  * @category Class
- * @description temporary class until ClassificationSelectModel uses the same base class as the other two
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

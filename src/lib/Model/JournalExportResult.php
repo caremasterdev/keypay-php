@@ -341,6 +341,11 @@ class JournalExportResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const JOURNAL_SOURCE_SLACK = 'Slack';
     public const JOURNAL_SOURCE_CAXTON = 'Caxton';
     public const JOURNAL_SOURCE_QUICKBOOKS_STANDALONE_PAYROLL = 'QuickbooksStandalonePayroll';
+    public const JOURNAL_SOURCE_IMPORT_EMPLOYEE_SELF_SETUP = 'ImportEmployeeSelfSetup';
+    public const JOURNAL_SOURCE_XERO_IDENTITY_PAYROLL_SIGN_UP = 'XeroIdentityPayrollSignUp';
+    public const JOURNAL_SOURCE_XERO_IDENTITY_HR_SIGN_UP = 'XeroIdentityHrSignUp';
+    public const JOURNAL_SOURCE_SAGE_INTACCT = 'SageIntacct';
+    public const JOURNAL_SOURCE_DAILY_PAY = 'DailyPay';
 
     /**
      * Gets allowable values of the enum
@@ -456,6 +461,11 @@ class JournalExportResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::JOURNAL_SOURCE_SLACK,
             self::JOURNAL_SOURCE_CAXTON,
             self::JOURNAL_SOURCE_QUICKBOOKS_STANDALONE_PAYROLL,
+            self::JOURNAL_SOURCE_IMPORT_EMPLOYEE_SELF_SETUP,
+            self::JOURNAL_SOURCE_XERO_IDENTITY_PAYROLL_SIGN_UP,
+            self::JOURNAL_SOURCE_XERO_IDENTITY_HR_SIGN_UP,
+            self::JOURNAL_SOURCE_SAGE_INTACCT,
+            self::JOURNAL_SOURCE_DAILY_PAY,
         ];
     }
 

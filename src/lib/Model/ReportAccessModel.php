@@ -337,6 +337,9 @@ class ReportAccessModel implements ModelInterface, ArrayAccess, \JsonSerializabl
     public const SPECIFIC_REPORTS_EIS_SOCSO_COMBINED_CONTRIBUTIONS_REPORT = 'EisSocsoCombinedContributionsReport';
     public const SPECIFIC_REPORTS_P45_REPORT = 'P45Report';
     public const SPECIFIC_REPORTS_CPF_OW_AND_AW_RECONCILIATION_REPORT = 'CpfOwAndAwReconciliationReport';
+    public const SPECIFIC_REPORTS_PAY_RUN_FPS_REPORT = 'PayRunFpsReport';
+    public const SPECIFIC_REPORTS_PORTABLE_LONG_SERVICE_LEAVE_REPORT = 'PortableLongServiceLeaveReport';
+    public const SPECIFIC_REPORTS_UK_TAX_AND_NI_BANDWIDTHS_REPORT = 'UkTaxAndNiBandwidthsReport';
 
     /**
      * Gets allowable values of the enum
@@ -454,6 +457,9 @@ class ReportAccessModel implements ModelInterface, ArrayAccess, \JsonSerializabl
             self::SPECIFIC_REPORTS_EIS_SOCSO_COMBINED_CONTRIBUTIONS_REPORT,
             self::SPECIFIC_REPORTS_P45_REPORT,
             self::SPECIFIC_REPORTS_CPF_OW_AND_AW_RECONCILIATION_REPORT,
+            self::SPECIFIC_REPORTS_PAY_RUN_FPS_REPORT,
+            self::SPECIFIC_REPORTS_PORTABLE_LONG_SERVICE_LEAVE_REPORT,
+            self::SPECIFIC_REPORTS_UK_TAX_AND_NI_BANDWIDTHS_REPORT,
         ];
     }
 

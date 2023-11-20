@@ -66,7 +66,8 @@ class AvailableEmployeeModel implements ModelInterface, ArrayAccess, \JsonSerial
         'branding' => '\OpenAPI\Client\Model\WhiteLabelBrandingModel',
         'default_location_id' => 'int',
         'profile_image_url' => 'string',
-        'region' => 'string'
+        'region' => 'string',
+        'is_terminated' => 'bool'
     ];
 
     /**
@@ -86,7 +87,8 @@ class AvailableEmployeeModel implements ModelInterface, ArrayAccess, \JsonSerial
         'branding' => null,
         'default_location_id' => 'int32',
         'profile_image_url' => null,
-        'region' => null
+        'region' => null,
+        'is_terminated' => null
     ];
 
     /**
@@ -104,7 +106,8 @@ class AvailableEmployeeModel implements ModelInterface, ArrayAccess, \JsonSerial
 		'branding' => false,
 		'default_location_id' => false,
 		'profile_image_url' => false,
-		'region' => false
+		'region' => false,
+		'is_terminated' => false
     ];
 
     /**
@@ -202,7 +205,8 @@ class AvailableEmployeeModel implements ModelInterface, ArrayAccess, \JsonSerial
         'branding' => 'branding',
         'default_location_id' => 'defaultLocationId',
         'profile_image_url' => 'profileImageUrl',
-        'region' => 'region'
+        'region' => 'region',
+        'is_terminated' => 'isTerminated'
     ];
 
     /**
@@ -220,7 +224,8 @@ class AvailableEmployeeModel implements ModelInterface, ArrayAccess, \JsonSerial
         'branding' => 'setBranding',
         'default_location_id' => 'setDefaultLocationId',
         'profile_image_url' => 'setProfileImageUrl',
-        'region' => 'setRegion'
+        'region' => 'setRegion',
+        'is_terminated' => 'setIsTerminated'
     ];
 
     /**
@@ -238,7 +243,8 @@ class AvailableEmployeeModel implements ModelInterface, ArrayAccess, \JsonSerial
         'branding' => 'getBranding',
         'default_location_id' => 'getDefaultLocationId',
         'profile_image_url' => 'getProfileImageUrl',
-        'region' => 'getRegion'
+        'region' => 'getRegion',
+        'is_terminated' => 'getIsTerminated'
     ];
 
     /**
@@ -308,6 +314,7 @@ class AvailableEmployeeModel implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('default_location_id', $data ?? [], null);
         $this->setIfExists('profile_image_url', $data ?? [], null);
         $this->setIfExists('region', $data ?? [], null);
+        $this->setIfExists('is_terminated', $data ?? [], null);
     }
 
     /**
@@ -618,6 +625,33 @@ class AvailableEmployeeModel implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable region cannot be null');
         }
         $this->container['region'] = $region;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_terminated
+     *
+     * @return bool|null
+     */
+    public function getIsTerminated()
+    {
+        return $this->container['is_terminated'];
+    }
+
+    /**
+     * Sets is_terminated
+     *
+     * @param bool|null $is_terminated 
+     *
+     * @return self
+     */
+    public function setIsTerminated($is_terminated)
+    {
+        if (is_null($is_terminated)) {
+            throw new \InvalidArgumentException('non-nullable is_terminated cannot be null');
+        }
+        $this->container['is_terminated'] = $is_terminated;
 
         return $this;
     }

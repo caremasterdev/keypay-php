@@ -325,6 +325,7 @@ class AuLeaveAllowanceTemplateLeaveCategoryApiModel implements ModelInterface, A
     public const UNIT_TYPE_STANDARD_DAYS = 'StandardDays';
     public const UNIT_TYPE_STANDARD_WEEKS = 'StandardWeeks';
     public const UNIT_TYPE_DAY_PER_CALENDAR_DAY = 'DayPerCalendarDay';
+    public const UNIT_TYPE_DAY_PER_MONTH = 'DayPerMonth';
     public const LEAVE_UNIT_TYPE_HOURS = 'Hours';
     public const LEAVE_UNIT_TYPE_DAYS = 'Days';
     public const LEAVE_UNIT_TYPE_WEEKS = 'Weeks';
@@ -351,6 +352,7 @@ class AuLeaveAllowanceTemplateLeaveCategoryApiModel implements ModelInterface, A
             self::UNIT_TYPE_STANDARD_DAYS,
             self::UNIT_TYPE_STANDARD_WEEKS,
             self::UNIT_TYPE_DAY_PER_CALENDAR_DAY,
+            self::UNIT_TYPE_DAY_PER_MONTH,
         ];
     }
 

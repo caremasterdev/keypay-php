@@ -1,6 +1,6 @@
 <?php
 /**
- * ShiftAllowanceModel
+ * AuBusinessLeaveSettingsModel
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ShiftAllowanceModel Class Doc Comment
+ * AuBusinessLeaveSettingsModel Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class AuBusinessLeaveSettingsModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ShiftAllowanceModel';
+    protected static $openAPIModelName = 'AuBusinessLeaveSettingsModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,14 +57,10 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pay_category' => 'string',
-        'pay_category_id' => 'int',
-        'units' => 'float',
-        'cost' => 'float',
-        'rate_multiplier' => 'float',
-        'option' => 'string',
-        'type' => 'string',
-        'classification' => '\OpenAPI\Client\Model\NominalClassification'
+        'leave_calculation_method' => 'string',
+        'require_notes_for_leave_requests' => 'bool',
+        'leave_year_should_start_on' => '\DateTime',
+        'leave_accrual_start_date_type' => 'string'
     ];
 
     /**
@@ -75,14 +71,10 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'pay_category' => null,
-        'pay_category_id' => 'int32',
-        'units' => 'double',
-        'cost' => 'double',
-        'rate_multiplier' => 'double',
-        'option' => null,
-        'type' => null,
-        'classification' => null
+        'leave_calculation_method' => null,
+        'require_notes_for_leave_requests' => null,
+        'leave_year_should_start_on' => 'date-time',
+        'leave_accrual_start_date_type' => null
     ];
 
     /**
@@ -91,14 +83,10 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pay_category' => false,
-		'pay_category_id' => false,
-		'units' => false,
-		'cost' => false,
-		'rate_multiplier' => false,
-		'option' => false,
-		'type' => false,
-		'classification' => false
+        'leave_calculation_method' => false,
+		'require_notes_for_leave_requests' => false,
+		'leave_year_should_start_on' => false,
+		'leave_accrual_start_date_type' => false
     ];
 
     /**
@@ -187,14 +175,10 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'pay_category' => 'payCategory',
-        'pay_category_id' => 'payCategoryId',
-        'units' => 'units',
-        'cost' => 'cost',
-        'rate_multiplier' => 'rateMultiplier',
-        'option' => 'option',
-        'type' => 'type',
-        'classification' => 'classification'
+        'leave_calculation_method' => 'leaveCalculationMethod',
+        'require_notes_for_leave_requests' => 'requireNotesForLeaveRequests',
+        'leave_year_should_start_on' => 'leaveYearShouldStartOn',
+        'leave_accrual_start_date_type' => 'leaveAccrualStartDateType'
     ];
 
     /**
@@ -203,14 +187,10 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'pay_category' => 'setPayCategory',
-        'pay_category_id' => 'setPayCategoryId',
-        'units' => 'setUnits',
-        'cost' => 'setCost',
-        'rate_multiplier' => 'setRateMultiplier',
-        'option' => 'setOption',
-        'type' => 'setType',
-        'classification' => 'setClassification'
+        'leave_calculation_method' => 'setLeaveCalculationMethod',
+        'require_notes_for_leave_requests' => 'setRequireNotesForLeaveRequests',
+        'leave_year_should_start_on' => 'setLeaveYearShouldStartOn',
+        'leave_accrual_start_date_type' => 'setLeaveAccrualStartDateType'
     ];
 
     /**
@@ -219,14 +199,10 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'pay_category' => 'getPayCategory',
-        'pay_category_id' => 'getPayCategoryId',
-        'units' => 'getUnits',
-        'cost' => 'getCost',
-        'rate_multiplier' => 'getRateMultiplier',
-        'option' => 'getOption',
-        'type' => 'getType',
-        'classification' => 'getClassification'
+        'leave_calculation_method' => 'getLeaveCalculationMethod',
+        'require_notes_for_leave_requests' => 'getRequireNotesForLeaveRequests',
+        'leave_year_should_start_on' => 'getLeaveYearShouldStartOn',
+        'leave_accrual_start_date_type' => 'getLeaveAccrualStartDateType'
     ];
 
     /**
@@ -270,27 +246,22 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const OPTION_FIXED = 'Fixed';
-    public const OPTION_PER_HOUR_WORKED = 'PerHourWorked';
-    public const OPTION_PERCENTAGE_OF_SHIFT_COST = 'PercentageOfShiftCost';
-    public const OPTION_PER_SHIFT_UNIT = 'PerShiftUnit';
-    public const OPTION_PER_DAY = 'PerDay';
-    public const TYPE_STANDARD = 'Standard';
-    public const TYPE_ALL_PURPOSE = 'AllPurpose';
+    public const LEAVE_CALCULATION_METHOD_FULL_YEAR365 = 'FullYear365';
+    public const LEAVE_CALCULATION_METHOD_WORKDAYS261 = 'Workdays261';
+    public const LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE = 'EmployeeStartDate';
+    public const LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE = 'SpecifiedDate';
+    public const LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR = 'CalendarYear';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getOptionAllowableValues()
+    public function getLeaveCalculationMethodAllowableValues()
     {
         return [
-            self::OPTION_FIXED,
-            self::OPTION_PER_HOUR_WORKED,
-            self::OPTION_PERCENTAGE_OF_SHIFT_COST,
-            self::OPTION_PER_SHIFT_UNIT,
-            self::OPTION_PER_DAY,
+            self::LEAVE_CALCULATION_METHOD_FULL_YEAR365,
+            self::LEAVE_CALCULATION_METHOD_WORKDAYS261,
         ];
     }
 
@@ -299,11 +270,12 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getLeaveAccrualStartDateTypeAllowableValues()
     {
         return [
-            self::TYPE_STANDARD,
-            self::TYPE_ALL_PURPOSE,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_EMPLOYEE_START_DATE,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_SPECIFIED_DATE,
+            self::LEAVE_ACCRUAL_START_DATE_TYPE_CALENDAR_YEAR,
         ];
     }
 
@@ -322,14 +294,10 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('pay_category', $data ?? [], null);
-        $this->setIfExists('pay_category_id', $data ?? [], null);
-        $this->setIfExists('units', $data ?? [], null);
-        $this->setIfExists('cost', $data ?? [], null);
-        $this->setIfExists('rate_multiplier', $data ?? [], null);
-        $this->setIfExists('option', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('classification', $data ?? [], null);
+        $this->setIfExists('leave_calculation_method', $data ?? [], null);
+        $this->setIfExists('require_notes_for_leave_requests', $data ?? [], null);
+        $this->setIfExists('leave_year_should_start_on', $data ?? [], null);
+        $this->setIfExists('leave_accrual_start_date_type', $data ?? [], null);
     }
 
     /**
@@ -359,20 +327,20 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getOptionAllowableValues();
-        if (!is_null($this->container['option']) && !in_array($this->container['option'], $allowedValues, true)) {
+        $allowedValues = $this->getLeaveCalculationMethodAllowableValues();
+        if (!is_null($this->container['leave_calculation_method']) && !in_array($this->container['leave_calculation_method'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'option', must be one of '%s'",
-                $this->container['option'],
+                "invalid value '%s' for 'leave_calculation_method', must be one of '%s'",
+                $this->container['leave_calculation_method'],
                 implode("', '", $allowedValues)
             );
         }
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        $allowedValues = $this->getLeaveAccrualStartDateTypeAllowableValues();
+        if (!is_null($this->container['leave_accrual_start_date_type']) && !in_array($this->container['leave_accrual_start_date_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'leave_accrual_start_date_type', must be one of '%s'",
+                $this->container['leave_accrual_start_date_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -393,237 +361,129 @@ class ShiftAllowanceModel implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets pay_category
+     * Gets leave_calculation_method
      *
      * @return string|null
      */
-    public function getPayCategory()
+    public function getLeaveCalculationMethod()
     {
-        return $this->container['pay_category'];
+        return $this->container['leave_calculation_method'];
     }
 
     /**
-     * Sets pay_category
+     * Sets leave_calculation_method
      *
-     * @param string|null $pay_category 
+     * @param string|null $leave_calculation_method 
      *
      * @return self
      */
-    public function setPayCategory($pay_category)
+    public function setLeaveCalculationMethod($leave_calculation_method)
     {
-        if (is_null($pay_category)) {
-            throw new \InvalidArgumentException('non-nullable pay_category cannot be null');
+        if (is_null($leave_calculation_method)) {
+            throw new \InvalidArgumentException('non-nullable leave_calculation_method cannot be null');
         }
-        $this->container['pay_category'] = $pay_category;
-
-        return $this;
-    }
-
-    /**
-     * Gets pay_category_id
-     *
-     * @return int|null
-     */
-    public function getPayCategoryId()
-    {
-        return $this->container['pay_category_id'];
-    }
-
-    /**
-     * Sets pay_category_id
-     *
-     * @param int|null $pay_category_id 
-     *
-     * @return self
-     */
-    public function setPayCategoryId($pay_category_id)
-    {
-        if (is_null($pay_category_id)) {
-            throw new \InvalidArgumentException('non-nullable pay_category_id cannot be null');
-        }
-        $this->container['pay_category_id'] = $pay_category_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets units
-     *
-     * @return float|null
-     */
-    public function getUnits()
-    {
-        return $this->container['units'];
-    }
-
-    /**
-     * Sets units
-     *
-     * @param float|null $units 
-     *
-     * @return self
-     */
-    public function setUnits($units)
-    {
-        if (is_null($units)) {
-            throw new \InvalidArgumentException('non-nullable units cannot be null');
-        }
-        $this->container['units'] = $units;
-
-        return $this;
-    }
-
-    /**
-     * Gets cost
-     *
-     * @return float|null
-     */
-    public function getCost()
-    {
-        return $this->container['cost'];
-    }
-
-    /**
-     * Sets cost
-     *
-     * @param float|null $cost 
-     *
-     * @return self
-     */
-    public function setCost($cost)
-    {
-        if (is_null($cost)) {
-            throw new \InvalidArgumentException('non-nullable cost cannot be null');
-        }
-        $this->container['cost'] = $cost;
-
-        return $this;
-    }
-
-    /**
-     * Gets rate_multiplier
-     *
-     * @return float|null
-     */
-    public function getRateMultiplier()
-    {
-        return $this->container['rate_multiplier'];
-    }
-
-    /**
-     * Sets rate_multiplier
-     *
-     * @param float|null $rate_multiplier 
-     *
-     * @return self
-     */
-    public function setRateMultiplier($rate_multiplier)
-    {
-        if (is_null($rate_multiplier)) {
-            throw new \InvalidArgumentException('non-nullable rate_multiplier cannot be null');
-        }
-        $this->container['rate_multiplier'] = $rate_multiplier;
-
-        return $this;
-    }
-
-    /**
-     * Gets option
-     *
-     * @return string|null
-     */
-    public function getOption()
-    {
-        return $this->container['option'];
-    }
-
-    /**
-     * Sets option
-     *
-     * @param string|null $option 
-     *
-     * @return self
-     */
-    public function setOption($option)
-    {
-        if (is_null($option)) {
-            throw new \InvalidArgumentException('non-nullable option cannot be null');
-        }
-        $allowedValues = $this->getOptionAllowableValues();
-        if (!in_array($option, $allowedValues, true)) {
+        $allowedValues = $this->getLeaveCalculationMethodAllowableValues();
+        if (!in_array($leave_calculation_method, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'option', must be one of '%s'",
-                    $option,
+                    "Invalid value '%s' for 'leave_calculation_method', must be one of '%s'",
+                    $leave_calculation_method,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['option'] = $option;
+        $this->container['leave_calculation_method'] = $leave_calculation_method;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets require_notes_for_leave_requests
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getType()
+    public function getRequireNotesForLeaveRequests()
     {
-        return $this->container['type'];
+        return $this->container['require_notes_for_leave_requests'];
     }
 
     /**
-     * Sets type
+     * Sets require_notes_for_leave_requests
      *
-     * @param string|null $type 
+     * @param bool|null $require_notes_for_leave_requests 
      *
      * @return self
      */
-    public function setType($type)
+    public function setRequireNotesForLeaveRequests($require_notes_for_leave_requests)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($require_notes_for_leave_requests)) {
+            throw new \InvalidArgumentException('non-nullable require_notes_for_leave_requests cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
+        $this->container['require_notes_for_leave_requests'] = $require_notes_for_leave_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets leave_year_should_start_on
+     *
+     * @return \DateTime|null
+     */
+    public function getLeaveYearShouldStartOn()
+    {
+        return $this->container['leave_year_should_start_on'];
+    }
+
+    /**
+     * Sets leave_year_should_start_on
+     *
+     * @param \DateTime|null $leave_year_should_start_on 
+     *
+     * @return self
+     */
+    public function setLeaveYearShouldStartOn($leave_year_should_start_on)
+    {
+        if (is_null($leave_year_should_start_on)) {
+            throw new \InvalidArgumentException('non-nullable leave_year_should_start_on cannot be null');
+        }
+        $this->container['leave_year_should_start_on'] = $leave_year_should_start_on;
+
+        return $this;
+    }
+
+    /**
+     * Gets leave_accrual_start_date_type
+     *
+     * @return string|null
+     */
+    public function getLeaveAccrualStartDateType()
+    {
+        return $this->container['leave_accrual_start_date_type'];
+    }
+
+    /**
+     * Sets leave_accrual_start_date_type
+     *
+     * @param string|null $leave_accrual_start_date_type 
+     *
+     * @return self
+     */
+    public function setLeaveAccrualStartDateType($leave_accrual_start_date_type)
+    {
+        if (is_null($leave_accrual_start_date_type)) {
+            throw new \InvalidArgumentException('non-nullable leave_accrual_start_date_type cannot be null');
+        }
+        $allowedValues = $this->getLeaveAccrualStartDateTypeAllowableValues();
+        if (!in_array($leave_accrual_start_date_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
+                    "Invalid value '%s' for 'leave_accrual_start_date_type', must be one of '%s'",
+                    $leave_accrual_start_date_type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets classification
-     *
-     * @return \OpenAPI\Client\Model\NominalClassification|null
-     */
-    public function getClassification()
-    {
-        return $this->container['classification'];
-    }
-
-    /**
-     * Sets classification
-     *
-     * @param \OpenAPI\Client\Model\NominalClassification|null $classification classification
-     *
-     * @return self
-     */
-    public function setClassification($classification)
-    {
-        if (is_null($classification)) {
-            throw new \InvalidArgumentException('non-nullable classification cannot be null');
-        }
-        $this->container['classification'] = $classification;
+        $this->container['leave_accrual_start_date_type'] = $leave_accrual_start_date_type;
 
         return $this;
     }

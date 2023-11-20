@@ -2729,7 +2729,7 @@ class EmployeeQualificationsApi
      *
      * @param  string $business_id business_id (required)
      * @param  string $employee_id employee_id (required)
-     * @param  \OpenAPI\Client\Model\EmployeeQualificationModel $qualification qualification (required)
+     * @param  \OpenAPI\Client\Model\EmployeeQualificationRequest $qualification qualification (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['employeeQualificationPost'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
@@ -2748,7 +2748,7 @@ class EmployeeQualificationsApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
-     * @param  \OpenAPI\Client\Model\EmployeeQualificationModel $qualification (required)
+     * @param  \OpenAPI\Client\Model\EmployeeQualificationRequest $qualification (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['employeeQualificationPost'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
@@ -2810,7 +2810,7 @@ class EmployeeQualificationsApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
-     * @param  \OpenAPI\Client\Model\EmployeeQualificationModel $qualification (required)
+     * @param  \OpenAPI\Client\Model\EmployeeQualificationRequest $qualification (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['employeeQualificationPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2833,7 +2833,7 @@ class EmployeeQualificationsApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
-     * @param  \OpenAPI\Client\Model\EmployeeQualificationModel $qualification (required)
+     * @param  \OpenAPI\Client\Model\EmployeeQualificationRequest $qualification (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['employeeQualificationPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2872,7 +2872,7 @@ class EmployeeQualificationsApi
      *
      * @param  string $business_id (required)
      * @param  string $employee_id (required)
-     * @param  \OpenAPI\Client\Model\EmployeeQualificationModel $qualification (required)
+     * @param  \OpenAPI\Client\Model\EmployeeQualificationRequest $qualification (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['employeeQualificationPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
