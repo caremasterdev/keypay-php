@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/healyhatman/keypay-php/Check%20&%20fix%20styling?label=code%20style)](https://github.com/healyhatman/keypay-php/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/healyhatman/keypay-php.svg?style=flat-square)](https://packagist.org/packages/healyhatman/keypay-php)
 
-A client library for the [KeyPay API](https://api.keypay.com.au/), built from the provided OpenAPI v2 specification
+A client library for the [KeyPay API](https://api.keypay.com.au/), built from the provided [OpenAPI v2 specification](https://api.keypay.com.au/swagger-au.json) using the [OpenAPI Generator](https://opencollective.com/openapi_generator)
 
 ## Requirements
 - PHP 7.4
