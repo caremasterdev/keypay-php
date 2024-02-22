@@ -273,7 +273,17 @@ class AuInitialEarningsModel implements ModelInterface, ArrayAccess, \JsonSerial
     public const PAY_CATEGORY_TYPE_ETP_SUPERABLE_TYPE_P_TAXABLE = 'EtpSuperableTypePTaxable';
     public const PAY_CATEGORY_TYPE_ETP_SUPERABLE_TYPE_P_TAX_FREE = 'EtpSuperableTypePTaxFree';
     public const PAY_CATEGORY_TYPE_ETP_TYPE_P_UNUSED_LEAVE_PAYMENT = 'EtpTypePUnusedLeavePayment';
+    public const PAY_CATEGORY_TYPE_JOB_KEEPER_TIER = 'JobKeeperTier';
+    public const PAY_CATEGORY_TYPE_JOB_KEEPER_CANCEL_TIER = 'JobKeeperCancelTier';
+    public const PAY_CATEGORY_TYPE_JOB_MAKER_NOMINATION = 'JobMakerNomination';
+    public const PAY_CATEGORY_TYPE_JOB_MAKER_RENOMINATION = 'JobMakerRenomination';
+    public const PAY_CATEGORY_TYPE_JOB_MAKER_PERIOD = 'JobMakerPeriod';
+    public const PAY_CATEGORY_TYPE_JOB_MAKER_CANCEL_NOMINATION = 'JobMakerCancelNomination';
+    public const PAY_CATEGORY_TYPE_JOB_MAKER_CANCEL_RENOMINATION = 'JobMakerCancelRenomination';
+    public const PAY_CATEGORY_TYPE_JOB_MAKER_CANCEL_PERIOD = 'JobMakerCancelPeriod';
     public const PAY_CATEGORY_TYPE_NORMAL_TERMINATION_LEAVE_LOADING = 'NormalTerminationLeaveLoading';
+    public const PAY_CATEGORY_TYPE_PUBLIC_HOLIDAY_WORKED = 'PublicHolidayWorked';
+    public const PAY_CATEGORY_TYPE_PUBLIC_HOLIDAY_NOT_WORKED = 'PublicHolidayNotWorked';
     public const PAY_CATEGORY_TYPE_UNUSED_LEAVE_PAYMENT_NORMAL_TERMINATION = 'UnusedLeavePaymentNormalTermination';
     public const PAY_CATEGORY_TYPE_BACK_PAYMENT = 'BackPayment';
     public const PAY_CATEGORY_TYPE_PAID_FAMILY_AND_DOMESTIC_VIOLENCE_LEAVE = 'PaidFamilyAndDomesticViolenceLeave';
@@ -307,7 +317,17 @@ class AuInitialEarningsModel implements ModelInterface, ArrayAccess, \JsonSerial
             self::PAY_CATEGORY_TYPE_ETP_SUPERABLE_TYPE_P_TAXABLE,
             self::PAY_CATEGORY_TYPE_ETP_SUPERABLE_TYPE_P_TAX_FREE,
             self::PAY_CATEGORY_TYPE_ETP_TYPE_P_UNUSED_LEAVE_PAYMENT,
+            self::PAY_CATEGORY_TYPE_JOB_KEEPER_TIER,
+            self::PAY_CATEGORY_TYPE_JOB_KEEPER_CANCEL_TIER,
+            self::PAY_CATEGORY_TYPE_JOB_MAKER_NOMINATION,
+            self::PAY_CATEGORY_TYPE_JOB_MAKER_RENOMINATION,
+            self::PAY_CATEGORY_TYPE_JOB_MAKER_PERIOD,
+            self::PAY_CATEGORY_TYPE_JOB_MAKER_CANCEL_NOMINATION,
+            self::PAY_CATEGORY_TYPE_JOB_MAKER_CANCEL_RENOMINATION,
+            self::PAY_CATEGORY_TYPE_JOB_MAKER_CANCEL_PERIOD,
             self::PAY_CATEGORY_TYPE_NORMAL_TERMINATION_LEAVE_LOADING,
+            self::PAY_CATEGORY_TYPE_PUBLIC_HOLIDAY_WORKED,
+            self::PAY_CATEGORY_TYPE_PUBLIC_HOLIDAY_NOT_WORKED,
             self::PAY_CATEGORY_TYPE_UNUSED_LEAVE_PAYMENT_NORMAL_TERMINATION,
             self::PAY_CATEGORY_TYPE_BACK_PAYMENT,
             self::PAY_CATEGORY_TYPE_PAID_FAMILY_AND_DOMESTIC_VIOLENCE_LEAVE,

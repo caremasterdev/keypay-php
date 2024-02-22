@@ -340,6 +340,7 @@ class ReportAccessModel implements ModelInterface, ArrayAccess, \JsonSerializabl
     public const SPECIFIC_REPORTS_PAY_RUN_FPS_REPORT = 'PayRunFpsReport';
     public const SPECIFIC_REPORTS_PORTABLE_LONG_SERVICE_LEAVE_REPORT = 'PortableLongServiceLeaveReport';
     public const SPECIFIC_REPORTS_UK_TAX_AND_NI_BANDWIDTHS_REPORT = 'UkTaxAndNiBandwidthsReport';
+    public const SPECIFIC_REPORTS_CUSTOMISABLE_PAYROLL_REPORT = 'CustomisablePayrollReport';
 
     /**
      * Gets allowable values of the enum
@@ -460,6 +461,7 @@ class ReportAccessModel implements ModelInterface, ArrayAccess, \JsonSerializabl
             self::SPECIFIC_REPORTS_PAY_RUN_FPS_REPORT,
             self::SPECIFIC_REPORTS_PORTABLE_LONG_SERVICE_LEAVE_REPORT,
             self::SPECIFIC_REPORTS_UK_TAX_AND_NI_BANDWIDTHS_REPORT,
+            self::SPECIFIC_REPORTS_CUSTOMISABLE_PAYROLL_REPORT,
         ];
     }
 

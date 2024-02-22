@@ -74,6 +74,7 @@ class FinalisePayRunOptions implements ModelInterface, ArrayAccess, \JsonSeriali
         'export_journals_preference' => 'string',
         'export_journals_date_time' => '\DateTime',
         'lodge_pay_run_preference' => 'string',
+        'super_payment_preference' => 'string',
         'lodge_pay_run_date_time' => '\DateTime',
         'run_report_packs_preference' => 'string',
         'run_report_packs_date_time' => '\DateTime',
@@ -109,6 +110,7 @@ class FinalisePayRunOptions implements ModelInterface, ArrayAccess, \JsonSeriali
         'export_journals_preference' => null,
         'export_journals_date_time' => 'date-time',
         'lodge_pay_run_preference' => null,
+        'super_payment_preference' => null,
         'lodge_pay_run_date_time' => 'date-time',
         'run_report_packs_preference' => null,
         'run_report_packs_date_time' => 'date-time',
@@ -142,6 +144,7 @@ class FinalisePayRunOptions implements ModelInterface, ArrayAccess, \JsonSeriali
 		'export_journals_preference' => false,
 		'export_journals_date_time' => false,
 		'lodge_pay_run_preference' => false,
+		'super_payment_preference' => false,
 		'lodge_pay_run_date_time' => false,
 		'run_report_packs_preference' => false,
 		'run_report_packs_date_time' => false,
@@ -255,6 +258,7 @@ class FinalisePayRunOptions implements ModelInterface, ArrayAccess, \JsonSeriali
         'export_journals_preference' => 'exportJournalsPreference',
         'export_journals_date_time' => 'exportJournalsDateTime',
         'lodge_pay_run_preference' => 'lodgePayRunPreference',
+        'super_payment_preference' => 'superPaymentPreference',
         'lodge_pay_run_date_time' => 'lodgePayRunDateTime',
         'run_report_packs_preference' => 'runReportPacksPreference',
         'run_report_packs_date_time' => 'runReportPacksDateTime',
@@ -288,6 +292,7 @@ class FinalisePayRunOptions implements ModelInterface, ArrayAccess, \JsonSeriali
         'export_journals_preference' => 'setExportJournalsPreference',
         'export_journals_date_time' => 'setExportJournalsDateTime',
         'lodge_pay_run_preference' => 'setLodgePayRunPreference',
+        'super_payment_preference' => 'setSuperPaymentPreference',
         'lodge_pay_run_date_time' => 'setLodgePayRunDateTime',
         'run_report_packs_preference' => 'setRunReportPacksPreference',
         'run_report_packs_date_time' => 'setRunReportPacksDateTime',
@@ -321,6 +326,7 @@ class FinalisePayRunOptions implements ModelInterface, ArrayAccess, \JsonSeriali
         'export_journals_preference' => 'getExportJournalsPreference',
         'export_journals_date_time' => 'getExportJournalsDateTime',
         'lodge_pay_run_preference' => 'getLodgePayRunPreference',
+        'super_payment_preference' => 'getSuperPaymentPreference',
         'lodge_pay_run_date_time' => 'getLodgePayRunDateTime',
         'run_report_packs_preference' => 'getRunReportPacksPreference',
         'run_report_packs_date_time' => 'getRunReportPacksDateTime',
@@ -392,6 +398,9 @@ class FinalisePayRunOptions implements ModelInterface, ArrayAccess, \JsonSeriali
     public const LODGE_PAY_RUN_PREFERENCE_MANUAL = 'Manual';
     public const LODGE_PAY_RUN_PREFERENCE_IMMEDIATE = 'Immediate';
     public const LODGE_PAY_RUN_PREFERENCE_SCHEDULED = 'Scheduled';
+    public const SUPER_PAYMENT_PREFERENCE_MANUAL = 'Manual';
+    public const SUPER_PAYMENT_PREFERENCE_IMMEDIATE = 'Immediate';
+    public const SUPER_PAYMENT_PREFERENCE_SCHEDULED = 'Scheduled';
     public const RUN_REPORT_PACKS_PREFERENCE_MANUAL = 'Manual';
     public const RUN_REPORT_PACKS_PREFERENCE_IMMEDIATE = 'Immediate';
     public const RUN_REPORT_PACKS_PREFERENCE_SCHEDULED = 'Scheduled';
@@ -479,6 +488,20 @@ class FinalisePayRunOptions implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string[]
      */
+    public function getSuperPaymentPreferenceAllowableValues()
+    {
+        return [
+            self::SUPER_PAYMENT_PREFERENCE_MANUAL,
+            self::SUPER_PAYMENT_PREFERENCE_IMMEDIATE,
+            self::SUPER_PAYMENT_PREFERENCE_SCHEDULED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getRunReportPacksPreferenceAllowableValues()
     {
         return [
@@ -534,6 +557,7 @@ class FinalisePayRunOptions implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('export_journals_preference', $data ?? [], null);
         $this->setIfExists('export_journals_date_time', $data ?? [], null);
         $this->setIfExists('lodge_pay_run_preference', $data ?? [], null);
+        $this->setIfExists('super_payment_preference', $data ?? [], null);
         $this->setIfExists('lodge_pay_run_date_time', $data ?? [], null);
         $this->setIfExists('run_report_packs_preference', $data ?? [], null);
         $this->setIfExists('run_report_packs_date_time', $data ?? [], null);
@@ -612,6 +636,15 @@ class FinalisePayRunOptions implements ModelInterface, ArrayAccess, \JsonSeriali
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'lodge_pay_run_preference', must be one of '%s'",
                 $this->container['lodge_pay_run_preference'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getSuperPaymentPreferenceAllowableValues();
+        if (!is_null($this->container['super_payment_preference']) && !in_array($this->container['super_payment_preference'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'super_payment_preference', must be one of '%s'",
+                $this->container['super_payment_preference'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1154,6 +1187,43 @@ class FinalisePayRunOptions implements ModelInterface, ArrayAccess, \JsonSeriali
             );
         }
         $this->container['lodge_pay_run_preference'] = $lodge_pay_run_preference;
+
+        return $this;
+    }
+
+    /**
+     * Gets super_payment_preference
+     *
+     * @return string|null
+     */
+    public function getSuperPaymentPreference()
+    {
+        return $this->container['super_payment_preference'];
+    }
+
+    /**
+     * Sets super_payment_preference
+     *
+     * @param string|null $super_payment_preference 
+     *
+     * @return self
+     */
+    public function setSuperPaymentPreference($super_payment_preference)
+    {
+        if (is_null($super_payment_preference)) {
+            throw new \InvalidArgumentException('non-nullable super_payment_preference cannot be null');
+        }
+        $allowedValues = $this->getSuperPaymentPreferenceAllowableValues();
+        if (!in_array($super_payment_preference, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'super_payment_preference', must be one of '%s'",
+                    $super_payment_preference,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['super_payment_preference'] = $super_payment_preference;
 
         return $this;
     }

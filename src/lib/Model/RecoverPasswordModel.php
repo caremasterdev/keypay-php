@@ -353,6 +353,7 @@ class RecoverPasswordModel implements ModelInterface, ArrayAccess, \JsonSerializ
     public const MESSAGE_TYPE_EMAIL_ADDRESS_CONFIRM_CHANGED = 'EmailAddressConfirmChanged';
     public const MESSAGE_TYPE_RECOVERY_EMAIL_ADDRESS_CHANGED = 'RecoveryEmailAddressChanged';
     public const MESSAGE_TYPE_RECOVERY_EMAIL_ADDRESS_CONFIRM_CHANGED = 'RecoveryEmailAddressConfirmChanged';
+    public const MESSAGE_TYPE_FRAUD_PROTECTION_CHECK_RESULT = 'FraudProtectionCheckResult';
 
     /**
      * Gets allowable values of the enum
@@ -481,6 +482,7 @@ class RecoverPasswordModel implements ModelInterface, ArrayAccess, \JsonSerializ
             self::MESSAGE_TYPE_EMAIL_ADDRESS_CONFIRM_CHANGED,
             self::MESSAGE_TYPE_RECOVERY_EMAIL_ADDRESS_CHANGED,
             self::MESSAGE_TYPE_RECOVERY_EMAIL_ADDRESS_CONFIRM_CHANGED,
+            self::MESSAGE_TYPE_FRAUD_PROTECTION_CHECK_RESULT,
         ];
     }
 
