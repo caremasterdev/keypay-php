@@ -1,6 +1,6 @@
 <?php
 /**
- * FunctionToggleAndName
+ * PayRunSuperBatchModel
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * FunctionToggleAndName Class Doc Comment
+ * PayRunSuperBatchModel Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FunctionToggleAndName implements ModelInterface, ArrayAccess, \JsonSerializable
+class PayRunSuperBatchModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class FunctionToggleAndName implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FunctionToggleAndName';
+    protected static $openAPIModelName = 'PayRunSuperBatchModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,8 @@ class FunctionToggleAndName implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'function_toggle' => 'string',
-        'function_name' => 'string'
+        'super_interchange_id' => 'int',
+        'description' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class FunctionToggleAndName implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'function_toggle' => null,
-        'function_name' => null
+        'super_interchange_id' => 'int32',
+        'description' => null
     ];
 
     /**
@@ -79,8 +79,8 @@ class FunctionToggleAndName implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'function_toggle' => false,
-		'function_name' => false
+        'super_interchange_id' => false,
+		'description' => false
     ];
 
     /**
@@ -169,8 +169,8 @@ class FunctionToggleAndName implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'function_toggle' => 'functionToggle',
-        'function_name' => 'functionName'
+        'super_interchange_id' => 'superInterchangeId',
+        'description' => 'description'
     ];
 
     /**
@@ -179,8 +179,8 @@ class FunctionToggleAndName implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'function_toggle' => 'setFunctionToggle',
-        'function_name' => 'setFunctionName'
+        'super_interchange_id' => 'setSuperInterchangeId',
+        'description' => 'setDescription'
     ];
 
     /**
@@ -189,8 +189,8 @@ class FunctionToggleAndName implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'function_toggle' => 'getFunctionToggle',
-        'function_name' => 'getFunctionName'
+        'super_interchange_id' => 'getSuperInterchangeId',
+        'description' => 'getDescription'
     ];
 
     /**
@@ -234,25 +234,6 @@ class FunctionToggleAndName implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
-    public const FUNCTION_TOGGLE_DISABLED = 'Disabled';
-    public const FUNCTION_TOGGLE_ENABLED = 'Enabled';
-    public const FUNCTION_TOGGLE_UPSELL = 'Upsell';
-    public const FUNCTION_TOGGLE_COMING_SOON = 'ComingSoon';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getFunctionToggleAllowableValues()
-    {
-        return [
-            self::FUNCTION_TOGGLE_DISABLED,
-            self::FUNCTION_TOGGLE_ENABLED,
-            self::FUNCTION_TOGGLE_UPSELL,
-            self::FUNCTION_TOGGLE_COMING_SOON,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -269,8 +250,8 @@ class FunctionToggleAndName implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('function_toggle', $data ?? [], null);
-        $this->setIfExists('function_name', $data ?? [], null);
+        $this->setIfExists('super_interchange_id', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
     }
 
     /**
@@ -300,15 +281,6 @@ class FunctionToggleAndName implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getFunctionToggleAllowableValues();
-        if (!is_null($this->container['function_toggle']) && !in_array($this->container['function_toggle'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'function_toggle', must be one of '%s'",
-                $this->container['function_toggle'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -325,65 +297,55 @@ class FunctionToggleAndName implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets function_toggle
+     * Gets super_interchange_id
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getFunctionToggle()
+    public function getSuperInterchangeId()
     {
-        return $this->container['function_toggle'];
+        return $this->container['super_interchange_id'];
     }
 
     /**
-     * Sets function_toggle
+     * Sets super_interchange_id
      *
-     * @param string|null $function_toggle 
+     * @param int|null $super_interchange_id 
      *
      * @return self
      */
-    public function setFunctionToggle($function_toggle)
+    public function setSuperInterchangeId($super_interchange_id)
     {
-        if (is_null($function_toggle)) {
-            throw new \InvalidArgumentException('non-nullable function_toggle cannot be null');
+        if (is_null($super_interchange_id)) {
+            throw new \InvalidArgumentException('non-nullable super_interchange_id cannot be null');
         }
-        $allowedValues = $this->getFunctionToggleAllowableValues();
-        if (!in_array($function_toggle, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'function_toggle', must be one of '%s'",
-                    $function_toggle,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['function_toggle'] = $function_toggle;
+        $this->container['super_interchange_id'] = $super_interchange_id;
 
         return $this;
     }
 
     /**
-     * Gets function_name
+     * Gets description
      *
      * @return string|null
      */
-    public function getFunctionName()
+    public function getDescription()
     {
-        return $this->container['function_name'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets function_name
+     * Sets description
      *
-     * @param string|null $function_name 
+     * @param string|null $description 
      *
      * @return self
      */
-    public function setFunctionName($function_name)
+    public function setDescription($description)
     {
-        if (is_null($function_name)) {
-            throw new \InvalidArgumentException('non-nullable function_name cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['function_name'] = $function_name;
+        $this->container['description'] = $description;
 
         return $this;
     }

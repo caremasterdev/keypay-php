@@ -289,7 +289,6 @@ class SetWhiteLabelFeatureAccessModel implements ModelInterface, ArrayAccess, \J
     public const FEATURE_SSO_FOR_MULTIPLE_BUSINESSES_ALLOWED = 'SsoForMultipleBusinessesAllowed';
     public const FEATURE_STP_PHASE2 = 'StpPhase2';
     public const FEATURE_PEOPLES_PENSION_REPORT_FORMAT = 'PeoplesPensionReportFormat';
-    public const FEATURE_RTI_CUSTOM_EMAIL_ADDRESS = 'RtiCustomEmailAddress';
     public const FEATURE_STANDARD_LIFE_PENSION_CONTRIBUTIONS_REPORT = 'StandardLifePensionContributionsReport';
     public const FEATURE_OVERRIDE_STP2_AND_CONTINUE_WITH_STP1 = 'OverrideStp2AndContinueWithStp1';
     public const FEATURE_STP_POLLING_DELAY = 'STPPollingDelay';
@@ -375,11 +374,13 @@ class SetWhiteLabelFeatureAccessModel implements ModelInterface, ArrayAccess, \J
     public const FEATURE_RETURN_TO_WORK_LEAVE = 'ReturnToWorkLeave';
     public const FEATURE_ADDITIONAL_SEA_PAYSLIP_SETTINGS = 'AdditionalSEAPayslipSettings';
     public const FEATURE_DELETE_PAY_RUN_DEADLOCK_AND_FOREIGN_KEY_FIX = 'DeletePayRunDeadlockAndForeignKeyFix';
+    public const FEATURE_FIX_DELETE_TABLES_RELATED_TO_EMPLOYEE_SP752 = 'FixDeleteTablesRelatedToEmployee_SP752';
     public const FEATURE_SICK_REASON_REPORT = 'SickReasonReport';
     public const FEATURE_UPDATED_SANTANDER_BACS_PAYMENT = 'UpdatedSantanderBacsPayment';
     public const FEATURE_DUPLICATE_NI_RECORD_FIX = 'DuplicateNIRecordFix';
     public const FEATURE_INCORRECT_P45_MONTH_FOR_T0_TAX_CODE_FIX = 'IncorrectP45MonthForT0TaxCodeFix';
     public const FEATURE_USE_SPLIT_BILLING_ENTITLEMENTS_COMMAND = 'UseSplitBillingEntitlementsCommand';
+    public const FEATURE_STAPLED_SUPER_FUND = 'StapledSuperFund';
     public const FEATURE_YTD_INCORRECT_BACK_CALC_NUMBERS_BUG_FIX = 'YTDIncorrectBackCalcNumbersBugFix';
     public const FEATURE_SET_DEFAULT_BILLING_PLAN_BY_NAME_IF_NEW_WL = 'SetDefaultBillingPlanByNameIfNewWL';
     public const FEATURE_PAYR495_FIX_FOR_CONTEXT_NOT_SET_CORRECTLY = 'PAYR495_FixForContextNotSetCorrectly';
@@ -413,7 +414,6 @@ class SetWhiteLabelFeatureAccessModel implements ModelInterface, ArrayAccess, \J
     public const FEATURE_UK_PENSION_ROUNDING_FIX = 'UkPensionRoundingFix';
     public const FEATURE_DASHBOARD_QBO_OPEN_LINKS_DIRECTLY_PRT145 = 'DashboardQboOpenLinksDirectly_PRT145';
     public const FEATURE_USE_NEW_AUTH_HANDLER_FOR_DEPUTY_KOUNTA_SQUARE_IN394 = 'UseNewAuthHandlerForDeputyKountaSquare_IN394';
-    public const FEATURE_IN406_REVOKE_XERO_TOKEN = 'IN406_RevokeXeroToken';
     public const FEATURE_VNGRS32_KAFKA_PAYSLIPS_PUBLISHED_NOTIFICATION = 'VNGRS32_KafkaPayslipsPublishedNotification';
     public const FEATURE_AUTOMATE_PUBLIC_HOLIDAY_NOT_WORKED = 'AutomatePublicHolidayNotWorked';
     public const FEATURE_UK_BANK_ACCOUNT_NUMBER_VALIDATIONS = 'UkBankAccountNumberValidations';
@@ -421,6 +421,7 @@ class SetWhiteLabelFeatureAccessModel implements ModelInterface, ArrayAccess, \J
     public const FEATURE_DIRECTOR_YTD_LEL_FIX = 'DirectorYtdLelFix';
     public const FEATURE_UK_GENERATE_EXB_NULL_TO_DATE_FIX = 'UkGenerateExbNullToDateFix';
     public const FEATURE_USE_REDIS_TO_STORE_OPEN_ID_DATA_PRT148 = 'UseRedisToStoreOpenIdData_PRT148';
+    public const FEATURE_AP436_EMPLOYING_ENTITIES_MANAGEMENT_PAGE_FIX = 'AP436_EmployingEntitiesManagementPageFix';
     public const FEATURE_UK_EXTERNAL_ID_ON_PAY_CATEGORIES_REPORT = 'UkExternalIdOnPayCategoriesReport';
     public const FEATURE_TIMESHEET_DIMENSIONS_API_BULK_ENDPOINTS_HORT117 = 'TimesheetDimensions_APIBulkEndpoints_HORT117';
     public const FEATURE_DAILY_PAY_AGGREGATION_HORT96 = 'DailyPayAggregation_HORT96';
@@ -434,20 +435,60 @@ class SetWhiteLabelFeatureAccessModel implements ModelInterface, ArrayAccess, \J
     public const FEATURE_NP119_IRD_ARREARS_PAY_SCHEDULE = 'NP119_IRDArrearsPaySchedule';
     public const FEATURE_USE_NEW_AUTH_HANDLER_FOR_XERO_ZOHO_BC_AC182 = 'UseNewAuthHandlerForXeroZohoBC_AC182';
     public const FEATURE_NP147_NZ_RSE_SICK_LEAVE = 'NP147_NzRSESickLeave';
+    public const FEATURE_NP208_CHECK_PARENTAL_LEAVE_RULES_APPLY = 'NP208_CheckParentalLeaveRulesApply';
     public const FEATURE_CLOCK_ON_CLOCK_OFF_API_UTC_OFFSET_PRECEDENCE_TS66 = 'ClockOnClockOffApiUtcOffsetPrecedence_TS66';
     public const FEATURE_PARTNER_DASHBOARD_AUTOMATED_NOTIFICATION = 'PartnerDashboardAutomatedNotification';
     public const FEATURE_QBO_ACCOUNTING_TOKEN_REFRESH_AC199 = 'QboAccountingTokenRefresh_AC199';
+    public const FEATURE_UK_CUSTOMISABLE_REPORTS = 'UkCustomisableReports';
+    public const FEATURE_AIOP_REVIEW_AND_APPROVE_PAY_RUN_FOX_49 = 'AiopReviewAndApprovePayRun_Fox_49';
     public const FEATURE_VNGRS38_TIMESHEET_CLASSIFICATION_RANK_EQUAL_EMPLOYEE_CLASSIFICATION_RANK = 'VNGRS38_TimesheetClassificationRankEqualEmployeeClassificationRank';
     public const FEATURE_UK_INCLUDE_TERMINATED_EMPLOYEES_PREU476 = 'UkIncludeTerminatedEmployees_PREU476';
+    public const FEATURE_UPDATE_CPF_REPORT_TO_CONTAIN_EMPLOYEE_ID_AND_LEGAL_STATUS_AND_OW_AND_AW_SP665 = 'UpdateCpfReportToContainEmployeeIdAndLegalStatusAndOwAndAw_SP665';
     public const FEATURE_ALLOW_MULTIPLE_FEATURE_FLAGS_USED_ATTRIBUTES = 'AllowMultipleFeatureFlagsUsedAttributes';
     public const FEATURE_NP139_LEAVE_CONVERSION_ROUNDING = 'NP139_LeaveConversionRounding';
     public const FEATURE_QUICKBOOKS_FTU_USE_NEW_URL_WITH_EXTRAS_AC258 = 'QuickbooksFTU_UseNewURLWithExtras_AC258';
     public const FEATURE_NP124_CASUAL_EMPLOYMENT_TYPE_SYNC = 'NP124_CasualEmploymentTypeSync';
     public const FEATURE_QBO_ACCOUNTS_CONNECTION_URL_AC198 = 'QboAccountsConnectionUrl_AC198';
-    public const FEATURE_SPLIT_O_AUTH_REPOSITORIES_AC220 = 'SplitOAuthRepositories_AC220';
     public const FEATURE_STOP_SYNC_PAY_CATEGORY_FROM_XERO = 'StopSyncPayCategoryFromXero';
     public const FEATURE_STOP_SYNC_LEAVE_CATEGORY_FROM_XERO = 'StopSyncLeaveCategoryFromXero';
     public const FEATURE_REMOVE_CREDENTIALS_PROVIDER_AC59 = 'RemoveCredentialsProvider_AC59';
+    public const FEATURE_PAY_RUN_SUPER_AP491 = 'PayRunSuper_AP491';
+    public const FEATURE_SG_CPFAW_CAPPED_DUE_TO_MULTIPLE_PAYRUNS_SP652 = 'SgCPFAWCappedDueToMultiplePayruns_SP652';
+    public const FEATURE_NP191_LEAVE_BALANCES_REPORT_NZ_SPECIFIC_UNIT_CONVERSION = 'NP191_LeaveBalancesReportNzSpecificUnitConversion';
+    public const FEATURE_REMOVE_REBATES_FROM_NET_TO_GROSS_CALCULATION = 'RemoveRebatesFromNetToGrossCalculation';
+    public const FEATURE_NP182_DATE_RESTRICT_CALCULATED_ACCRUAL_LAST_PAY_RUN = 'NP182_DateRestrictCalculatedAccrualLastPayRun';
+    public const FEATURE_NP195_ADDITIONAL_RATE_UNIT_TYPES_FOR_GET_TOTAL_DAYS_WORKED = 'NP195_AdditionalRateUnitTypesForGetTotalDaysWorked';
+    public const FEATURE_NP94_REMOVE_EXISTING_PUBLIC_HOLIDAY_WORKED = 'NP94_RemoveExistingPublicHolidayWorked';
+    public const FEATURE_FIX_QBO_BUSINESS_JOURNAL_SERVICE_PRT494 = 'FixQBOBusinessJournalService_PRT494';
+    public const FEATURE_TS136_ROSTER_NOTIFICATION_WRONG_USER = 'TS136_Roster_Notification_Wrong_User';
+    public const FEATURE_SORT_TIME_SHEETS_EXPORT_BY_DATE_TIME_TS111 = 'SortTimeSheetsExportByDateTime_TS111';
+    public const FEATURE_NP96_ADVANCED_WORK_HOURS_FOR_NZ = 'NP96_AdvancedWorkHoursForNZ';
+    public const FEATURE_SBR_SOFTWARE_ID_FIX_AP517 = 'SBRSoftwareIdFix_AP517';
+    public const FEATURE_IMPROVE_DELETE_REPORT_PACK_PROCESS_TS156 = 'ImproveDeleteReportPackProcess_TS156';
+    public const FEATURE_RECALCULATE_PAY_RUN_WHEN_PAY_PERIOD_IS_ADJUSTED_SP674 = 'RecalculatePayRunWhenPayPeriodIsAdjusted_SP674';
+    public const FEATURE_NP146_REMOVE_IRREGULAR_EMP_CALCULATE_HOLIDAY_PAY_TERMINATION = 'NP146_RemoveIrregularEmpCalculateHolidayPayTermination';
+    public const FEATURE_EXPIRED_PAY_RUN_INCLUSIONS_IN_PAY_RUN_BUG_FIX_PREU600 = 'ExpiredPayRunInclusionsInPayRunBugFix_PREU600';
+    public const FEATURE_NP275_PAY_RUN_BATCH_FILTER_CONVERSION = 'NP275_PayRunBatchFilterConversion';
+    public const FEATURE_NP170_LEAVE_COMMAND_ENHANCEMENTS = 'NP170_LeaveCommandEnhancements';
+    public const FEATURE_PREVENT_PAY_CATEGORY_CHANGE_FROM_FIXED_RATE_TS195 = 'PreventPayCategoryChangeFromFixedRate_TS195';
+    public const FEATURE_LEAVE_PAID_OUT_ON_TERMINATION_BUG_FIX_TS206 = 'LeavePaidOutOnTerminationBugFix_TS206';
+    public const FEATURE_NP244_CASUAL_EMPLOYEE_NOT_CALCULATE_HOLIDAY_PAY_TERMINATION = 'NP244_CasualEmployeeNotCalculateHolidayPayTermination';
+    public const FEATURE_MAP_MISSING_B5_REFUND_TO_CP22_A_FORM_SP724 = 'MapMissingB5RefundToCP22AForm_SP724';
+    public const FEATURE_LOAD_MAX_WAGE_SUBJECT_TO_CPF_SP748 = 'LoadMaxWageSubjectToCpf_SP748';
+    public const FEATURE_USE_MY_TAX_ENGINE_FOR_STATUTORY_PAGE_SP764 = 'UseMyTaxEngineForStatutoryPage_SP764';
+    public const FEATURE_AP243_PAYG_CALC_FIX = 'AP243_PaygCalcFix';
+    public const FEATURE_FPS_PENSION_YTD_FIGURES_BUG_FIX_PREU509 = 'FpsPensionYtdFiguresBugFix_PREU509';
+    public const FEATURE_SP640_MAKE_IRAS_LODGEMENT_ERROR_MESSAGE_DESCRIPTIVE = 'Sp640_MakeIrasLodgementErrorMessageDescriptive';
+    public const FEATURE_AP528_TIMESHEET_IMPORT_FIX = 'AP528_TimesheetImportFix';
+    public const FEATURE_WM2601_REMOVE_REDUNDANT_LEAVE_ACCRUAL_QUERY_CONDITIONS = 'WM2601_RemoveRedundantLeaveAccrualQueryConditions';
+    public const FEATURE_PREVENT_NEGATIVE_LEAVE_BALANCES_FOR_AIO_BUSINESS_WM2485 = 'PreventNegativeLeaveBalancesForAioBusiness_WM2485';
+    public const FEATURE_SP727_FIX_CP38_NOT_BEING_MAPPED_TO_CP22_A_FORM = 'SP727_FixCP38NotBeingMappedToCP22AForm';
+    public const FEATURE_SP728_FIX_ZAKAT_PAID_VIA_DEDUCTION_MISSING_ON_CP22_A_FORM = 'SP728_FixZakatPaidViaDeductionMissingOnCP22AForm';
+    public const FEATURE_FIX_LEAVE_TAKEN_OVER_PAYMENT_TS142 = 'FixLeaveTakenOverPayment_TS142';
+    public const FEATURE_FIX_ROSTER_VS_TIMESHEET_COMPARISON_REPORT_FOR_RESTRICTED_USER_TS171 = 'FixRosterVsTimesheetComparisonReportForRestrictedUser_TS171';
+    public const FEATURE_SG_RESIDENTIAL_ADDRESS_VALIDATION2023_SP607 = 'SGResidentialAddressValidation2023_SP607';
+    public const FEATURE_UK52_WEEK_EARNINGS_FIX_PREU476 = 'Uk52WeekEarningsFix_PREU476';
+    public const FEATURE_QUICK_BOOKS_TAX_CODES_BY_REST_AC341 = 'QuickBooksTaxCodesByREST_AC341';
 
     /**
      * Gets allowable values of the enum
@@ -512,7 +553,6 @@ class SetWhiteLabelFeatureAccessModel implements ModelInterface, ArrayAccess, \J
             self::FEATURE_SSO_FOR_MULTIPLE_BUSINESSES_ALLOWED,
             self::FEATURE_STP_PHASE2,
             self::FEATURE_PEOPLES_PENSION_REPORT_FORMAT,
-            self::FEATURE_RTI_CUSTOM_EMAIL_ADDRESS,
             self::FEATURE_STANDARD_LIFE_PENSION_CONTRIBUTIONS_REPORT,
             self::FEATURE_OVERRIDE_STP2_AND_CONTINUE_WITH_STP1,
             self::FEATURE_STP_POLLING_DELAY,
@@ -598,11 +638,13 @@ class SetWhiteLabelFeatureAccessModel implements ModelInterface, ArrayAccess, \J
             self::FEATURE_RETURN_TO_WORK_LEAVE,
             self::FEATURE_ADDITIONAL_SEA_PAYSLIP_SETTINGS,
             self::FEATURE_DELETE_PAY_RUN_DEADLOCK_AND_FOREIGN_KEY_FIX,
+            self::FEATURE_FIX_DELETE_TABLES_RELATED_TO_EMPLOYEE_SP752,
             self::FEATURE_SICK_REASON_REPORT,
             self::FEATURE_UPDATED_SANTANDER_BACS_PAYMENT,
             self::FEATURE_DUPLICATE_NI_RECORD_FIX,
             self::FEATURE_INCORRECT_P45_MONTH_FOR_T0_TAX_CODE_FIX,
             self::FEATURE_USE_SPLIT_BILLING_ENTITLEMENTS_COMMAND,
+            self::FEATURE_STAPLED_SUPER_FUND,
             self::FEATURE_YTD_INCORRECT_BACK_CALC_NUMBERS_BUG_FIX,
             self::FEATURE_SET_DEFAULT_BILLING_PLAN_BY_NAME_IF_NEW_WL,
             self::FEATURE_PAYR495_FIX_FOR_CONTEXT_NOT_SET_CORRECTLY,
@@ -636,7 +678,6 @@ class SetWhiteLabelFeatureAccessModel implements ModelInterface, ArrayAccess, \J
             self::FEATURE_UK_PENSION_ROUNDING_FIX,
             self::FEATURE_DASHBOARD_QBO_OPEN_LINKS_DIRECTLY_PRT145,
             self::FEATURE_USE_NEW_AUTH_HANDLER_FOR_DEPUTY_KOUNTA_SQUARE_IN394,
-            self::FEATURE_IN406_REVOKE_XERO_TOKEN,
             self::FEATURE_VNGRS32_KAFKA_PAYSLIPS_PUBLISHED_NOTIFICATION,
             self::FEATURE_AUTOMATE_PUBLIC_HOLIDAY_NOT_WORKED,
             self::FEATURE_UK_BANK_ACCOUNT_NUMBER_VALIDATIONS,
@@ -644,6 +685,7 @@ class SetWhiteLabelFeatureAccessModel implements ModelInterface, ArrayAccess, \J
             self::FEATURE_DIRECTOR_YTD_LEL_FIX,
             self::FEATURE_UK_GENERATE_EXB_NULL_TO_DATE_FIX,
             self::FEATURE_USE_REDIS_TO_STORE_OPEN_ID_DATA_PRT148,
+            self::FEATURE_AP436_EMPLOYING_ENTITIES_MANAGEMENT_PAGE_FIX,
             self::FEATURE_UK_EXTERNAL_ID_ON_PAY_CATEGORIES_REPORT,
             self::FEATURE_TIMESHEET_DIMENSIONS_API_BULK_ENDPOINTS_HORT117,
             self::FEATURE_DAILY_PAY_AGGREGATION_HORT96,
@@ -657,20 +699,60 @@ class SetWhiteLabelFeatureAccessModel implements ModelInterface, ArrayAccess, \J
             self::FEATURE_NP119_IRD_ARREARS_PAY_SCHEDULE,
             self::FEATURE_USE_NEW_AUTH_HANDLER_FOR_XERO_ZOHO_BC_AC182,
             self::FEATURE_NP147_NZ_RSE_SICK_LEAVE,
+            self::FEATURE_NP208_CHECK_PARENTAL_LEAVE_RULES_APPLY,
             self::FEATURE_CLOCK_ON_CLOCK_OFF_API_UTC_OFFSET_PRECEDENCE_TS66,
             self::FEATURE_PARTNER_DASHBOARD_AUTOMATED_NOTIFICATION,
             self::FEATURE_QBO_ACCOUNTING_TOKEN_REFRESH_AC199,
+            self::FEATURE_UK_CUSTOMISABLE_REPORTS,
+            self::FEATURE_AIOP_REVIEW_AND_APPROVE_PAY_RUN_FOX_49,
             self::FEATURE_VNGRS38_TIMESHEET_CLASSIFICATION_RANK_EQUAL_EMPLOYEE_CLASSIFICATION_RANK,
             self::FEATURE_UK_INCLUDE_TERMINATED_EMPLOYEES_PREU476,
+            self::FEATURE_UPDATE_CPF_REPORT_TO_CONTAIN_EMPLOYEE_ID_AND_LEGAL_STATUS_AND_OW_AND_AW_SP665,
             self::FEATURE_ALLOW_MULTIPLE_FEATURE_FLAGS_USED_ATTRIBUTES,
             self::FEATURE_NP139_LEAVE_CONVERSION_ROUNDING,
             self::FEATURE_QUICKBOOKS_FTU_USE_NEW_URL_WITH_EXTRAS_AC258,
             self::FEATURE_NP124_CASUAL_EMPLOYMENT_TYPE_SYNC,
             self::FEATURE_QBO_ACCOUNTS_CONNECTION_URL_AC198,
-            self::FEATURE_SPLIT_O_AUTH_REPOSITORIES_AC220,
             self::FEATURE_STOP_SYNC_PAY_CATEGORY_FROM_XERO,
             self::FEATURE_STOP_SYNC_LEAVE_CATEGORY_FROM_XERO,
             self::FEATURE_REMOVE_CREDENTIALS_PROVIDER_AC59,
+            self::FEATURE_PAY_RUN_SUPER_AP491,
+            self::FEATURE_SG_CPFAW_CAPPED_DUE_TO_MULTIPLE_PAYRUNS_SP652,
+            self::FEATURE_NP191_LEAVE_BALANCES_REPORT_NZ_SPECIFIC_UNIT_CONVERSION,
+            self::FEATURE_REMOVE_REBATES_FROM_NET_TO_GROSS_CALCULATION,
+            self::FEATURE_NP182_DATE_RESTRICT_CALCULATED_ACCRUAL_LAST_PAY_RUN,
+            self::FEATURE_NP195_ADDITIONAL_RATE_UNIT_TYPES_FOR_GET_TOTAL_DAYS_WORKED,
+            self::FEATURE_NP94_REMOVE_EXISTING_PUBLIC_HOLIDAY_WORKED,
+            self::FEATURE_FIX_QBO_BUSINESS_JOURNAL_SERVICE_PRT494,
+            self::FEATURE_TS136_ROSTER_NOTIFICATION_WRONG_USER,
+            self::FEATURE_SORT_TIME_SHEETS_EXPORT_BY_DATE_TIME_TS111,
+            self::FEATURE_NP96_ADVANCED_WORK_HOURS_FOR_NZ,
+            self::FEATURE_SBR_SOFTWARE_ID_FIX_AP517,
+            self::FEATURE_IMPROVE_DELETE_REPORT_PACK_PROCESS_TS156,
+            self::FEATURE_RECALCULATE_PAY_RUN_WHEN_PAY_PERIOD_IS_ADJUSTED_SP674,
+            self::FEATURE_NP146_REMOVE_IRREGULAR_EMP_CALCULATE_HOLIDAY_PAY_TERMINATION,
+            self::FEATURE_EXPIRED_PAY_RUN_INCLUSIONS_IN_PAY_RUN_BUG_FIX_PREU600,
+            self::FEATURE_NP275_PAY_RUN_BATCH_FILTER_CONVERSION,
+            self::FEATURE_NP170_LEAVE_COMMAND_ENHANCEMENTS,
+            self::FEATURE_PREVENT_PAY_CATEGORY_CHANGE_FROM_FIXED_RATE_TS195,
+            self::FEATURE_LEAVE_PAID_OUT_ON_TERMINATION_BUG_FIX_TS206,
+            self::FEATURE_NP244_CASUAL_EMPLOYEE_NOT_CALCULATE_HOLIDAY_PAY_TERMINATION,
+            self::FEATURE_MAP_MISSING_B5_REFUND_TO_CP22_A_FORM_SP724,
+            self::FEATURE_LOAD_MAX_WAGE_SUBJECT_TO_CPF_SP748,
+            self::FEATURE_USE_MY_TAX_ENGINE_FOR_STATUTORY_PAGE_SP764,
+            self::FEATURE_AP243_PAYG_CALC_FIX,
+            self::FEATURE_FPS_PENSION_YTD_FIGURES_BUG_FIX_PREU509,
+            self::FEATURE_SP640_MAKE_IRAS_LODGEMENT_ERROR_MESSAGE_DESCRIPTIVE,
+            self::FEATURE_AP528_TIMESHEET_IMPORT_FIX,
+            self::FEATURE_WM2601_REMOVE_REDUNDANT_LEAVE_ACCRUAL_QUERY_CONDITIONS,
+            self::FEATURE_PREVENT_NEGATIVE_LEAVE_BALANCES_FOR_AIO_BUSINESS_WM2485,
+            self::FEATURE_SP727_FIX_CP38_NOT_BEING_MAPPED_TO_CP22_A_FORM,
+            self::FEATURE_SP728_FIX_ZAKAT_PAID_VIA_DEDUCTION_MISSING_ON_CP22_A_FORM,
+            self::FEATURE_FIX_LEAVE_TAKEN_OVER_PAYMENT_TS142,
+            self::FEATURE_FIX_ROSTER_VS_TIMESHEET_COMPARISON_REPORT_FOR_RESTRICTED_USER_TS171,
+            self::FEATURE_SG_RESIDENTIAL_ADDRESS_VALIDATION2023_SP607,
+            self::FEATURE_UK52_WEEK_EARNINGS_FIX_PREU476,
+            self::FEATURE_QUICK_BOOKS_TAX_CODES_BY_REST_AC341,
         ];
     }
 

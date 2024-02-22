@@ -434,15 +434,16 @@ class UserApi
      * List Related Businesses And Employees, but just the IDs and their BrandIds and PartnerIds
      *
      * @param  string $username username (optional)
+     * @param  int $user_id user_id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auUserAccountMetadataLite'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\UserAccountMetadataLite
      */
-    public function auUserAccountMetadataLite($username = null, string $contentType = self::contentTypes['auUserAccountMetadataLite'][0])
+    public function auUserAccountMetadataLite($username = null, $user_id = null, string $contentType = self::contentTypes['auUserAccountMetadataLite'][0])
     {
-        list($response) = $this->auUserAccountMetadataLiteWithHttpInfo($username, $contentType);
+        list($response) = $this->auUserAccountMetadataLiteWithHttpInfo($username, $user_id, $contentType);
         return $response;
     }
 
@@ -452,15 +453,16 @@ class UserApi
      * List Related Businesses And Employees, but just the IDs and their BrandIds and PartnerIds
      *
      * @param  string $username (optional)
+     * @param  int $user_id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auUserAccountMetadataLite'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\UserAccountMetadataLite, HTTP status code, HTTP response headers (array of strings)
      */
-    public function auUserAccountMetadataLiteWithHttpInfo($username = null, string $contentType = self::contentTypes['auUserAccountMetadataLite'][0])
+    public function auUserAccountMetadataLiteWithHttpInfo($username = null, $user_id = null, string $contentType = self::contentTypes['auUserAccountMetadataLite'][0])
     {
-        $request = $this->auUserAccountMetadataLiteRequest($username, $contentType);
+        $request = $this->auUserAccountMetadataLiteRequest($username, $user_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -552,14 +554,15 @@ class UserApi
      * List Related Businesses And Employees, but just the IDs and their BrandIds and PartnerIds
      *
      * @param  string $username (optional)
+     * @param  int $user_id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auUserAccountMetadataLite'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auUserAccountMetadataLiteAsync($username = null, string $contentType = self::contentTypes['auUserAccountMetadataLite'][0])
+    public function auUserAccountMetadataLiteAsync($username = null, $user_id = null, string $contentType = self::contentTypes['auUserAccountMetadataLite'][0])
     {
-        return $this->auUserAccountMetadataLiteAsyncWithHttpInfo($username, $contentType)
+        return $this->auUserAccountMetadataLiteAsyncWithHttpInfo($username, $user_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -573,15 +576,16 @@ class UserApi
      * List Related Businesses And Employees, but just the IDs and their BrandIds and PartnerIds
      *
      * @param  string $username (optional)
+     * @param  int $user_id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auUserAccountMetadataLite'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function auUserAccountMetadataLiteAsyncWithHttpInfo($username = null, string $contentType = self::contentTypes['auUserAccountMetadataLite'][0])
+    public function auUserAccountMetadataLiteAsyncWithHttpInfo($username = null, $user_id = null, string $contentType = self::contentTypes['auUserAccountMetadataLite'][0])
     {
         $returnType = '\OpenAPI\Client\Model\UserAccountMetadataLite';
-        $request = $this->auUserAccountMetadataLiteRequest($username, $contentType);
+        $request = $this->auUserAccountMetadataLiteRequest($username, $user_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -623,13 +627,15 @@ class UserApi
      * Create request for operation 'auUserAccountMetadataLite'
      *
      * @param  string $username (optional)
+     * @param  int $user_id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['auUserAccountMetadataLite'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function auUserAccountMetadataLiteRequest($username = null, string $contentType = self::contentTypes['auUserAccountMetadataLite'][0])
+    public function auUserAccountMetadataLiteRequest($username = null, $user_id = null, string $contentType = self::contentTypes['auUserAccountMetadataLite'][0])
     {
+
 
 
 
@@ -645,6 +651,15 @@ class UserApi
             $username,
             'username', // param base name
             'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $user_id,
+            'userId', // param base name
+            'integer', // openApiType
             '', // style
             false, // explode
             false // required

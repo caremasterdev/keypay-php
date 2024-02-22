@@ -81,6 +81,7 @@ class PayRunFinaliseResult implements ModelInterface, ArrayAccess, \JsonSerializ
         'selected_report_packs' => 'string[]',
         'submit_to_pension_sync' => 'string',
         'submit_to_pension_sync_scheduled_date_time_utc' => '\DateTime',
+        'super_payments' => '\OpenAPI\Client\Model\PayRunSuperBatchModel[]',
         'is_first_finalisation' => 'bool'
     ];
 
@@ -116,6 +117,7 @@ class PayRunFinaliseResult implements ModelInterface, ArrayAccess, \JsonSerializ
         'selected_report_packs' => null,
         'submit_to_pension_sync' => null,
         'submit_to_pension_sync_scheduled_date_time_utc' => 'date-time',
+        'super_payments' => null,
         'is_first_finalisation' => null
     ];
 
@@ -149,6 +151,7 @@ class PayRunFinaliseResult implements ModelInterface, ArrayAccess, \JsonSerializ
 		'selected_report_packs' => false,
 		'submit_to_pension_sync' => false,
 		'submit_to_pension_sync_scheduled_date_time_utc' => false,
+		'super_payments' => false,
 		'is_first_finalisation' => false
     ];
 
@@ -262,6 +265,7 @@ class PayRunFinaliseResult implements ModelInterface, ArrayAccess, \JsonSerializ
         'selected_report_packs' => 'selectedReportPacks',
         'submit_to_pension_sync' => 'submitToPensionSync',
         'submit_to_pension_sync_scheduled_date_time_utc' => 'submitToPensionSyncScheduledDateTimeUtc',
+        'super_payments' => 'superPayments',
         'is_first_finalisation' => 'isFirstFinalisation'
     ];
 
@@ -295,6 +299,7 @@ class PayRunFinaliseResult implements ModelInterface, ArrayAccess, \JsonSerializ
         'selected_report_packs' => 'setSelectedReportPacks',
         'submit_to_pension_sync' => 'setSubmitToPensionSync',
         'submit_to_pension_sync_scheduled_date_time_utc' => 'setSubmitToPensionSyncScheduledDateTimeUtc',
+        'super_payments' => 'setSuperPayments',
         'is_first_finalisation' => 'setIsFirstFinalisation'
     ];
 
@@ -328,6 +333,7 @@ class PayRunFinaliseResult implements ModelInterface, ArrayAccess, \JsonSerializ
         'selected_report_packs' => 'getSelectedReportPacks',
         'submit_to_pension_sync' => 'getSubmitToPensionSync',
         'submit_to_pension_sync_scheduled_date_time_utc' => 'getSubmitToPensionSyncScheduledDateTimeUtc',
+        'super_payments' => 'getSuperPayments',
         'is_first_finalisation' => 'getIsFirstFinalisation'
     ];
 
@@ -514,6 +520,7 @@ class PayRunFinaliseResult implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('selected_report_packs', $data ?? [], null);
         $this->setIfExists('submit_to_pension_sync', $data ?? [], null);
         $this->setIfExists('submit_to_pension_sync_scheduled_date_time_utc', $data ?? [], null);
+        $this->setIfExists('super_payments', $data ?? [], null);
         $this->setIfExists('is_first_finalisation', $data ?? [], null);
     }
 
@@ -1317,6 +1324,33 @@ class PayRunFinaliseResult implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable submit_to_pension_sync_scheduled_date_time_utc cannot be null');
         }
         $this->container['submit_to_pension_sync_scheduled_date_time_utc'] = $submit_to_pension_sync_scheduled_date_time_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets super_payments
+     *
+     * @return \OpenAPI\Client\Model\PayRunSuperBatchModel[]|null
+     */
+    public function getSuperPayments()
+    {
+        return $this->container['super_payments'];
+    }
+
+    /**
+     * Sets super_payments
+     *
+     * @param \OpenAPI\Client\Model\PayRunSuperBatchModel[]|null $super_payments 
+     *
+     * @return self
+     */
+    public function setSuperPayments($super_payments)
+    {
+        if (is_null($super_payments)) {
+            throw new \InvalidArgumentException('non-nullable super_payments cannot be null');
+        }
+        $this->container['super_payments'] = $super_payments;
 
         return $this;
     }
