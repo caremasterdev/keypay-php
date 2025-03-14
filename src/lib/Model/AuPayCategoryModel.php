@@ -474,6 +474,7 @@ class AuPayCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializab
     public const PAY_CATEGORY_TYPE_UNUSED_LEAVE_PAYMENT_NORMAL_TERMINATION = 'UnusedLeavePaymentNormalTermination';
     public const PAY_CATEGORY_TYPE_BACK_PAYMENT = 'BackPayment';
     public const PAY_CATEGORY_TYPE_PAID_FAMILY_AND_DOMESTIC_VIOLENCE_LEAVE = 'PaidFamilyAndDomesticViolenceLeave';
+    public const PAY_CATEGORY_TYPE_GST = 'GST';
     public const RATE_UNIT_HOURLY = 'Hourly';
     public const RATE_UNIT_ANNUALLY = 'Annually';
     public const RATE_UNIT_FIXED = 'Fixed';
@@ -603,6 +604,7 @@ class AuPayCategoryModel implements ModelInterface, ArrayAccess, \JsonSerializab
             self::PAY_CATEGORY_TYPE_UNUSED_LEAVE_PAYMENT_NORMAL_TERMINATION,
             self::PAY_CATEGORY_TYPE_BACK_PAYMENT,
             self::PAY_CATEGORY_TYPE_PAID_FAMILY_AND_DOMESTIC_VIOLENCE_LEAVE,
+            self::PAY_CATEGORY_TYPE_GST,
         ];
     }
 
