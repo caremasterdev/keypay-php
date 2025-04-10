@@ -9,12 +9,22 @@ A client library for the [KeyPay API](https://api.keypay.com.au/), built from th
 
 ## Requirements
 - PHP 7.4
+  
 ## Installation
+
+This package is not available on Packagist yet. Therefore, add this to your `composer.json` to install
 
 You can install the package via composer:
 
-```bash
-composer require healyhatman/keypay-php
+```json
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/caremasterdev/keypay-php"
+    }
+  ]
+}
 ```
 
 ## Usage
