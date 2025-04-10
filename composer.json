@@ -6,15 +6,7 @@
         "laravel",
         "keypay-php"
     ],
-    "homepage": "https://github.com/healyhatman/keypay-php",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Kamron Brooks",
-            "email": "kamron@skyspider.com.au",
-            "role": "Developer"
-        }
-    ],
     "require": {
         "healyhatman/oauth2-keypay" : "^1",
         "guzzlehttp/psr7": "^2.0",
