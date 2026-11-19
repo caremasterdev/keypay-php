@@ -1,0 +1,9 @@
+.git
+.idea
+vendor
+build
+coverage
+node_modules
+composer.lock
+Dockerfile
+docker-compose.yml

@@ -338,7 +338,6 @@ class DetailedPayRunWarningModel implements ModelInterface, ArrayAccess, \JsonSe
     public const WARNING_TYPE_EMPLOYEE_PENSION_OPTOUT_FOR_PERIOD = 'EmployeePensionOptoutForPeriod';
     public const WARNING_TYPE_EMPLOYEE_PENSION_CONTRIBUTIONS_CEASED = 'EmployeePensionContributionsCeased';
     public const WARNING_TYPE_EMPLOYEE_PENSION_OPTOUT_OR_CEASE = 'EmployeePensionOptoutOrCease';
-    public const WARNING_TYPE_EMPLOYEE_PENSION_OPTOUT_OR_CEASE = 'EmployeePensionOptoutOrCease';
     public const WARNING_TYPE_PENSION_OPT_OUT_COULD_NOT_CONNECT = 'PensionOptOutCouldNotConnect';
 
     /**
@@ -434,7 +433,6 @@ class DetailedPayRunWarningModel implements ModelInterface, ArrayAccess, \JsonSe
             self::WARNING_TYPE_CONCURRENT_PAY_RUN_AU,
             self::WARNING_TYPE_EMPLOYEE_PENSION_OPTOUT_FOR_PERIOD,
             self::WARNING_TYPE_EMPLOYEE_PENSION_CONTRIBUTIONS_CEASED,
-            self::WARNING_TYPE_EMPLOYEE_PENSION_OPTOUT_OR_CEASE,
             self::WARNING_TYPE_EMPLOYEE_PENSION_OPTOUT_OR_CEASE,
             self::WARNING_TYPE_PENSION_OPT_OUT_COULD_NOT_CONNECT,
         ];

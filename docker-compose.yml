@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        PHP_VERSION: "${PHP_VERSION:-8.2}"
+    volumes:
+      - .:/app
+      - vendor:/app/vendor
+    working_dir: /app
+    tty: true
+    stdin_open: true
+
+volumes:
+  vendor:
